@@ -12,43 +12,26 @@ const elFront = document.getElementById("card-front");
 const elBack = document.getElementById("card-back");
 const elCard = document.getElementById("card");
 
-function applyFilters() {
-  const domain = elDomain.value;
-  const scenario = elScenario.value;
-  const task = elTask.value;
-  filtered = allCards.filter((c) => {
-    if (domain && c.domain !== domain) return false;
-    if (scenario) {
-      const scenarios = c.scenarios || [];
-      if (!scenarios.includes(scenario) && !scenarios.includes("all")) return false;
-    }
-    if (task) {
-      const tasks = c.tasks || [];
-      if (!tasks.includes(task)) return false;
-    }
-    return true;
-  });
-  if (scenario) {
-    filtered.sort((a, b) => {
-      const sa = a.chain?.step ?? 999;
-      const sb = b.chain?.step ?? 999;
-      if (sa !== sb) return sa - sb;
-      return a.id.localeCompare(b.id);
-    });
-  }
-  index = 0;
-  flipped = false;
-  render();
-}
+const SCENARIO_ORDER = [
+  "customer_support",
+  "code_generation",
+  "multi_agent_research",
+  "developer_productivity",
+  "ci_cd",
+  "structured_extraction",
+];
 
-function populateTaskFilter() {
-  const tasks = new Set();
-  for (const card of allCards) {
-    for (const t of card.tasks || []) {
-      tasks.add(t);
-    }
-  }
-  const sorted = [...tasks].sort((a, b) => {
+const SCENARIO_LABELS = {
+  customer_support: "Customer Support",
+  code_generation: "Code Generation",
+  multi_agent_research: "Multi-Agent Research",
+  developer_productivity: "Developer Productivity",
+  ci_cd: "CI/CD",
+  structured_extraction: "Structured Extraction",
+};
+
+function sortTasks(tasks) {
+  return [...tasks].sort((a, b) => {
     const parse = (x) => {
       if (/^[1-5]\.\d$/.test(x)) {
         const [d, t] = x.split(".").map(Number);
@@ -58,14 +41,136 @@ function populateTaskFilter() {
     };
     const pa = parse(a);
     const pb = parse(b);
-    return pa[0] - pb[0] || pa[1] - pb[1] || pa[2] - pb[2] || String(a).localeCompare(String(b));
+    return (
+      pa[0] - pb[0] ||
+      pa[1] - pb[1] ||
+      pa[2] - pb[2] ||
+      String(a).localeCompare(String(b))
+    );
   });
-  for (const t of sorted) {
-    const opt = document.createElement("option");
-    opt.value = t;
-    opt.textContent = t;
-    elTask.appendChild(opt);
+}
+
+function cardsMatchingDomain(domain) {
+  if (!domain) return allCards;
+  return allCards.filter((c) => c.domain === domain);
+}
+
+function cardMatchesScenario(card, scenario) {
+  if (!scenario) return true;
+  const scenarios = card.scenarios || [];
+  return scenarios.includes(scenario) || scenarios.includes("all");
+}
+
+function cardsMatchingDomainAndScenario(domain, scenario) {
+  return cardsMatchingDomain(domain).filter((c) => cardMatchesScenario(c, scenario));
+}
+
+function scenariosForDomain(domain) {
+  const cards = cardsMatchingDomain(domain);
+  const scenarioSet = new Set();
+  let includesAll = false;
+
+  for (const card of cards) {
+    const scenarios = card.scenarios || [];
+    if (scenarios.includes("all")) {
+      includesAll = true;
+    }
+    for (const s of scenarios) {
+      if (s !== "all") scenarioSet.add(s);
+    }
   }
+
+  if (includesAll) {
+    for (const s of SCENARIO_ORDER) scenarioSet.add(s);
+  }
+
+  return SCENARIO_ORDER.filter((s) => scenarioSet.has(s));
+}
+
+function tasksForDomainAndScenario(domain, scenario) {
+  const cards = cardsMatchingDomainAndScenario(domain, scenario);
+  const tasks = new Set();
+  for (const card of cards) {
+    for (const t of card.tasks || []) tasks.add(t);
+  }
+  return sortTasks([...tasks]);
+}
+
+function setSelectOptions(select, values, labelFn, preserveValue) {
+  const wanted = preserveValue || select.value;
+  select.replaceChildren();
+
+  const allOpt = document.createElement("option");
+  allOpt.value = "";
+  allOpt.textContent = "All";
+  select.appendChild(allOpt);
+
+  for (const value of values) {
+    const opt = document.createElement("option");
+    opt.value = value;
+    opt.textContent = labelFn(value);
+    select.appendChild(opt);
+  }
+
+  select.value = values.includes(wanted) ? wanted : "";
+}
+
+function updateScenarioOptions() {
+  const domain = elDomain.value;
+  const scenarios = scenariosForDomain(domain);
+  setSelectOptions(
+    elScenario,
+    scenarios,
+    (s) => SCENARIO_LABELS[s] || s,
+    elScenario.value
+  );
+}
+
+function updateTaskOptions() {
+  const domain = elDomain.value;
+  const scenario = elScenario.value;
+  const tasks = tasksForDomainAndScenario(domain, scenario);
+  setSelectOptions(elTask, tasks, (t) => t, elTask.value);
+}
+
+function applyFilters() {
+  const domain = elDomain.value;
+  const scenario = elScenario.value;
+  const task = elTask.value;
+
+  filtered = allCards.filter((c) => {
+    if (domain && c.domain !== domain) return false;
+    if (!cardMatchesScenario(c, scenario)) return false;
+    if (task) {
+      const tasks = c.tasks || [];
+      if (!tasks.includes(task)) return false;
+    }
+    return true;
+  });
+
+  if (scenario) {
+    filtered.sort((a, b) => {
+      const sa = a.chain?.step ?? 999;
+      const sb = b.chain?.step ?? 999;
+      if (sa !== sb) return sa - sb;
+      return a.id.localeCompare(b.id);
+    });
+  }
+
+  index = 0;
+  flipped = false;
+  render();
+}
+
+function onDomainChange() {
+  updateScenarioOptions();
+  updateTaskOptions();
+  applyFilters();
+}
+
+function onScenarioChange() {
+  updateTaskOptions();
+  applyFilters();
 }
 
 function render() {
@@ -85,7 +190,8 @@ function render() {
     : "";
   elMeta.textContent = `${card.id} · ${card.domain} · ${card.type}${chain} · tasks: ${tasks} · ${(card.scenarios || []).join(", ")}`;
   elFront.textContent = card.front;
-  elBack.innerHTML = `<strong>A:</strong> ${card.back}` +
+  elBack.innerHTML =
+    `<strong>A:</strong> ${card.back}` +
     (card.rationale ? `<br><br><strong>Why:</strong> ${card.rationale}` : "");
   elBack.classList.toggle("hidden", !flipped);
 }
@@ -120,12 +226,31 @@ function shuffle() {
   render();
 }
 
+function initFiltersFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const domain = params.get("domain");
+  const scenario = params.get("scenario");
+  const task = params.get("task");
+
+  if (domain) elDomain.value = domain;
+
+  updateScenarioOptions();
+  if (scenario && [...elScenario.options].some((o) => o.value === scenario)) {
+    elScenario.value = scenario;
+  }
+
+  updateTaskOptions();
+  if (task && [...elTask.options].some((o) => o.value === task)) {
+    elTask.value = task;
+  }
+}
+
 document.getElementById("flip-btn").addEventListener("click", flip);
 document.getElementById("next-btn").addEventListener("click", next);
 document.getElementById("prev-btn").addEventListener("click", prev);
 document.getElementById("shuffle-btn").addEventListener("click", shuffle);
-elDomain.addEventListener("change", applyFilters);
-elScenario.addEventListener("change", applyFilters);
+elDomain.addEventListener("change", onDomainChange);
+elScenario.addEventListener("change", onScenarioChange);
 elTask.addEventListener("change", applyFilters);
 elCard.addEventListener("click", flip);
 
@@ -144,20 +269,8 @@ fetch("cards.json")
   .then((r) => r.json())
   .then((data) => {
     allCards = data.cards || [];
-    populateTaskFilter();
-    const params = new URLSearchParams(window.location.search);
-    const domain = params.get("domain");
-    const scenario = params.get("scenario");
-    const task = params.get("task");
-    if (domain) elDomain.value = domain;
-    if (scenario) elScenario.value = scenario;
-    if (task) elTask.value = task;
-    if (domain || scenario || task) {
-      applyFilters();
-    } else {
-      filtered = [...allCards];
-      render();
-    }
+    initFiltersFromUrl();
+    applyFilters();
   })
   .catch((err) => {
     elFront.textContent = "Failed to load cards.json. Run scripts/build_json.py first.";
