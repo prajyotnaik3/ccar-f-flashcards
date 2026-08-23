@@ -1,0 +1,48 @@
+scenarios:
+  - id: customer_support
+    name: Customer Support Resolution Agent
+    primary_domains: [D1, D2, D5]
+    rehearsal_focus:
+      - Identity verification before privileged tools
+      - Tool least-privilege and escalation paths
+      - Structured errors and human handoff
+
+  - id: code_generation
+    name: Code Generation with Claude Code
+    primary_domains: [D3, D5]
+    rehearsal_focus:
+      - CLAUDE.md and team conventions
+      - Plan vs Agent mode
+      - Context preservation across edits
+
+  - id: multi_agent_research
+    name: Multi-Agent Research System
+    primary_domains: [D1, D2, D5]
+    rehearsal_focus:
+      - Coordinator scope and delegation
+      - Explicit context passing between agents
+      - Provenance of subagent results
+
+  - id: developer_productivity
+    name: Developer Productivity with Claude
+    primary_domains: [D2, D3, D1]
+    rehearsal_focus:
+      - Built-in tools vs MCP
+      - Codebase exploration patterns
+      - Delegation without over-tooling
+
+  - id: ci_cd
+    name: Claude Code for Continuous Integration
+    primary_domains: [D3, D4]
+    rehearsal_focus:
+      - Non-interactive runs
+      - Structured review findings
+      - Independent verification of agent output
+
+  - id: structured_extraction
+    name: Structured Data Extraction
+    primary_domains: [D4, D5]
+    rehearsal_focus:
+      - JSON schema and nullable fields
+      - Validation-retry loops
+      - Human review for low-confidence extractions

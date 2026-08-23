@@ -1,0 +1,62 @@
+- id: d4-001
+  domain: D4
+  weight: 20
+  type: concept
+  difficulty: easy
+  scenarios: [structured_extraction, ci_cd]
+  front: "Why use structured output (JSON schema) with Claude instead of free-text parsing?"
+  back: "Enables validation, retries on schema failure, and downstream automation without fragile regex on prose."
+  sources:
+    - "Official CCAR-F Exam Guide — D4"
+    - "https://docs.anthropic.com/en/docs/build-with-claude/structured-outputs"
+  tags: [structured_output]
+
+- id: d4-002
+  domain: D4
+  weight: 20
+  type: decision
+  difficulty: medium
+  scenarios: [structured_extraction]
+  front: "Extraction misses nullable fields intermittently. Best improvement?"
+  back: "Tighten schema (required vs optional), add validation-retry loop, and explicit examples for edge/null cases—not longer vague prompts alone."
+  sources:
+    - "Official CCAR-F Exam Guide — D4, Structured Extraction scenario"
+  tags: [validation, retry]
+  exam_day: true
+
+- id: d4-003
+  domain: D4
+  weight: 20
+  type: anti_pattern
+  difficulty: medium
+  scenarios: [structured_extraction]
+  front: "Why trust model self-reported 'confidence' without validation?"
+  back: "Confidence is not calibrated by default; use schema checks, cross-field rules, or human review thresholds for high-risk fields."
+  sources:
+    - "Official CCAR-F Exam Guide — D4"
+  tags: [confidence, validation]
+
+- id: d4-004
+  domain: D4
+  weight: 20
+  type: compare
+  difficulty: medium
+  scenarios: [ci_cd]
+  front: "Prompt-only PR review checklist vs schema for review findings?"
+  back: "Schema for machine consumption (CI gates, dashboards); prompts alone are fine for human-readable narrative only."
+  sources:
+    - "Official CCAR-F Exam Guide — D4, CI/CD scenario"
+  tags: [ci_cd, structured_output]
+
+- id: d4-005
+  domain: D4
+  weight: 20
+  type: scenario_hook
+  difficulty: easy
+  scenarios: [structured_extraction]
+  front: "Structured Data Extraction scenario—primary domains?"
+  back: "D4 (schemas, validation), D5 (reliability, human review for low confidence)."
+  sources:
+    - "Official CCAR-F Exam Guide — scenario map"
+  tags: [scenarios]
+  exam_day: true

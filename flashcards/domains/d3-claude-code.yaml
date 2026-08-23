@@ -1,0 +1,62 @@
+- id: d3-001
+  domain: D3
+  weight: 20
+  type: concept
+  difficulty: easy
+  scenarios: [code_generation, ci_cd]
+  front: "What is CLAUDE.md in Claude Code workflows?"
+  back: "Project-level instructions and context file that Claude Code reads to align behavior, conventions, and constraints."
+  sources:
+    - "Official CCAR-F Exam Guide — D3"
+    - "https://docs.anthropic.com/en/docs/claude-code/overview"
+  tags: [claude_md]
+
+- id: d3-002
+  domain: D3
+  weight: 20
+  type: compare
+  difficulty: medium
+  scenarios: [code_generation]
+  front: "Plan mode vs full Agent mode in Claude Code for a large refactor?"
+  back: "Plan mode when you want reviewable steps before edits; Agent mode when executing a well-scoped implementation with approvals."
+  sources:
+    - "Official CCAR-F Exam Guide — D3, Code Generation scenario"
+  tags: [plan_mode, agent_mode]
+  exam_day: true
+
+- id: d3-003
+  domain: D3
+  weight: 20
+  type: decision
+  difficulty: medium
+  scenarios: [ci_cd]
+  front: "Running Claude Code in CI for PR review. Critical configuration concern?"
+  back: "Non-interactive execution, explicit permissions, deterministic outputs (structured findings), and independent verification—not open-ended agent runs."
+  sources:
+    - "Official CCAR-F Exam Guide — D3, CI/CD scenario"
+  tags: [ci_cd, automation]
+
+- id: d3-004
+  domain: D3
+  weight: 20
+  type: anti_pattern
+  difficulty: medium
+  scenarios: [code_generation]
+  front: "Why skip shared CLAUDE.md when multiple developers use Claude Code on one repo?"
+  back: "Inconsistent conventions, duplicated context in prompts, and drift in how the agent edits code across team members."
+  sources:
+    - "Official CCAR-F Exam Guide — D3"
+  tags: [claude_md, team]
+
+- id: d3-005
+  domain: D3
+  weight: 20
+  type: scenario_hook
+  difficulty: easy
+  scenarios: [ci_cd]
+  front: "CI/CD with Claude Code scenario—primary domains?"
+  back: "D3 (Claude Code config), D4 (structured output for findings), D5 (reliability in automated runs)."
+  sources:
+    - "Official CCAR-F Exam Guide — scenario map"
+  tags: [scenarios]
+  exam_day: true

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CCAR-F Flashcards</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>CCAR-F Flashcards</h1>
+    <p class="subtitle">Claude Certified Architect – Foundations</p>
+  </header>
+
+  <section class="controls">
+    <label>
+      Domain
+      <select id="filter-domain">
+        <option value="">All</option>
+        <option value="D1">D1 Agentic</option>
+        <option value="D2">D2 MCP</option>
+        <option value="D3">D3 Claude Code</option>
+        <option value="D4">D4 Prompts</option>
+        <option value="D5">D5 Context</option>
+        <option value="META">Meta</option>
+      </select>
+    </label>
+    <label>
+      Scenario
+      <select id="filter-scenario">
+        <option value="">All</option>
+        <option value="customer_support">Customer Support</option>
+        <option value="code_generation">Code Generation</option>
+        <option value="multi_agent_research">Multi-Agent Research</option>
+        <option value="developer_productivity">Developer Productivity</option>
+        <option value="ci_cd">CI/CD</option>
+        <option value="structured_extraction">Structured Extraction</option>
+      </select>
+    </label>
+    <button type="button" id="shuffle-btn">Shuffle</button>
+    <span id="counter" class="counter"></span>
+  </section>
+
+  <main class="card-area">
+    <div id="card" class="card" tabindex="0">
+      <div class="card-meta" id="card-meta"></div>
+      <div class="card-front" id="card-front"></div>
+      <div class="card-back hidden" id="card-back"></div>
+      <p class="hint">Space or click to flip · ← / → to navigate</p>
+    </div>
+  </main>
+
+  <nav class="nav-buttons">
+    <button type="button" id="prev-btn">Previous</button>
+    <button type="button" id="flip-btn">Flip</button>
+    <button type="button" id="next-btn">Next</button>
+  </nav>
+
+  <footer>
+    <p>Unofficial study aid — not affiliated with Anthropic. See <a href="https://github.com">repo README</a>.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

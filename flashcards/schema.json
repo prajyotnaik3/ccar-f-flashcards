@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ccar-f-flashcards/card.schema.json",
+  "title": "CCAR-F Flashcard",
+  "type": "object",
+  "required": ["id", "domain", "type", "front", "back", "sources"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^d[1-5]-[0-9]{3}$|^meta-[0-9]{3}$"
+    },
+    "domain": {
+      "type": "string",
+      "enum": ["D1", "D2", "D3", "D4", "D5", "META"]
+    },
+    "weight": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "customer_support",
+          "code_generation",
+          "multi_agent_research",
+          "developer_productivity",
+          "ci_cd",
+          "structured_extraction",
+          "all"
+        ]
+      }
+    },
+    "type": {
+      "type": "string",
+      "enum": ["concept", "decision", "anti_pattern", "compare", "scenario_hook", "meta"]
+    },
+    "difficulty": {
+      "type": "string",
+      "enum": ["easy", "medium", "hard"]
+    },
+    "front": { "type": "string", "minLength": 5 },
+    "back": { "type": "string", "minLength": 5 },
+    "rationale": { "type": "string" },
+    "sources": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 3 },
+      "minItems": 1
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "exam_day": {
+      "type": "boolean",
+      "description": "Include on one-page cheat sheet"
+    }
+  },
+  "additionalProperties": false
+}

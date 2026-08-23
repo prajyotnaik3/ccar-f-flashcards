@@ -1,0 +1,61 @@
+- id: d2-001
+  domain: D2
+  weight: 18
+  type: concept
+  difficulty: easy
+  scenarios: [customer_support, developer_productivity]
+  front: "What does MCP (Model Context Protocol) provide to Claude agents?"
+  back: "A standard way for AI clients to discover and invoke tools, resources, and prompts from external servers."
+  sources:
+    - "Official CCAR-F Exam Guide — D2"
+    - "https://modelcontextprotocol.io/introduction"
+  tags: [mcp_basics]
+
+- id: d2-002
+  domain: D2
+  weight: 18
+  type: decision
+  difficulty: medium
+  scenarios: [customer_support]
+  front: "Refund tool should only run after verified identity. MCP/tool design choice?"
+  back: "Narrow tool exposure: separate tools with least privilege, or a refund tool that requires verified session token from a prior identity tool."
+  sources:
+    - "Official CCAR-F Exam Guide — D2, Customer Support scenario"
+  tags: [tool_boundaries, least_privilege]
+  exam_day: true
+
+- id: d2-003
+  domain: D2
+  weight: 18
+  type: anti_pattern
+  difficulty: medium
+  scenarios: [developer_productivity]
+  front: "Why expose one mega-tool that 'does anything on GitHub' to the agent?"
+  back: "Harder for the model to select correctly, weak error semantics, and excessive blast radius if mis-invoked."
+  sources:
+    - "Official CCAR-F Exam Guide — D2"
+  tags: [tool_design]
+
+- id: d2-004
+  domain: D2
+  weight: 18
+  type: compare
+  difficulty: medium
+  scenarios: [developer_productivity]
+  front: "Built-in Claude Code tools (Read, Grep, Bash) vs custom MCP tools—when prefer MCP?"
+  back: "MCP when integrating external systems (GitHub, DB, SaaS) or sharing tools across clients; built-ins for local repo operations."
+  sources:
+    - "Official CCAR-F Exam Guide — D2, D3"
+  tags: [mcp, claude_code]
+
+- id: d2-005
+  domain: D2
+  weight: 18
+  type: decision
+  difficulty: hard
+  scenarios: [customer_support]
+  front: "Tool returns ambiguous error from external API. Best tool-layer behavior?"
+  back: "Structured error payload to the model (code, message, retryable flag) rather than raw stack traces or silent failure."
+  sources:
+    - "Official CCAR-F Exam Guide — D2"
+  tags: [errors, reliability]

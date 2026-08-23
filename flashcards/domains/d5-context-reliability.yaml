@@ -1,0 +1,61 @@
+- id: d5-001
+  domain: D5
+  weight: 15
+  type: concept
+  difficulty: easy
+  scenarios: [customer_support, multi_agent_research]
+  front: "What is context rot in long agent sessions?"
+  back: "Degraded reasoning as irrelevant history accumulates; mitigated by summarization, scoped context, and tool-first retrieval."
+  sources:
+    - "Official CCAR-F Exam Guide — D5"
+  tags: [context]
+
+- id: d5-002
+  domain: D5
+  weight: 15
+  type: decision
+  difficulty: medium
+  scenarios: [multi_agent_research]
+  front: "Subagents need prior search results. Best context passing approach?"
+  back: "Explicit structured handoffs (IDs, snippets, citations) via coordinator—not assuming shared implicit memory."
+  sources:
+    - "Official CCAR-F Exam Guide — D5, Multi-Agent Research scenario"
+  tags: [context_passing, subagents]
+  exam_day: true
+
+- id: d5-003
+  domain: D5
+  weight: 15
+  type: decision
+  difficulty: medium
+  scenarios: [customer_support]
+  front: "Agent loop fails twice on same tool error. Next step?"
+  back: "Escalate or change strategy (alternate tool, human handoff, degraded path)—not infinite identical retries."
+  sources:
+    - "Official CCAR-F Exam Guide — D5"
+  tags: [errors, escalation]
+
+- id: d5-004
+  domain: D5
+  weight: 15
+  type: anti_pattern
+  difficulty: medium
+  scenarios: [code_generation]
+  front: "Why dump entire repo into context for every Claude Code task?"
+  back: "Wastes tokens, increases noise, and hides relevant files—use grep/glob tools and scoped reads."
+  sources:
+    - "Official CCAR-F Exam Guide — D5, D3"
+  tags: [context, claude_code]
+
+- id: d5-005
+  domain: D5
+  weight: 15
+  type: scenario_hook
+  difficulty: easy
+  scenarios: [customer_support]
+  front: "Customer Support scenario—domains beyond D1?"
+  back: "D2 (tool boundaries for refunds/account), D5 (escalation, handoffs, failure handling)."
+  sources:
+    - "Official CCAR-F Exam Guide — scenario map"
+  tags: [scenarios]
+  exam_day: true

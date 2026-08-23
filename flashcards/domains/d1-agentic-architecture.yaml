@@ -1,0 +1,76 @@
+- id: d1-001
+  domain: D1
+  weight: 27
+  type: concept
+  difficulty: easy
+  scenarios: [customer_support, multi_agent_research]
+  front: "What is an agentic loop in Claude-based systems?"
+  back: "A cycle where the model plans, invokes tools, observes results, and iterates until the task completes or escalates."
+  sources:
+    - "Official CCAR-F Exam Guide — D1"
+    - "https://docs.anthropic.com/en/docs/agents-and-tools/agent-sdk/overview"
+  tags: [agent_loop]
+
+- id: d1-002
+  domain: D1
+  weight: 27
+  type: decision
+  difficulty: medium
+  scenarios: [customer_support]
+  front: "Support agent must verify identity before refund tools run. Best first approach?"
+  back: "Structural gate: prerequisite step, scoped tool permissions, or hook—before relying on prompt rules."
+  rationale: "Identity and money require deterministic enforcement."
+  sources:
+    - "Official CCAR-F Exam Guide — D1, Customer Support scenario"
+  tags: [escalation, identity]
+  exam_day: true
+
+- id: d1-003
+  domain: D1
+  weight: 27
+  type: compare
+  difficulty: medium
+  scenarios: [multi_agent_research]
+  front: "Single agent with many tools vs coordinator + specialized subagents for research pipeline?"
+  back: "Coordinator + subagents when tasks decompose cleanly (search, analyze, synthesize) and need isolated context and failure boundaries."
+  sources:
+    - "Official CCAR-F Exam Guide — D1, Multi-Agent Research scenario"
+  tags: [orchestration, subagents]
+
+- id: d1-004
+  domain: D1
+  weight: 27
+  type: anti_pattern
+  difficulty: medium
+  scenarios: [multi_agent_research]
+  front: "Why is letting a coordinator invent subagent outputs without tool results an anti-pattern?"
+  back: "Breaks provenance and reliability; coordinator should delegate via tools and pass explicit context, not hallucinate worker results."
+  sources:
+    - "Official CCAR-F Exam Guide — D1"
+  tags: [provenance, subagents]
+
+- id: d1-005
+  domain: D1
+  weight: 27
+  type: decision
+  difficulty: hard
+  scenarios: [customer_support]
+  front: "When should a support agent escalate to a human instead of continuing the loop?"
+  back: "When policy requires human judgment, identity cannot be verified, tool failures persist, or confidence/validation thresholds are not met."
+  sources:
+    - "Official CCAR-F Exam Guide — D1, D5 crossover"
+  tags: [escalation]
+  exam_day: true
+
+- id: d1-006
+  domain: D1
+  weight: 27
+  type: scenario_hook
+  difficulty: easy
+  scenarios: [developer_productivity]
+  front: "Developer Productivity scenario—primary domains tested?"
+  back: "D2 (tools/MCP), D3 (Claude Code), D1 (delegation/orchestration)."
+  sources:
+    - "Official CCAR-F Exam Guide — scenario map"
+  tags: [scenarios]
+  exam_day: true
