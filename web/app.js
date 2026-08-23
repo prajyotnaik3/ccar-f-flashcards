@@ -2,6 +2,7 @@ let allCards = [];
 let filtered = [];
 let index = 0;
 let flipped = false;
+let cardsReady = false;
 
 const elDomain = document.getElementById("filter-domain");
 const elScenario = document.getElementById("filter-scenario");
@@ -30,6 +31,12 @@ const SCENARIO_LABELS = {
   structured_extraction: "Structured Extraction",
 };
 
+function setFiltersEnabled(enabled) {
+  elDomain.disabled = !enabled;
+  elScenario.disabled = !enabled;
+  elTask.disabled = !enabled;
+}
+
 function sortTasks(tasks) {
   return [...tasks].sort((a, b) => {
     const parse = (x) => {
@@ -50,6 +57,15 @@ function sortTasks(tasks) {
   });
 }
 
+function cardScenarios(card) {
+  const scenarios = [...(card.scenarios || [])];
+  const chainScenario = card.chain?.scenario;
+  if (chainScenario && !scenarios.includes(chainScenario)) {
+    scenarios.push(chainScenario);
+  }
+  return scenarios;
+}
+
 function cardsMatchingDomain(domain) {
   if (!domain) return allCards;
   return allCards.filter((c) => c.domain === domain);
@@ -57,7 +73,7 @@ function cardsMatchingDomain(domain) {
 
 function cardMatchesScenario(card, scenario) {
   if (!scenario) return true;
-  const scenarios = card.scenarios || [];
+  const scenarios = cardScenarios(card);
   return scenarios.includes(scenario) || scenarios.includes("all");
 }
 
@@ -71,7 +87,7 @@ function scenariosForDomain(domain) {
   let includesAll = false;
 
   for (const card of cards) {
-    const scenarios = card.scenarios || [];
+    const scenarios = cardScenarios(card);
     if (scenarios.includes("all")) {
       includesAll = true;
     }
@@ -97,8 +113,10 @@ function tasksForDomainAndScenario(domain, scenario) {
 }
 
 function setSelectOptions(select, values, labelFn, preserveValue) {
-  const wanted = preserveValue || select.value;
-  select.replaceChildren();
+  const wanted = preserveValue ?? select.value;
+  while (select.firstChild) {
+    select.removeChild(select.firstChild);
+  }
 
   const allOpt = document.createElement("option");
   allOpt.value = "";
@@ -113,6 +131,11 @@ function setSelectOptions(select, values, labelFn, preserveValue) {
   }
 
   select.value = values.includes(wanted) ? wanted : "";
+}
+
+function refreshFilterOptions() {
+  updateScenarioOptions();
+  updateTaskOptions();
 }
 
 function updateScenarioOptions() {
@@ -134,6 +157,8 @@ function updateTaskOptions() {
 }
 
 function applyFilters() {
+  if (!cardsReady) return;
+
   const domain = elDomain.value;
   const scenario = elScenario.value;
   const task = elTask.value;
@@ -163,17 +188,26 @@ function applyFilters() {
 }
 
 function onDomainChange() {
-  updateScenarioOptions();
-  updateTaskOptions();
+  if (!cardsReady) return;
+  refreshFilterOptions();
   applyFilters();
 }
 
 function onScenarioChange() {
+  if (!cardsReady) return;
   updateTaskOptions();
   applyFilters();
 }
 
 function render() {
+  if (!cardsReady) {
+    elCounter.textContent = "Loading cards…";
+    elMeta.textContent = "";
+    elFront.textContent = "Loading flashcard deck…";
+    elBack.classList.add("hidden");
+    return;
+  }
+
   if (filtered.length === 0) {
     elCounter.textContent = "No cards match filters";
     elMeta.textContent = "";
@@ -188,7 +222,7 @@ function render() {
   const chain = card.chain
     ? ` · chain ${card.chain.step}/${card.chain.steps}`
     : "";
-  elMeta.textContent = `${card.id} · ${card.domain} · ${card.type}${chain} · tasks: ${tasks} · ${(card.scenarios || []).join(", ")}`;
+  elMeta.textContent = `${card.id} · ${card.domain} · ${card.type}${chain} · tasks: ${tasks} · ${cardScenarios(card).join(", ")}`;
   elFront.textContent = card.front;
   elBack.innerHTML =
     `<strong>A:</strong> ${card.back}` +
@@ -197,26 +231,27 @@ function render() {
 }
 
 function flip() {
-  if (filtered.length === 0) return;
+  if (!cardsReady || filtered.length === 0) return;
   flipped = !flipped;
   elBack.classList.toggle("hidden", !flipped);
 }
 
 function next() {
-  if (filtered.length === 0) return;
+  if (!cardsReady || filtered.length === 0) return;
   index = (index + 1) % filtered.length;
   flipped = false;
   render();
 }
 
 function prev() {
-  if (filtered.length === 0) return;
+  if (!cardsReady || filtered.length === 0) return;
   index = (index - 1 + filtered.length) % filtered.length;
   flipped = false;
   render();
 }
 
 function shuffle() {
+  if (!cardsReady || filtered.length === 0) return;
   for (let i = filtered.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [filtered[i], filtered[j]] = [filtered[j], filtered[i]];
@@ -234,15 +269,31 @@ function initFiltersFromUrl() {
 
   if (domain) elDomain.value = domain;
 
-  updateScenarioOptions();
+  refreshFilterOptions();
+
   if (scenario && [...elScenario.options].some((o) => o.value === scenario)) {
     elScenario.value = scenario;
   }
 
   updateTaskOptions();
+
   if (task && [...elTask.options].some((o) => o.value === task)) {
     elTask.value = task;
   }
+}
+
+function onCardsLoaded(data) {
+  allCards = data.cards || [];
+  if (allCards.length === 0) {
+    elCounter.textContent = "No cards in deck";
+    elFront.textContent = "cards.json is empty. Run scripts/build_json.py.";
+    return;
+  }
+
+  cardsReady = true;
+  setFiltersEnabled(true);
+  initFiltersFromUrl();
+  applyFilters();
 }
 
 document.getElementById("flip-btn").addEventListener("click", flip);
@@ -255,6 +306,7 @@ elTask.addEventListener("change", applyFilters);
 elCard.addEventListener("click", flip);
 
 document.addEventListener("keydown", (e) => {
+  if (!cardsReady) return;
   if (e.key === " " || e.key === "Enter") {
     e.preventDefault();
     flip();
@@ -265,14 +317,18 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+setFiltersEnabled(false);
+render();
+
 fetch("cards.json")
-  .then((r) => r.json())
-  .then((data) => {
-    allCards = data.cards || [];
-    initFiltersFromUrl();
-    applyFilters();
+  .then((r) => {
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    return r.json();
   })
+  .then(onCardsLoaded)
   .catch((err) => {
-    elFront.textContent = "Failed to load cards.json. Run scripts/build_json.py first.";
+    elCounter.textContent = "Load failed";
+    elFront.textContent =
+      "Failed to load cards.json. Run scripts/build_json.py or open via GitHub Pages.";
     console.error(err);
   });
