@@ -7,3 +7,7 @@ venv/
 .DS_Store
 *.swp
 .idea/
+
+# Local copy of official Exam Guide PDF (download separately — see docs/exam-guide/README.md)
+docs/exam-guide/*.pdf
+docs/reference/*.pdf

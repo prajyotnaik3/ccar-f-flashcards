@@ -6,7 +6,22 @@ Unofficial flashcards for **Claude Certified Architect – Foundations (CCAR-F)*
 - **Anki** — spaced repetition (`dist/anki/ccar-f.apkg`)
 - **Web viewer** — flip cards on GitHub Pages (`web/`)
 
-> **Disclaimer:** Not affiliated with or endorsed by Anthropic. No leaked exam content. Study from the [official Exam Guide](https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6nizmqk8tpzpfjvt6qmmav7rh%2Fpublic%2F1783542750%2FClaude+Certified+Architect+%E2%80%93+Foundations+Exam+Guide.pdf) and public Anthropic docs.
+> **Disclaimer:** Not affiliated with or endorsed by Anthropic. No leaked exam content. Study from the [official Exam Guide](https://anthropic-partners.skilljar.com/claude-certified-architect-foundations-certification) and public Anthropic docs.
+
+**Live viewer:** https://prajyotnaik3.github.io/ccar-f-flashcards/ · **Study hub:** [study.html](https://prajyotnaik3.github.io/ccar-f-flashcards/study.html)
+
+## Study with the Exam Guide
+
+The repo maps flashcards to the official blueprint—not a replacement for the PDF.
+
+| Resource | Purpose |
+|----------|---------|
+| [docs/exam-guide-index.md](docs/exam-guide-index.md) | Task statements → domain YAML + viewer filter links |
+| [docs/exam-guide/README.md](docs/exam-guide/README.md) | Download PDF + optional local copy |
+| [web/study.html](web/study.html) | Study hub on GitHub Pages |
+| `./scripts/setup_exam_guide.sh` | Copy PDF from Downloads into `docs/exam-guide/` (gitignored) |
+
+**Workflow:** Read PDF Section 6 task for a domain → drill cards via [viewer](https://prajyotnaik3.github.io/ccar-f-flashcards/) (`?domain=D1`) → read Section 9 rationales.
 
 ## Quick start
 

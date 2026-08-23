@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CCAR-F Study Hub</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .study-page { max-width: 52rem; margin: 0 auto; padding: 1rem 1.25rem 3rem; }
+    .study-page h2 { margin-top: 1.75rem; font-size: 1.1rem; }
+    .study-page ul { line-height: 1.6; }
+    .study-page table { width: 100%; border-collapse: collapse; margin: 0.75rem 0; font-size: 0.95rem; }
+    .study-page th, .study-page td { border: 1px solid var(--border, #333); padding: 0.4rem 0.6rem; text-align: left; }
+    .study-page th { background: rgba(255,255,255,0.06); }
+    .study-links a { display: inline-block; margin: 0.25rem 0.5rem 0.25rem 0; }
+    .nav-top { margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="study-page">
+    <p class="nav-top"><a href="index.html">← Flashcards</a></p>
+    <h1>CCAR-F Study Hub</h1>
+    <p class="subtitle">Official Exam Guide + flashcard deck</p>
+
+    <h2>1. Official Exam Guide (read this first)</h2>
+    <div class="study-links">
+      <a href="https://anthropic-partners.skilljar.com/claude-certified-architect-foundations-certification" target="_blank" rel="noopener">Partner Academy (download)</a>
+      <a href="https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6nizmqk8tpzpfjvt6qmmav7rh%2Fpublic%2F1783542750%2FClaude+Certified+Architect+%E2%80%93+Foundations+Exam+Guide.pdf" target="_blank" rel="noopener">PDF direct link</a>
+      <a href="https://github.com/prajyotnaik3/ccar-f-flashcards/blob/main/docs/exam-guide-index.md" target="_blank" rel="noopener">Full task index (GitHub)</a>
+    </div>
+    <p>Read Sections 5–6 (scenarios + tasks), Section 9 rationales, and do Section 8 exercises.</p>
+
+    <h2>2. Study workflow</h2>
+    <ol>
+      <li>Pick a domain below → read matching tasks in the PDF.</li>
+      <li>Drill flashcards for that domain.</li>
+      <li>Filter by scenario before the exam.</li>
+    </ol>
+
+    <h2>3. Domains (flashcard filters)</h2>
+    <table>
+      <thead>
+        <tr><th>Domain</th><th>Weight</th><th>Cards</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><a href="index.html?domain=D1">D1 Agentic Architecture</a></td><td>27%</td><td>57</td></tr>
+        <tr><td><a href="index.html?domain=D2">D2 Tool Design & MCP</a></td><td>18%</td><td>52</td></tr>
+        <tr><td><a href="index.html?domain=D3">D3 Claude Code</a></td><td>20%</td><td>50</td></tr>
+        <tr><td><a href="index.html?domain=D4">D4 Prompts & Structured Output</a></td><td>20%</td><td>50</td></tr>
+        <tr><td><a href="index.html?domain=D5">D5 Context & Reliability</a></td><td>15%</td><td>47</td></tr>
+        <tr><td><a href="index.html?domain=META">Meta (exam format)</a></td><td>—</td><td>4</td></tr>
+      </tbody>
+    </table>
+
+    <h2>4. Scenarios (exam uses 4 of 6)</h2>
+    <table>
+      <thead>
+        <tr><th>Scenario</th><th>Primary domains</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><a href="index.html?scenario=customer_support">Customer Support</a></td><td>D1, D2, D5</td></tr>
+        <tr><td><a href="index.html?scenario=code_generation">Code Generation</a></td><td>D3, D5</td></tr>
+        <tr><td><a href="index.html?scenario=multi_agent_research">Multi-Agent Research</a></td><td>D1, D2, D5</td></tr>
+        <tr><td><a href="index.html?scenario=developer_productivity">Developer Productivity</a></td><td>D2, D3, D1</td></tr>
+        <tr><td><a href="index.html?scenario=ci_cd">CI/CD</a></td><td>D3, D4</td></tr>
+        <tr><td><a href="index.html?scenario=structured_extraction">Structured Extraction</a></td><td>D4, D5</td></tr>
+      </tbody>
+    </table>
+
+    <h2>5. Other materials</h2>
+    <ul>
+      <li><a href="https://github.com/prajyotnaik3/ccar-f-flashcards/blob/main/docs/study-plan-4-weeks.md">4-week study plan</a></li>
+      <li><a href="https://github.com/prajyotnaik3/ccar-f-flashcards/blob/main/docs/cheat-sheet.md">Exam-day cheat sheet</a></li>
+      <li>Import <code>dist/anki/ccar-f.apkg</code> for spaced repetition</li>
+    </ul>
+  </div>
+</body>
+</html>

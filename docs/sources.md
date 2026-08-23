@@ -4,8 +4,10 @@ Use these when authoring flashcards. **Your official CCAR-F Exam Guide (Partner 
 
 ## Anthropic / exam
 
-- [Official CCAR-F Exam Guide (PDF)](https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6nizmqk8tpzpfjvt6qmmav7rh%2Fpublic%2F1783542750%2FClaude+Certified+Architect+%E2%80%93+Foundations+Exam+Guide.pdf)
-- [Anthropic Partner Academy — certifications](https://anthropic-partners.skilljar.com/)
+- [Partner Academy — download Exam Guide](https://anthropic-partners.skilljar.com/claude-certified-architect-foundations-certification) (canonical)
+- [Direct PDF link](https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6nizmqk8tpzpfjvt6qmmav7rh%2Fpublic%2F1783542750%2FClaude+Certified+Architect+%E2%80%93+Foundations+Exam+Guide.pdf) (may be updated by Anthropic)
+- [Exam guide study index in this repo](exam-guide-index.md)
+- [Local PDF setup](exam-guide/README.md)
 - [About Model Context Protocol (MCP)](https://docs.anthropic.com/en/copilot/concepts/context/mcp)
 - [Claude Code overview](https://docs.anthropic.com/en/docs/claude-code/overview)
 - [Agent SDK overview](https://docs.anthropic.com/en/docs/agents-and-tools/agent-sdk/overview)

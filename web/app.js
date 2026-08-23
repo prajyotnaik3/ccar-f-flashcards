@@ -98,8 +98,17 @@ fetch("cards.json")
   .then((r) => r.json())
   .then((data) => {
     allCards = data.cards || [];
-    filtered = [...allCards];
-    render();
+    const params = new URLSearchParams(window.location.search);
+    const domain = params.get("domain");
+    const scenario = params.get("scenario");
+    if (domain) elDomain.value = domain;
+    if (scenario) elScenario.value = scenario;
+    if (domain || scenario) {
+      applyFilters();
+    } else {
+      filtered = [...allCards];
+      render();
+    }
   })
   .catch((err) => {
     elFront.textContent = "Failed to load cards.json. Run scripts/build_json.py first.";
