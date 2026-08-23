@@ -2,7 +2,7 @@
 
 Auto-generated from flashcards with `exam_day: true`.
 
-**54 cards** — review the night before the exam.
+**63 cards** — review the night before the exam.
 
 ### d1-002 (D1)
 
@@ -44,6 +44,7 @@ Auto-generated from flashcards with `exam_day: true`.
 
 - **Q:** Business rule: block refunds over $500 and escalate. Hooks vs prompt instructions?
 - **A:** Tool call interception hook—hooks guarantee compliance; prompts are probabilistic.
+- **Why:** hooks guarantee compliance; prompts are probabilistic.
 
 ### d1-040 (D1)
 
@@ -59,6 +60,7 @@ Auto-generated from flashcards with `exam_day: true`.
 
 - **Q:** When should a support agent escalate to a human instead of continuing the agentic loop?
 - **A:** Policy requires human judgment, identity cannot be verified, tool failures persist, or validation/confidence thresholds are not met.
+- **Why:** Correct choice avoids the wrong pattern: not met..
 
 ### d1-055 (D1)
 
@@ -90,6 +92,7 @@ Auto-generated from flashcards with `exam_day: true`.
 
 - **Q:** Structured error metadata fields for MCP tools (name three)?
 - **A:** errorCategory (transient/validation/permission/business), isRetryable boolean, and human-readable description.
+- **Why:** Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.
 
 ### d2-020 (D2)
 
@@ -105,6 +108,7 @@ Auto-generated from flashcards with `exam_day: true`.
 
 - **Q:** Refund tool should only run after verified identity. Tool design choice?
 - **A:** Least privilege: narrow tool exposure or refund tool requiring verified session token from prior identity tool.
+- **Why:** Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter.
 
 ### d2-029 (D2)
 
@@ -130,6 +134,7 @@ Auto-generated from flashcards with `exam_day: true`.
 
 - **Q:** Team /review slash command for every developer on clone. Where create it?
 - **A:** .claude/commands/ in the project repository—version-controlled and shared on clone/pull.
+- **Why:** Project slash commands live in .claude/commands/ and are version-controlled for the team. ~/.claude/commands/ is personal; CLAUDE.md holds instructions not command definitions; .claude/config.json is not the Claude Code command mechanism.
 
 ### d3-010 (D3)
 
@@ -145,6 +150,7 @@ Auto-generated from flashcards with `exam_day: true`.
 
 - **Q:** Restructure monolith into microservices—dozens of files, architectural decisions. Approach?
 - **A:** Plan mode: explore codebase, understand dependencies, design approach before making changes.
+- **Why:** Plan mode fits large architectural work with exploration before edits. Direct execution risks rework when dependencies are unknown; upfront rigid instructions skip necessary discovery; switching only if complexity emerges ignores stated large-scale scope.
 
 ### d3-022 (D3)
 
@@ -155,6 +161,7 @@ Auto-generated from flashcards with `exam_day: true`.
 
 - **Q:** CI job hangs—Claude Code waiting for interactive input. Fix?
 - **A:** Use -p (or --print) flag for non-interactive mode: process prompt, output result, exit.
+- **Why:** -p (--print) is the documented non-interactive CI mode: process, output, exit. CLAUDE_HEADLESS, --batch, and stdin tricks are not the correct Claude Code approach.
 
 ### d3-042 (D3)
 
@@ -175,6 +182,7 @@ Auto-generated from flashcards with `exam_day: true`.
 
 - **Q:** Source document may omit a field. Schema design to prevent fabrication?
 - **A:** Make fields optional/nullable when information may be absent—don't require fields the source lacks.
+- **Why:** don't require fields the source lacks.
 
 ### d4-021 (D4)
 
@@ -185,6 +193,7 @@ Auto-generated from flashcards with `exam_day: true`.
 
 - **Q:** Extraction misses nullable fields intermittently. Best improvement?
 - **A:** Tighten required vs optional schema, validation-retry loop, and explicit examples for null/edge cases.
+- **Why:** Structured output plus validation-retry separates syntax from semantics; schemas must reflect absent data, not force fabrication.
 
 ### d4-027 (D4)
 
@@ -205,6 +214,7 @@ Auto-generated from flashcards with `exam_day: true`.
 
 - **Q:** Preserve order amounts and dates across a long support conversation?
 - **A:** Extract transactional facts into a persistent case facts block in each prompt—outside summarized history.
+- **Why:** outside summarized history.
 
 ### d5-010 (D5)
 
@@ -215,16 +225,19 @@ Auto-generated from flashcards with `exam_day: true`.
 
 - **Q:** Subagents need prior search results. Best context passing?
 - **A:** Explicit structured handoffs (IDs, snippets, citations) via coordinator—not implicit shared memory.
+- **Why:** not implicit shared memory.
 
 ### d5-030 (D5)
 
 - **Q:** Calibrate human review routing for extractions?
 - **A:** Model outputs field-level confidence; calibrate thresholds using labeled validation sets.
+- **Why:** Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
 
 ### d5-034 (D5)
 
 - **Q:** Subagent output for downstream synthesis—provenance requirement?
 - **A:** Structured claim-source mappings (URLs, document names, excerpts) preserved through synthesis.
+- **Why:** Exam judgment aligned to task 5.6: Structured claim-source mappings (URLs, document names, excerpts) preserved through synthesis.
 
 ### d5-039 (D5)
 
@@ -252,6 +265,60 @@ Auto-generated from flashcards with `exam_day: true`.
 - **Q:** Core heuristic when a scenario needs deterministic guarantees (money, identity, schema compliance)?
 - **A:** Prefer structural/programmatic fixes (hooks, prerequisites, scoped tools, tool_use schemas) over prompt-only instructions.
 - **Why:** Exam tests judgment: prompts are insufficient for hard guarantees.
+
+### meta-005 (META)
+
+- **Q:** Sample Q1 (Customer Support): Why programmatic prerequisite (A) beats prompt, few-shot, or routing for skipped get_customer?
+- **A:** Blocks lookup_order and process_refund until get_customer returns verified ID—deterministic enforcement for identity before refunds.
+- **Why:** Programmatic enforcement gives deterministic guarantees for required tool sequences; prompt and few-shot rely on probabilistic LLM compliance—insufficient when misidentification causes financial harm. Routing classifiers change tool availability, not ordering.
+
+### meta-006 (META)
+
+- **Q:** Sample Q2 (Customer Support): Why expand tool descriptions (B) before few-shot, routing, or tool consolidation?
+- **A:** Descriptions are the primary LLM tool-selection signal—add inputs, examples, edge cases, and boundaries vs similar tools.
+- **Why:** Tool descriptions are the primary selection mechanism; minimal descriptions cause confusion between similar tools. Few-shot adds tokens without fixing descriptions; routing is over-engineered for a first step; consolidation is valid but higher effort.
+
+### meta-008 (META)
+
+- **Q:** Sample Q4 (Code Generation): Where should a team-shared /review slash command live?
+- **A:** .claude/commands/ in the project repository—version-controlled for everyone who clones the repo.
+- **Why:** Project slash commands live in .claude/commands/ and are version-controlled. ~/.claude/commands/ is personal; CLAUDE.md holds instructions not command definitions; .claude/config.json is not the Claude Code command mechanism.
+
+### meta-009 (META)
+
+- **Q:** Sample Q5 (Code Generation): Monolith-to-microservices across dozens of files—why plan mode first (A)?
+- **A:** Explore dependencies and design service boundaries before editing—large architectural scope is already stated.
+- **Why:** Plan mode fits large architectural work with exploration before edits. Direct execution risks rework when dependencies are unknown; rigid upfront instructions skip discovery; waiting for emergent complexity ignores stated large-scale scope.
+
+### meta-011 (META)
+
+- **Q:** Sample Q7 (Multi-Agent Research): Report covers only visual arts—why coordinator decomposition (B)?
+- **A:** Logs show narrow subtasks (digital art, graphic design, photography)—subagents succeeded within assigned scope.
+- **Why:** Coordinator logs show decomposition into only visual-arts subtasks—subagents succeeded within narrow assignments. Downstream agents are not the root cause; synthesis, search, and analysis worked within assigned scope.
+
+### meta-013 (META)
+
+- **Q:** Sample Q9 (Multi-Agent Research): 85% simple fact-checks—why scoped verify_fact on synthesis (A)?
+- **A:** Least privilege for common lookups; complex verification still routes through coordinator to search agent.
+- **Why:** Scoped verify_fact on synthesis covers simple fact-checks while complex work stays with search via coordinator—least privilege. End-of-pass batching creates blocking dependencies; giving synthesis all search tools over-provisions; speculative caching cannot predict verification needs.
+
+### meta-014 (META)
+
+- **Q:** Sample Q10 (CI/CD): Pipeline hangs waiting for input—why -p flag (A)?
+- **A:** claude -p runs non-interactive: process prompt, output to stdout, exit—required for CI/CD.
+- **Why:** -p (--print) is the documented non-interactive CI mode. CLAUDE_HEADLESS, --batch, and stdin tricks are not the correct Claude Code approach.
+
+### meta-015 (META)
+
+- **Q:** Sample Q11: Batch API for pre-merge checks and overnight reports—why batch only overnight jobs (A)?
+- **A:** Batches save ~50% cost but lack latency SLA—unsuitable for blocking merge gates.
+- **Why:** Message Batches save cost but lack latency SLA—fine for overnight reports, unsuitable for blocking pre-merge checks. Polling batches for merge gates is unacceptable; custom_id correlates batch results; timeout fallback adds complexity vs matching API to workflow latency needs.
+
+### meta-016 (META)
+
+- **Q:** Sample Q12 (CI/CD): 14-file PR review inconsistent—why split per-file and integration passes (A)?
+- **A:** Per-file local analysis then cross-file integration pass—fixes attention dilution across many files.
+- **Why:** Split reviews into per-file passes plus a cross-file integration pass—fixes attention dilution. Splitting PRs burdens developers; larger context does not fix attention quality; consensus across passes would suppress intermittently caught bugs.
 
 ### sc-002 (CHAIN)
 

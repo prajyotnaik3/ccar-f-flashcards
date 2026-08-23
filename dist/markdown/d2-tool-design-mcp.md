@@ -86,6 +86,8 @@
 
 **A:** Rename to purpose-specific names (e.g., extract_web_results) with web-specific descriptions that eliminate overlap.
 
+**Why:** Exam judgment aligned to task 2.1: Rename to purpose-specific names (e.
+
 **Tags:** tool_descriptions, naming
 
 **Sources:**
@@ -100,6 +102,8 @@
 **Q:** One generic analyze_document tool does too much. How split it?
 
 **A:** Purpose-specific tools with clear contracts: extract_data_points, summarize_content, verify_claim_against_source.
+
+**Why:** Exam judgment aligned to task 2.1: Purpose-specific tools with clear contracts: extract_data_points, summarize_content, verify_claim_against_source.
 
 **Tags:** tool_design, splitting
 
@@ -130,6 +134,8 @@
 **Q:** Tool selection still wrong after improving descriptions. Next check?
 
 **A:** Review system prompt for keyword-sensitive instructions that might override tool descriptions.
+
+**Why:** Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
 
 **Tags:** system_prompt, tool_descriptions
 
@@ -221,6 +227,8 @@
 
 **A:** errorCategory (transient/validation/permission/business), isRetryable boolean, and human-readable description.
 
+**Why:** Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.
+
 **Tags:** errors, structured_errors
 
 **Sources:**
@@ -235,6 +243,8 @@
 **Q:** Business rule violation (e.g., refund over policy limit). Error response design?
 
 **A:** isRetryable: false, customer-friendly explanation so the agent can communicate appropriately—not retry endlessly.
+
+**Why:** Exam judgment aligned to task 2.2: isRetryable: false, customer-friendly explanation so the agent can communicate appropriately—not retry endlessly.
 
 **Tags:** errors, business_errors
 
@@ -266,6 +276,8 @@
 
 **A:** Retry locally when possible; propagate only unresolved errors with partial results and what was attempted.
 
+**Why:** Exam judgment aligned to task 2.2: Retry locally when possible; propagate only unresolved errors with partial results and what was attempted.
+
 **Tags:** errors, subagents
 
 **Sources:**
@@ -280,6 +292,8 @@
 **Q:** Tool returns ambiguous error from external API. Best tool-layer behavior?
 
 **A:** Structured error payload (category, message, retryable flag)—not raw stack traces or silent failure.
+
+**Why:** not raw stack traces or silent failure.
 
 **Tags:** errors, reliability
 
@@ -356,6 +370,8 @@
 
 **A:** When you need guaranteed tool invocation instead of conversational text—e.g., unknown document type among multiple extraction schemas.
 
+**Why:** e.g., unknown document type among multiple extraction schemas.
+
 **Tags:** tool_choice
 
 **Sources:**
@@ -370,6 +386,8 @@
 **Q:** Must run extract_metadata before enrichment tools. tool_choice approach?
 
 **A:** Force specific tool first with {"type": "tool", "name": "extract_metadata"}, then process enrichment in follow-up turns.
+
+**Why:** Exam judgment aligned to task 2.3: Force specific tool first with {"type": "tool", "name": "extract_metadata"}, then process enrichment in follow-up turns.
 
 **Tags:** tool_choice, forced_tool
 
@@ -386,6 +404,8 @@
 
 **A:** Purpose-specific tool like load_document that validates document URLs and rejects non-document URLs.
 
+**Why:** Exam judgment aligned to task 2.3: Purpose-specific tool like load_document that validates document URLs and rejects non-document URLs.
+
 **Tags:** tool_design, constraints
 
 **Sources:**
@@ -401,6 +421,8 @@
 
 **A:** Provide verify_fact for high-frequency simple lookups; route complex verification through coordinator to search agent.
 
+**Why:** Scoped verify_fact on synthesis covers the common simple fact-check case while complex work stays with search via coordinator—least privilege. End-of-pass batching creates blocking dependencies; giving synthesis all search tools over-provisions; speculative caching cannot predict verification needs.
+
 **Tags:** tool_scoping, verify_fact
 
 **Sources:**
@@ -415,6 +437,8 @@
 **Q:** Refund tool should only run after verified identity. Tool design choice?
 
 **A:** Least privilege: narrow tool exposure or refund tool requiring verified session token from prior identity tool.
+
+**Why:** Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter.
 
 **Tags:** tool_boundaries, least_privilege
 
@@ -445,6 +469,8 @@
 **Q:** Store GitHub token for team MCP server without committing secrets?
 
 **A:** Environment variable expansion in .mcp.json (e.g., ${GITHUB_TOKEN}) with secrets in env—not in the repo.
+
+**Why:** Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.
 
 **Tags:** mcp_config, credentials
 
@@ -491,6 +517,8 @@
 
 **A:** Enhance MCP tool descriptions to explain capabilities and outputs in detail so the model understands when MCP beats built-ins.
 
+**Why:** Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.
+
 **Tags:** tool_descriptions, mcp
 
 **Sources:**
@@ -505,6 +533,8 @@
 **Q:** Jira integration needed. Community MCP server vs custom?
 
 **A:** Prefer existing community MCP for standard integrations (Jira); custom servers for team-specific workflows.
+
+**Why:** Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.
 
 **Tags:** mcp_config, community
 
@@ -551,6 +581,8 @@
 
 **A:** Glob with pattern like **/*.test.tsx.
 
+**Why:** Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.
+
 **Tags:** builtin_tools, Glob
 
 **Sources:**
@@ -565,6 +597,8 @@
 **Q:** Find all callers of a function across the codebase. Which built-in tool?
 
 **A:** Grep to search file contents for the function name/reference patterns.
+
+**Why:** Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.
 
 **Tags:** builtin_tools, Grep
 
@@ -596,6 +630,8 @@
 
 **A:** Grep for entry points → Read to follow imports and trace flows—not read all files upfront.
 
+**Why:** not read all files upfront.
+
 **Tags:** builtin_tools, exploration
 
 **Sources:**
@@ -610,6 +646,8 @@
 **Q:** Trace usage across wrapper modules exporting many names?
 
 **A:** Identify all exported names first, then Grep for each name across the codebase.
+
+**Why:** Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.
 
 **Tags:** builtin_tools, Grep, exploration
 
@@ -775,6 +813,8 @@
 **Q:** errorCategory for policy violation refund blocked?
 
 **A:** Business error with isRetryable: false and customer-friendly explanation—not transient or permission.
+
+**Why:** not transient or permission.
 
 **Tags:** errors, business_errors
 

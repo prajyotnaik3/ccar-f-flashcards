@@ -53,6 +53,8 @@
 
 **A:** Extract transactional facts into a persistent case facts block in each prompt—outside summarized history.
 
+**Why:** outside summarized history.
+
 **Tags:** case_facts, context
 
 **Sources:**
@@ -67,6 +69,8 @@
 **Q:** Order lookup returns 40+ fields but only 5 matter for returns. Context fix?
 
 **A:** Trim verbose tool outputs to relevant fields before they accumulate in conversation context.
+
+**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
 
 **Tags:** trimming, tool_results
 
@@ -83,6 +87,8 @@
 
 **A:** Place key findings summary at the beginning; organize detailed results with explicit section headers.
 
+**Why:** Exam judgment aligned to task 5.1: Place key findings summary at the beginning; organize detailed results with explicit section headers.
+
 **Tags:** lost_in_middle, aggregation
 
 **Sources:**
@@ -97,6 +103,8 @@
 **Q:** Downstream synthesis agent has limited context budget. Upstream agent output design?
 
 **A:** Return structured key facts, citations, and relevance scores—not verbose reasoning chains.
+
+**Why:** not verbose reasoning chains.
 
 **Tags:** structured_output, subagents
 
@@ -128,6 +136,8 @@
 
 **A:** Persist structured issue data (order IDs, amounts, statuses) in a separate context layer for each concern.
 
+**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+
 **Tags:** case_facts, multi_issue
 
 **Sources:**
@@ -157,6 +167,8 @@
 **Q:** 55% FCR—escalates easy cases, handles hard policy exceptions alone. Best calibration fix?
 
 **A:** Add explicit escalation criteria with few-shot examples showing escalate vs resolve autonomously.
+
+**Why:** Explicit escalation criteria with few-shot examples fix unclear decision boundaries—the proportionate first fix. LLM self-reported confidence is poorly calibrated on hard cases; a separate classifier is over-engineered before prompt tuning; sentiment does not measure case complexity.
 
 **Tags:** escalation, few_shot
 
@@ -203,6 +215,8 @@
 
 **A:** Honor immediately—do not attempt investigation first when they explicitly request a human.
 
+**Why:** do not attempt investigation first when they explicitly request a human.
+
 **Tags:** escalation, customer_request
 
 **Sources:**
@@ -217,6 +231,8 @@
 **Q:** Frustrated customer, issue is within agent capability. Approach?
 
 **A:** Acknowledge frustration and offer resolution; escalate only if customer reiterates preference for human.
+
+**Why:** Escalation calibration needs explicit criteria—ambiguous boundaries cause wrong routing between autonomous resolution and human handoff.
 
 **Tags:** escalation, de_escalation
 
@@ -233,6 +249,8 @@
 
 **A:** Escalate—policy gap/exception case, not autonomous resolution.
 
+**Why:** policy gap/exception case, not autonomous resolution.
+
 **Tags:** escalation, policy_gap
 
 **Sources:**
@@ -247,6 +265,8 @@
 **Q:** get_customer returns multiple matches. What should the agent do?
 
 **A:** Ask for additional identifiers—never pick a match heuristically.
+
+**Why:** never pick a match heuristically.
 
 **Tags:** ambiguity, identity
 
@@ -263,6 +283,8 @@
 
 **A:** Explicit structured handoffs (IDs, snippets, citations) via coordinator—not implicit shared memory.
 
+**Why:** not implicit shared memory.
+
 **Tags:** context_passing, subagents
 
 **Sources:**
@@ -277,6 +299,8 @@
 **Q:** Web search subagent timeout—best error propagation to coordinator?
 
 **A:** Structured context: failure type, attempted query, partial results, and alternative approaches.
+
+**Why:** Structured error context enables coordinator recovery (retry, alternate query, partial results). Generic retry status hides context; marking failure as success blocks recovery; terminating the whole workflow is unnecessary when partial progress exists.
 
 **Tags:** error_propagation
 
@@ -308,6 +332,8 @@
 
 **A:** Coverage annotations: which findings are well-supported vs which topic areas have gaps from unavailable sources.
 
+**Why:** Exam judgment aligned to task 5.3: Coverage annotations: which findings are well-supported vs which topic areas have gaps from unavailable sources.
+
 **Tags:** synthesis, coverage
 
 **Sources:**
@@ -322,6 +348,8 @@
 **Q:** Agent loop fails twice on same tool error. Next step?
 
 **A:** Escalate or change strategy (alternate tool, human handoff)—not infinite identical retries.
+
+**Why:** not infinite identical retries.
 
 **Tags:** errors, escalation
 
@@ -353,6 +381,8 @@
 
 **A:** /compact to condense verbose discovery output during extended sessions.
 
+**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+
 **Tags:** compact, exploration
 
 **Sources:**
@@ -367,6 +397,8 @@
 **Q:** Multi-phase codebase exploration—context pattern between phases?
 
 **A:** Summarize key findings from one phase, inject summary into context before spawning subagents for the next.
+
+**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
 
 **Tags:** exploration, summarization
 
@@ -428,6 +460,8 @@
 
 **A:** Stratified random sampling to measure error rates and detect novel error patterns.
 
+**Why:** Exam judgment aligned to task 5.5: Stratified random sampling to measure error rates and detect novel error patterns.
+
 **Tags:** human_review, sampling
 
 **Sources:**
@@ -442,6 +476,8 @@
 **Q:** Calibrate human review routing for extractions?
 
 **A:** Model outputs field-level confidence; calibrate thresholds using labeled validation sets.
+
+**Why:** Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
 
 **Tags:** confidence, human_review
 
@@ -458,6 +494,8 @@
 
 **A:** Accuracy by document type and field segment—consistent performance across all segments.
 
+**Why:** consistent performance across all segments.
+
 **Tags:** human_review, segmentation
 
 **Sources:**
@@ -472,6 +510,8 @@
 **Q:** Limited reviewer capacity—prioritize which extractions for human review?
 
 **A:** Low model confidence, ambiguous source documents, or contradictory source data.
+
+**Why:** Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
 
 **Tags:** human_review, routing
 
@@ -503,6 +543,8 @@
 
 **A:** Structured claim-source mappings (URLs, document names, excerpts) preserved through synthesis.
 
+**Why:** Exam judgment aligned to task 5.6: Structured claim-source mappings (URLs, document names, excerpts) preserved through synthesis.
+
 **Tags:** provenance, claim_source
 
 **Sources:**
@@ -517,6 +559,8 @@
 **Q:** Two credible sources report different statistics. Synthesis handling?
 
 **A:** Annotate conflict with source attribution—do not arbitrarily pick one value.
+
+**Why:** do not arbitrarily pick one value.
 
 **Tags:** provenance, conflicts
 
@@ -533,6 +577,8 @@
 
 **A:** Enables correct temporal interpretation—prevents time differences being misread as contradictions.
 
+**Why:** prevents time differences being misread as contradictions.
+
 **Tags:** temporal, provenance
 
 **Sources:**
@@ -548,6 +594,8 @@
 
 **A:** Explicit sections distinguishing well-established findings from contested ones with methodological context.
 
+**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+
 **Tags:** synthesis, provenance
 
 **Sources:**
@@ -562,6 +610,8 @@
 **Q:** Synthesis output formatting for mixed content types?
 
 **A:** Render appropriately—financial data as tables, news as prose, technical findings as structured lists.
+
+**Why:** financial data as tables, news as prose, technical findings as structured lists.
 
 **Tags:** synthesis, formatting
 
@@ -607,6 +657,8 @@
 **Q:** Subagent structured outputs for downstream synthesis—required metadata?
 
 **A:** Dates, source locations, and methodological context—not just claims without provenance context.
+
+**Why:** not just claims without provenance context.
 
 **Tags:** metadata, subagents
 
@@ -668,6 +720,8 @@
 
 **A:** Spawn subagents for focused tasks (find test files, trace refund flow) while main agent keeps high-level coordination.
 
+**Why:** Exam judgment aligned to task 5.4: Spawn subagents for focused tasks (find test files, trace refund flow) while main agent keeps high-level coordination.
+
 **Tags:** subagents, exploration
 
 **Sources:**
@@ -683,6 +737,8 @@
 
 **A:** Complete analysis with conflicts included and explicitly annotated—let coordinator reconcile before passing to synthesis.
 
+**Why:** let coordinator reconcile before passing to synthesis.
+
 **Tags:** provenance, conflicts
 
 **Sources:**
@@ -697,6 +753,8 @@
 **Q:** Scratchpad file during exploration—how use for follow-up questions?
 
 **A:** Record key findings in scratchpad; reference it for subsequent questions to counteract context degradation.
+
+**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
 
 **Tags:** scratchpad, exploration
 

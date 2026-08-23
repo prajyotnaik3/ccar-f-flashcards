@@ -39,6 +39,8 @@
 
 **A:** Instructions are in user-level ~/.claude/CLAUDE.md—not shared via version control; move to project-level config.
 
+**Why:** not shared via version control; move to project-level config.
+
 **Tags:** claude_md, hierarchy
 
 **Sources:**
@@ -69,6 +71,8 @@
 
 **A:** Split into focused files in .claude/rules/ (e.g., testing.md, api-conventions.md, deployment.md).
 
+**Why:** Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter.
+
 **Tags:** claude_md, rules
 
 **Sources:**
@@ -83,6 +87,8 @@
 **Q:** Inconsistent Claude Code behavior across sessions—how diagnose loaded config?
 
 **A:** Use /memory to verify which memory files are loaded and what context is active.
+
+**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
 
 **Tags:** claude_md, memory
 
@@ -113,6 +119,8 @@
 **Q:** Team /review slash command for every developer on clone. Where create it?
 
 **A:** .claude/commands/ in the project repository—version-controlled and shared on clone/pull.
+
+**Why:** Project slash commands live in .claude/commands/ and are version-controlled for the team. ~/.claude/commands/ is personal; CLAUDE.md holds instructions not command definitions; .claude/config.json is not the Claude Code command mechanism.
 
 **Tags:** slash_commands
 
@@ -159,6 +167,8 @@
 
 **A:** context: fork—runs skill in isolated sub-agent context so output doesn't pollute main conversation.
 
+**Why:** runs skill in isolated sub-agent context so output doesn't pollute main conversation.
+
 **Tags:** skills, context_fork
 
 **Sources:**
@@ -174,6 +184,8 @@
 
 **A:** allowed-tools restricting tool access during skill execution (e.g., file write operations only).
 
+**Why:** Exam judgment aligned to task 3.2: allowed-tools restricting tool access during skill execution (e.
+
 **Tags:** skills, allowed_tools
 
 **Sources:**
@@ -188,6 +200,8 @@
 **Q:** Developer invokes skill without required arguments. Frontmatter help?
 
 **A:** argument-hint prompts for required parameters when the skill is invoked without them.
+
+**Why:** Exam judgment aligned to task 3.2: argument-hint prompts for required parameters when the skill is invoked without them.
 
 **Tags:** skills, argument_hint
 
@@ -219,6 +233,8 @@
 
 **A:** Create personal variants in ~/.claude/skills/ with different names—not in shared project skills.
 
+**Why:** not in shared project skills.
+
 **Tags:** skills, scoping
 
 **Sources:**
@@ -249,6 +265,8 @@
 
 **A:** .claude/rules/ with glob paths like **/*.test.tsx—applies by file type across all directories.
 
+**Why:** .claude/rules/ with glob patterns apply conventions by file path—including tests spread across directories. Root CLAUDE.md relies on inference; skills need invocation; per-directory CLAUDE.md cannot cover scattered test files.
+
 **Tags:** rules, glob
 
 **Sources:**
@@ -263,6 +281,8 @@
 **Q:** React, API, and DB areas need different conventions; tests scattered everywhere. Best maintainable approach?
 
 **A:** .claude/rules/ with YAML frontmatter glob patterns (e.g., paths: ["**/*.test.tsx"], ["src/api/**/*"])—not inference from one monolithic CLAUDE.md.
+
+**Why:** .claude/rules/ with glob patterns apply conventions by file path—including tests spread across directories. Root CLAUDE.md relies on inference; skills need invocation; per-directory CLAUDE.md cannot cover scattered test files.
 
 **Tags:** rules, glob
 
@@ -309,6 +329,8 @@
 
 **A:** Plan mode: explore codebase, understand dependencies, design approach before making changes.
 
+**Why:** Plan mode fits large architectural work with exploration before edits. Direct execution risks rework when dependencies are unknown; upfront rigid instructions skip necessary discovery; switching only if complexity emerges ignores stated large-scale scope.
+
 **Tags:** plan_mode
 
 **Sources:**
@@ -338,6 +360,8 @@
 **Q:** Single-file bug fix with clear stack trace. Plan mode or direct execution?
 
 **A:** Direct execution—well-understood change with clear scope.
+
+**Why:** well-understood change with clear scope.
 
 **Tags:** direct_execution
 
@@ -369,6 +393,8 @@
 
 **A:** Plan mode for investigation and design, then direct execution to implement the planned approach.
 
+**Why:** Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter.
+
 **Tags:** plan_mode, direct_execution
 
 **Sources:**
@@ -398,6 +424,8 @@
 **Q:** Natural language transformation spec produces inconsistent code. Best fix?
 
 **A:** Provide 2–3 concrete input/output examples showing expected transformations.
+
+**Why:** Exam judgment aligned to task 3.5: Provide 2–3 concrete input/output examples showing expected transformations.
 
 **Tags:** iterative_refinement, examples
 
@@ -459,6 +487,8 @@
 
 **A:** Provide specific test cases with example input and expected output for the failing edge case.
 
+**Why:** Exam judgment aligned to task 3.5: Provide specific test cases with example input and expected output for the failing edge case.
+
 **Tags:** iterative_refinement, edge_cases
 
 **Sources:**
@@ -474,6 +504,8 @@
 
 **A:** Use -p (or --print) flag for non-interactive mode: process prompt, output result, exit.
 
+**Why:** -p (--print) is the documented non-interactive CI mode: process, output, exit. CLAUDE_HEADLESS, --batch, and stdin tricks are not the correct Claude Code approach.
+
 **Tags:** ci_cd, non_interactive
 
 **Sources:**
@@ -488,6 +520,8 @@
 **Q:** Post structured PR review findings as inline comments from CI. CLI flags?
 
 **A:** --output-format json with --json-schema for machine-parseable structured findings.
+
+**Why:** Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
 
 **Tags:** ci_cd, structured_output
 
@@ -534,6 +568,8 @@
 
 **A:** Include prior review findings in context; instruct Claude to report only new or still-unaddressed issues.
 
+**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+
 **Tags:** ci_cd, review
 
 **Sources:**
@@ -548,6 +584,8 @@
 **Q:** CI test generation suggests scenarios already in the suite. Context fix?
 
 **A:** Provide existing test files in context so generation avoids duplicate coverage.
+
+**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
 
 **Tags:** ci_cd, testing
 
@@ -564,6 +602,8 @@
 
 **A:** Document testing standards, valuable test criteria, and available fixtures in CLAUDE.md.
 
+**Why:** Exam judgment aligned to task 3.6: Document testing standards, valuable test criteria, and available fixtures in CLAUDE.
+
 **Tags:** claude_md, testing
 
 **Sources:**
@@ -578,6 +618,8 @@
 **Q:** Running Claude Code in CI for PR review. Critical configuration concerns?
 
 **A:** Non-interactive (-p), explicit permissions, structured/deterministic outputs, independent review instance—not open-ended agent runs.
+
+**Why:** not open-ended agent runs.
 
 **Tags:** ci_cd, automation
 
@@ -714,6 +756,8 @@
 
 **A:** Expected behavior, edge cases, and performance requirements—iterate by sharing failures with Claude.
 
+**Why:** iterate by sharing failures with Claude.
+
 **Tags:** iterative_refinement, testing
 
 **Sources:**
@@ -728,6 +772,8 @@
 **Q:** context: fork for skills—another use case besides verbose codebase analysis?
 
 **A:** Exploratory brainstorming of alternatives—isolates speculative output from the main session.
+
+**Why:** isolates speculative output from the main session.
 
 **Tags:** skills, context_fork
 

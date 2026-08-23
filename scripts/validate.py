@@ -29,6 +29,8 @@ def main() -> int:
         chain = card.get("chain")
         if chain and chain.get("step", 0) > chain.get("steps", 0):
             errors.append(f"{cid}: chain.step exceeds chain.steps")
+        if card.get("type") == "decision" and not card.get("rationale"):
+            errors.append(f"{cid}: decision cards require rationale")
 
     if errors:
         print("Validation failed:\n")

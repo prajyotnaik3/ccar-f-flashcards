@@ -35,7 +35,7 @@
     },
     "type": {
       "type": "string",
-      "enum": ["concept", "decision", "anti_pattern", "compare", "scenario_hook", "scenario_chain", "meta"]
+      "enum": ["concept", "decision", "anti_pattern", "compare", "scenario_hook", "scenario_chain", "sample_rationale", "meta"]
     },
     "difficulty": {
       "type": "string",

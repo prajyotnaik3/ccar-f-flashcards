@@ -52,6 +52,7 @@
   - hierarchy
   tasks:
   - '3.1'
+  rationale: not shared via version control; move to project-level config.
 - id: d3-004
   domain: D3
   weight: 20
@@ -84,6 +85,7 @@
   - rules
   tasks:
   - '3.1'
+  rationale: Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter.
 - id: d3-006
   domain: D3
   weight: 20
@@ -100,6 +102,7 @@
   - memory
   tasks:
   - '3.1'
+  rationale: Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
 - id: d3-007
   domain: D3
   weight: 20
@@ -133,6 +136,7 @@
   exam_day: true
   tasks:
   - '3.2'
+  rationale: Project slash commands live in .claude/commands/ and are version-controlled for the team. ~/.claude/commands/ is personal; CLAUDE.md holds instructions not command definitions; .claude/config.json is not the Claude Code command mechanism.
 - id: d3-009
   domain: D3
   weight: 20
@@ -183,6 +187,7 @@
   - context_fork
   tasks:
   - '3.2'
+  rationale: runs skill in isolated sub-agent context so output doesn't pollute main conversation.
 - id: d3-012
   domain: D3
   weight: 20
@@ -199,6 +204,7 @@
   - allowed_tools
   tasks:
   - '3.2'
+  rationale: 'Exam judgment aligned to task 3.2: allowed-tools restricting tool access during skill execution (e.'
 - id: d3-013
   domain: D3
   weight: 20
@@ -215,6 +221,7 @@
   - argument_hint
   tasks:
   - '3.2'
+  rationale: 'Exam judgment aligned to task 3.2: argument-hint prompts for required parameters when the skill is invoked without them.'
 - id: d3-014
   domain: D3
   weight: 20
@@ -247,6 +254,7 @@
   - scoping
   tasks:
   - '3.2'
+  rationale: not in shared project skills.
 - id: d3-016
   domain: D3
   weight: 20
@@ -280,6 +288,7 @@
   - glob
   tasks:
   - '3.3'
+  rationale: .claude/rules/ with glob patterns apply conventions by file path—including tests spread across directories. Root CLAUDE.md relies on inference; skills need invocation; per-directory CLAUDE.md cannot cover scattered test files.
 - id: d3-018
   domain: D3
   weight: 20
@@ -296,6 +305,7 @@
   - glob
   tasks:
   - '3.3'
+  rationale: .claude/rules/ with glob patterns apply conventions by file path—including tests spread across directories. Root CLAUDE.md relies on inference; skills need invocation; per-directory CLAUDE.md cannot cover scattered test files.
 - id: d3-019
   domain: D3
   weight: 20
@@ -344,6 +354,7 @@
   exam_day: true
   tasks:
   - '3.4'
+  rationale: Plan mode fits large architectural work with exploration before edits. Direct execution risks rework when dependencies are unknown; upfront rigid instructions skip necessary discovery; switching only if complexity emerges ignores stated large-scale scope.
 - id: d3-022
   domain: D3
   weight: 20
@@ -376,6 +387,7 @@
   - direct_execution
   tasks:
   - '3.4'
+  rationale: well-understood change with clear scope.
 - id: d3-024
   domain: D3
   weight: 20
@@ -408,6 +420,7 @@
   - direct_execution
   tasks:
   - '3.4'
+  rationale: Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter.
 - id: d3-026
   domain: D3
   weight: 20
@@ -440,6 +453,7 @@
   - examples
   tasks:
   - '3.5'
+  rationale: 'Exam judgment aligned to task 3.5: Provide 2–3 concrete input/output examples showing expected transformations.'
 - id: d3-028
   domain: D3
   weight: 20
@@ -503,6 +517,7 @@
   - edge_cases
   tasks:
   - '3.5'
+  rationale: 'Exam judgment aligned to task 3.5: Provide specific test cases with example input and expected output for the failing edge case.'
 - id: d3-032
   domain: D3
   weight: 20
@@ -520,6 +535,7 @@
   exam_day: true
   tasks:
   - '3.6'
+  rationale: '-p (--print) is the documented non-interactive CI mode: process, output, exit. CLAUDE_HEADLESS, --batch, and stdin tricks are not the correct Claude Code approach.'
 - id: d3-033
   domain: D3
   weight: 20
@@ -536,6 +552,7 @@
   - structured_output
   tasks:
   - '3.6'
+  rationale: Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
 - id: d3-034
   domain: D3
   weight: 20
@@ -584,6 +601,7 @@
   - review
   tasks:
   - '3.6'
+  rationale: Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
 - id: d3-037
   domain: D3
   weight: 20
@@ -600,6 +618,7 @@
   - testing
   tasks:
   - '3.6'
+  rationale: Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
 - id: d3-038
   domain: D3
   weight: 20
@@ -617,6 +636,7 @@
   - testing
   tasks:
   - '3.6'
+  rationale: 'Exam judgment aligned to task 3.6: Document testing standards, valuable test criteria, and available fixtures in CLAUDE.'
 - id: d3-039
   domain: D3
   weight: 20
@@ -633,6 +653,7 @@
   - automation
   tasks:
   - '3.6'
+  rationale: not open-ended agent runs.
 - id: d3-040
   domain: D3
   weight: 20
@@ -781,6 +802,7 @@
   - testing
   tasks:
   - '3.5'
+  rationale: iterate by sharing failures with Claude.
 - id: d3-049
   domain: D3
   weight: 20
@@ -797,6 +819,7 @@
   - context_fork
   tasks:
   - '3.2'
+  rationale: isolates speculative output from the main session.
 - id: d3-050
   domain: D3
   weight: 20

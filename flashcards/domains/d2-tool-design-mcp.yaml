@@ -102,6 +102,7 @@
   - naming
   tasks:
   - '2.1'
+  rationale: 'Exam judgment aligned to task 2.1: Rename to purpose-specific names (e.'
 - id: d2-007
   domain: D2
   weight: 18
@@ -119,6 +120,7 @@
   - splitting
   tasks:
   - '2.1'
+  rationale: 'Exam judgment aligned to task 2.1: Purpose-specific tools with clear contracts: extract_data_points, summarize_content, verify_claim_against_source.'
 - id: d2-008
   domain: D2
   weight: 18
@@ -152,6 +154,7 @@
   - tool_descriptions
   tasks:
   - '2.1'
+  rationale: Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
 - id: d2-010
   domain: D2
   weight: 18
@@ -252,6 +255,7 @@
   exam_day: true
   tasks:
   - '2.2'
+  rationale: 'Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.'
 - id: d2-016
   domain: D2
   weight: 18
@@ -268,6 +272,7 @@
   - business_errors
   tasks:
   - '2.2'
+  rationale: 'Exam judgment aligned to task 2.2: isRetryable: false, customer-friendly explanation so the agent can communicate appropriately—not retry endlessly.'
 - id: d2-017
   domain: D2
   weight: 18
@@ -301,6 +306,7 @@
   - subagents
   tasks:
   - '2.2'
+  rationale: 'Exam judgment aligned to task 2.2: Retry locally when possible; propagate only unresolved errors with partial results and what was attempted.'
 - id: d2-019
   domain: D2
   weight: 18
@@ -317,6 +323,7 @@
   - reliability
   tasks:
   - '2.2'
+  rationale: not raw stack traces or silent failure.
 - id: d2-020
   domain: D2
   weight: 18
@@ -400,6 +407,7 @@
   - tool_choice
   tasks:
   - '2.3'
+  rationale: e.g., unknown document type among multiple extraction schemas.
 - id: d2-025
   domain: D2
   weight: 18
@@ -416,6 +424,7 @@
   - forced_tool
   tasks:
   - '2.3'
+  rationale: 'Exam judgment aligned to task 2.3: Force specific tool first with {"type": "tool", "name": "extract_metadata"}, then process enrichment in follow-up turns.'
 - id: d2-026
   domain: D2
   weight: 18
@@ -432,6 +441,7 @@
   - constraints
   tasks:
   - '2.3'
+  rationale: 'Exam judgment aligned to task 2.3: Purpose-specific tool like load_document that validates document URLs and rejects non-document URLs.'
 - id: d2-027
   domain: D2
   weight: 18
@@ -448,6 +458,7 @@
   - verify_fact
   tasks:
   - '2.3'
+  rationale: Scoped verify_fact on synthesis covers the common simple fact-check case while complex work stays with search via coordinator—least privilege. End-of-pass batching creates blocking dependencies; giving synthesis all search tools over-provisions; speculative caching cannot predict verification needs.
 - id: d2-028
   domain: D2
   weight: 18
@@ -465,6 +476,7 @@
   exam_day: true
   tasks:
   - '2.3'
+  rationale: Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter.
 - id: d2-029
   domain: D2
   weight: 18
@@ -498,6 +510,7 @@
   - credentials
   tasks:
   - '2.4'
+  rationale: 'Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.'
 - id: d2-031
   domain: D2
   weight: 18
@@ -546,6 +559,7 @@
   - mcp
   tasks:
   - '2.4'
+  rationale: 'Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.'
 - id: d2-034
   domain: D2
   weight: 18
@@ -562,6 +576,7 @@
   - community
   tasks:
   - '2.4'
+  rationale: 'Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.'
 - id: d2-035
   domain: D2
   weight: 18
@@ -613,6 +628,7 @@
   - Glob
   tasks:
   - '2.5'
+  rationale: 'Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.'
 - id: d2-038
   domain: D2
   weight: 18
@@ -629,6 +645,7 @@
   - Grep
   tasks:
   - '2.5'
+  rationale: 'Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.'
 - id: d2-039
   domain: D2
   weight: 18
@@ -663,6 +680,7 @@
   - exploration
   tasks:
   - '2.5'
+  rationale: not read all files upfront.
 - id: d2-041
   domain: D2
   weight: 18
@@ -680,6 +698,7 @@
   - exploration
   tasks:
   - '2.5'
+  rationale: 'Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.'
 - id: d2-042
   domain: D2
   weight: 18
@@ -862,3 +881,4 @@
   - business_errors
   tasks:
   - '2.2'
+  rationale: not transient or permission.

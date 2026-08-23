@@ -1,5 +1,5 @@
 {
-  "count": 290,
+  "count": 302,
   "cards": [
     {
       "id": "d1-001",
@@ -256,7 +256,8 @@
       ],
       "tasks": [
         "1.2"
-      ]
+      ],
+      "rationale": "Coordinator logs show decomposition into only visual-arts subtasks—subagents succeeded within narrow assignments. Downstream agents are not the root cause; synthesis, search, and analysis worked within assigned scope."
     },
     {
       "id": "d1-012",
@@ -278,7 +279,8 @@
       ],
       "tasks": [
         "1.2"
-      ]
+      ],
+      "rationale": "not always route through the full pipeline."
     },
     {
       "id": "d1-013",
@@ -300,7 +302,8 @@
       ],
       "tasks": [
         "1.2"
-      ]
+      ],
+      "rationale": "Exam judgment aligned to task 1.2: Assign distinct subtopics or source types per agent (e."
     },
     {
       "id": "d1-014",
@@ -344,7 +347,8 @@
       ],
       "tasks": [
         "1.2"
-      ]
+      ],
+      "rationale": "Exam judgment aligned to task 1.2: Observability, consistent error handling, and controlled information flow."
     },
     {
       "id": "d1-016",
@@ -390,7 +394,8 @@
       ],
       "tasks": [
         "1.3"
-      ]
+      ],
+      "rationale": "not rely on automatic inheritance."
     },
     {
       "id": "d1-018",
@@ -412,7 +417,8 @@
       ],
       "tasks": [
         "1.3"
-      ]
+      ],
+      "rationale": "Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases."
     },
     {
       "id": "d1-019",
@@ -434,7 +440,8 @@
       ],
       "tasks": [
         "1.3"
-      ]
+      ],
+      "rationale": "not separate turns per subagent."
     },
     {
       "id": "d1-020",
@@ -456,7 +463,8 @@
       ],
       "tasks": [
         "1.3"
-      ]
+      ],
+      "rationale": "enables subagent adaptability vs rigid procedural scripts."
     },
     {
       "id": "d1-021",
@@ -547,7 +555,8 @@
       ],
       "tasks": [
         "1.4"
-      ]
+      ],
+      "rationale": "Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases."
     },
     {
       "id": "d1-025",
@@ -592,7 +601,8 @@
       ],
       "tasks": [
         "1.4"
-      ]
+      ],
+      "rationale": "Escalation calibration needs explicit criteria—ambiguous boundaries cause wrong routing between autonomous resolution and human handoff."
     },
     {
       "id": "d1-027",
@@ -637,7 +647,8 @@
       ],
       "tasks": [
         "1.5"
-      ]
+      ],
+      "rationale": "Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter."
     },
     {
       "id": "d1-029",
@@ -660,7 +671,8 @@
       "exam_day": true,
       "tasks": [
         "1.5"
-      ]
+      ],
+      "rationale": "hooks guarantee compliance; prompts are probabilistic."
     },
     {
       "id": "d1-030",
@@ -727,7 +739,8 @@
       ],
       "tasks": [
         "1.6"
-      ]
+      ],
+      "rationale": "Split reviews into per-file passes plus a cross-file integration pass—fixes attention dilution across many files. Splitting PRs burdens developers; larger context does not fix attention quality; consensus across passes would suppress intermittently caught bugs."
     },
     {
       "id": "d1-033",
@@ -750,7 +763,8 @@
       ],
       "tasks": [
         "1.6"
-      ]
+      ],
+      "rationale": "Exam judgment aligned to task 1.6: Map structure → identify high-impact areas → prioritized plan that adapts as dependencies are discovered."
     },
     {
       "id": "d1-034",
@@ -838,7 +852,8 @@
       ],
       "tasks": [
         "1.7"
-      ]
+      ],
+      "rationale": "more reliable than stale resumes."
     },
     {
       "id": "d1-038",
@@ -860,7 +875,8 @@
       ],
       "tasks": [
         "1.7"
-      ]
+      ],
+      "rationale": "not require full re-exploration of the codebase."
     },
     {
       "id": "d1-039",
@@ -883,7 +899,8 @@
       "tasks": [
         "1.2",
         "1.3"
-      ]
+      ],
+      "rationale": "Scoped verify_fact on synthesis covers the common simple fact-check case while complex work stays with search via coordinator—least privilege. End-of-pass batching creates blocking dependencies; giving synthesis all search tools over-provisions; speculative caching cannot predict verification needs."
     },
     {
       "id": "d1-040",
@@ -1020,7 +1037,8 @@
       ],
       "tasks": [
         "1.5"
-      ]
+      ],
+      "rationale": "Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter."
     },
     {
       "id": "d1-046",
@@ -1042,7 +1060,8 @@
       ],
       "tasks": [
         "1.2"
-      ]
+      ],
+      "rationale": "Structured error context enables coordinator recovery (retry, alternate query, partial results). Generic retry status hides context; marking failure as success blocks recovery; terminating the whole workflow is unnecessary when partial progress exists."
     },
     {
       "id": "d1-047",
@@ -1087,7 +1106,8 @@
       "exam_day": true,
       "tasks": [
         "5.2"
-      ]
+      ],
+      "rationale": "Correct choice avoids the wrong pattern: not met.."
     },
     {
       "id": "d1-049",
@@ -1267,7 +1287,8 @@
       ],
       "tasks": [
         "2.3"
-      ]
+      ],
+      "rationale": "Scoped verify_fact on synthesis covers the common simple fact-check case while complex work stays with search via coordinator—least privilege. End-of-pass batching creates blocking dependencies; giving synthesis all search tools over-provisions; speculative caching cannot predict verification needs."
     },
     {
       "id": "d1-057",
@@ -1427,7 +1448,8 @@
       ],
       "tasks": [
         "2.1"
-      ]
+      ],
+      "rationale": "Exam judgment aligned to task 2.1: Rename to purpose-specific names (e."
     },
     {
       "id": "d2-007",
@@ -1450,7 +1472,8 @@
       ],
       "tasks": [
         "2.1"
-      ]
+      ],
+      "rationale": "Exam judgment aligned to task 2.1: Purpose-specific tools with clear contracts: extract_data_points, summarize_content, verify_claim_against_source."
     },
     {
       "id": "d2-008",
@@ -1495,7 +1518,8 @@
       ],
       "tasks": [
         "2.1"
-      ]
+      ],
+      "rationale": "Multi-pass or independent review reduces attention dilution and self-review bias in large change sets."
     },
     {
       "id": "d2-010",
@@ -1631,7 +1655,8 @@
       "exam_day": true,
       "tasks": [
         "2.2"
-      ]
+      ],
+      "rationale": "Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection."
     },
     {
       "id": "d2-016",
@@ -1653,7 +1678,8 @@
       ],
       "tasks": [
         "2.2"
-      ]
+      ],
+      "rationale": "Exam judgment aligned to task 2.2: isRetryable: false, customer-friendly explanation so the agent can communicate appropriately—not retry endlessly."
     },
     {
       "id": "d2-017",
@@ -1698,7 +1724,8 @@
       ],
       "tasks": [
         "2.2"
-      ]
+      ],
+      "rationale": "Exam judgment aligned to task 2.2: Retry locally when possible; propagate only unresolved errors with partial results and what was attempted."
     },
     {
       "id": "d2-019",
@@ -1720,7 +1747,8 @@
       ],
       "tasks": [
         "2.2"
-      ]
+      ],
+      "rationale": "not raw stack traces or silent failure."
     },
     {
       "id": "d2-020",
@@ -1833,7 +1861,8 @@
       ],
       "tasks": [
         "2.3"
-      ]
+      ],
+      "rationale": "e.g., unknown document type among multiple extraction schemas."
     },
     {
       "id": "d2-025",
@@ -1855,7 +1884,8 @@
       ],
       "tasks": [
         "2.3"
-      ]
+      ],
+      "rationale": "Exam judgment aligned to task 2.3: Force specific tool first with {\"type\": \"tool\", \"name\": \"extract_metadata\"}, then process enrichment in follow-up turns."
     },
     {
       "id": "d2-026",
@@ -1877,7 +1907,8 @@
       ],
       "tasks": [
         "2.3"
-      ]
+      ],
+      "rationale": "Exam judgment aligned to task 2.3: Purpose-specific tool like load_document that validates document URLs and rejects non-document URLs."
     },
     {
       "id": "d2-027",
@@ -1899,7 +1930,8 @@
       ],
       "tasks": [
         "2.3"
-      ]
+      ],
+      "rationale": "Scoped verify_fact on synthesis covers the common simple fact-check case while complex work stays with search via coordinator—least privilege. End-of-pass batching creates blocking dependencies; giving synthesis all search tools over-provisions; speculative caching cannot predict verification needs."
     },
     {
       "id": "d2-028",
@@ -1922,7 +1954,8 @@
       "exam_day": true,
       "tasks": [
         "2.3"
-      ]
+      ],
+      "rationale": "Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter."
     },
     {
       "id": "d2-029",
@@ -1967,7 +2000,8 @@
       ],
       "tasks": [
         "2.4"
-      ]
+      ],
+      "rationale": "Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection."
     },
     {
       "id": "d2-031",
@@ -2033,7 +2067,8 @@
       ],
       "tasks": [
         "2.4"
-      ]
+      ],
+      "rationale": "Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection."
     },
     {
       "id": "d2-034",
@@ -2055,7 +2090,8 @@
       ],
       "tasks": [
         "2.4"
-      ]
+      ],
+      "rationale": "Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection."
     },
     {
       "id": "d2-035",
@@ -2124,7 +2160,8 @@
       ],
       "tasks": [
         "2.5"
-      ]
+      ],
+      "rationale": "Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection."
     },
     {
       "id": "d2-038",
@@ -2146,7 +2183,8 @@
       ],
       "tasks": [
         "2.5"
-      ]
+      ],
+      "rationale": "Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection."
     },
     {
       "id": "d2-039",
@@ -2192,7 +2230,8 @@
       ],
       "tasks": [
         "2.5"
-      ]
+      ],
+      "rationale": "not read all files upfront."
     },
     {
       "id": "d2-041",
@@ -2215,7 +2254,8 @@
       ],
       "tasks": [
         "2.5"
-      ]
+      ],
+      "rationale": "Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection."
     },
     {
       "id": "d2-042",
@@ -2463,7 +2503,8 @@
       ],
       "tasks": [
         "2.2"
-      ]
+      ],
+      "rationale": "not transient or permission."
     },
     {
       "id": "d3-001",
@@ -2532,7 +2573,8 @@
       ],
       "tasks": [
         "3.1"
-      ]
+      ],
+      "rationale": "not shared via version control; move to project-level config."
     },
     {
       "id": "d3-004",
@@ -2576,7 +2618,8 @@
       ],
       "tasks": [
         "3.1"
-      ]
+      ],
+      "rationale": "Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter."
     },
     {
       "id": "d3-006",
@@ -2598,7 +2641,8 @@
       ],
       "tasks": [
         "3.1"
-      ]
+      ],
+      "rationale": "Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases."
     },
     {
       "id": "d3-007",
@@ -2643,7 +2687,8 @@
       "exam_day": true,
       "tasks": [
         "3.2"
-      ]
+      ],
+      "rationale": "Project slash commands live in .claude/commands/ and are version-controlled for the team. ~/.claude/commands/ is personal; CLAUDE.md holds instructions not command definitions; .claude/config.json is not the Claude Code command mechanism."
     },
     {
       "id": "d3-009",
@@ -2711,7 +2756,8 @@
       ],
       "tasks": [
         "3.2"
-      ]
+      ],
+      "rationale": "runs skill in isolated sub-agent context so output doesn't pollute main conversation."
     },
     {
       "id": "d3-012",
@@ -2733,7 +2779,8 @@
       ],
       "tasks": [
         "3.2"
-      ]
+      ],
+      "rationale": "Exam judgment aligned to task 3.2: allowed-tools restricting tool access during skill execution (e."
     },
     {
       "id": "d3-013",
@@ -2755,7 +2802,8 @@
       ],
       "tasks": [
         "3.2"
-      ]
+      ],
+      "rationale": "Exam judgment aligned to task 3.2: argument-hint prompts for required parameters when the skill is invoked without them."
     },
     {
       "id": "d3-014",
@@ -2799,7 +2847,8 @@
       ],
       "tasks": [
         "3.2"
-      ]
+      ],
+      "rationale": "not in shared project skills."
     },
     {
       "id": "d3-016",
@@ -2844,7 +2893,8 @@
       ],
       "tasks": [
         "3.3"
-      ]
+      ],
+      "rationale": ".claude/rules/ with glob patterns apply conventions by file path—including tests spread across directories. Root CLAUDE.md relies on inference; skills need invocation; per-directory CLAUDE.md cannot cover scattered test files."
     },
     {
       "id": "d3-018",
@@ -2866,7 +2916,8 @@
       ],
       "tasks": [
         "3.3"
-      ]
+      ],
+      "rationale": ".claude/rules/ with glob patterns apply conventions by file path—including tests spread across directories. Root CLAUDE.md relies on inference; skills need invocation; per-directory CLAUDE.md cannot cover scattered test files."
     },
     {
       "id": "d3-019",
@@ -2932,7 +2983,8 @@
       "exam_day": true,
       "tasks": [
         "3.4"
-      ]
+      ],
+      "rationale": "Plan mode fits large architectural work with exploration before edits. Direct execution risks rework when dependencies are unknown; upfront rigid instructions skip necessary discovery; switching only if complexity emerges ignores stated large-scale scope."
     },
     {
       "id": "d3-022",
@@ -2976,7 +3028,8 @@
       ],
       "tasks": [
         "3.4"
-      ]
+      ],
+      "rationale": "well-understood change with clear scope."
     },
     {
       "id": "d3-024",
@@ -3020,7 +3073,8 @@
       ],
       "tasks": [
         "3.4"
-      ]
+      ],
+      "rationale": "Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter."
     },
     {
       "id": "d3-026",
@@ -3064,7 +3118,8 @@
       ],
       "tasks": [
         "3.5"
-      ]
+      ],
+      "rationale": "Exam judgment aligned to task 3.5: Provide 2–3 concrete input/output examples showing expected transformations."
     },
     {
       "id": "d3-028",
@@ -3151,7 +3206,8 @@
       ],
       "tasks": [
         "3.5"
-      ]
+      ],
+      "rationale": "Exam judgment aligned to task 3.5: Provide specific test cases with example input and expected output for the failing edge case."
     },
     {
       "id": "d3-032",
@@ -3174,7 +3230,8 @@
       "exam_day": true,
       "tasks": [
         "3.6"
-      ]
+      ],
+      "rationale": "-p (--print) is the documented non-interactive CI mode: process, output, exit. CLAUDE_HEADLESS, --batch, and stdin tricks are not the correct Claude Code approach."
     },
     {
       "id": "d3-033",
@@ -3196,7 +3253,8 @@
       ],
       "tasks": [
         "3.6"
-      ]
+      ],
+      "rationale": "Multi-pass or independent review reduces attention dilution and self-review bias in large change sets."
     },
     {
       "id": "d3-034",
@@ -3262,7 +3320,8 @@
       ],
       "tasks": [
         "3.6"
-      ]
+      ],
+      "rationale": "Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases."
     },
     {
       "id": "d3-037",
@@ -3284,7 +3343,8 @@
       ],
       "tasks": [
         "3.6"
-      ]
+      ],
+      "rationale": "Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases."
     },
     {
       "id": "d3-038",
@@ -3307,7 +3367,8 @@
       ],
       "tasks": [
         "3.6"
-      ]
+      ],
+      "rationale": "Exam judgment aligned to task 3.6: Document testing standards, valuable test criteria, and available fixtures in CLAUDE."
     },
     {
       "id": "d3-039",
@@ -3329,7 +3390,8 @@
       ],
       "tasks": [
         "3.6"
-      ]
+      ],
+      "rationale": "not open-ended agent runs."
     },
     {
       "id": "d3-040",
@@ -3531,7 +3593,8 @@
       ],
       "tasks": [
         "3.5"
-      ]
+      ],
+      "rationale": "iterate by sharing failures with Claude."
     },
     {
       "id": "d3-049",
@@ -3553,7 +3616,8 @@
       ],
       "tasks": [
         "3.2"
-      ]
+      ],
+      "rationale": "isolates speculative output from the main session."
     },
     {
       "id": "d3-050",
@@ -3645,7 +3709,8 @@
       ],
       "tasks": [
         "4.1"
-      ]
+      ],
+      "rationale": "Multi-pass or independent review reduces attention dilution and self-review bias in large change sets."
     },
     {
       "id": "d4-004",
@@ -3667,7 +3732,8 @@
       ],
       "tasks": [
         "4.1"
-      ]
+      ],
+      "rationale": "not generic confidence thresholds."
     },
     {
       "id": "d4-005",
@@ -3711,7 +3777,8 @@
       ],
       "tasks": [
         "4.1"
-      ]
+      ],
+      "rationale": "don't rely on confidence-based filtering alone."
     },
     {
       "id": "d4-007",
@@ -3755,7 +3822,8 @@
       ],
       "tasks": [
         "4.2"
-      ]
+      ],
+      "rationale": "Multi-pass or independent review reduces attention dilution and self-review bias in large change sets."
     },
     {
       "id": "d4-009",
@@ -3777,7 +3845,8 @@
       ],
       "tasks": [
         "4.2"
-      ]
+      ],
+      "rationale": "shows reasoning for each."
     },
     {
       "id": "d4-010",
@@ -3799,7 +3868,8 @@
       ],
       "tasks": [
         "4.2"
-      ]
+      ],
+      "rationale": "Exam judgment aligned to task 4.2: Few-shot examples showing correct handling of each document structure variant."
     },
     {
       "id": "d4-011",
@@ -3821,7 +3891,8 @@
       ],
       "tasks": [
         "4.2"
-      ]
+      ],
+      "rationale": "not just schema tightening alone."
     },
     {
       "id": "d4-012",
@@ -3843,7 +3914,8 @@
       ],
       "tasks": [
         "4.2"
-      ]
+      ],
+      "rationale": "Exam judgment aligned to task 4.2: 2–4 targeted examples with reasoning for why one action was chosen over plausible alternatives."
     },
     {
       "id": "d4-013",
@@ -3912,7 +3984,8 @@
       "exam_day": true,
       "tasks": [
         "4.3"
-      ]
+      ],
+      "rationale": "don't require fields the source lacks."
     },
     {
       "id": "d4-016",
@@ -3934,7 +4007,8 @@
       ],
       "tasks": [
         "4.3"
-      ]
+      ],
+      "rationale": "Correct choice avoids the wrong pattern: not in the predefined list.."
     },
     {
       "id": "d4-017",
@@ -3956,7 +4030,8 @@
       ],
       "tasks": [
         "4.3"
-      ]
+      ],
+      "rationale": "Exam judgment aligned to task 4.3: Add enum value like \"unclear\" for ambiguous cases rather than forcing a wrong category."
     },
     {
       "id": "d4-018",
@@ -3978,7 +4053,8 @@
       ],
       "tasks": [
         "4.3"
-      ]
+      ],
+      "rationale": "Structured output plus validation-retry separates syntax from semantics; schemas must reflect absent data, not force fabrication."
     },
     {
       "id": "d4-019",
@@ -4000,7 +4076,8 @@
       ],
       "tasks": [
         "4.3"
-      ]
+      ],
+      "rationale": "Structured output plus validation-retry separates syntax from semantics; schemas must reflect absent data, not force fabrication."
     },
     {
       "id": "d4-020",
@@ -4022,7 +4099,8 @@
       ],
       "tasks": [
         "4.3"
-      ]
+      ],
+      "rationale": "schema defines tool input parameters; model fills structured fields there."
     },
     {
       "id": "d4-021",
@@ -4112,7 +4190,8 @@
       ],
       "tasks": [
         "4.4"
-      ]
+      ],
+      "rationale": "Exam judgment aligned to task 4.4: Add detected_pattern field to findings to analyze which constructs trigger false positives when dismissed."
     },
     {
       "id": "d4-025",
@@ -4134,7 +4213,8 @@
       ],
       "tasks": [
         "4.4"
-      ]
+      ],
+      "rationale": "Exam judgment aligned to task 4.4: Extract calculated_total alongside stated_total and flag discrepancies; add conflict_detected for inconsistent source data."
     },
     {
       "id": "d4-026",
@@ -4158,7 +4238,8 @@
       "tasks": [
         "4.3",
         "4.4"
-      ]
+      ],
+      "rationale": "Structured output plus validation-retry separates syntax from semantics; schemas must reflect absent data, not force fabrication."
     },
     {
       "id": "d4-027",
@@ -4203,7 +4284,8 @@
       ],
       "tasks": [
         "4.5"
-      ]
+      ],
+      "rationale": "Message Batches save cost but lack latency SLA—fine for overnight reports, unsuitable for blocking pre-merge checks. Polling batches for merge gates is unacceptable; custom_id correlates batch results; timeout fallback adds complexity vs matching API to workflow latency needs."
     },
     {
       "id": "d4-029",
@@ -4269,7 +4351,8 @@
       ],
       "tasks": [
         "4.5"
-      ]
+      ],
+      "rationale": "Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases."
     },
     {
       "id": "d4-032",
@@ -4291,7 +4374,8 @@
       ],
       "tasks": [
         "4.5"
-      ]
+      ],
+      "rationale": "Match API latency and cost to workflow: blocking paths need synchronous calls; overnight jobs can use batch savings."
     },
     {
       "id": "d4-033",
@@ -4335,7 +4419,8 @@
       ],
       "tasks": [
         "4.6"
-      ]
+      ],
+      "rationale": "Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases."
     },
     {
       "id": "d4-035",
@@ -4357,7 +4442,8 @@
       ],
       "tasks": [
         "4.6"
-      ]
+      ],
+      "rationale": "Split reviews into per-file passes plus a cross-file integration pass—fixes attention dilution across many files. Splitting PRs burdens developers; larger context does not fix attention quality; consensus across passes would suppress intermittently caught bugs."
     },
     {
       "id": "d4-036",
@@ -4379,7 +4465,8 @@
       ],
       "tasks": [
         "4.6"
-      ]
+      ],
+      "rationale": "Multi-pass or independent review reduces attention dilution and self-review bias in large change sets."
     },
     {
       "id": "d4-037",
@@ -4558,7 +4645,8 @@
       ],
       "tasks": [
         "4.5"
-      ]
+      ],
+      "rationale": "Match API latency and cost to workflow: blocking paths need synchronous calls; overnight jobs can use batch savings."
     },
     {
       "id": "d4-045",
@@ -4648,7 +4736,8 @@
       ],
       "tasks": [
         "4.2"
-      ]
+      ],
+      "rationale": "ambiguous case requiring demonstrated judgment."
     },
     {
       "id": "d4-049",
@@ -4785,7 +4874,8 @@
       "exam_day": true,
       "tasks": [
         "5.1"
-      ]
+      ],
+      "rationale": "outside summarized history."
     },
     {
       "id": "d5-005",
@@ -4807,7 +4897,8 @@
       ],
       "tasks": [
         "5.1"
-      ]
+      ],
+      "rationale": "Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases."
     },
     {
       "id": "d5-006",
@@ -4829,7 +4920,8 @@
       ],
       "tasks": [
         "5.1"
-      ]
+      ],
+      "rationale": "Exam judgment aligned to task 5.1: Place key findings summary at the beginning; organize detailed results with explicit section headers."
     },
     {
       "id": "d5-007",
@@ -4851,7 +4943,8 @@
       ],
       "tasks": [
         "5.1"
-      ]
+      ],
+      "rationale": "not verbose reasoning chains."
     },
     {
       "id": "d5-008",
@@ -4895,7 +4988,8 @@
       ],
       "tasks": [
         "5.1"
-      ]
+      ],
+      "rationale": "Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases."
     },
     {
       "id": "d5-010",
@@ -4939,7 +5033,8 @@
       ],
       "tasks": [
         "5.2"
-      ]
+      ],
+      "rationale": "Explicit escalation criteria with few-shot examples fix unclear decision boundaries—the proportionate first fix. LLM self-reported confidence is poorly calibrated on hard cases; a separate classifier is over-engineered before prompt tuning; sentiment does not measure case complexity."
     },
     {
       "id": "d5-012",
@@ -5007,7 +5102,8 @@
       ],
       "tasks": [
         "5.2"
-      ]
+      ],
+      "rationale": "do not attempt investigation first when they explicitly request a human."
     },
     {
       "id": "d5-015",
@@ -5029,7 +5125,8 @@
       ],
       "tasks": [
         "5.2"
-      ]
+      ],
+      "rationale": "Escalation calibration needs explicit criteria—ambiguous boundaries cause wrong routing between autonomous resolution and human handoff."
     },
     {
       "id": "d5-016",
@@ -5051,7 +5148,8 @@
       ],
       "tasks": [
         "5.2"
-      ]
+      ],
+      "rationale": "policy gap/exception case, not autonomous resolution."
     },
     {
       "id": "d5-017",
@@ -5073,7 +5171,8 @@
       ],
       "tasks": [
         "5.2"
-      ]
+      ],
+      "rationale": "never pick a match heuristically."
     },
     {
       "id": "d5-018",
@@ -5096,7 +5195,8 @@
       "exam_day": true,
       "tasks": [
         "5.1"
-      ]
+      ],
+      "rationale": "not implicit shared memory."
     },
     {
       "id": "d5-019",
@@ -5117,7 +5217,8 @@
       ],
       "tasks": [
         "5.3"
-      ]
+      ],
+      "rationale": "Structured error context enables coordinator recovery (retry, alternate query, partial results). Generic retry status hides context; marking failure as success blocks recovery; terminating the whole workflow is unnecessary when partial progress exists."
     },
     {
       "id": "d5-020",
@@ -5161,7 +5262,8 @@
       ],
       "tasks": [
         "5.3"
-      ]
+      ],
+      "rationale": "Exam judgment aligned to task 5.3: Coverage annotations: which findings are well-supported vs which topic areas have gaps from unavailable sources."
     },
     {
       "id": "d5-022",
@@ -5184,7 +5286,8 @@
       ],
       "tasks": [
         "5.3"
-      ]
+      ],
+      "rationale": "not infinite identical retries."
     },
     {
       "id": "d5-023",
@@ -5230,7 +5333,8 @@
       ],
       "tasks": [
         "5.4"
-      ]
+      ],
+      "rationale": "Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases."
     },
     {
       "id": "d5-025",
@@ -5252,7 +5356,8 @@
       ],
       "tasks": [
         "5.4"
-      ]
+      ],
+      "rationale": "Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases."
     },
     {
       "id": "d5-026",
@@ -5343,7 +5448,8 @@
       ],
       "tasks": [
         "5.5"
-      ]
+      ],
+      "rationale": "Exam judgment aligned to task 5.5: Stratified random sampling to measure error rates and detect novel error patterns."
     },
     {
       "id": "d5-030",
@@ -5366,7 +5472,8 @@
       "exam_day": true,
       "tasks": [
         "5.5"
-      ]
+      ],
+      "rationale": "Multi-pass or independent review reduces attention dilution and self-review bias in large change sets."
     },
     {
       "id": "d5-031",
@@ -5388,7 +5495,8 @@
       ],
       "tasks": [
         "5.5"
-      ]
+      ],
+      "rationale": "consistent performance across all segments."
     },
     {
       "id": "d5-032",
@@ -5410,7 +5518,8 @@
       ],
       "tasks": [
         "5.5"
-      ]
+      ],
+      "rationale": "Multi-pass or independent review reduces attention dilution and self-review bias in large change sets."
     },
     {
       "id": "d5-033",
@@ -5455,7 +5564,8 @@
       "exam_day": true,
       "tasks": [
         "5.6"
-      ]
+      ],
+      "rationale": "Exam judgment aligned to task 5.6: Structured claim-source mappings (URLs, document names, excerpts) preserved through synthesis."
     },
     {
       "id": "d5-035",
@@ -5477,7 +5587,8 @@
       ],
       "tasks": [
         "5.6"
-      ]
+      ],
+      "rationale": "do not arbitrarily pick one value."
     },
     {
       "id": "d5-036",
@@ -5499,7 +5610,8 @@
       ],
       "tasks": [
         "5.6"
-      ]
+      ],
+      "rationale": "prevents time differences being misread as contradictions."
     },
     {
       "id": "d5-037",
@@ -5521,7 +5633,8 @@
       ],
       "tasks": [
         "5.6"
-      ]
+      ],
+      "rationale": "Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases."
     },
     {
       "id": "d5-038",
@@ -5543,7 +5656,8 @@
       ],
       "tasks": [
         "5.6"
-      ]
+      ],
+      "rationale": "financial data as tables, news as prose, technical findings as structured lists."
     },
     {
       "id": "d5-039",
@@ -5614,7 +5728,8 @@
       ],
       "tasks": [
         "5.1"
-      ]
+      ],
+      "rationale": "not just claims without provenance context."
     },
     {
       "id": "d5-042",
@@ -5703,7 +5818,8 @@
       ],
       "tasks": [
         "5.4"
-      ]
+      ],
+      "rationale": "Exam judgment aligned to task 5.4: Spawn subagents for focused tasks (find test files, trace refund flow) while main agent keeps high-level coordination."
     },
     {
       "id": "d5-046",
@@ -5725,7 +5841,8 @@
       ],
       "tasks": [
         "5.6"
-      ]
+      ],
+      "rationale": "let coordinator reconcile before passing to synthesis."
     },
     {
       "id": "d5-047",
@@ -5747,7 +5864,8 @@
       ],
       "tasks": [
         "5.4"
-      ]
+      ],
+      "rationale": "Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases."
     },
     {
       "id": "meta-001",
@@ -5833,6 +5951,294 @@
       "tags": [
         "heuristic",
         "exam_day"
+      ],
+      "exam_day": true,
+      "tasks": [
+        "cross-domain"
+      ]
+    },
+    {
+      "id": "meta-005",
+      "domain": "META",
+      "type": "sample_rationale",
+      "difficulty": "medium",
+      "scenarios": [
+        "customer_support"
+      ],
+      "front": "Sample Q1 (Customer Support): Why programmatic prerequisite (A) beats prompt, few-shot, or routing for skipped get_customer?",
+      "back": "Blocks lookup_order and process_refund until get_customer returns verified ID—deterministic enforcement for identity before refunds.",
+      "rationale": "Programmatic enforcement gives deterministic guarantees for required tool sequences; prompt and few-shot rely on probabilistic LLM compliance—insufficient when misidentification causes financial harm. Routing classifiers change tool availability, not ordering.",
+      "sources": [
+        "Official CCAR-F Exam Guide — Section 9, Sample Q1"
+      ],
+      "tags": [
+        "sample_rationale",
+        "sample_q1",
+        "customer_support"
+      ],
+      "exam_day": true,
+      "tasks": [
+        "cross-domain"
+      ]
+    },
+    {
+      "id": "meta-006",
+      "domain": "META",
+      "type": "sample_rationale",
+      "difficulty": "medium",
+      "scenarios": [
+        "customer_support"
+      ],
+      "front": "Sample Q2 (Customer Support): Why expand tool descriptions (B) before few-shot, routing, or tool consolidation?",
+      "back": "Descriptions are the primary LLM tool-selection signal—add inputs, examples, edge cases, and boundaries vs similar tools.",
+      "rationale": "Tool descriptions are the primary selection mechanism; minimal descriptions cause confusion between similar tools. Few-shot adds tokens without fixing descriptions; routing is over-engineered for a first step; consolidation is valid but higher effort.",
+      "sources": [
+        "Official CCAR-F Exam Guide — Section 9, Sample Q2"
+      ],
+      "tags": [
+        "sample_rationale",
+        "sample_q2",
+        "customer_support"
+      ],
+      "exam_day": true,
+      "tasks": [
+        "cross-domain"
+      ]
+    },
+    {
+      "id": "meta-007",
+      "domain": "META",
+      "type": "sample_rationale",
+      "difficulty": "medium",
+      "scenarios": [
+        "customer_support"
+      ],
+      "front": "Sample Q3 (Customer Support): Why explicit escalation criteria with few-shot (A) beats confidence scores, classifiers, or sentiment?",
+      "back": "Fix unclear escalate-vs-resolve boundaries—the proportionate first response before adding infrastructure.",
+      "rationale": "Explicit escalation criteria with few-shot examples fix unclear decision boundaries. LLM self-reported confidence is poorly calibrated on hard cases; a separate classifier is over-engineered before prompt tuning; sentiment does not measure case complexity.",
+      "sources": [
+        "Official CCAR-F Exam Guide — Section 9, Sample Q3"
+      ],
+      "tags": [
+        "sample_rationale",
+        "sample_q3",
+        "customer_support"
+      ],
+      "tasks": [
+        "cross-domain"
+      ]
+    },
+    {
+      "id": "meta-008",
+      "domain": "META",
+      "type": "sample_rationale",
+      "difficulty": "easy",
+      "scenarios": [
+        "code_generation",
+        "developer_productivity"
+      ],
+      "front": "Sample Q4 (Code Generation): Where should a team-shared /review slash command live?",
+      "back": ".claude/commands/ in the project repository—version-controlled for everyone who clones the repo.",
+      "rationale": "Project slash commands live in .claude/commands/ and are version-controlled. ~/.claude/commands/ is personal; CLAUDE.md holds instructions not command definitions; .claude/config.json is not the Claude Code command mechanism.",
+      "sources": [
+        "Official CCAR-F Exam Guide — Section 9, Sample Q4"
+      ],
+      "tags": [
+        "sample_rationale",
+        "sample_q4",
+        "code_generation"
+      ],
+      "exam_day": true,
+      "tasks": [
+        "cross-domain"
+      ]
+    },
+    {
+      "id": "meta-009",
+      "domain": "META",
+      "type": "sample_rationale",
+      "difficulty": "hard",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Sample Q5 (Code Generation): Monolith-to-microservices across dozens of files—why plan mode first (A)?",
+      "back": "Explore dependencies and design service boundaries before editing—large architectural scope is already stated.",
+      "rationale": "Plan mode fits large architectural work with exploration before edits. Direct execution risks rework when dependencies are unknown; rigid upfront instructions skip discovery; waiting for emergent complexity ignores stated large-scale scope.",
+      "sources": [
+        "Official CCAR-F Exam Guide — Section 9, Sample Q5"
+      ],
+      "tags": [
+        "sample_rationale",
+        "sample_q5",
+        "code_generation"
+      ],
+      "exam_day": true,
+      "tasks": [
+        "cross-domain"
+      ]
+    },
+    {
+      "id": "meta-010",
+      "domain": "META",
+      "type": "sample_rationale",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Sample Q6 (Code Generation): Tests spread as *.test.tsx—why .claude/rules/ with globs (A)?",
+      "back": "Glob patterns (e.g. **/*.test.tsx) auto-apply conventions by path regardless of directory.",
+      "rationale": ".claude/rules/ with glob patterns apply conventions by file path—including tests spread across directories. Root CLAUDE.md relies on inference; skills need invocation; per-directory CLAUDE.md cannot cover scattered test files.",
+      "sources": [
+        "Official CCAR-F Exam Guide — Section 9, Sample Q6"
+      ],
+      "tags": [
+        "sample_rationale",
+        "sample_q6",
+        "code_generation"
+      ],
+      "tasks": [
+        "cross-domain"
+      ]
+    },
+    {
+      "id": "meta-011",
+      "domain": "META",
+      "type": "sample_rationale",
+      "difficulty": "hard",
+      "scenarios": [
+        "multi_agent_research"
+      ],
+      "front": "Sample Q7 (Multi-Agent Research): Report covers only visual arts—why coordinator decomposition (B)?",
+      "back": "Logs show narrow subtasks (digital art, graphic design, photography)—subagents succeeded within assigned scope.",
+      "rationale": "Coordinator logs show decomposition into only visual-arts subtasks—subagents succeeded within narrow assignments. Downstream agents are not the root cause; synthesis, search, and analysis worked within assigned scope.",
+      "sources": [
+        "Official CCAR-F Exam Guide — Section 9, Sample Q7"
+      ],
+      "tags": [
+        "sample_rationale",
+        "sample_q7",
+        "multi_agent_research"
+      ],
+      "exam_day": true,
+      "tasks": [
+        "cross-domain"
+      ]
+    },
+    {
+      "id": "meta-012",
+      "domain": "META",
+      "type": "sample_rationale",
+      "difficulty": "hard",
+      "scenarios": [
+        "multi_agent_research"
+      ],
+      "front": "Sample Q8 (Multi-Agent Research): Search subagent times out—why structured error context to coordinator (A)?",
+      "back": "Return failure type, attempted query, partial results, and alternatives so coordinator can recover intelligently.",
+      "rationale": "Structured error context enables coordinator recovery (retry, alternate query, partial results). Generic retry status hides context; marking failure as success blocks recovery; terminating the whole workflow is unnecessary when partial progress exists.",
+      "sources": [
+        "Official CCAR-F Exam Guide — Section 9, Sample Q8"
+      ],
+      "tags": [
+        "sample_rationale",
+        "sample_q8",
+        "multi_agent_research"
+      ],
+      "tasks": [
+        "cross-domain"
+      ]
+    },
+    {
+      "id": "meta-013",
+      "domain": "META",
+      "type": "sample_rationale",
+      "difficulty": "hard",
+      "scenarios": [
+        "multi_agent_research"
+      ],
+      "front": "Sample Q9 (Multi-Agent Research): 85% simple fact-checks—why scoped verify_fact on synthesis (A)?",
+      "back": "Least privilege for common lookups; complex verification still routes through coordinator to search agent.",
+      "rationale": "Scoped verify_fact on synthesis covers simple fact-checks while complex work stays with search via coordinator—least privilege. End-of-pass batching creates blocking dependencies; giving synthesis all search tools over-provisions; speculative caching cannot predict verification needs.",
+      "sources": [
+        "Official CCAR-F Exam Guide — Section 9, Sample Q9"
+      ],
+      "tags": [
+        "sample_rationale",
+        "sample_q9",
+        "multi_agent_research"
+      ],
+      "exam_day": true,
+      "tasks": [
+        "cross-domain"
+      ]
+    },
+    {
+      "id": "meta-014",
+      "domain": "META",
+      "type": "sample_rationale",
+      "difficulty": "easy",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "Sample Q10 (CI/CD): Pipeline hangs waiting for input—why -p flag (A)?",
+      "back": "claude -p runs non-interactive: process prompt, output to stdout, exit—required for CI/CD.",
+      "rationale": "-p (--print) is the documented non-interactive CI mode. CLAUDE_HEADLESS, --batch, and stdin tricks are not the correct Claude Code approach.",
+      "sources": [
+        "Official CCAR-F Exam Guide — Section 9, Sample Q10"
+      ],
+      "tags": [
+        "sample_rationale",
+        "sample_q10",
+        "ci_cd"
+      ],
+      "exam_day": true,
+      "tasks": [
+        "cross-domain"
+      ]
+    },
+    {
+      "id": "meta-015",
+      "domain": "META",
+      "type": "sample_rationale",
+      "difficulty": "medium",
+      "scenarios": [
+        "structured_extraction",
+        "ci_cd"
+      ],
+      "front": "Sample Q11: Batch API for pre-merge checks and overnight reports—why batch only overnight jobs (A)?",
+      "back": "Batches save ~50% cost but lack latency SLA—unsuitable for blocking merge gates.",
+      "rationale": "Message Batches save cost but lack latency SLA—fine for overnight reports, unsuitable for blocking pre-merge checks. Polling batches for merge gates is unacceptable; custom_id correlates batch results; timeout fallback adds complexity vs matching API to workflow latency needs.",
+      "sources": [
+        "Official CCAR-F Exam Guide — Section 9, Sample Q11"
+      ],
+      "tags": [
+        "sample_rationale",
+        "sample_q11",
+        "structured_extraction",
+        "ci_cd"
+      ],
+      "exam_day": true,
+      "tasks": [
+        "cross-domain"
+      ]
+    },
+    {
+      "id": "meta-016",
+      "domain": "META",
+      "type": "sample_rationale",
+      "difficulty": "hard",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "Sample Q12 (CI/CD): 14-file PR review inconsistent—why split per-file and integration passes (A)?",
+      "back": "Per-file local analysis then cross-file integration pass—fixes attention dilution across many files.",
+      "rationale": "Split reviews into per-file passes plus a cross-file integration pass—fixes attention dilution. Splitting PRs burdens developers; larger context does not fix attention quality; consensus across passes would suppress intermittently caught bugs.",
+      "sources": [
+        "Official CCAR-F Exam Guide — Section 9, Sample Q12"
+      ],
+      "tags": [
+        "sample_rationale",
+        "sample_q12",
+        "ci_cd"
       ],
       "exam_day": true,
       "tasks": [

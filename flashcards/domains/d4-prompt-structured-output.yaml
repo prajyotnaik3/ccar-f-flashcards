@@ -51,6 +51,7 @@
   - review
   tasks:
   - '4.1'
+  rationale: Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
 - id: d4-004
   domain: D4
   weight: 20
@@ -67,6 +68,7 @@
   - review
   tasks:
   - '4.1'
+  rationale: not generic confidence thresholds.
 - id: d4-005
   domain: D4
   weight: 20
@@ -99,6 +101,7 @@
   - prompt_criteria
   tasks:
   - '4.1'
+  rationale: don't rely on confidence-based filtering alone.
 - id: d4-007
   domain: D4
   weight: 20
@@ -131,6 +134,7 @@
   - review
   tasks:
   - '4.2'
+  rationale: Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
 - id: d4-009
   domain: D4
   weight: 20
@@ -147,6 +151,7 @@
   - false_positives
   tasks:
   - '4.2'
+  rationale: shows reasoning for each.
 - id: d4-010
   domain: D4
   weight: 20
@@ -163,6 +168,7 @@
   - extraction
   tasks:
   - '4.2'
+  rationale: 'Exam judgment aligned to task 4.2: Few-shot examples showing correct handling of each document structure variant.'
 - id: d4-011
   domain: D4
   weight: 20
@@ -179,6 +185,7 @@
   - extraction
   tasks:
   - '4.2'
+  rationale: not just schema tightening alone.
 - id: d4-012
   domain: D4
   weight: 20
@@ -195,6 +202,7 @@
   - few_shot
   tasks:
   - '4.2'
+  rationale: 'Exam judgment aligned to task 4.2: 2–4 targeted examples with reasoning for why one action was chosen over plausible alternatives.'
 - id: d4-013
   domain: D4
   weight: 20
@@ -246,6 +254,7 @@
   exam_day: true
   tasks:
   - '4.3'
+  rationale: don't require fields the source lacks.
 - id: d4-016
   domain: D4
   weight: 20
@@ -262,6 +271,7 @@
   - enum
   tasks:
   - '4.3'
+  rationale: 'Correct choice avoids the wrong pattern: not in the predefined list..'
 - id: d4-017
   domain: D4
   weight: 20
@@ -278,6 +288,7 @@
   - enum
   tasks:
   - '4.3'
+  rationale: 'Exam judgment aligned to task 4.3: Add enum value like "unclear" for ambiguous cases rather than forcing a wrong category.'
 - id: d4-018
   domain: D4
   weight: 20
@@ -294,6 +305,7 @@
   - normalization
   tasks:
   - '4.3'
+  rationale: Structured output plus validation-retry separates syntax from semantics; schemas must reflect absent data, not force fabrication.
 - id: d4-019
   domain: D4
   weight: 20
@@ -310,6 +322,7 @@
   - extraction
   tasks:
   - '4.3'
+  rationale: Structured output plus validation-retry separates syntax from semantics; schemas must reflect absent data, not force fabrication.
 - id: d4-020
   domain: D4
   weight: 20
@@ -326,6 +339,7 @@
   - extraction
   tasks:
   - '4.3'
+  rationale: schema defines tool input parameters; model fills structured fields there.
 - id: d4-021
   domain: D4
   weight: 20
@@ -392,6 +406,7 @@
   - review
   tasks:
   - '4.4'
+  rationale: 'Exam judgment aligned to task 4.4: Add detected_pattern field to findings to analyze which constructs trigger false positives when dismissed.'
 - id: d4-025
   domain: D4
   weight: 20
@@ -408,6 +423,7 @@
   - self_correction
   tasks:
   - '4.4'
+  rationale: 'Exam judgment aligned to task 4.4: Extract calculated_total alongside stated_total and flag discrepancies; add conflict_detected for inconsistent source data.'
 - id: d4-026
   domain: D4
   weight: 20
@@ -426,6 +442,7 @@
   tasks:
   - '4.3'
   - '4.4'
+  rationale: Structured output plus validation-retry separates syntax from semantics; schemas must reflect absent data, not force fabrication.
 - id: d4-027
   domain: D4
   weight: 20
@@ -459,6 +476,7 @@
   - latency
   tasks:
   - '4.5'
+  rationale: Message Batches save cost but lack latency SLA—fine for overnight reports, unsuitable for blocking pre-merge checks. Polling batches for merge gates is unacceptable; custom_id correlates batch results; timeout fallback adds complexity vs matching API to workflow latency needs.
 - id: d4-029
   domain: D4
   weight: 20
@@ -507,6 +525,7 @@
   - failures
   tasks:
   - '4.5'
+  rationale: Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
 - id: d4-032
   domain: D4
   weight: 20
@@ -523,6 +542,7 @@
   - prompt_refinement
   tasks:
   - '4.5'
+  rationale: 'Match API latency and cost to workflow: blocking paths need synchronous calls; overnight jobs can use batch savings.'
 - id: d4-033
   domain: D4
   weight: 20
@@ -555,6 +575,7 @@
   - review
   tasks:
   - '4.6'
+  rationale: Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
 - id: d4-035
   domain: D4
   weight: 20
@@ -571,6 +592,7 @@
   - review
   tasks:
   - '4.6'
+  rationale: Split reviews into per-file passes plus a cross-file integration pass—fixes attention dilution across many files. Splitting PRs burdens developers; larger context does not fix attention quality; consensus across passes would suppress intermittently caught bugs.
 - id: d4-036
   domain: D4
   weight: 20
@@ -587,6 +609,7 @@
   - confidence
   tasks:
   - '4.6'
+  rationale: Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
 - id: d4-037
   domain: D4
   weight: 20
@@ -718,6 +741,7 @@
   - sla
   tasks:
   - '4.5'
+  rationale: 'Match API latency and cost to workflow: blocking paths need synchronous calls; overnight jobs can use batch savings.'
 - id: d4-045
   domain: D4
   weight: 20
@@ -784,6 +808,7 @@
   - testing
   tasks:
   - '4.2'
+  rationale: ambiguous case requiring demonstrated judgment.
 - id: d4-049
   domain: D4
   weight: 20

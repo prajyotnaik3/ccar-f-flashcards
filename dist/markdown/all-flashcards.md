@@ -161,6 +161,8 @@
 
 **A:** Coordinator task decomposition too narrow—subagents executed correctly but were assigned incomplete scope.
 
+**Why:** Coordinator logs show decomposition into only visual-arts subtasks—subagents succeeded within narrow assignments. Downstream agents are not the root cause; synthesis, search, and analysis worked within assigned scope.
+
 **Tags:** decomposition, coordinator
 
 **Sources:**
@@ -176,6 +178,8 @@
 
 **A:** Analyze query requirements and dynamically select needed subagents—not always route through the full pipeline.
 
+**Why:** not always route through the full pipeline.
+
 **Tags:** coordinator, orchestration
 
 **Sources:**
@@ -190,6 +194,8 @@
 **Q:** How partition research scope across subagents to reduce duplication?
 
 **A:** Assign distinct subtopics or source types per agent (e.g., web vs documents vs synthesis)—not overlapping queries.
+
+**Why:** Exam judgment aligned to task 1.2: Assign distinct subtopics or source types per agent (e.
 
 **Tags:** decomposition, subagents
 
@@ -221,6 +227,8 @@
 
 **A:** Observability, consistent error handling, and controlled information flow.
 
+**Why:** Exam judgment aligned to task 1.2: Observability, consistent error handling, and controlled information flow.
+
 **Tags:** coordinator, observability
 
 **Sources:**
@@ -251,6 +259,8 @@
 
 **A:** Include complete findings directly in the subagent prompt (search results, document analysis)—not rely on automatic inheritance.
 
+**Why:** not rely on automatic inheritance.
+
 **Tags:** context_passing, synthesis
 
 **Sources:**
@@ -265,6 +275,8 @@
 **Q:** Best practice when passing context between agents for attribution?
 
 **A:** Use structured formats separating content from metadata (URLs, document names, page numbers).
+
+**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
 
 **Tags:** provenance, context_passing
 
@@ -281,6 +293,8 @@
 
 **A:** Emit multiple Task tool calls in a single coordinator response—not separate turns per subagent.
 
+**Why:** not separate turns per subagent.
+
 **Tags:** parallel, subagents
 
 **Sources:**
@@ -295,6 +309,8 @@
 **Q:** Coordinator prompts: step-by-step procedures vs research goals?
 
 **A:** Specify research goals and quality criteria—enables subagent adaptability vs rigid procedural scripts.
+
+**Why:** enables subagent adaptability vs rigid procedural scripts.
 
 **Tags:** prompting, coordinator
 
@@ -356,6 +372,8 @@
 
 **A:** Decompose into distinct items, investigate each in parallel using shared context, then synthesize a unified resolution.
 
+**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+
 **Tags:** decomposition, customer_support
 
 **Sources:**
@@ -385,6 +403,8 @@
 **Q:** Example structured handoff fields for a refund escalation?
 
 **A:** Customer ID, root cause, refund amount, recommended action.
+
+**Why:** Escalation calibration needs explicit criteria—ambiguous boundaries cause wrong routing between autonomous resolution and human handoff.
 
 **Tags:** handoff, escalation
 
@@ -416,6 +436,8 @@
 
 **A:** PostToolUse hook to normalize heterogeneous formats into a consistent representation.
 
+**Why:** Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter.
+
 **Tags:** hooks, normalization
 
 **Sources:**
@@ -430,6 +452,8 @@
 **Q:** Business rule: block refunds over $500 and escalate. Hooks vs prompt instructions?
 
 **A:** Tool call interception hook—hooks guarantee compliance; prompts are probabilistic.
+
+**Why:** hooks guarantee compliance; prompts are probabilistic.
 
 **Tags:** hooks, compliance
 
@@ -476,6 +500,8 @@
 
 **A:** Per-file local analysis passes, then a separate cross-file integration pass—avoids attention dilution.
 
+**Why:** Split reviews into per-file passes plus a cross-file integration pass—fixes attention dilution across many files. Splitting PRs burdens developers; larger context does not fix attention quality; consensus across passes would suppress intermittently caught bugs.
+
 **Tags:** decomposition, review
 
 **Sources:**
@@ -490,6 +516,8 @@
 **Q:** Task: add comprehensive tests to a legacy codebase. Decomposition strategy?
 
 **A:** Map structure → identify high-impact areas → prioritized plan that adapts as dependencies are discovered.
+
+**Why:** Exam judgment aligned to task 1.6: Map structure → identify high-impact areas → prioritized plan that adapts as dependencies are discovered.
 
 **Tags:** decomposition, testing
 
@@ -551,6 +579,8 @@
 
 **A:** Resume when prior context is mostly valid; start fresh with injected summary when prior tool results are stale—more reliable than stale resumes.
 
+**Why:** more reliable than stale resumes.
+
 **Tags:** session, resume
 
 **Sources:**
@@ -566,6 +596,8 @@
 
 **A:** Inform about specific file changes for targeted re-analysis—not require full re-exploration of the codebase.
 
+**Why:** not require full re-exploration of the codebase.
+
 **Tags:** session, context
 
 **Sources:**
@@ -580,6 +612,8 @@
 **Q:** Synthesis needs simple fact-checks (85%) but complex search (15%). Reduce latency without over-provisioning?
 
 **A:** Give synthesis a scoped verify_fact tool for simple lookups; complex verifications still delegate through coordinator to search agent.
+
+**Why:** Scoped verify_fact on synthesis covers the common simple fact-check case while complex work stays with search via coordinator—least privilege. End-of-pass batching creates blocking dependencies; giving synthesis all search tools over-provisions; speculative caching cannot predict verification needs.
 
 **Tags:** subagents, tool_scoping
 
@@ -671,6 +705,8 @@
 
 **A:** Timestamps (Unix vs ISO 8601), numeric status codes, and other inconsistent formats from different backend tools.
 
+**Why:** Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter.
+
 **Tags:** hooks, normalization
 
 **Sources:**
@@ -685,6 +721,8 @@
 **Q:** Web search subagent times out. Best error propagation to the coordinator?
 
 **A:** Structured error context: failure type, attempted query, partial results, and potential alternative approaches.
+
+**Why:** Structured error context enables coordinator recovery (retry, alternate query, partial results). Generic retry status hides context; marking failure as success blocks recovery; terminating the whole workflow is unnecessary when partial progress exists.
 
 **Tags:** error_propagation, coordinator
 
@@ -715,6 +753,8 @@
 **Q:** When should a support agent escalate to a human instead of continuing the agentic loop?
 
 **A:** Policy requires human judgment, identity cannot be verified, tool failures persist, or validation/confidence thresholds are not met.
+
+**Why:** Correct choice avoids the wrong pattern: not met..
 
 **Tags:** escalation, agent_loop
 
@@ -836,6 +876,8 @@
 
 **A:** Over-provisions synthesis—violates separation of concerns and role-specific tool scoping; use scoped tools for common cases only.
 
+**Why:** Scoped verify_fact on synthesis covers the common simple fact-check case while complex work stays with search via coordinator—least privilege. End-of-pass batching creates blocking dependencies; giving synthesis all search tools over-provisions; speculative caching cannot predict verification needs.
+
 **Tags:** tool_scoping, anti_pattern
 
 **Sources:**
@@ -944,6 +986,8 @@
 
 **A:** Rename to purpose-specific names (e.g., extract_web_results) with web-specific descriptions that eliminate overlap.
 
+**Why:** Exam judgment aligned to task 2.1: Rename to purpose-specific names (e.
+
 **Tags:** tool_descriptions, naming
 
 **Sources:**
@@ -958,6 +1002,8 @@
 **Q:** One generic analyze_document tool does too much. How split it?
 
 **A:** Purpose-specific tools with clear contracts: extract_data_points, summarize_content, verify_claim_against_source.
+
+**Why:** Exam judgment aligned to task 2.1: Purpose-specific tools with clear contracts: extract_data_points, summarize_content, verify_claim_against_source.
 
 **Tags:** tool_design, splitting
 
@@ -988,6 +1034,8 @@
 **Q:** Tool selection still wrong after improving descriptions. Next check?
 
 **A:** Review system prompt for keyword-sensitive instructions that might override tool descriptions.
+
+**Why:** Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
 
 **Tags:** system_prompt, tool_descriptions
 
@@ -1079,6 +1127,8 @@
 
 **A:** errorCategory (transient/validation/permission/business), isRetryable boolean, and human-readable description.
 
+**Why:** Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.
+
 **Tags:** errors, structured_errors
 
 **Sources:**
@@ -1093,6 +1143,8 @@
 **Q:** Business rule violation (e.g., refund over policy limit). Error response design?
 
 **A:** isRetryable: false, customer-friendly explanation so the agent can communicate appropriately—not retry endlessly.
+
+**Why:** Exam judgment aligned to task 2.2: isRetryable: false, customer-friendly explanation so the agent can communicate appropriately—not retry endlessly.
 
 **Tags:** errors, business_errors
 
@@ -1124,6 +1176,8 @@
 
 **A:** Retry locally when possible; propagate only unresolved errors with partial results and what was attempted.
 
+**Why:** Exam judgment aligned to task 2.2: Retry locally when possible; propagate only unresolved errors with partial results and what was attempted.
+
 **Tags:** errors, subagents
 
 **Sources:**
@@ -1138,6 +1192,8 @@
 **Q:** Tool returns ambiguous error from external API. Best tool-layer behavior?
 
 **A:** Structured error payload (category, message, retryable flag)—not raw stack traces or silent failure.
+
+**Why:** not raw stack traces or silent failure.
 
 **Tags:** errors, reliability
 
@@ -1214,6 +1270,8 @@
 
 **A:** When you need guaranteed tool invocation instead of conversational text—e.g., unknown document type among multiple extraction schemas.
 
+**Why:** e.g., unknown document type among multiple extraction schemas.
+
 **Tags:** tool_choice
 
 **Sources:**
@@ -1228,6 +1286,8 @@
 **Q:** Must run extract_metadata before enrichment tools. tool_choice approach?
 
 **A:** Force specific tool first with {"type": "tool", "name": "extract_metadata"}, then process enrichment in follow-up turns.
+
+**Why:** Exam judgment aligned to task 2.3: Force specific tool first with {"type": "tool", "name": "extract_metadata"}, then process enrichment in follow-up turns.
 
 **Tags:** tool_choice, forced_tool
 
@@ -1244,6 +1304,8 @@
 
 **A:** Purpose-specific tool like load_document that validates document URLs and rejects non-document URLs.
 
+**Why:** Exam judgment aligned to task 2.3: Purpose-specific tool like load_document that validates document URLs and rejects non-document URLs.
+
 **Tags:** tool_design, constraints
 
 **Sources:**
@@ -1259,6 +1321,8 @@
 
 **A:** Provide verify_fact for high-frequency simple lookups; route complex verification through coordinator to search agent.
 
+**Why:** Scoped verify_fact on synthesis covers the common simple fact-check case while complex work stays with search via coordinator—least privilege. End-of-pass batching creates blocking dependencies; giving synthesis all search tools over-provisions; speculative caching cannot predict verification needs.
+
 **Tags:** tool_scoping, verify_fact
 
 **Sources:**
@@ -1273,6 +1337,8 @@
 **Q:** Refund tool should only run after verified identity. Tool design choice?
 
 **A:** Least privilege: narrow tool exposure or refund tool requiring verified session token from prior identity tool.
+
+**Why:** Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter.
 
 **Tags:** tool_boundaries, least_privilege
 
@@ -1303,6 +1369,8 @@
 **Q:** Store GitHub token for team MCP server without committing secrets?
 
 **A:** Environment variable expansion in .mcp.json (e.g., ${GITHUB_TOKEN}) with secrets in env—not in the repo.
+
+**Why:** Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.
 
 **Tags:** mcp_config, credentials
 
@@ -1349,6 +1417,8 @@
 
 **A:** Enhance MCP tool descriptions to explain capabilities and outputs in detail so the model understands when MCP beats built-ins.
 
+**Why:** Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.
+
 **Tags:** tool_descriptions, mcp
 
 **Sources:**
@@ -1363,6 +1433,8 @@
 **Q:** Jira integration needed. Community MCP server vs custom?
 
 **A:** Prefer existing community MCP for standard integrations (Jira); custom servers for team-specific workflows.
+
+**Why:** Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.
 
 **Tags:** mcp_config, community
 
@@ -1409,6 +1481,8 @@
 
 **A:** Glob with pattern like **/*.test.tsx.
 
+**Why:** Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.
+
 **Tags:** builtin_tools, Glob
 
 **Sources:**
@@ -1423,6 +1497,8 @@
 **Q:** Find all callers of a function across the codebase. Which built-in tool?
 
 **A:** Grep to search file contents for the function name/reference patterns.
+
+**Why:** Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.
 
 **Tags:** builtin_tools, Grep
 
@@ -1454,6 +1530,8 @@
 
 **A:** Grep for entry points → Read to follow imports and trace flows—not read all files upfront.
 
+**Why:** not read all files upfront.
+
 **Tags:** builtin_tools, exploration
 
 **Sources:**
@@ -1468,6 +1546,8 @@
 **Q:** Trace usage across wrapper modules exporting many names?
 
 **A:** Identify all exported names first, then Grep for each name across the codebase.
+
+**Why:** Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.
 
 **Tags:** builtin_tools, Grep, exploration
 
@@ -1634,6 +1714,8 @@
 
 **A:** Business error with isRetryable: false and customer-friendly explanation—not transient or permission.
 
+**Why:** not transient or permission.
+
 **Tags:** errors, business_errors
 
 **Sources:**
@@ -1680,6 +1762,8 @@
 
 **A:** Instructions are in user-level ~/.claude/CLAUDE.md—not shared via version control; move to project-level config.
 
+**Why:** not shared via version control; move to project-level config.
+
 **Tags:** claude_md, hierarchy
 
 **Sources:**
@@ -1710,6 +1794,8 @@
 
 **A:** Split into focused files in .claude/rules/ (e.g., testing.md, api-conventions.md, deployment.md).
 
+**Why:** Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter.
+
 **Tags:** claude_md, rules
 
 **Sources:**
@@ -1724,6 +1810,8 @@
 **Q:** Inconsistent Claude Code behavior across sessions—how diagnose loaded config?
 
 **A:** Use /memory to verify which memory files are loaded and what context is active.
+
+**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
 
 **Tags:** claude_md, memory
 
@@ -1754,6 +1842,8 @@
 **Q:** Team /review slash command for every developer on clone. Where create it?
 
 **A:** .claude/commands/ in the project repository—version-controlled and shared on clone/pull.
+
+**Why:** Project slash commands live in .claude/commands/ and are version-controlled for the team. ~/.claude/commands/ is personal; CLAUDE.md holds instructions not command definitions; .claude/config.json is not the Claude Code command mechanism.
 
 **Tags:** slash_commands
 
@@ -1800,6 +1890,8 @@
 
 **A:** context: fork—runs skill in isolated sub-agent context so output doesn't pollute main conversation.
 
+**Why:** runs skill in isolated sub-agent context so output doesn't pollute main conversation.
+
 **Tags:** skills, context_fork
 
 **Sources:**
@@ -1815,6 +1907,8 @@
 
 **A:** allowed-tools restricting tool access during skill execution (e.g., file write operations only).
 
+**Why:** Exam judgment aligned to task 3.2: allowed-tools restricting tool access during skill execution (e.
+
 **Tags:** skills, allowed_tools
 
 **Sources:**
@@ -1829,6 +1923,8 @@
 **Q:** Developer invokes skill without required arguments. Frontmatter help?
 
 **A:** argument-hint prompts for required parameters when the skill is invoked without them.
+
+**Why:** Exam judgment aligned to task 3.2: argument-hint prompts for required parameters when the skill is invoked without them.
 
 **Tags:** skills, argument_hint
 
@@ -1860,6 +1956,8 @@
 
 **A:** Create personal variants in ~/.claude/skills/ with different names—not in shared project skills.
 
+**Why:** not in shared project skills.
+
 **Tags:** skills, scoping
 
 **Sources:**
@@ -1890,6 +1988,8 @@
 
 **A:** .claude/rules/ with glob paths like **/*.test.tsx—applies by file type across all directories.
 
+**Why:** .claude/rules/ with glob patterns apply conventions by file path—including tests spread across directories. Root CLAUDE.md relies on inference; skills need invocation; per-directory CLAUDE.md cannot cover scattered test files.
+
 **Tags:** rules, glob
 
 **Sources:**
@@ -1904,6 +2004,8 @@
 **Q:** React, API, and DB areas need different conventions; tests scattered everywhere. Best maintainable approach?
 
 **A:** .claude/rules/ with YAML frontmatter glob patterns (e.g., paths: ["**/*.test.tsx"], ["src/api/**/*"])—not inference from one monolithic CLAUDE.md.
+
+**Why:** .claude/rules/ with glob patterns apply conventions by file path—including tests spread across directories. Root CLAUDE.md relies on inference; skills need invocation; per-directory CLAUDE.md cannot cover scattered test files.
 
 **Tags:** rules, glob
 
@@ -1950,6 +2052,8 @@
 
 **A:** Plan mode: explore codebase, understand dependencies, design approach before making changes.
 
+**Why:** Plan mode fits large architectural work with exploration before edits. Direct execution risks rework when dependencies are unknown; upfront rigid instructions skip necessary discovery; switching only if complexity emerges ignores stated large-scale scope.
+
 **Tags:** plan_mode
 
 **Sources:**
@@ -1979,6 +2083,8 @@
 **Q:** Single-file bug fix with clear stack trace. Plan mode or direct execution?
 
 **A:** Direct execution—well-understood change with clear scope.
+
+**Why:** well-understood change with clear scope.
 
 **Tags:** direct_execution
 
@@ -2010,6 +2116,8 @@
 
 **A:** Plan mode for investigation and design, then direct execution to implement the planned approach.
 
+**Why:** Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter.
+
 **Tags:** plan_mode, direct_execution
 
 **Sources:**
@@ -2039,6 +2147,8 @@
 **Q:** Natural language transformation spec produces inconsistent code. Best fix?
 
 **A:** Provide 2–3 concrete input/output examples showing expected transformations.
+
+**Why:** Exam judgment aligned to task 3.5: Provide 2–3 concrete input/output examples showing expected transformations.
 
 **Tags:** iterative_refinement, examples
 
@@ -2100,6 +2210,8 @@
 
 **A:** Provide specific test cases with example input and expected output for the failing edge case.
 
+**Why:** Exam judgment aligned to task 3.5: Provide specific test cases with example input and expected output for the failing edge case.
+
 **Tags:** iterative_refinement, edge_cases
 
 **Sources:**
@@ -2115,6 +2227,8 @@
 
 **A:** Use -p (or --print) flag for non-interactive mode: process prompt, output result, exit.
 
+**Why:** -p (--print) is the documented non-interactive CI mode: process, output, exit. CLAUDE_HEADLESS, --batch, and stdin tricks are not the correct Claude Code approach.
+
 **Tags:** ci_cd, non_interactive
 
 **Sources:**
@@ -2129,6 +2243,8 @@
 **Q:** Post structured PR review findings as inline comments from CI. CLI flags?
 
 **A:** --output-format json with --json-schema for machine-parseable structured findings.
+
+**Why:** Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
 
 **Tags:** ci_cd, structured_output
 
@@ -2175,6 +2291,8 @@
 
 **A:** Include prior review findings in context; instruct Claude to report only new or still-unaddressed issues.
 
+**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+
 **Tags:** ci_cd, review
 
 **Sources:**
@@ -2189,6 +2307,8 @@
 **Q:** CI test generation suggests scenarios already in the suite. Context fix?
 
 **A:** Provide existing test files in context so generation avoids duplicate coverage.
+
+**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
 
 **Tags:** ci_cd, testing
 
@@ -2205,6 +2325,8 @@
 
 **A:** Document testing standards, valuable test criteria, and available fixtures in CLAUDE.md.
 
+**Why:** Exam judgment aligned to task 3.6: Document testing standards, valuable test criteria, and available fixtures in CLAUDE.
+
 **Tags:** claude_md, testing
 
 **Sources:**
@@ -2219,6 +2341,8 @@
 **Q:** Running Claude Code in CI for PR review. Critical configuration concerns?
 
 **A:** Non-interactive (-p), explicit permissions, structured/deterministic outputs, independent review instance—not open-ended agent runs.
+
+**Why:** not open-ended agent runs.
 
 **Tags:** ci_cd, automation
 
@@ -2355,6 +2479,8 @@
 
 **A:** Expected behavior, edge cases, and performance requirements—iterate by sharing failures with Claude.
 
+**Why:** iterate by sharing failures with Claude.
+
 **Tags:** iterative_refinement, testing
 
 **Sources:**
@@ -2369,6 +2495,8 @@
 **Q:** context: fork for skills—another use case besides verbose codebase analysis?
 
 **A:** Exploratory brainstorming of alternatives—isolates speculative output from the main session.
+
+**Why:** isolates speculative output from the main session.
 
 **Tags:** skills, context_fork
 
@@ -2431,6 +2559,8 @@
 
 **A:** Temporarily disable the high false-positive category to restore trust while improving prompts for that category.
 
+**Why:** Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
+
 **Tags:** false_positives, review
 
 **Sources:**
@@ -2445,6 +2575,8 @@
 **Q:** How define consistent severity levels in automated code review prompts?
 
 **A:** Explicit severity criteria with concrete code examples for each level—not generic confidence thresholds.
+
+**Why:** not generic confidence thresholds.
 
 **Tags:** severity, review
 
@@ -2476,6 +2608,8 @@
 
 **A:** Define explicit categories to report versus skip—don't rely on confidence-based filtering alone.
 
+**Why:** don't rely on confidence-based filtering alone.
+
 **Tags:** review, prompt_criteria
 
 **Sources:**
@@ -2506,6 +2640,8 @@
 
 **A:** Few-shot examples demonstrating exact desired format (location, issue, severity, suggested fix).
 
+**Why:** Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
+
 **Tags:** few_shot, review
 
 **Sources:**
@@ -2520,6 +2656,8 @@
 **Q:** Reduce false positives while still catching real bugs in review?
 
 **A:** Few-shot examples distinguishing acceptable local patterns from genuine issues—shows reasoning for each.
+
+**Why:** shows reasoning for each.
 
 **Tags:** few_shot, false_positives
 
@@ -2536,6 +2674,8 @@
 
 **A:** Few-shot examples showing correct handling of each document structure variant.
 
+**Why:** Exam judgment aligned to task 4.2: Few-shot examples showing correct handling of each document structure variant.
+
 **Tags:** few_shot, extraction
 
 **Sources:**
@@ -2551,6 +2691,8 @@
 
 **A:** Examples demonstrating correct extraction from each format variant—not just schema tightening alone.
 
+**Why:** not just schema tightening alone.
+
 **Tags:** few_shot, extraction
 
 **Sources:**
@@ -2565,6 +2707,8 @@
 **Q:** How many few-shot examples for ambiguous scenarios, and what show?
 
 **A:** 2–4 targeted examples with reasoning for why one action was chosen over plausible alternatives.
+
+**Why:** Exam judgment aligned to task 4.2: 2–4 targeted examples with reasoning for why one action was chosen over plausible alternatives.
 
 **Tags:** few_shot
 
@@ -2611,6 +2755,8 @@
 
 **A:** Make fields optional/nullable when information may be absent—don't require fields the source lacks.
 
+**Why:** don't require fields the source lacks.
+
 **Tags:** schema_design, nullable
 
 **Sources:**
@@ -2625,6 +2771,8 @@
 **Q:** Extensible category field in extraction schema—pattern?
 
 **A:** Enum with "other" plus a detail string field for categories not in the predefined list.
+
+**Why:** Correct choice avoids the wrong pattern: not in the predefined list..
 
 **Tags:** schema_design, enum
 
@@ -2641,6 +2789,8 @@
 
 **A:** Add enum value like "unclear" for ambiguous cases rather than forcing a wrong category.
 
+**Why:** Exam judgment aligned to task 4.3: Add enum value like "unclear" for ambiguous cases rather than forcing a wrong category.
+
 **Tags:** schema_design, enum
 
 **Sources:**
@@ -2655,6 +2805,8 @@
 **Q:** Inconsistent date formats in source documents alongside strict schema?
 
 **A:** Include format normalization rules in the prompt alongside the strict output schema.
+
+**Why:** Structured output plus validation-retry separates syntax from semantics; schemas must reflect absent data, not force fabrication.
 
 **Tags:** schema_design, normalization
 
@@ -2671,6 +2823,8 @@
 
 **A:** tool_choice: "any" to guarantee structured tool output instead of conversational text.
 
+**Why:** Structured output plus validation-retry separates syntax from semantics; schemas must reflect absent data, not force fabrication.
+
 **Tags:** tool_choice, extraction
 
 **Sources:**
@@ -2685,6 +2839,8 @@
 **Q:** Where extract structured data from a tool_use extraction call?
 
 **A:** From the tool_use response block—schema defines tool input parameters; model fills structured fields there.
+
+**Why:** schema defines tool input parameters; model fills structured fields there.
 
 **Tags:** tool_use, extraction
 
@@ -2746,6 +2902,8 @@
 
 **A:** Add detected_pattern field to findings to analyze which constructs trigger false positives when dismissed.
 
+**Why:** Exam judgment aligned to task 4.4: Add detected_pattern field to findings to analyze which constructs trigger false positives when dismissed.
+
 **Tags:** feedback_loop, review
 
 **Sources:**
@@ -2761,6 +2919,8 @@
 
 **A:** Extract calculated_total alongside stated_total and flag discrepancies; add conflict_detected for inconsistent source data.
 
+**Why:** Exam judgment aligned to task 4.4: Extract calculated_total alongside stated_total and flag discrepancies; add conflict_detected for inconsistent source data.
+
 **Tags:** validation, self_correction
 
 **Sources:**
@@ -2775,6 +2935,8 @@
 **Q:** Extraction misses nullable fields intermittently. Best improvement?
 
 **A:** Tighten required vs optional schema, validation-retry loop, and explicit examples for null/edge cases.
+
+**Why:** Structured output plus validation-retry separates syntax from semantics; schemas must reflect absent data, not force fabrication.
 
 **Tags:** validation, nullable
 
@@ -2805,6 +2967,8 @@
 **Q:** Pre-merge blocking check vs overnight technical debt report—batch API for both?
 
 **A:** Batch only for latency-tolerant jobs (overnight reports); keep synchronous API for blocking pre-merge checks.
+
+**Why:** Message Batches save cost but lack latency SLA—fine for overnight reports, unsuitable for blocking pre-merge checks. Polling batches for merge gates is unacceptable; custom_id correlates batch results; timeout fallback adds complexity vs matching API to workflow latency needs.
 
 **Tags:** batch_api, latency
 
@@ -2851,6 +3015,8 @@
 
 **A:** Resubmit only failed documents by custom_id with modifications (e.g., chunk oversized docs that exceeded context).
 
+**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+
 **Tags:** batch_api, failures
 
 **Sources:**
@@ -2865,6 +3031,8 @@
 **Q:** Before batch-processing 10,000 documents—cost reduction step?
 
 **A:** Refine prompts on a sample set first to maximize first-pass success and reduce resubmission costs.
+
+**Why:** Match API latency and cost to workflow: blocking paths need synchronous calls; overnight jobs can use batch savings.
 
 **Tags:** batch_api, prompt_refinement
 
@@ -2896,6 +3064,8 @@
 
 **A:** Second independent Claude instance reviewing without the generator's reasoning context.
 
+**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+
 **Tags:** multi_instance, review
 
 **Sources:**
@@ -2911,6 +3081,8 @@
 
 **A:** Per-file passes for local issues plus separate integration pass for cross-file data flow.
 
+**Why:** Split reviews into per-file passes plus a cross-file integration pass—fixes attention dilution across many files. Splitting PRs burdens developers; larger context does not fix attention quality; consensus across passes would suppress intermittently caught bugs.
+
 **Tags:** multi_pass, review
 
 **Sources:**
@@ -2925,6 +3097,8 @@
 **Q:** Route review findings to human triage by severity—schema approach?
 
 **A:** Verification pass where model reports confidence alongside each finding for calibrated routing.
+
+**Why:** Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
 
 **Tags:** review, confidence
 
@@ -3046,6 +3220,8 @@
 
 **A:** Calculate submission windows (e.g., 4-hour intervals) so batches complete within SLA with margin for retries.
 
+**Why:** Match API latency and cost to workflow: blocking paths need synchronous calls; overnight jobs can use batch savings.
+
 **Tags:** batch_api, sla
 
 **Sources:**
@@ -3105,6 +3281,8 @@
 **Q:** Few-shot use case: branch-level test coverage gaps?
 
 **A:** Show how to identify and report coverage gaps at branch level—ambiguous case requiring demonstrated judgment.
+
+**Why:** ambiguous case requiring demonstrated judgment.
 
 **Tags:** few_shot, testing
 
@@ -3196,6 +3374,8 @@
 
 **A:** Extract transactional facts into a persistent case facts block in each prompt—outside summarized history.
 
+**Why:** outside summarized history.
+
 **Tags:** case_facts, context
 
 **Sources:**
@@ -3210,6 +3390,8 @@
 **Q:** Order lookup returns 40+ fields but only 5 matter for returns. Context fix?
 
 **A:** Trim verbose tool outputs to relevant fields before they accumulate in conversation context.
+
+**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
 
 **Tags:** trimming, tool_results
 
@@ -3226,6 +3408,8 @@
 
 **A:** Place key findings summary at the beginning; organize detailed results with explicit section headers.
 
+**Why:** Exam judgment aligned to task 5.1: Place key findings summary at the beginning; organize detailed results with explicit section headers.
+
 **Tags:** lost_in_middle, aggregation
 
 **Sources:**
@@ -3240,6 +3424,8 @@
 **Q:** Downstream synthesis agent has limited context budget. Upstream agent output design?
 
 **A:** Return structured key facts, citations, and relevance scores—not verbose reasoning chains.
+
+**Why:** not verbose reasoning chains.
 
 **Tags:** structured_output, subagents
 
@@ -3271,6 +3457,8 @@
 
 **A:** Persist structured issue data (order IDs, amounts, statuses) in a separate context layer for each concern.
 
+**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+
 **Tags:** case_facts, multi_issue
 
 **Sources:**
@@ -3300,6 +3488,8 @@
 **Q:** 55% FCR—escalates easy cases, handles hard policy exceptions alone. Best calibration fix?
 
 **A:** Add explicit escalation criteria with few-shot examples showing escalate vs resolve autonomously.
+
+**Why:** Explicit escalation criteria with few-shot examples fix unclear decision boundaries—the proportionate first fix. LLM self-reported confidence is poorly calibrated on hard cases; a separate classifier is over-engineered before prompt tuning; sentiment does not measure case complexity.
 
 **Tags:** escalation, few_shot
 
@@ -3346,6 +3536,8 @@
 
 **A:** Honor immediately—do not attempt investigation first when they explicitly request a human.
 
+**Why:** do not attempt investigation first when they explicitly request a human.
+
 **Tags:** escalation, customer_request
 
 **Sources:**
@@ -3360,6 +3552,8 @@
 **Q:** Frustrated customer, issue is within agent capability. Approach?
 
 **A:** Acknowledge frustration and offer resolution; escalate only if customer reiterates preference for human.
+
+**Why:** Escalation calibration needs explicit criteria—ambiguous boundaries cause wrong routing between autonomous resolution and human handoff.
 
 **Tags:** escalation, de_escalation
 
@@ -3376,6 +3570,8 @@
 
 **A:** Escalate—policy gap/exception case, not autonomous resolution.
 
+**Why:** policy gap/exception case, not autonomous resolution.
+
 **Tags:** escalation, policy_gap
 
 **Sources:**
@@ -3390,6 +3586,8 @@
 **Q:** get_customer returns multiple matches. What should the agent do?
 
 **A:** Ask for additional identifiers—never pick a match heuristically.
+
+**Why:** never pick a match heuristically.
 
 **Tags:** ambiguity, identity
 
@@ -3406,6 +3604,8 @@
 
 **A:** Explicit structured handoffs (IDs, snippets, citations) via coordinator—not implicit shared memory.
 
+**Why:** not implicit shared memory.
+
 **Tags:** context_passing, subagents
 
 **Sources:**
@@ -3420,6 +3620,8 @@
 **Q:** Web search subagent timeout—best error propagation to coordinator?
 
 **A:** Structured context: failure type, attempted query, partial results, and alternative approaches.
+
+**Why:** Structured error context enables coordinator recovery (retry, alternate query, partial results). Generic retry status hides context; marking failure as success blocks recovery; terminating the whole workflow is unnecessary when partial progress exists.
 
 **Tags:** error_propagation
 
@@ -3451,6 +3653,8 @@
 
 **A:** Coverage annotations: which findings are well-supported vs which topic areas have gaps from unavailable sources.
 
+**Why:** Exam judgment aligned to task 5.3: Coverage annotations: which findings are well-supported vs which topic areas have gaps from unavailable sources.
+
 **Tags:** synthesis, coverage
 
 **Sources:**
@@ -3465,6 +3669,8 @@
 **Q:** Agent loop fails twice on same tool error. Next step?
 
 **A:** Escalate or change strategy (alternate tool, human handoff)—not infinite identical retries.
+
+**Why:** not infinite identical retries.
 
 **Tags:** errors, escalation
 
@@ -3496,6 +3702,8 @@
 
 **A:** /compact to condense verbose discovery output during extended sessions.
 
+**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+
 **Tags:** compact, exploration
 
 **Sources:**
@@ -3510,6 +3718,8 @@
 **Q:** Multi-phase codebase exploration—context pattern between phases?
 
 **A:** Summarize key findings from one phase, inject summary into context before spawning subagents for the next.
+
+**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
 
 **Tags:** exploration, summarization
 
@@ -3571,6 +3781,8 @@
 
 **A:** Stratified random sampling to measure error rates and detect novel error patterns.
 
+**Why:** Exam judgment aligned to task 5.5: Stratified random sampling to measure error rates and detect novel error patterns.
+
 **Tags:** human_review, sampling
 
 **Sources:**
@@ -3585,6 +3797,8 @@
 **Q:** Calibrate human review routing for extractions?
 
 **A:** Model outputs field-level confidence; calibrate thresholds using labeled validation sets.
+
+**Why:** Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
 
 **Tags:** confidence, human_review
 
@@ -3601,6 +3815,8 @@
 
 **A:** Accuracy by document type and field segment—consistent performance across all segments.
 
+**Why:** consistent performance across all segments.
+
 **Tags:** human_review, segmentation
 
 **Sources:**
@@ -3615,6 +3831,8 @@
 **Q:** Limited reviewer capacity—prioritize which extractions for human review?
 
 **A:** Low model confidence, ambiguous source documents, or contradictory source data.
+
+**Why:** Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
 
 **Tags:** human_review, routing
 
@@ -3646,6 +3864,8 @@
 
 **A:** Structured claim-source mappings (URLs, document names, excerpts) preserved through synthesis.
 
+**Why:** Exam judgment aligned to task 5.6: Structured claim-source mappings (URLs, document names, excerpts) preserved through synthesis.
+
 **Tags:** provenance, claim_source
 
 **Sources:**
@@ -3660,6 +3880,8 @@
 **Q:** Two credible sources report different statistics. Synthesis handling?
 
 **A:** Annotate conflict with source attribution—do not arbitrarily pick one value.
+
+**Why:** do not arbitrarily pick one value.
 
 **Tags:** provenance, conflicts
 
@@ -3676,6 +3898,8 @@
 
 **A:** Enables correct temporal interpretation—prevents time differences being misread as contradictions.
 
+**Why:** prevents time differences being misread as contradictions.
+
 **Tags:** temporal, provenance
 
 **Sources:**
@@ -3691,6 +3915,8 @@
 
 **A:** Explicit sections distinguishing well-established findings from contested ones with methodological context.
 
+**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+
 **Tags:** synthesis, provenance
 
 **Sources:**
@@ -3705,6 +3931,8 @@
 **Q:** Synthesis output formatting for mixed content types?
 
 **A:** Render appropriately—financial data as tables, news as prose, technical findings as structured lists.
+
+**Why:** financial data as tables, news as prose, technical findings as structured lists.
 
 **Tags:** synthesis, formatting
 
@@ -3750,6 +3978,8 @@
 **Q:** Subagent structured outputs for downstream synthesis—required metadata?
 
 **A:** Dates, source locations, and methodological context—not just claims without provenance context.
+
+**Why:** not just claims without provenance context.
 
 **Tags:** metadata, subagents
 
@@ -3811,6 +4041,8 @@
 
 **A:** Spawn subagents for focused tasks (find test files, trace refund flow) while main agent keeps high-level coordination.
 
+**Why:** Exam judgment aligned to task 5.4: Spawn subagents for focused tasks (find test files, trace refund flow) while main agent keeps high-level coordination.
+
 **Tags:** subagents, exploration
 
 **Sources:**
@@ -3826,6 +4058,8 @@
 
 **A:** Complete analysis with conflicts included and explicitly annotated—let coordinator reconcile before passing to synthesis.
 
+**Why:** let coordinator reconcile before passing to synthesis.
+
 **Tags:** provenance, conflicts
 
 **Sources:**
@@ -3840,6 +4074,8 @@
 **Q:** Scratchpad file during exploration—how use for follow-up questions?
 
 **A:** Record key findings in scratchpad; reference it for subsequent questions to counteract context degradation.
+
+**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
 
 **Tags:** scratchpad, exploration
 
@@ -3911,6 +4147,210 @@
 **Sources:**
 - Community study guides aligned to Exam Guide patterns
 - Official CCAR-F Exam Guide — sample rationales
+
+---
+
+## meta-005 · sample_rationale · customer_support
+
+**Tasks:** cross-domain
+
+**Q:** Sample Q1 (Customer Support): Why programmatic prerequisite (A) beats prompt, few-shot, or routing for skipped get_customer?
+
+**A:** Blocks lookup_order and process_refund until get_customer returns verified ID—deterministic enforcement for identity before refunds.
+
+**Why:** Programmatic enforcement gives deterministic guarantees for required tool sequences; prompt and few-shot rely on probabilistic LLM compliance—insufficient when misidentification causes financial harm. Routing classifiers change tool availability, not ordering.
+
+**Tags:** sample_rationale, sample_q1, customer_support
+
+**Sources:**
+- Official CCAR-F Exam Guide — Section 9, Sample Q1
+
+---
+
+## meta-006 · sample_rationale · customer_support
+
+**Tasks:** cross-domain
+
+**Q:** Sample Q2 (Customer Support): Why expand tool descriptions (B) before few-shot, routing, or tool consolidation?
+
+**A:** Descriptions are the primary LLM tool-selection signal—add inputs, examples, edge cases, and boundaries vs similar tools.
+
+**Why:** Tool descriptions are the primary selection mechanism; minimal descriptions cause confusion between similar tools. Few-shot adds tokens without fixing descriptions; routing is over-engineered for a first step; consolidation is valid but higher effort.
+
+**Tags:** sample_rationale, sample_q2, customer_support
+
+**Sources:**
+- Official CCAR-F Exam Guide — Section 9, Sample Q2
+
+---
+
+## meta-007 · sample_rationale · customer_support
+
+**Tasks:** cross-domain
+
+**Q:** Sample Q3 (Customer Support): Why explicit escalation criteria with few-shot (A) beats confidence scores, classifiers, or sentiment?
+
+**A:** Fix unclear escalate-vs-resolve boundaries—the proportionate first response before adding infrastructure.
+
+**Why:** Explicit escalation criteria with few-shot examples fix unclear decision boundaries. LLM self-reported confidence is poorly calibrated on hard cases; a separate classifier is over-engineered before prompt tuning; sentiment does not measure case complexity.
+
+**Tags:** sample_rationale, sample_q3, customer_support
+
+**Sources:**
+- Official CCAR-F Exam Guide — Section 9, Sample Q3
+
+---
+
+## meta-008 · sample_rationale · code_generation, developer_productivity
+
+**Tasks:** cross-domain
+
+**Q:** Sample Q4 (Code Generation): Where should a team-shared /review slash command live?
+
+**A:** .claude/commands/ in the project repository—version-controlled for everyone who clones the repo.
+
+**Why:** Project slash commands live in .claude/commands/ and are version-controlled. ~/.claude/commands/ is personal; CLAUDE.md holds instructions not command definitions; .claude/config.json is not the Claude Code command mechanism.
+
+**Tags:** sample_rationale, sample_q4, code_generation
+
+**Sources:**
+- Official CCAR-F Exam Guide — Section 9, Sample Q4
+
+---
+
+## meta-009 · sample_rationale · code_generation
+
+**Tasks:** cross-domain
+
+**Q:** Sample Q5 (Code Generation): Monolith-to-microservices across dozens of files—why plan mode first (A)?
+
+**A:** Explore dependencies and design service boundaries before editing—large architectural scope is already stated.
+
+**Why:** Plan mode fits large architectural work with exploration before edits. Direct execution risks rework when dependencies are unknown; rigid upfront instructions skip discovery; waiting for emergent complexity ignores stated large-scale scope.
+
+**Tags:** sample_rationale, sample_q5, code_generation
+
+**Sources:**
+- Official CCAR-F Exam Guide — Section 9, Sample Q5
+
+---
+
+## meta-010 · sample_rationale · code_generation
+
+**Tasks:** cross-domain
+
+**Q:** Sample Q6 (Code Generation): Tests spread as *.test.tsx—why .claude/rules/ with globs (A)?
+
+**A:** Glob patterns (e.g. **/*.test.tsx) auto-apply conventions by path regardless of directory.
+
+**Why:** .claude/rules/ with glob patterns apply conventions by file path—including tests spread across directories. Root CLAUDE.md relies on inference; skills need invocation; per-directory CLAUDE.md cannot cover scattered test files.
+
+**Tags:** sample_rationale, sample_q6, code_generation
+
+**Sources:**
+- Official CCAR-F Exam Guide — Section 9, Sample Q6
+
+---
+
+## meta-011 · sample_rationale · multi_agent_research
+
+**Tasks:** cross-domain
+
+**Q:** Sample Q7 (Multi-Agent Research): Report covers only visual arts—why coordinator decomposition (B)?
+
+**A:** Logs show narrow subtasks (digital art, graphic design, photography)—subagents succeeded within assigned scope.
+
+**Why:** Coordinator logs show decomposition into only visual-arts subtasks—subagents succeeded within narrow assignments. Downstream agents are not the root cause; synthesis, search, and analysis worked within assigned scope.
+
+**Tags:** sample_rationale, sample_q7, multi_agent_research
+
+**Sources:**
+- Official CCAR-F Exam Guide — Section 9, Sample Q7
+
+---
+
+## meta-012 · sample_rationale · multi_agent_research
+
+**Tasks:** cross-domain
+
+**Q:** Sample Q8 (Multi-Agent Research): Search subagent times out—why structured error context to coordinator (A)?
+
+**A:** Return failure type, attempted query, partial results, and alternatives so coordinator can recover intelligently.
+
+**Why:** Structured error context enables coordinator recovery (retry, alternate query, partial results). Generic retry status hides context; marking failure as success blocks recovery; terminating the whole workflow is unnecessary when partial progress exists.
+
+**Tags:** sample_rationale, sample_q8, multi_agent_research
+
+**Sources:**
+- Official CCAR-F Exam Guide — Section 9, Sample Q8
+
+---
+
+## meta-013 · sample_rationale · multi_agent_research
+
+**Tasks:** cross-domain
+
+**Q:** Sample Q9 (Multi-Agent Research): 85% simple fact-checks—why scoped verify_fact on synthesis (A)?
+
+**A:** Least privilege for common lookups; complex verification still routes through coordinator to search agent.
+
+**Why:** Scoped verify_fact on synthesis covers simple fact-checks while complex work stays with search via coordinator—least privilege. End-of-pass batching creates blocking dependencies; giving synthesis all search tools over-provisions; speculative caching cannot predict verification needs.
+
+**Tags:** sample_rationale, sample_q9, multi_agent_research
+
+**Sources:**
+- Official CCAR-F Exam Guide — Section 9, Sample Q9
+
+---
+
+## meta-014 · sample_rationale · ci_cd
+
+**Tasks:** cross-domain
+
+**Q:** Sample Q10 (CI/CD): Pipeline hangs waiting for input—why -p flag (A)?
+
+**A:** claude -p runs non-interactive: process prompt, output to stdout, exit—required for CI/CD.
+
+**Why:** -p (--print) is the documented non-interactive CI mode. CLAUDE_HEADLESS, --batch, and stdin tricks are not the correct Claude Code approach.
+
+**Tags:** sample_rationale, sample_q10, ci_cd
+
+**Sources:**
+- Official CCAR-F Exam Guide — Section 9, Sample Q10
+
+---
+
+## meta-015 · sample_rationale · structured_extraction, ci_cd
+
+**Tasks:** cross-domain
+
+**Q:** Sample Q11: Batch API for pre-merge checks and overnight reports—why batch only overnight jobs (A)?
+
+**A:** Batches save ~50% cost but lack latency SLA—unsuitable for blocking merge gates.
+
+**Why:** Message Batches save cost but lack latency SLA—fine for overnight reports, unsuitable for blocking pre-merge checks. Polling batches for merge gates is unacceptable; custom_id correlates batch results; timeout fallback adds complexity vs matching API to workflow latency needs.
+
+**Tags:** sample_rationale, sample_q11, structured_extraction, ci_cd
+
+**Sources:**
+- Official CCAR-F Exam Guide — Section 9, Sample Q11
+
+---
+
+## meta-016 · sample_rationale · ci_cd
+
+**Tasks:** cross-domain
+
+**Q:** Sample Q12 (CI/CD): 14-file PR review inconsistent—why split per-file and integration passes (A)?
+
+**A:** Per-file local analysis then cross-file integration pass—fixes attention dilution across many files.
+
+**Why:** Split reviews into per-file passes plus a cross-file integration pass—fixes attention dilution. Splitting PRs burdens developers; larger context does not fix attention quality; consensus across passes would suppress intermittently caught bugs.
+
+**Tags:** sample_rationale, sample_q12, ci_cd
+
+**Sources:**
+- Official CCAR-F Exam Guide — Section 9, Sample Q12
 
 ---
 

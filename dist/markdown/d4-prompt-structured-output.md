@@ -39,6 +39,8 @@
 
 **A:** Temporarily disable the high false-positive category to restore trust while improving prompts for that category.
 
+**Why:** Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
+
 **Tags:** false_positives, review
 
 **Sources:**
@@ -53,6 +55,8 @@
 **Q:** How define consistent severity levels in automated code review prompts?
 
 **A:** Explicit severity criteria with concrete code examples for each level—not generic confidence thresholds.
+
+**Why:** not generic confidence thresholds.
 
 **Tags:** severity, review
 
@@ -84,6 +88,8 @@
 
 **A:** Define explicit categories to report versus skip—don't rely on confidence-based filtering alone.
 
+**Why:** don't rely on confidence-based filtering alone.
+
 **Tags:** review, prompt_criteria
 
 **Sources:**
@@ -114,6 +120,8 @@
 
 **A:** Few-shot examples demonstrating exact desired format (location, issue, severity, suggested fix).
 
+**Why:** Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
+
 **Tags:** few_shot, review
 
 **Sources:**
@@ -128,6 +136,8 @@
 **Q:** Reduce false positives while still catching real bugs in review?
 
 **A:** Few-shot examples distinguishing acceptable local patterns from genuine issues—shows reasoning for each.
+
+**Why:** shows reasoning for each.
 
 **Tags:** few_shot, false_positives
 
@@ -144,6 +154,8 @@
 
 **A:** Few-shot examples showing correct handling of each document structure variant.
 
+**Why:** Exam judgment aligned to task 4.2: Few-shot examples showing correct handling of each document structure variant.
+
 **Tags:** few_shot, extraction
 
 **Sources:**
@@ -159,6 +171,8 @@
 
 **A:** Examples demonstrating correct extraction from each format variant—not just schema tightening alone.
 
+**Why:** not just schema tightening alone.
+
 **Tags:** few_shot, extraction
 
 **Sources:**
@@ -173,6 +187,8 @@
 **Q:** How many few-shot examples for ambiguous scenarios, and what show?
 
 **A:** 2–4 targeted examples with reasoning for why one action was chosen over plausible alternatives.
+
+**Why:** Exam judgment aligned to task 4.2: 2–4 targeted examples with reasoning for why one action was chosen over plausible alternatives.
 
 **Tags:** few_shot
 
@@ -219,6 +235,8 @@
 
 **A:** Make fields optional/nullable when information may be absent—don't require fields the source lacks.
 
+**Why:** don't require fields the source lacks.
+
 **Tags:** schema_design, nullable
 
 **Sources:**
@@ -233,6 +251,8 @@
 **Q:** Extensible category field in extraction schema—pattern?
 
 **A:** Enum with "other" plus a detail string field for categories not in the predefined list.
+
+**Why:** Correct choice avoids the wrong pattern: not in the predefined list..
 
 **Tags:** schema_design, enum
 
@@ -249,6 +269,8 @@
 
 **A:** Add enum value like "unclear" for ambiguous cases rather than forcing a wrong category.
 
+**Why:** Exam judgment aligned to task 4.3: Add enum value like "unclear" for ambiguous cases rather than forcing a wrong category.
+
 **Tags:** schema_design, enum
 
 **Sources:**
@@ -263,6 +285,8 @@
 **Q:** Inconsistent date formats in source documents alongside strict schema?
 
 **A:** Include format normalization rules in the prompt alongside the strict output schema.
+
+**Why:** Structured output plus validation-retry separates syntax from semantics; schemas must reflect absent data, not force fabrication.
 
 **Tags:** schema_design, normalization
 
@@ -279,6 +303,8 @@
 
 **A:** tool_choice: "any" to guarantee structured tool output instead of conversational text.
 
+**Why:** Structured output plus validation-retry separates syntax from semantics; schemas must reflect absent data, not force fabrication.
+
 **Tags:** tool_choice, extraction
 
 **Sources:**
@@ -293,6 +319,8 @@
 **Q:** Where extract structured data from a tool_use extraction call?
 
 **A:** From the tool_use response block—schema defines tool input parameters; model fills structured fields there.
+
+**Why:** schema defines tool input parameters; model fills structured fields there.
 
 **Tags:** tool_use, extraction
 
@@ -354,6 +382,8 @@
 
 **A:** Add detected_pattern field to findings to analyze which constructs trigger false positives when dismissed.
 
+**Why:** Exam judgment aligned to task 4.4: Add detected_pattern field to findings to analyze which constructs trigger false positives when dismissed.
+
 **Tags:** feedback_loop, review
 
 **Sources:**
@@ -369,6 +399,8 @@
 
 **A:** Extract calculated_total alongside stated_total and flag discrepancies; add conflict_detected for inconsistent source data.
 
+**Why:** Exam judgment aligned to task 4.4: Extract calculated_total alongside stated_total and flag discrepancies; add conflict_detected for inconsistent source data.
+
 **Tags:** validation, self_correction
 
 **Sources:**
@@ -383,6 +415,8 @@
 **Q:** Extraction misses nullable fields intermittently. Best improvement?
 
 **A:** Tighten required vs optional schema, validation-retry loop, and explicit examples for null/edge cases.
+
+**Why:** Structured output plus validation-retry separates syntax from semantics; schemas must reflect absent data, not force fabrication.
 
 **Tags:** validation, nullable
 
@@ -413,6 +447,8 @@
 **Q:** Pre-merge blocking check vs overnight technical debt report—batch API for both?
 
 **A:** Batch only for latency-tolerant jobs (overnight reports); keep synchronous API for blocking pre-merge checks.
+
+**Why:** Message Batches save cost but lack latency SLA—fine for overnight reports, unsuitable for blocking pre-merge checks. Polling batches for merge gates is unacceptable; custom_id correlates batch results; timeout fallback adds complexity vs matching API to workflow latency needs.
 
 **Tags:** batch_api, latency
 
@@ -459,6 +495,8 @@
 
 **A:** Resubmit only failed documents by custom_id with modifications (e.g., chunk oversized docs that exceeded context).
 
+**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+
 **Tags:** batch_api, failures
 
 **Sources:**
@@ -473,6 +511,8 @@
 **Q:** Before batch-processing 10,000 documents—cost reduction step?
 
 **A:** Refine prompts on a sample set first to maximize first-pass success and reduce resubmission costs.
+
+**Why:** Match API latency and cost to workflow: blocking paths need synchronous calls; overnight jobs can use batch savings.
 
 **Tags:** batch_api, prompt_refinement
 
@@ -504,6 +544,8 @@
 
 **A:** Second independent Claude instance reviewing without the generator's reasoning context.
 
+**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+
 **Tags:** multi_instance, review
 
 **Sources:**
@@ -519,6 +561,8 @@
 
 **A:** Per-file passes for local issues plus separate integration pass for cross-file data flow.
 
+**Why:** Split reviews into per-file passes plus a cross-file integration pass—fixes attention dilution across many files. Splitting PRs burdens developers; larger context does not fix attention quality; consensus across passes would suppress intermittently caught bugs.
+
 **Tags:** multi_pass, review
 
 **Sources:**
@@ -533,6 +577,8 @@
 **Q:** Route review findings to human triage by severity—schema approach?
 
 **A:** Verification pass where model reports confidence alongside each finding for calibrated routing.
+
+**Why:** Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
 
 **Tags:** review, confidence
 
@@ -654,6 +700,8 @@
 
 **A:** Calculate submission windows (e.g., 4-hour intervals) so batches complete within SLA with margin for retries.
 
+**Why:** Match API latency and cost to workflow: blocking paths need synchronous calls; overnight jobs can use batch savings.
+
 **Tags:** batch_api, sla
 
 **Sources:**
@@ -713,6 +761,8 @@
 **Q:** Few-shot use case: branch-level test coverage gaps?
 
 **A:** Show how to identify and report coverage gaps at branch level—ambiguous case requiring demonstrated judgment.
+
+**Why:** ambiguous case requiring demonstrated judgment.
 
 **Tags:** few_shot, testing
 

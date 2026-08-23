@@ -64,3 +64,182 @@
   exam_day: true
   tasks:
   - cross-domain
+
+# --- Sample question rationales (Exam Guide Section 9) ---
+
+- id: meta-005
+  domain: META
+  type: sample_rationale
+  difficulty: medium
+  scenarios: [customer_support]
+  front: 'Sample Q1 (Customer Support): Why programmatic prerequisite (A) beats prompt, few-shot, or routing for skipped get_customer?'
+  back: 'Blocks lookup_order and process_refund until get_customer returns verified ID—deterministic enforcement for identity before refunds.'
+  rationale: Programmatic enforcement gives deterministic guarantees for required tool sequences; prompt and few-shot rely on probabilistic LLM compliance—insufficient when misidentification causes financial harm. Routing classifiers change tool availability, not ordering.
+  sources:
+  - Official CCAR-F Exam Guide — Section 9, Sample Q1
+  tags: [sample_rationale, sample_q1, customer_support]
+  exam_day: true
+  tasks:
+  - cross-domain
+
+- id: meta-006
+  domain: META
+  type: sample_rationale
+  difficulty: medium
+  scenarios: [customer_support]
+  front: 'Sample Q2 (Customer Support): Why expand tool descriptions (B) before few-shot, routing, or tool consolidation?'
+  back: 'Descriptions are the primary LLM tool-selection signal—add inputs, examples, edge cases, and boundaries vs similar tools.'
+  rationale: Tool descriptions are the primary selection mechanism; minimal descriptions cause confusion between similar tools. Few-shot adds tokens without fixing descriptions; routing is over-engineered for a first step; consolidation is valid but higher effort.
+  sources:
+  - Official CCAR-F Exam Guide — Section 9, Sample Q2
+  tags: [sample_rationale, sample_q2, customer_support]
+  exam_day: true
+  tasks:
+  - cross-domain
+
+- id: meta-007
+  domain: META
+  type: sample_rationale
+  difficulty: medium
+  scenarios: [customer_support]
+  front: 'Sample Q3 (Customer Support): Why explicit escalation criteria with few-shot (A) beats confidence scores, classifiers, or sentiment?'
+  back: 'Fix unclear escalate-vs-resolve boundaries—the proportionate first response before adding infrastructure.'
+  rationale: Explicit escalation criteria with few-shot examples fix unclear decision boundaries. LLM self-reported confidence is poorly calibrated on hard cases; a separate classifier is over-engineered before prompt tuning; sentiment does not measure case complexity.
+  sources:
+  - Official CCAR-F Exam Guide — Section 9, Sample Q3
+  tags: [sample_rationale, sample_q3, customer_support]
+  tasks:
+  - cross-domain
+
+- id: meta-008
+  domain: META
+  type: sample_rationale
+  difficulty: easy
+  scenarios: [code_generation, developer_productivity]
+  front: 'Sample Q4 (Code Generation): Where should a team-shared /review slash command live?'
+  back: '.claude/commands/ in the project repository—version-controlled for everyone who clones the repo.'
+  rationale: Project slash commands live in .claude/commands/ and are version-controlled. ~/.claude/commands/ is personal; CLAUDE.md holds instructions not command definitions; .claude/config.json is not the Claude Code command mechanism.
+  sources:
+  - Official CCAR-F Exam Guide — Section 9, Sample Q4
+  tags: [sample_rationale, sample_q4, code_generation]
+  exam_day: true
+  tasks:
+  - cross-domain
+
+- id: meta-009
+  domain: META
+  type: sample_rationale
+  difficulty: hard
+  scenarios: [code_generation]
+  front: 'Sample Q5 (Code Generation): Monolith-to-microservices across dozens of files—why plan mode first (A)?'
+  back: 'Explore dependencies and design service boundaries before editing—large architectural scope is already stated.'
+  rationale: Plan mode fits large architectural work with exploration before edits. Direct execution risks rework when dependencies are unknown; rigid upfront instructions skip discovery; waiting for emergent complexity ignores stated large-scale scope.
+  sources:
+  - Official CCAR-F Exam Guide — Section 9, Sample Q5
+  tags: [sample_rationale, sample_q5, code_generation]
+  exam_day: true
+  tasks:
+  - cross-domain
+
+- id: meta-010
+  domain: META
+  type: sample_rationale
+  difficulty: medium
+  scenarios: [code_generation]
+  front: 'Sample Q6 (Code Generation): Tests spread as *.test.tsx—why .claude/rules/ with globs (A)?'
+  back: 'Glob patterns (e.g. **/*.test.tsx) auto-apply conventions by path regardless of directory.'
+  rationale: .claude/rules/ with glob patterns apply conventions by file path—including tests spread across directories. Root CLAUDE.md relies on inference; skills need invocation; per-directory CLAUDE.md cannot cover scattered test files.
+  sources:
+  - Official CCAR-F Exam Guide — Section 9, Sample Q6
+  tags: [sample_rationale, sample_q6, code_generation]
+  tasks:
+  - cross-domain
+
+- id: meta-011
+  domain: META
+  type: sample_rationale
+  difficulty: hard
+  scenarios: [multi_agent_research]
+  front: 'Sample Q7 (Multi-Agent Research): Report covers only visual arts—why coordinator decomposition (B)?'
+  back: 'Logs show narrow subtasks (digital art, graphic design, photography)—subagents succeeded within assigned scope.'
+  rationale: Coordinator logs show decomposition into only visual-arts subtasks—subagents succeeded within narrow assignments. Downstream agents are not the root cause; synthesis, search, and analysis worked within assigned scope.
+  sources:
+  - Official CCAR-F Exam Guide — Section 9, Sample Q7
+  tags: [sample_rationale, sample_q7, multi_agent_research]
+  exam_day: true
+  tasks:
+  - cross-domain
+
+- id: meta-012
+  domain: META
+  type: sample_rationale
+  difficulty: hard
+  scenarios: [multi_agent_research]
+  front: 'Sample Q8 (Multi-Agent Research): Search subagent times out—why structured error context to coordinator (A)?'
+  back: 'Return failure type, attempted query, partial results, and alternatives so coordinator can recover intelligently.'
+  rationale: Structured error context enables coordinator recovery (retry, alternate query, partial results). Generic retry status hides context; marking failure as success blocks recovery; terminating the whole workflow is unnecessary when partial progress exists.
+  sources:
+  - Official CCAR-F Exam Guide — Section 9, Sample Q8
+  tags: [sample_rationale, sample_q8, multi_agent_research]
+  tasks:
+  - cross-domain
+
+- id: meta-013
+  domain: META
+  type: sample_rationale
+  difficulty: hard
+  scenarios: [multi_agent_research]
+  front: 'Sample Q9 (Multi-Agent Research): 85% simple fact-checks—why scoped verify_fact on synthesis (A)?'
+  back: 'Least privilege for common lookups; complex verification still routes through coordinator to search agent.'
+  rationale: Scoped verify_fact on synthesis covers simple fact-checks while complex work stays with search via coordinator—least privilege. End-of-pass batching creates blocking dependencies; giving synthesis all search tools over-provisions; speculative caching cannot predict verification needs.
+  sources:
+  - Official CCAR-F Exam Guide — Section 9, Sample Q9
+  tags: [sample_rationale, sample_q9, multi_agent_research]
+  exam_day: true
+  tasks:
+  - cross-domain
+
+- id: meta-014
+  domain: META
+  type: sample_rationale
+  difficulty: easy
+  scenarios: [ci_cd]
+  front: 'Sample Q10 (CI/CD): Pipeline hangs waiting for input—why -p flag (A)?'
+  back: 'claude -p runs non-interactive: process prompt, output to stdout, exit—required for CI/CD.'
+  rationale: '-p (--print) is the documented non-interactive CI mode. CLAUDE_HEADLESS, --batch, and stdin tricks are not the correct Claude Code approach.'
+  sources:
+  - Official CCAR-F Exam Guide — Section 9, Sample Q10
+  tags: [sample_rationale, sample_q10, ci_cd]
+  exam_day: true
+  tasks:
+  - cross-domain
+
+- id: meta-015
+  domain: META
+  type: sample_rationale
+  difficulty: medium
+  scenarios: [structured_extraction, ci_cd]
+  front: 'Sample Q11: Batch API for pre-merge checks and overnight reports—why batch only overnight jobs (A)?'
+  back: 'Batches save ~50% cost but lack latency SLA—unsuitable for blocking merge gates.'
+  rationale: Message Batches save cost but lack latency SLA—fine for overnight reports, unsuitable for blocking pre-merge checks. Polling batches for merge gates is unacceptable; custom_id correlates batch results; timeout fallback adds complexity vs matching API to workflow latency needs.
+  sources:
+  - Official CCAR-F Exam Guide — Section 9, Sample Q11
+  tags: [sample_rationale, sample_q11, structured_extraction, ci_cd]
+  exam_day: true
+  tasks:
+  - cross-domain
+
+- id: meta-016
+  domain: META
+  type: sample_rationale
+  difficulty: hard
+  scenarios: [ci_cd]
+  front: 'Sample Q12 (CI/CD): 14-file PR review inconsistent—why split per-file and integration passes (A)?'
+  back: 'Per-file local analysis then cross-file integration pass—fixes attention dilution across many files.'
+  rationale: Split reviews into per-file passes plus a cross-file integration pass—fixes attention dilution. Splitting PRs burdens developers; larger context does not fix attention quality; consensus across passes would suppress intermittently caught bugs.
+  sources:
+  - Official CCAR-F Exam Guide — Section 9, Sample Q12
+  tags: [sample_rationale, sample_q12, ci_cd]
+  exam_day: true
+  tasks:
+  - cross-domain

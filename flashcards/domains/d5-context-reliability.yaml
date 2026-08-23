@@ -70,6 +70,7 @@
   exam_day: true
   tasks:
   - '5.1'
+  rationale: outside summarized history.
 - id: d5-005
   domain: D5
   weight: 15
@@ -86,6 +87,7 @@
   - tool_results
   tasks:
   - '5.1'
+  rationale: Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
 - id: d5-006
   domain: D5
   weight: 15
@@ -102,6 +104,7 @@
   - aggregation
   tasks:
   - '5.1'
+  rationale: 'Exam judgment aligned to task 5.1: Place key findings summary at the beginning; organize detailed results with explicit section headers.'
 - id: d5-007
   domain: D5
   weight: 15
@@ -118,6 +121,7 @@
   - subagents
   tasks:
   - '5.1'
+  rationale: not verbose reasoning chains.
 - id: d5-008
   domain: D5
   weight: 15
@@ -150,6 +154,7 @@
   - multi_issue
   tasks:
   - '5.1'
+  rationale: Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
 - id: d5-010
   domain: D5
   weight: 15
@@ -182,6 +187,7 @@
   - few_shot
   tasks:
   - '5.2'
+  rationale: Explicit escalation criteria with few-shot examples fix unclear decision boundaries—the proportionate first fix. LLM self-reported confidence is poorly calibrated on hard cases; a separate classifier is over-engineered before prompt tuning; sentiment does not measure case complexity.
 - id: d5-012
   domain: D5
   weight: 15
@@ -232,6 +238,7 @@
   - customer_request
   tasks:
   - '5.2'
+  rationale: do not attempt investigation first when they explicitly request a human.
 - id: d5-015
   domain: D5
   weight: 15
@@ -248,6 +255,7 @@
   - de_escalation
   tasks:
   - '5.2'
+  rationale: Escalation calibration needs explicit criteria—ambiguous boundaries cause wrong routing between autonomous resolution and human handoff.
 - id: d5-016
   domain: D5
   weight: 15
@@ -264,6 +272,7 @@
   - policy_gap
   tasks:
   - '5.2'
+  rationale: policy gap/exception case, not autonomous resolution.
 - id: d5-017
   domain: D5
   weight: 15
@@ -280,6 +289,7 @@
   - identity
   tasks:
   - '5.2'
+  rationale: never pick a match heuristically.
 - id: d5-018
   domain: D5
   weight: 15
@@ -297,6 +307,7 @@
   exam_day: true
   tasks:
   - '5.1'
+  rationale: not implicit shared memory.
 - id: d5-019
   domain: D5
   weight: 15
@@ -312,6 +323,7 @@
   - error_propagation
   tasks:
   - '5.3'
+  rationale: Structured error context enables coordinator recovery (retry, alternate query, partial results). Generic retry status hides context; marking failure as success blocks recovery; terminating the whole workflow is unnecessary when partial progress exists.
 - id: d5-020
   domain: D5
   weight: 15
@@ -344,6 +356,7 @@
   - coverage
   tasks:
   - '5.3'
+  rationale: 'Exam judgment aligned to task 5.3: Coverage annotations: which findings are well-supported vs which topic areas have gaps from unavailable sources.'
 - id: d5-022
   domain: D5
   weight: 15
@@ -361,6 +374,7 @@
   - escalation
   tasks:
   - '5.3'
+  rationale: not infinite identical retries.
 - id: d5-023
   domain: D5
   weight: 15
@@ -395,6 +409,7 @@
   - exploration
   tasks:
   - '5.4'
+  rationale: Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
 - id: d5-025
   domain: D5
   weight: 15
@@ -411,6 +426,7 @@
   - summarization
   tasks:
   - '5.4'
+  rationale: Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
 - id: d5-026
   domain: D5
   weight: 15
@@ -478,6 +494,7 @@
   - sampling
   tasks:
   - '5.5'
+  rationale: 'Exam judgment aligned to task 5.5: Stratified random sampling to measure error rates and detect novel error patterns.'
 - id: d5-030
   domain: D5
   weight: 15
@@ -495,6 +512,7 @@
   exam_day: true
   tasks:
   - '5.5'
+  rationale: Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
 - id: d5-031
   domain: D5
   weight: 15
@@ -511,6 +529,7 @@
   - segmentation
   tasks:
   - '5.5'
+  rationale: consistent performance across all segments.
 - id: d5-032
   domain: D5
   weight: 15
@@ -527,6 +546,7 @@
   - routing
   tasks:
   - '5.5'
+  rationale: Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
 - id: d5-033
   domain: D5
   weight: 15
@@ -560,6 +580,7 @@
   exam_day: true
   tasks:
   - '5.6'
+  rationale: 'Exam judgment aligned to task 5.6: Structured claim-source mappings (URLs, document names, excerpts) preserved through synthesis.'
 - id: d5-035
   domain: D5
   weight: 15
@@ -576,6 +597,7 @@
   - conflicts
   tasks:
   - '5.6'
+  rationale: do not arbitrarily pick one value.
 - id: d5-036
   domain: D5
   weight: 15
@@ -592,6 +614,7 @@
   - provenance
   tasks:
   - '5.6'
+  rationale: prevents time differences being misread as contradictions.
 - id: d5-037
   domain: D5
   weight: 15
@@ -608,6 +631,7 @@
   - provenance
   tasks:
   - '5.6'
+  rationale: Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
 - id: d5-038
   domain: D5
   weight: 15
@@ -624,6 +648,7 @@
   - formatting
   tasks:
   - '5.6'
+  rationale: financial data as tables, news as prose, technical findings as structured lists.
 - id: d5-039
   domain: D5
   weight: 15
@@ -677,6 +702,7 @@
   - subagents
   tasks:
   - '5.1'
+  rationale: not just claims without provenance context.
 - id: d5-042
   domain: D5
   weight: 15
@@ -742,6 +768,7 @@
   - exploration
   tasks:
   - '5.4'
+  rationale: 'Exam judgment aligned to task 5.4: Spawn subagents for focused tasks (find test files, trace refund flow) while main agent keeps high-level coordination.'
 - id: d5-046
   domain: D5
   weight: 15
@@ -758,6 +785,7 @@
   - conflicts
   tasks:
   - '5.6'
+  rationale: let coordinator reconcile before passing to synthesis.
 - id: d5-047
   domain: D5
   weight: 15
@@ -774,3 +802,4 @@
   - exploration
   tasks:
   - '5.4'
+  rationale: Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.

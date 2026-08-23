@@ -30,7 +30,7 @@ Use this page to navigate the **official Exam Guide** alongside flashcards in th
 | 6 | Task statements D1–D5 | Domain YAML below |
 | 7 | How to prepare | [sources.md](sources.md) |
 | 8 | Hands-on exercises | Do in your own project |
-| 9 | Sample questions + rationales | **Read every rationale** |
+| 9 | Sample questions + rationales | **Read every rationale** · [Sample Q cards](https://prajyotnaik3.github.io/ccar-f-flashcards/?domain=META) (`meta-005`–`meta-016`) |
 | 10–16 | Scoring, registration, policies | Expand meta cards (future) |
 | 17 | Appendix: in/out of scope tech | [sources.md](sources.md) |
 

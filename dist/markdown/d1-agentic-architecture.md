@@ -161,6 +161,8 @@
 
 **A:** Coordinator task decomposition too narrow—subagents executed correctly but were assigned incomplete scope.
 
+**Why:** Coordinator logs show decomposition into only visual-arts subtasks—subagents succeeded within narrow assignments. Downstream agents are not the root cause; synthesis, search, and analysis worked within assigned scope.
+
 **Tags:** decomposition, coordinator
 
 **Sources:**
@@ -176,6 +178,8 @@
 
 **A:** Analyze query requirements and dynamically select needed subagents—not always route through the full pipeline.
 
+**Why:** not always route through the full pipeline.
+
 **Tags:** coordinator, orchestration
 
 **Sources:**
@@ -190,6 +194,8 @@
 **Q:** How partition research scope across subagents to reduce duplication?
 
 **A:** Assign distinct subtopics or source types per agent (e.g., web vs documents vs synthesis)—not overlapping queries.
+
+**Why:** Exam judgment aligned to task 1.2: Assign distinct subtopics or source types per agent (e.
 
 **Tags:** decomposition, subagents
 
@@ -221,6 +227,8 @@
 
 **A:** Observability, consistent error handling, and controlled information flow.
 
+**Why:** Exam judgment aligned to task 1.2: Observability, consistent error handling, and controlled information flow.
+
 **Tags:** coordinator, observability
 
 **Sources:**
@@ -251,6 +259,8 @@
 
 **A:** Include complete findings directly in the subagent prompt (search results, document analysis)—not rely on automatic inheritance.
 
+**Why:** not rely on automatic inheritance.
+
 **Tags:** context_passing, synthesis
 
 **Sources:**
@@ -265,6 +275,8 @@
 **Q:** Best practice when passing context between agents for attribution?
 
 **A:** Use structured formats separating content from metadata (URLs, document names, page numbers).
+
+**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
 
 **Tags:** provenance, context_passing
 
@@ -281,6 +293,8 @@
 
 **A:** Emit multiple Task tool calls in a single coordinator response—not separate turns per subagent.
 
+**Why:** not separate turns per subagent.
+
 **Tags:** parallel, subagents
 
 **Sources:**
@@ -295,6 +309,8 @@
 **Q:** Coordinator prompts: step-by-step procedures vs research goals?
 
 **A:** Specify research goals and quality criteria—enables subagent adaptability vs rigid procedural scripts.
+
+**Why:** enables subagent adaptability vs rigid procedural scripts.
 
 **Tags:** prompting, coordinator
 
@@ -356,6 +372,8 @@
 
 **A:** Decompose into distinct items, investigate each in parallel using shared context, then synthesize a unified resolution.
 
+**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+
 **Tags:** decomposition, customer_support
 
 **Sources:**
@@ -385,6 +403,8 @@
 **Q:** Example structured handoff fields for a refund escalation?
 
 **A:** Customer ID, root cause, refund amount, recommended action.
+
+**Why:** Escalation calibration needs explicit criteria—ambiguous boundaries cause wrong routing between autonomous resolution and human handoff.
 
 **Tags:** handoff, escalation
 
@@ -416,6 +436,8 @@
 
 **A:** PostToolUse hook to normalize heterogeneous formats into a consistent representation.
 
+**Why:** Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter.
+
 **Tags:** hooks, normalization
 
 **Sources:**
@@ -430,6 +452,8 @@
 **Q:** Business rule: block refunds over $500 and escalate. Hooks vs prompt instructions?
 
 **A:** Tool call interception hook—hooks guarantee compliance; prompts are probabilistic.
+
+**Why:** hooks guarantee compliance; prompts are probabilistic.
 
 **Tags:** hooks, compliance
 
@@ -476,6 +500,8 @@
 
 **A:** Per-file local analysis passes, then a separate cross-file integration pass—avoids attention dilution.
 
+**Why:** Split reviews into per-file passes plus a cross-file integration pass—fixes attention dilution across many files. Splitting PRs burdens developers; larger context does not fix attention quality; consensus across passes would suppress intermittently caught bugs.
+
 **Tags:** decomposition, review
 
 **Sources:**
@@ -490,6 +516,8 @@
 **Q:** Task: add comprehensive tests to a legacy codebase. Decomposition strategy?
 
 **A:** Map structure → identify high-impact areas → prioritized plan that adapts as dependencies are discovered.
+
+**Why:** Exam judgment aligned to task 1.6: Map structure → identify high-impact areas → prioritized plan that adapts as dependencies are discovered.
 
 **Tags:** decomposition, testing
 
@@ -551,6 +579,8 @@
 
 **A:** Resume when prior context is mostly valid; start fresh with injected summary when prior tool results are stale—more reliable than stale resumes.
 
+**Why:** more reliable than stale resumes.
+
 **Tags:** session, resume
 
 **Sources:**
@@ -566,6 +596,8 @@
 
 **A:** Inform about specific file changes for targeted re-analysis—not require full re-exploration of the codebase.
 
+**Why:** not require full re-exploration of the codebase.
+
 **Tags:** session, context
 
 **Sources:**
@@ -580,6 +612,8 @@
 **Q:** Synthesis needs simple fact-checks (85%) but complex search (15%). Reduce latency without over-provisioning?
 
 **A:** Give synthesis a scoped verify_fact tool for simple lookups; complex verifications still delegate through coordinator to search agent.
+
+**Why:** Scoped verify_fact on synthesis covers the common simple fact-check case while complex work stays with search via coordinator—least privilege. End-of-pass batching creates blocking dependencies; giving synthesis all search tools over-provisions; speculative caching cannot predict verification needs.
 
 **Tags:** subagents, tool_scoping
 
@@ -671,6 +705,8 @@
 
 **A:** Timestamps (Unix vs ISO 8601), numeric status codes, and other inconsistent formats from different backend tools.
 
+**Why:** Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter.
+
 **Tags:** hooks, normalization
 
 **Sources:**
@@ -685,6 +721,8 @@
 **Q:** Web search subagent times out. Best error propagation to the coordinator?
 
 **A:** Structured error context: failure type, attempted query, partial results, and potential alternative approaches.
+
+**Why:** Structured error context enables coordinator recovery (retry, alternate query, partial results). Generic retry status hides context; marking failure as success blocks recovery; terminating the whole workflow is unnecessary when partial progress exists.
 
 **Tags:** error_propagation, coordinator
 
@@ -715,6 +753,8 @@
 **Q:** When should a support agent escalate to a human instead of continuing the agentic loop?
 
 **A:** Policy requires human judgment, identity cannot be verified, tool failures persist, or validation/confidence thresholds are not met.
+
+**Why:** Correct choice avoids the wrong pattern: not met..
 
 **Tags:** escalation, agent_loop
 
@@ -835,6 +875,8 @@
 **Q:** Give synthesis agent all web search tools to eliminate coordinator round-trips. Why avoid?
 
 **A:** Over-provisions synthesis—violates separation of concerns and role-specific tool scoping; use scoped tools for common cases only.
+
+**Why:** Scoped verify_fact on synthesis covers the common simple fact-check case while complex work stays with search via coordinator—least privilege. End-of-pass batching creates blocking dependencies; giving synthesis all search tools over-provisions; speculative caching cannot predict verification needs.
 
 **Tags:** tool_scoping, anti_pattern
 

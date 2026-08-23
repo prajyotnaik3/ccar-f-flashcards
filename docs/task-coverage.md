@@ -41,5 +41,5 @@ Flashcard count per **Exam Guide** task statement. Filter in the [web viewer](ht
 |-----|-------|
 | exam-format | 2 |
 | scenarios | 1 |
-| cross-domain | 1 |
+| cross-domain | 13 |
 
