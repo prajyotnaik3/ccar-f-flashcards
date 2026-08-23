@@ -1,10 +1,9 @@
-name: Build flashcards
+name: Deploy Pages
 
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -37,7 +36,6 @@ jobs:
           path: web
 
   deploy:
-    if: github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     environment:
