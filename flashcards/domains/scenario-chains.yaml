@@ -1,0 +1,518 @@
+# Scenario chain cards — sequential judgment drills per exam scenario
+# Filter: domain CHAIN, type scenario_chain, or by scenario tag
+
+- id: sc-001
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: medium
+  scenarios: [customer_support]
+  chain:
+    scenario: customer_support
+    step: 1
+    steps: 5
+  front: "[Customer Support · 1/5] You deploy a support agent with MCP tools (get_customer, lookup_order, process_refund, escalate_to_human). Target is 80%+ first-contact resolution. What architectural foundation comes first?"
+  back: Design agentic loop with stop_reason control, scoped tools, and escalation paths—before tuning prompts.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 1
+    - Official CCAR-F Exam Guide — D1, Task 1.1
+  tags: [scenario_chain, customer_support]
+  tasks: ['1.1', '1.4']
+
+- id: sc-002
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: hard
+  scenarios: [customer_support]
+  chain:
+    scenario: customer_support
+    step: 2
+    steps: 5
+  front: "[Customer Support · 2/5] Production data: 12% of cases skip get_customer and call lookup_order by name only, causing wrong refunds. Best fix?"
+  back: Programmatic prerequisite blocking lookup_order and process_refund until get_customer returns verified customer ID.
+  rationale: Money and identity need deterministic enforcement—not prompts alone.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 1; Sample Q1
+    - Official CCAR-F Exam Guide — D1, Task 1.4
+  tags: [scenario_chain, customer_support]
+  tasks: ['1.4']
+  exam_day: true
+
+- id: sc-003
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: medium
+  scenarios: [customer_support]
+  chain:
+    scenario: customer_support
+    step: 3
+    steps: 5
+  front: "[Customer Support · 3/5] Logs show get_customer called for order queries (#12345) instead of lookup_order. Both tools have minimal descriptions. First fix?"
+  back: Expand tool descriptions with inputs, example queries, edge cases, and when to use each vs similar tools.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 1; Sample Q2
+    - Official CCAR-F Exam Guide — D2, Task 2.1
+  tags: [scenario_chain, customer_support]
+  tasks: ['2.1']
+
+- id: sc-004
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: medium
+  scenarios: [customer_support]
+  chain:
+    scenario: customer_support
+    step: 4
+    steps: 5
+  front: "[Customer Support · 4/5] 55% first-contact resolution—agent escalates easy cases and handles hard policy exceptions alone. Best calibration fix?"
+  back: Add explicit escalation criteria with few-shot examples for escalate vs resolve autonomously.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 1; Sample Q3
+    - Official CCAR-F Exam Guide — D5, Task 5.2
+  tags: [scenario_chain, customer_support]
+  tasks: ['5.2']
+
+- id: sc-005
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: medium
+  scenarios: [customer_support]
+  chain:
+    scenario: customer_support
+    step: 5
+    steps: 5
+  front: "[Customer Support · 5/5] get_customer returns multiple matches for one name. What must the agent do?"
+  back: Ask for additional identifiers—never select a match heuristically.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 1
+    - Official CCAR-F Exam Guide — D5, Task 5.2
+  tags: [scenario_chain, customer_support]
+  tasks: ['5.2']
+
+- id: sc-006
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: easy
+  scenarios: [code_generation]
+  chain:
+    scenario: code_generation
+    step: 1
+    steps: 5
+  front: "[Code Generation · 1/5] Your team uses Claude Code for generation, refactoring, and docs—with slash commands, CLAUDE.md, and plan mode. What should be shared via git for consistent team behavior?"
+  back: Project-level CLAUDE.md, .claude/commands/, .claude/rules/, and .mcp.json—not user-only ~/.claude config.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 2
+    - Official CCAR-F Exam Guide — D3, Task 3.1
+  tags: [scenario_chain, code_generation]
+  tasks: ['3.1', '3.2']
+
+- id: sc-007
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: easy
+  scenarios: [code_generation]
+  chain:
+    scenario: code_generation
+    step: 2
+    steps: 5
+  front: "[Code Generation · 2/5] You need a /review slash command available to everyone who clones the repo. Where do you put it?"
+  back: .claude/commands/ in the project repository (version controlled).
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 2; Sample Q4
+    - Official CCAR-F Exam Guide — D3, Task 3.2
+  tags: [scenario_chain, code_generation]
+  tasks: ['3.2']
+
+- id: sc-008
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: hard
+  scenarios: [code_generation]
+  chain:
+    scenario: code_generation
+    step: 3
+    steps: 5
+  front: "[Code Generation · 3/5] Assignment: split monolith into microservices—dozens of files, unclear boundaries. What mode first?"
+  back: Plan mode—explore dependencies and design before editing; direct execution risks costly rework.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 2; Sample Q5
+    - Official CCAR-F Exam Guide — D3, Task 3.4
+  tags: [scenario_chain, code_generation]
+  tasks: ['3.4']
+  exam_day: true
+
+- id: sc-009
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: medium
+  scenarios: [code_generation]
+  chain:
+    scenario: code_generation
+    step: 4
+    steps: 5
+  front: "[Code Generation · 4/5] Tests live as *.test.tsx next to components across the repo. How auto-apply test conventions when generating code?"
+  back: .claude/rules/ with glob paths like **/*.test.tsx—not directory-bound CLAUDE.md or inference from headers.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 2; Sample Q6
+    - Official CCAR-F Exam Guide — D3, Task 3.3
+  tags: [scenario_chain, code_generation]
+  tasks: ['3.3']
+
+- id: sc-010
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: medium
+  scenarios: [code_generation]
+  chain:
+    scenario: code_generation
+    step: 5
+    steps: 5
+  front: "[Code Generation · 5/5] Long refactor session—model starts citing generic patterns instead of files it read earlier. Mitigation?"
+  back: Scratchpad file for key findings, /compact for verbose output, or summarize before the next exploration phase.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 2
+    - Official CCAR-F Exam Guide — D5, Task 5.4
+  tags: [scenario_chain, code_generation]
+  tasks: ['5.4']
+
+- id: sc-011
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: easy
+  scenarios: [multi_agent_research]
+  chain:
+    scenario: multi_agent_research
+    step: 1
+    steps: 5
+  front: "[Multi-Agent Research · 1/5] Coordinator delegates search, document analysis, synthesis, and report agents. What must allowedTools include on the coordinator?"
+  back: Task tool—required for spawning subagents.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 3
+    - Official CCAR-F Exam Guide — D1, Task 1.3
+  tags: [scenario_chain, multi_agent_research]
+  tasks: ['1.3']
+
+- id: sc-012
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: hard
+  scenarios: [multi_agent_research]
+  chain:
+    scenario: multi_agent_research
+    step: 2
+    steps: 5
+  front: "[Multi-Agent Research · 2/5] Topic 'AI in creative industries'—final report covers only visual arts; coordinator assigned digital art, graphic design, photography only. Root cause?"
+  back: Coordinator task decomposition too narrow—subagents executed correctly but incomplete scope.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 3; Sample Q7
+    - Official CCAR-F Exam Guide — D1, Task 1.2
+  tags: [scenario_chain, multi_agent_research]
+  tasks: ['1.2']
+
+- id: sc-013
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: hard
+  scenarios: [multi_agent_research]
+  chain:
+    scenario: multi_agent_research
+    step: 3
+    steps: 5
+  front: "[Multi-Agent Research · 3/5] Web search subagent times out. What should the coordinator receive?"
+  back: Structured error context—failure type, attempted query, partial results, alternative approaches.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 3; Sample Q8
+    - Official CCAR-F Exam Guide — D5, Task 5.3
+  tags: [scenario_chain, multi_agent_research]
+  tasks: ['5.3']
+
+- id: sc-014
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: hard
+  scenarios: [multi_agent_research]
+  chain:
+    scenario: multi_agent_research
+    step: 4
+    steps: 5
+  front: "[Multi-Agent Research · 4/5] Synthesis needs many simple fact-checks (85%) but some deep searches (15%). Reduce latency without over-provisioning synthesis?"
+  back: Scoped verify_fact tool on synthesis for simple lookups; complex cases still route through coordinator to search agent.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 3; Sample Q9
+    - Official CCAR-F Exam Guide — D2, Task 2.3
+  tags: [scenario_chain, multi_agent_research]
+  tasks: ['2.3']
+
+- id: sc-015
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: medium
+  scenarios: [multi_agent_research]
+  chain:
+    scenario: multi_agent_research
+    step: 5
+    steps: 5
+  front: "[Multi-Agent Research · 5/5] Final report must preserve citations through synthesis. What require from subagents?"
+  back: Structured claim–source mappings (URLs, excerpts, dates) preserved through synthesis—not compressed summaries without attribution.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 3
+    - Official CCAR-F Exam Guide — D5, Task 5.6
+  tags: [scenario_chain, multi_agent_research]
+  tasks: ['5.6']
+  exam_day: true
+
+- id: sc-016
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: easy
+  scenarios: [developer_productivity]
+  chain:
+    scenario: developer_productivity
+    step: 1
+    steps: 5
+  front: "[Developer Productivity · 1/5] Agent helps engineers explore legacy codebases using built-in tools and MCP. When prefer MCP over Grep/Glob?"
+  back: External systems (GitHub, DB, SaaS) or shared team integrations—not local file search.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 4
+    - Official CCAR-F Exam Guide — D2, Task 2.4–2.5
+  tags: [scenario_chain, developer_productivity]
+  tasks: ['2.4', '2.5']
+
+- id: sc-017
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: medium
+  scenarios: [developer_productivity]
+  chain:
+    scenario: developer_productivity
+    step: 2
+    steps: 5
+  front: "[Developer Productivity · 2/5] Find all callers of a function across the monorepo. Which built-in tool first?"
+  back: Grep for content patterns across files—not Glob (paths) or reading every file upfront.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 4
+    - Official CCAR-F Exam Guide — D2, Task 2.5
+  tags: [scenario_chain, developer_productivity]
+  tasks: ['2.5']
+
+- id: sc-018
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: medium
+  scenarios: [developer_productivity]
+  chain:
+    scenario: developer_productivity
+    step: 3
+    steps: 5
+  front: "[Developer Productivity · 3/5] Agent prefers Grep over your team's richer MCP code-search tool. Fix?"
+  back: Enhance MCP tool descriptions so the model understands when MCP beats built-in search.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 4
+    - Official CCAR-F Exam Guide — D2, Task 2.4
+  tags: [scenario_chain, developer_productivity]
+  tasks: ['2.4']
+
+- id: sc-019
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: medium
+  scenarios: [developer_productivity]
+  chain:
+    scenario: developer_productivity
+    step: 4
+    steps: 5
+  front: "[Developer Productivity · 4/5] Large codebase exploration without reading every file. Pattern?"
+  back: Grep entry points → Read to follow imports → scratchpad key findings for later questions.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 4
+    - Official CCAR-F Exam Guide — D2, Task 2.5; D5, Task 5.4
+  tags: [scenario_chain, developer_productivity]
+  tasks: ['2.5', '5.4']
+
+- id: sc-020
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: medium
+  scenarios: [developer_productivity]
+  chain:
+    scenario: developer_productivity
+    step: 5
+    steps: 5
+  front: "[Developer Productivity · 5/5] Share GitHub MCP with the team; keep experimental personal server. Config locations?"
+  back: Team server in project .mcp.json with ${TOKEN}; personal server in ~/.claude.json.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 4
+    - Official CCAR-F Exam Guide — D2, Task 2.4
+  tags: [scenario_chain, developer_productivity]
+  tasks: ['2.4']
+
+- id: sc-021
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: easy
+  scenarios: [ci_cd]
+  chain:
+    scenario: ci_cd
+    step: 1
+    steps: 5
+  front: "[CI/CD · 1/5] Pipeline runs claude 'Review this PR' but hangs waiting for input. Fix?"
+  back: Use -p (--print) for non-interactive mode—process prompt, output, exit.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 5; Sample Q10
+    - Official CCAR-F Exam Guide — D3, Task 3.6
+  tags: [scenario_chain, ci_cd]
+  tasks: ['3.6']
+  exam_day: true
+
+- id: sc-022
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: medium
+  scenarios: [ci_cd]
+  chain:
+    scenario: ci_cd
+    step: 2
+    steps: 5
+  front: "[CI/CD · 2/5] Post structured findings as inline PR comments from CI. CLI approach?"
+  back: --output-format json with --json-schema for machine-parseable review output.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 5
+    - Official CCAR-F Exam Guide — D3, Task 3.6; D4, Task 4.3
+  tags: [scenario_chain, ci_cd]
+  tasks: ['3.6', '4.3']
+
+- id: sc-023
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: medium
+  scenarios: [ci_cd]
+  chain:
+    scenario: ci_cd
+    step: 3
+    steps: 5
+  front: "[CI/CD · 3/5] Same Claude session generated code and reviews it—misses subtle bugs. Better approach?"
+  back: Independent Claude Code instance for review without the generator's reasoning context.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 5
+    - Official CCAR-F Exam Guide — D3, Task 3.6; D4, Task 4.6
+  tags: [scenario_chain, ci_cd]
+  tasks: ['3.6', '4.6']
+
+- id: sc-024
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: hard
+  scenarios: [ci_cd]
+  chain:
+    scenario: ci_cd
+    step: 4
+    steps: 5
+  front: "[CI/CD · 4/5] 14-file PR review—inconsistent depth, missed bugs, contradictory feedback. Restructure?"
+  back: Per-file local analysis passes, then separate cross-file integration pass.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 5; Sample Q12
+    - Official CCAR-F Exam Guide — D4, Task 4.6
+  tags: [scenario_chain, ci_cd]
+  tasks: ['4.6']
+
+- id: sc-025
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: medium
+  scenarios: [ci_cd]
+  chain:
+    scenario: ci_cd
+    step: 5
+    steps: 5
+  front: "[CI/CD · 5/5] Re-run review after new commits—duplicate inline comments. Context fix?"
+  back: Include prior findings; instruct Claude to report only new or still-unaddressed issues.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 5
+    - Official CCAR-F Exam Guide — D3, Task 3.6
+  tags: [scenario_chain, ci_cd]
+  tasks: ['3.6']
+
+- id: sc-026
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: easy
+  scenarios: [structured_extraction]
+  chain:
+    scenario: structured_extraction
+    step: 1
+    steps: 5
+  front: "[Structured Extraction · 1/5] Pipeline extracts from unstructured docs, validates with JSON schema, integrates downstream. Most reliable structured output approach?"
+  back: tool_use with JSON schemas—eliminates syntax errors; add semantic validation separately.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 6
+    - Official CCAR-F Exam Guide — D4, Task 4.3
+  tags: [scenario_chain, structured_extraction]
+  tasks: ['4.3']
+
+- id: sc-027
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: medium
+  scenarios: [structured_extraction]
+  chain:
+    scenario: structured_extraction
+    step: 2
+    steps: 5
+  front: "[Structured Extraction · 2/5] Source docs often omit optional fields—model fabricates values. Schema fix?"
+  back: Make fields optional/nullable when information may be absent—don't require missing data.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 6
+    - Official CCAR-F Exam Guide — D4, Task 4.3
+  tags: [scenario_chain, structured_extraction]
+  tasks: ['4.3']
+  exam_day: true
+
+- id: sc-028
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: medium
+  scenarios: [structured_extraction]
+  chain:
+    scenario: structured_extraction
+    step: 3
+    steps: 5
+  front: "[Structured Extraction · 3/5] Validation fails on date format mismatch—info exists in document. Next step?"
+  back: Retry with original doc, failed extraction, and specific validation errors in the follow-up prompt.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 6
+    - Official CCAR-F Exam Guide — D4, Task 4.4
+  tags: [scenario_chain, structured_extraction]
+  tasks: ['4.4']
+
+- id: sc-029
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: medium
+  scenarios: [structured_extraction]
+  chain:
+    scenario: structured_extraction
+    step: 4
+    steps: 5
+  front: "[Structured Extraction · 4/5] Manager wants batch API for pre-merge blocking checks and overnight reports. Correct split?"
+  back: Synchronous API for blocking pre-merge; batch API only for latency-tolerant overnight jobs.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 6; Sample Q11
+    - Official CCAR-F Exam Guide — D4, Task 4.5
+  tags: [scenario_chain, structured_extraction]
+  tasks: ['4.5']
+
+- id: sc-030
+  domain: CHAIN
+  type: scenario_chain
+  difficulty: medium
+  scenarios: [structured_extraction]
+  chain:
+    scenario: structured_extraction
+    step: 5
+    steps: 5
+  front: "[Structured Extraction · 5/5] 97% overall accuracy—can you remove all human review?"
+  back: No—verify accuracy by document type and field segment; route low-confidence and ambiguous docs to humans.
+  sources:
+    - Official CCAR-F Exam Guide — Scenario 6
+    - Official CCAR-F Exam Guide — D5, Task 5.5
+  tags: [scenario_chain, structured_extraction]
+  tasks: ['5.5']

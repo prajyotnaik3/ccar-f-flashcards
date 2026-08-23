@@ -52,6 +52,7 @@ def main() -> None:
             "D4": "d4-prompt-structured-output",
             "D5": "d5-context-reliability",
             "META": "meta",
+            "CHAIN": "scenario-chains",
         }.get(domain, domain.lower())
         path = OUT_DIR / f"{slug}.md"
         header = f"# {domain}: {domain_label(domain)}\n\n"

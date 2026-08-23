@@ -24,6 +24,11 @@ def main() -> int:
         if cid in ids:
             errors.append(f"Duplicate id: {cid}")
         ids.add(cid)
+        if card.get("type") == "scenario_chain" and not card.get("chain"):
+            errors.append(f"{cid}: scenario_chain requires chain metadata")
+        chain = card.get("chain")
+        if chain and chain.get("step", 0) > chain.get("steps", 0):
+            errors.append(f"{cid}: chain.step exceeds chain.steps")
 
     if errors:
         print("Validation failed:\n")

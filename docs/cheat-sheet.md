@@ -2,7 +2,7 @@
 
 Auto-generated from flashcards with `exam_day: true`.
 
-**49 cards** — review the night before the exam.
+**54 cards** — review the night before the exam.
 
 ### d1-002 (D1)
 
@@ -252,4 +252,30 @@ Auto-generated from flashcards with `exam_day: true`.
 - **Q:** Core heuristic when a scenario needs deterministic guarantees (money, identity, schema compliance)?
 - **A:** Prefer structural/programmatic fixes (hooks, prerequisites, scoped tools, tool_use schemas) over prompt-only instructions.
 - **Why:** Exam tests judgment: prompts are insufficient for hard guarantees.
+
+### sc-002 (CHAIN)
+
+- **Q:** [Customer Support · 2/5] Production data: 12% of cases skip get_customer and call lookup_order by name only, causing wrong refunds. Best fix?
+- **A:** Programmatic prerequisite blocking lookup_order and process_refund until get_customer returns verified customer ID.
+- **Why:** Money and identity need deterministic enforcement—not prompts alone.
+
+### sc-008 (CHAIN)
+
+- **Q:** [Code Generation · 3/5] Assignment: split monolith into microservices—dozens of files, unclear boundaries. What mode first?
+- **A:** Plan mode—explore dependencies and design before editing; direct execution risks costly rework.
+
+### sc-015 (CHAIN)
+
+- **Q:** [Multi-Agent Research · 5/5] Final report must preserve citations through synthesis. What require from subagents?
+- **A:** Structured claim–source mappings (URLs, excerpts, dates) preserved through synthesis—not compressed summaries without attribution.
+
+### sc-021 (CHAIN)
+
+- **Q:** [CI/CD · 1/5] Pipeline runs claude 'Review this PR' but hangs waiting for input. Fix?
+- **A:** Use -p (--print) for non-interactive mode—process prompt, output, exit.
+
+### sc-027 (CHAIN)
+
+- **Q:** [Structured Extraction · 2/5] Source docs often omit optional fields—model fabricates values. Schema fix?
+- **A:** Make fields optional/nullable when information may be absent—don't require missing data.
 

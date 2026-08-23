@@ -19,6 +19,10 @@ def card_fields(card: dict) -> tuple[str, str]:
     scenarios = ", ".join(card.get("scenarios", []))
     tags_line = ", ".join(card.get("tags", []))
     tasks_line = ", ".join(card.get("tasks", []))
+    chain = card.get("chain")
+    chain_line = ""
+    if chain:
+        chain_line = f"Step {chain['step']}/{chain['steps']} ({chain['scenario']})"
     sources = "\n".join(f"• {s}" for s in card.get("sources", []))
     front = card["front"]
     back_parts = [card["back"]]
@@ -26,6 +30,8 @@ def card_fields(card: dict) -> tuple[str, str]:
         back_parts.append(f"\n\nWhy: {card['rationale']}")
     if tasks_line:
         back_parts.append(f"\n\nTasks: {tasks_line}")
+    if chain_line:
+        back_parts.append(f"\n\nChain: {chain_line}")
     if tags_line:
         back_parts.append(f"\n\nTags: {tags_line}")
     if scenarios:

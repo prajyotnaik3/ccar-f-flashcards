@@ -22,6 +22,14 @@ Each exam presents **4 scenarios** drawn from this pool of **6**. Prepare all si
 
 See [`flashcards/scenarios/scenario-index.yaml`](flashcards/scenarios/scenario-index.yaml) for structured rehearsal focus per scenario.
 
+## Scenario chains (step-by-step drills)
+
+30 cards (`sc-001`–`sc-030`) walk each exam scenario as a **5-step story**. Filter **Scenario chains** in the web viewer or use chain links on the [study hub](https://prajyotnaik3.github.io/ccar-f-flashcards/study.html).
+
+Example: [Customer Support chain](https://prajyotnaik3.github.io/ccar-f-flashcards/?domain=CHAIN&scenario=customer_support) (steps 1–5 in order).
+
+Source: [`flashcards/domains/scenario-chains.yaml`](flashcards/domains/scenario-chains.yaml)
+
 ## Flashcard tags
 
 Filter the web viewer or Anki by scenario name (e.g. `customer_support`) to rehearse scenario-specific cards.

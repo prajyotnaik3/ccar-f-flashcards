@@ -28,6 +28,14 @@ function applyFilters() {
     }
     return true;
   });
+  if (scenario) {
+    filtered.sort((a, b) => {
+      const sa = a.chain?.step ?? 999;
+      const sb = b.chain?.step ?? 999;
+      if (sa !== sb) return sa - sb;
+      return a.id.localeCompare(b.id);
+    });
+  }
   index = 0;
   flipped = false;
   render();
@@ -72,7 +80,10 @@ function render() {
   const card = filtered[index];
   elCounter.textContent = `${index + 1} / ${filtered.length}`;
   const tasks = (card.tasks || []).join(", ");
-  elMeta.textContent = `${card.id} · ${card.domain} · ${card.type} · tasks: ${tasks} · ${(card.scenarios || []).join(", ")}`;
+  const chain = card.chain
+    ? ` · chain ${card.chain.step}/${card.chain.steps}`
+    : "";
+  elMeta.textContent = `${card.id} · ${card.domain} · ${card.type}${chain} · tasks: ${tasks} · ${(card.scenarios || []).join(", ")}`;
   elFront.textContent = card.front;
   elBack.innerHTML = `<strong>A:</strong> ${card.back}` +
     (card.rationale ? `<br><br><strong>Why:</strong> ${card.rationale}` : "");

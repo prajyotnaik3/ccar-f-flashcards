@@ -7,11 +7,11 @@
   "properties": {
     "id": {
       "type": "string",
-      "pattern": "^d[1-5]-[0-9]{3}$|^meta-[0-9]{3}$"
+      "pattern": "^d[1-5]-[0-9]{3}$|^meta-[0-9]{3}$|^sc-[0-9]{3}$"
     },
     "domain": {
       "type": "string",
-      "enum": ["D1", "D2", "D3", "D4", "D5", "META"]
+      "enum": ["D1", "D2", "D3", "D4", "D5", "META", "CHAIN"]
     },
     "weight": {
       "type": "integer",
@@ -35,7 +35,7 @@
     },
     "type": {
       "type": "string",
-      "enum": ["concept", "decision", "anti_pattern", "compare", "scenario_hook", "meta"]
+      "enum": ["concept", "decision", "anti_pattern", "compare", "scenario_hook", "scenario_chain", "meta"]
     },
     "difficulty": {
       "type": "string",
@@ -66,6 +66,27 @@
     "exam_day": {
       "type": "boolean",
       "description": "Include on one-page cheat sheet"
+    },
+    "chain": {
+      "type": "object",
+      "description": "Scenario chain position (scenario_chain cards only)",
+      "required": ["scenario", "step", "steps"],
+      "properties": {
+        "scenario": {
+          "type": "string",
+          "enum": [
+            "customer_support",
+            "code_generation",
+            "multi_agent_research",
+            "developer_productivity",
+            "ci_cd",
+            "structured_extraction"
+          ]
+        },
+        "step": { "type": "integer", "minimum": 1 },
+        "steps": { "type": "integer", "minimum": 1 }
+      },
+      "additionalProperties": false
     }
   },
   "additionalProperties": false

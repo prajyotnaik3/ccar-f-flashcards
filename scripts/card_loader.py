@@ -38,5 +38,6 @@ def domain_label(domain: str) -> str:
         "D4": "Prompt Engineering & Structured Output",
         "D5": "Context Management & Reliability",
         "META": "Exam Meta",
+        "CHAIN": "Scenario Chains",
     }
     return labels.get(domain, domain)
