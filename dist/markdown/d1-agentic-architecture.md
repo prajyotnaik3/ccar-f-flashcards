@@ -2,6 +2,8 @@
 
 ## d1-001 · concept · customer_support, multi_agent_research, developer_productivity
 
+**Tasks:** 1.1
+
 **Q:** What is the agentic loop lifecycle in Claude-based systems?
 
 **A:** Send request → inspect stop_reason → if tool_use, execute tools and append results to history → repeat until stop_reason is end_turn.
@@ -15,6 +17,8 @@
 ---
 
 ## d1-002 · decision · customer_support
+
+**Tasks:** 1.4
 
 **Q:** 12% of support cases skip get_customer and call lookup_order by name only, causing wrong refunds. Most effective fix?
 
@@ -31,6 +35,8 @@
 
 ## d1-003 · compare · multi_agent_research
 
+**Tasks:** 1.2
+
 **Q:** Single agent with many tools vs coordinator + specialized subagents for a research pipeline?
 
 **A:** Coordinator + subagents when work decomposes (search, analyze, synthesize), needs isolated context, and clear failure boundaries.
@@ -43,6 +49,8 @@
 ---
 
 ## d1-004 · anti_pattern · multi_agent_research
+
+**Tasks:** 1.2, 1.3
 
 **Q:** Why must a coordinator not invent subagent outputs without tool results?
 
@@ -57,6 +65,8 @@
 
 ## d1-005 · concept · customer_support, multi_agent_research
 
+**Tasks:** 1.1
+
 **Q:** When should an agentic loop continue vs terminate?
 
 **A:** Continue when stop_reason is tool_use; terminate when stop_reason is end_turn.
@@ -69,6 +79,8 @@
 ---
 
 ## d1-006 · anti_pattern · customer_support, developer_productivity
+
+**Tasks:** 1.1
 
 **Q:** Agentic loop anti-patterns for termination (name three).
 
@@ -83,6 +95,8 @@
 
 ## d1-007 · concept · customer_support, multi_agent_research
 
+**Tasks:** 1.1
+
 **Q:** Model-driven tool selection vs pre-configured decision trees?
 
 **A:** Model-driven: Claude picks tools from context each turn. Decision trees/forced sequences bypass model reasoning—use only when deterministic ordering is required.
@@ -95,6 +109,8 @@
 ---
 
 ## d1-008 · concept · customer_support, multi_agent_research
+
+**Tasks:** 1.1
 
 **Q:** Why append tool results to conversation history between loop iterations?
 
@@ -109,6 +125,8 @@
 
 ## d1-009 · concept · multi_agent_research
 
+**Tasks:** 1.2
+
 **Q:** What is hub-and-spoke multi-agent architecture?
 
 **A:** Coordinator manages all inter-subagent communication, error handling, and information routing; subagents do not talk directly.
@@ -121,6 +139,8 @@
 ---
 
 ## d1-010 · concept · multi_agent_research
+
+**Tasks:** 1.2, 1.3
 
 **Q:** Do subagents automatically inherit the coordinator's conversation history?
 
@@ -135,6 +155,8 @@
 
 ## d1-011 · decision · multi_agent_research
 
+**Tasks:** 1.2
+
 **Q:** Research on 'AI in creative industries' covers only visual arts—logs show coordinator assigned digital art, graphic design, photography only. Root cause?
 
 **A:** Coordinator task decomposition too narrow—subagents executed correctly but were assigned incomplete scope.
@@ -147,6 +169,8 @@
 ---
 
 ## d1-012 · decision · multi_agent_research
+
+**Tasks:** 1.2
 
 **Q:** How should a coordinator select which subagents to invoke?
 
@@ -161,6 +185,8 @@
 
 ## d1-013 · decision · multi_agent_research
 
+**Tasks:** 1.2
+
 **Q:** How partition research scope across subagents to reduce duplication?
 
 **A:** Assign distinct subtopics or source types per agent (e.g., web vs documents vs synthesis)—not overlapping queries.
@@ -173,6 +199,8 @@
 ---
 
 ## d1-014 · concept · multi_agent_research
+
+**Tasks:** 1.2
 
 **Q:** What is an iterative refinement loop in multi-agent research?
 
@@ -187,6 +215,8 @@
 
 ## d1-015 · decision · multi_agent_research
 
+**Tasks:** 1.2
+
 **Q:** Why route all subagent communication through the coordinator?
 
 **A:** Observability, consistent error handling, and controlled information flow.
@@ -199,6 +229,8 @@
 ---
 
 ## d1-016 · concept · multi_agent_research, developer_productivity
+
+**Tasks:** 1.3
 
 **Q:** What tool spawns subagents in the Agent SDK, and what must allowedTools include?
 
@@ -213,6 +245,8 @@
 
 ## d1-017 · decision · multi_agent_research
 
+**Tasks:** 1.3
+
 **Q:** How pass prior agent findings to a synthesis subagent?
 
 **A:** Include complete findings directly in the subagent prompt (search results, document analysis)—not rely on automatic inheritance.
@@ -225,6 +259,8 @@
 ---
 
 ## d1-018 · decision · multi_agent_research
+
+**Tasks:** 1.3
 
 **Q:** Best practice when passing context between agents for attribution?
 
@@ -239,6 +275,8 @@
 
 ## d1-019 · decision · multi_agent_research
 
+**Tasks:** 1.3
+
 **Q:** How spawn parallel subagents for lower latency?
 
 **A:** Emit multiple Task tool calls in a single coordinator response—not separate turns per subagent.
@@ -251,6 +289,8 @@
 ---
 
 ## d1-020 · decision · multi_agent_research
+
+**Tasks:** 1.3
 
 **Q:** Coordinator prompts: step-by-step procedures vs research goals?
 
@@ -265,6 +305,8 @@
 
 ## d1-021 · concept · multi_agent_research, developer_productivity
 
+**Tasks:** 1.3
+
 **Q:** What does AgentDefinition configure for each subagent type?
 
 **A:** Description, system prompt, and tool restrictions per subagent role.
@@ -277,6 +319,8 @@
 ---
 
 ## d1-022 · concept · multi_agent_research, developer_productivity
+
+**Tasks:** 1.3
 
 **Q:** What is fork-based session management in multi-agent workflows?
 
@@ -291,6 +335,8 @@
 
 ## d1-023 · compare · customer_support
 
+**Tasks:** 1.4
+
 **Q:** Programmatic enforcement (hooks, gates) vs prompt-based workflow ordering?
 
 **A:** Prompts have non-zero failure rate; programmatic gates give deterministic compliance when identity verification or financial ops require it.
@@ -303,6 +349,8 @@
 ---
 
 ## d1-024 · decision · customer_support
+
+**Tasks:** 1.4
 
 **Q:** Customer message has multiple concerns (billing + return). How should the agent investigate?
 
@@ -317,6 +365,8 @@
 
 ## d1-025 · concept · customer_support
 
+**Tasks:** 1.4
+
 **Q:** What must a structured human handoff include when escalating mid-process?
 
 **A:** Customer details, root cause analysis, recommended actions—humans may lack full conversation transcript.
@@ -329,6 +379,8 @@
 ---
 
 ## d1-026 · decision · customer_support
+
+**Tasks:** 1.4
 
 **Q:** Example structured handoff fields for a refund escalation?
 
@@ -343,6 +395,8 @@
 
 ## d1-027 · concept · customer_support, multi_agent_research
 
+**Tasks:** 1.5
+
 **Q:** PostToolUse hook—what does it do?
 
 **A:** Intercepts tool results after execution to transform/normalize data before the model processes them.
@@ -355,6 +409,8 @@
 ---
 
 ## d1-028 · decision · customer_support
+
+**Tasks:** 1.5
 
 **Q:** MCP tools return mixed timestamp formats (Unix, ISO 8601). Best approach before agent reasoning?
 
@@ -369,6 +425,8 @@
 
 ## d1-029 · decision · customer_support
 
+**Tasks:** 1.5
+
 **Q:** Business rule: block refunds over $500 and escalate. Hooks vs prompt instructions?
 
 **A:** Tool call interception hook—hooks guarantee compliance; prompts are probabilistic.
@@ -381,6 +439,8 @@
 ---
 
 ## d1-030 · concept · customer_support
+
+**Tasks:** 1.5
 
 **Q:** Tool call interception hooks—purpose?
 
@@ -395,6 +455,8 @@
 
 ## d1-031 · compare · ci_cd, multi_agent_research
 
+**Tasks:** 1.6
+
 **Q:** Fixed sequential pipeline (prompt chaining) vs dynamic adaptive decomposition?
 
 **A:** Sequential pipelines for predictable multi-step reviews; dynamic decomposition for open-ended investigation that adapts to intermediate findings.
@@ -407,6 +469,8 @@
 ---
 
 ## d1-032 · decision · ci_cd
+
+**Tasks:** 1.6
 
 **Q:** 14-file PR review misses bugs and gives contradictory feedback. Restructure approach?
 
@@ -421,6 +485,8 @@
 
 ## d1-033 · decision · developer_productivity, ci_cd
 
+**Tasks:** 1.6
+
 **Q:** Task: add comprehensive tests to a legacy codebase. Decomposition strategy?
 
 **A:** Map structure → identify high-impact areas → prioritized plan that adapts as dependencies are discovered.
@@ -433,6 +499,8 @@
 ---
 
 ## d1-034 · concept · ci_cd, multi_agent_research
+
+**Tasks:** 1.6
 
 **Q:** What is prompt chaining for task decomposition?
 
@@ -447,6 +515,8 @@
 
 ## d1-035 · concept · developer_productivity
 
+**Tasks:** 1.7
+
 **Q:** Named session resumption in Claude Code—how?
 
 **A:** Use --resume with a session name to continue a specific prior conversation.
@@ -459,6 +529,8 @@
 ---
 
 ## d1-036 · concept · developer_productivity
+
+**Tasks:** 1.7
 
 **Q:** What is fork_session used for?
 
@@ -473,6 +545,8 @@
 
 ## d1-037 · decision · developer_productivity
 
+**Tasks:** 1.7
+
 **Q:** Resume session after code changed vs start fresh?
 
 **A:** Resume when prior context is mostly valid; start fresh with injected summary when prior tool results are stale—more reliable than stale resumes.
@@ -485,6 +559,8 @@
 ---
 
 ## d1-038 · decision · developer_productivity
+
+**Tasks:** 1.7
 
 **Q:** Resuming a session after specific files changed—what to tell the agent?
 
@@ -499,6 +575,8 @@
 
 ## d1-039 · decision · multi_agent_research
 
+**Tasks:** 1.2, 1.3
+
 **Q:** Synthesis needs simple fact-checks (85%) but complex search (15%). Reduce latency without over-provisioning?
 
 **A:** Give synthesis a scoped verify_fact tool for simple lookups; complex verifications still delegate through coordinator to search agent.
@@ -511,6 +589,8 @@
 ---
 
 ## d1-040 · scenario_hook · customer_support, multi_agent_research
+
+**Tasks:** 1.2
 
 **Q:** Customer Support and Multi-Agent Research scenarios—shared primary domain?
 
@@ -525,6 +605,8 @@
 
 ## d1-041 · concept · multi_agent_research
 
+**Tasks:** 1.2
+
 **Q:** Four coordinator responsibilities in hub-and-spoke orchestration?
 
 **A:** Task decomposition, delegation to subagents, result aggregation, and dynamic selection of which subagents to invoke.
@@ -537,6 +619,8 @@
 ---
 
 ## d1-042 · concept · multi_agent_research, developer_productivity
+
+**Tasks:** 1.3
 
 **Q:** Do subagents share memory across separate Task invocations?
 
@@ -551,6 +635,8 @@
 
 ## d1-043 · concept · ci_cd, multi_agent_research
 
+**Tasks:** 1.6
+
 **Q:** What is attention dilution in multi-step agent workflows?
 
 **A:** Processing too many items in one pass (many files, broad topics) reduces depth and consistency—some areas get superficial treatment while others are detailed.
@@ -563,6 +649,8 @@
 ---
 
 ## d1-044 · concept · multi_agent_research, developer_productivity
+
+**Tasks:** 1.6
 
 **Q:** What is an adaptive investigation plan for task decomposition?
 
@@ -577,6 +665,8 @@
 
 ## d1-045 · decision · customer_support
 
+**Tasks:** 1.5
+
 **Q:** PostToolUse hook: what heterogeneous MCP fields should you normalize before the model sees them?
 
 **A:** Timestamps (Unix vs ISO 8601), numeric status codes, and other inconsistent formats from different backend tools.
@@ -589,6 +679,8 @@
 ---
 
 ## d1-046 · decision · multi_agent_research
+
+**Tasks:** 1.2
 
 **Q:** Web search subagent times out. Best error propagation to the coordinator?
 
@@ -603,6 +695,8 @@
 
 ## d1-047 · anti_pattern · customer_support
 
+**Tasks:** 1.4
+
 **Q:** Agent skips identity verification before refunds. Why is a routing classifier the wrong first fix?
 
 **A:** Problem is tool ordering, not tool availability—a classifier limits which tools exist but does not enforce get_customer before lookup_order/refund.
@@ -615,6 +709,8 @@
 ---
 
 ## d1-048 · decision · customer_support
+
+**Tasks:** 5.2
 
 **Q:** When should a support agent escalate to a human instead of continuing the agentic loop?
 
@@ -629,6 +725,8 @@
 
 ## d1-049 · scenario_hook · developer_productivity
 
+**Tasks:** 2.3
+
 **Q:** Developer Productivity scenario—primary domains and D1 focus?
 
 **A:** D2 (tools/MCP), D3 (Claude Code), D1 (delegation/orchestration with built-in tools + MCP servers).
@@ -641,6 +739,8 @@
 ---
 
 ## d1-050 · concept · multi_agent_research
+
+**Tasks:** 1.2
 
 **Q:** Typical subagent roles in a multi-agent research pipeline (Exam Scenario 3)?
 
@@ -655,6 +755,8 @@
 
 ## d1-051 · anti_pattern · multi_agent_research
 
+**Tasks:** 5.3
+
 **Q:** Subagent catches timeout and returns empty results marked successful. Why wrong?
 
 **A:** Suppresses failure—coordinator cannot recover, retry, or annotate coverage gaps; risks incomplete research output.
@@ -667,6 +769,8 @@
 ---
 
 ## d1-052 · anti_pattern · multi_agent_research
+
+**Tasks:** 5.3
 
 **Q:** Subagent timeout propagates and terminates the entire research workflow. Why wrong?
 
@@ -681,6 +785,8 @@
 
 ## d1-053 · compare · customer_support, multi_agent_research
 
+**Tasks:** 1.4, 1.5
+
 **Q:** When is prompt-based workflow guidance enough vs requiring programmatic gates or hooks?
 
 **A:** Prompts suffice for soft ordering and preferences; programmatic enforcement when business rules need deterministic compliance (identity before money, refund caps).
@@ -693,6 +799,8 @@
 ---
 
 ## d1-054 · anti_pattern · multi_agent_research
+
+**Tasks:** 5.3
 
 **Q:** Subagent retries timeout internally then returns generic 'search unavailable' to coordinator. Gap?
 
@@ -707,6 +815,8 @@
 
 ## d1-055 · concept · customer_support, multi_agent_research
 
+**Tasks:** 1.1
+
 **Q:** Two stop_reason values that drive agentic loop control?
 
 **A:** tool_use (continue loop—execute tools and append results) and end_turn (terminate and present response).
@@ -720,6 +830,8 @@
 
 ## d1-056 · decision · multi_agent_research
 
+**Tasks:** 2.3
+
 **Q:** Give synthesis agent all web search tools to eliminate coordinator round-trips. Why avoid?
 
 **A:** Over-provisions synthesis—violates separation of concerns and role-specific tool scoping; use scoped tools for common cases only.
@@ -732,6 +844,8 @@
 ---
 
 ## d1-057 · concept · customer_support
+
+**Tasks:** 1.4
 
 **Q:** What is a programmatic prerequisite gate in a multi-step agent workflow?
 

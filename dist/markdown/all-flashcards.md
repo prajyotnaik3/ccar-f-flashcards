@@ -2,6 +2,8 @@
 
 ## d1-001 · concept · customer_support, multi_agent_research, developer_productivity
 
+**Tasks:** 1.1
+
 **Q:** What is the agentic loop lifecycle in Claude-based systems?
 
 **A:** Send request → inspect stop_reason → if tool_use, execute tools and append results to history → repeat until stop_reason is end_turn.
@@ -15,6 +17,8 @@
 ---
 
 ## d1-002 · decision · customer_support
+
+**Tasks:** 1.4
 
 **Q:** 12% of support cases skip get_customer and call lookup_order by name only, causing wrong refunds. Most effective fix?
 
@@ -31,6 +35,8 @@
 
 ## d1-003 · compare · multi_agent_research
 
+**Tasks:** 1.2
+
 **Q:** Single agent with many tools vs coordinator + specialized subagents for a research pipeline?
 
 **A:** Coordinator + subagents when work decomposes (search, analyze, synthesize), needs isolated context, and clear failure boundaries.
@@ -43,6 +49,8 @@
 ---
 
 ## d1-004 · anti_pattern · multi_agent_research
+
+**Tasks:** 1.2, 1.3
 
 **Q:** Why must a coordinator not invent subagent outputs without tool results?
 
@@ -57,6 +65,8 @@
 
 ## d1-005 · concept · customer_support, multi_agent_research
 
+**Tasks:** 1.1
+
 **Q:** When should an agentic loop continue vs terminate?
 
 **A:** Continue when stop_reason is tool_use; terminate when stop_reason is end_turn.
@@ -69,6 +79,8 @@
 ---
 
 ## d1-006 · anti_pattern · customer_support, developer_productivity
+
+**Tasks:** 1.1
 
 **Q:** Agentic loop anti-patterns for termination (name three).
 
@@ -83,6 +95,8 @@
 
 ## d1-007 · concept · customer_support, multi_agent_research
 
+**Tasks:** 1.1
+
 **Q:** Model-driven tool selection vs pre-configured decision trees?
 
 **A:** Model-driven: Claude picks tools from context each turn. Decision trees/forced sequences bypass model reasoning—use only when deterministic ordering is required.
@@ -95,6 +109,8 @@
 ---
 
 ## d1-008 · concept · customer_support, multi_agent_research
+
+**Tasks:** 1.1
 
 **Q:** Why append tool results to conversation history between loop iterations?
 
@@ -109,6 +125,8 @@
 
 ## d1-009 · concept · multi_agent_research
 
+**Tasks:** 1.2
+
 **Q:** What is hub-and-spoke multi-agent architecture?
 
 **A:** Coordinator manages all inter-subagent communication, error handling, and information routing; subagents do not talk directly.
@@ -121,6 +139,8 @@
 ---
 
 ## d1-010 · concept · multi_agent_research
+
+**Tasks:** 1.2, 1.3
 
 **Q:** Do subagents automatically inherit the coordinator's conversation history?
 
@@ -135,6 +155,8 @@
 
 ## d1-011 · decision · multi_agent_research
 
+**Tasks:** 1.2
+
 **Q:** Research on 'AI in creative industries' covers only visual arts—logs show coordinator assigned digital art, graphic design, photography only. Root cause?
 
 **A:** Coordinator task decomposition too narrow—subagents executed correctly but were assigned incomplete scope.
@@ -147,6 +169,8 @@
 ---
 
 ## d1-012 · decision · multi_agent_research
+
+**Tasks:** 1.2
 
 **Q:** How should a coordinator select which subagents to invoke?
 
@@ -161,6 +185,8 @@
 
 ## d1-013 · decision · multi_agent_research
 
+**Tasks:** 1.2
+
 **Q:** How partition research scope across subagents to reduce duplication?
 
 **A:** Assign distinct subtopics or source types per agent (e.g., web vs documents vs synthesis)—not overlapping queries.
@@ -173,6 +199,8 @@
 ---
 
 ## d1-014 · concept · multi_agent_research
+
+**Tasks:** 1.2
 
 **Q:** What is an iterative refinement loop in multi-agent research?
 
@@ -187,6 +215,8 @@
 
 ## d1-015 · decision · multi_agent_research
 
+**Tasks:** 1.2
+
 **Q:** Why route all subagent communication through the coordinator?
 
 **A:** Observability, consistent error handling, and controlled information flow.
@@ -199,6 +229,8 @@
 ---
 
 ## d1-016 · concept · multi_agent_research, developer_productivity
+
+**Tasks:** 1.3
 
 **Q:** What tool spawns subagents in the Agent SDK, and what must allowedTools include?
 
@@ -213,6 +245,8 @@
 
 ## d1-017 · decision · multi_agent_research
 
+**Tasks:** 1.3
+
 **Q:** How pass prior agent findings to a synthesis subagent?
 
 **A:** Include complete findings directly in the subagent prompt (search results, document analysis)—not rely on automatic inheritance.
@@ -225,6 +259,8 @@
 ---
 
 ## d1-018 · decision · multi_agent_research
+
+**Tasks:** 1.3
 
 **Q:** Best practice when passing context between agents for attribution?
 
@@ -239,6 +275,8 @@
 
 ## d1-019 · decision · multi_agent_research
 
+**Tasks:** 1.3
+
 **Q:** How spawn parallel subagents for lower latency?
 
 **A:** Emit multiple Task tool calls in a single coordinator response—not separate turns per subagent.
@@ -251,6 +289,8 @@
 ---
 
 ## d1-020 · decision · multi_agent_research
+
+**Tasks:** 1.3
 
 **Q:** Coordinator prompts: step-by-step procedures vs research goals?
 
@@ -265,6 +305,8 @@
 
 ## d1-021 · concept · multi_agent_research, developer_productivity
 
+**Tasks:** 1.3
+
 **Q:** What does AgentDefinition configure for each subagent type?
 
 **A:** Description, system prompt, and tool restrictions per subagent role.
@@ -277,6 +319,8 @@
 ---
 
 ## d1-022 · concept · multi_agent_research, developer_productivity
+
+**Tasks:** 1.3
 
 **Q:** What is fork-based session management in multi-agent workflows?
 
@@ -291,6 +335,8 @@
 
 ## d1-023 · compare · customer_support
 
+**Tasks:** 1.4
+
 **Q:** Programmatic enforcement (hooks, gates) vs prompt-based workflow ordering?
 
 **A:** Prompts have non-zero failure rate; programmatic gates give deterministic compliance when identity verification or financial ops require it.
@@ -303,6 +349,8 @@
 ---
 
 ## d1-024 · decision · customer_support
+
+**Tasks:** 1.4
 
 **Q:** Customer message has multiple concerns (billing + return). How should the agent investigate?
 
@@ -317,6 +365,8 @@
 
 ## d1-025 · concept · customer_support
 
+**Tasks:** 1.4
+
 **Q:** What must a structured human handoff include when escalating mid-process?
 
 **A:** Customer details, root cause analysis, recommended actions—humans may lack full conversation transcript.
@@ -329,6 +379,8 @@
 ---
 
 ## d1-026 · decision · customer_support
+
+**Tasks:** 1.4
 
 **Q:** Example structured handoff fields for a refund escalation?
 
@@ -343,6 +395,8 @@
 
 ## d1-027 · concept · customer_support, multi_agent_research
 
+**Tasks:** 1.5
+
 **Q:** PostToolUse hook—what does it do?
 
 **A:** Intercepts tool results after execution to transform/normalize data before the model processes them.
@@ -355,6 +409,8 @@
 ---
 
 ## d1-028 · decision · customer_support
+
+**Tasks:** 1.5
 
 **Q:** MCP tools return mixed timestamp formats (Unix, ISO 8601). Best approach before agent reasoning?
 
@@ -369,6 +425,8 @@
 
 ## d1-029 · decision · customer_support
 
+**Tasks:** 1.5
+
 **Q:** Business rule: block refunds over $500 and escalate. Hooks vs prompt instructions?
 
 **A:** Tool call interception hook—hooks guarantee compliance; prompts are probabilistic.
@@ -381,6 +439,8 @@
 ---
 
 ## d1-030 · concept · customer_support
+
+**Tasks:** 1.5
 
 **Q:** Tool call interception hooks—purpose?
 
@@ -395,6 +455,8 @@
 
 ## d1-031 · compare · ci_cd, multi_agent_research
 
+**Tasks:** 1.6
+
 **Q:** Fixed sequential pipeline (prompt chaining) vs dynamic adaptive decomposition?
 
 **A:** Sequential pipelines for predictable multi-step reviews; dynamic decomposition for open-ended investigation that adapts to intermediate findings.
@@ -407,6 +469,8 @@
 ---
 
 ## d1-032 · decision · ci_cd
+
+**Tasks:** 1.6
 
 **Q:** 14-file PR review misses bugs and gives contradictory feedback. Restructure approach?
 
@@ -421,6 +485,8 @@
 
 ## d1-033 · decision · developer_productivity, ci_cd
 
+**Tasks:** 1.6
+
 **Q:** Task: add comprehensive tests to a legacy codebase. Decomposition strategy?
 
 **A:** Map structure → identify high-impact areas → prioritized plan that adapts as dependencies are discovered.
@@ -433,6 +499,8 @@
 ---
 
 ## d1-034 · concept · ci_cd, multi_agent_research
+
+**Tasks:** 1.6
 
 **Q:** What is prompt chaining for task decomposition?
 
@@ -447,6 +515,8 @@
 
 ## d1-035 · concept · developer_productivity
 
+**Tasks:** 1.7
+
 **Q:** Named session resumption in Claude Code—how?
 
 **A:** Use --resume with a session name to continue a specific prior conversation.
@@ -459,6 +529,8 @@
 ---
 
 ## d1-036 · concept · developer_productivity
+
+**Tasks:** 1.7
 
 **Q:** What is fork_session used for?
 
@@ -473,6 +545,8 @@
 
 ## d1-037 · decision · developer_productivity
 
+**Tasks:** 1.7
+
 **Q:** Resume session after code changed vs start fresh?
 
 **A:** Resume when prior context is mostly valid; start fresh with injected summary when prior tool results are stale—more reliable than stale resumes.
@@ -485,6 +559,8 @@
 ---
 
 ## d1-038 · decision · developer_productivity
+
+**Tasks:** 1.7
 
 **Q:** Resuming a session after specific files changed—what to tell the agent?
 
@@ -499,6 +575,8 @@
 
 ## d1-039 · decision · multi_agent_research
 
+**Tasks:** 1.2, 1.3
+
 **Q:** Synthesis needs simple fact-checks (85%) but complex search (15%). Reduce latency without over-provisioning?
 
 **A:** Give synthesis a scoped verify_fact tool for simple lookups; complex verifications still delegate through coordinator to search agent.
@@ -511,6 +589,8 @@
 ---
 
 ## d1-040 · scenario_hook · customer_support, multi_agent_research
+
+**Tasks:** 1.2
 
 **Q:** Customer Support and Multi-Agent Research scenarios—shared primary domain?
 
@@ -525,6 +605,8 @@
 
 ## d1-041 · concept · multi_agent_research
 
+**Tasks:** 1.2
+
 **Q:** Four coordinator responsibilities in hub-and-spoke orchestration?
 
 **A:** Task decomposition, delegation to subagents, result aggregation, and dynamic selection of which subagents to invoke.
@@ -537,6 +619,8 @@
 ---
 
 ## d1-042 · concept · multi_agent_research, developer_productivity
+
+**Tasks:** 1.3
 
 **Q:** Do subagents share memory across separate Task invocations?
 
@@ -551,6 +635,8 @@
 
 ## d1-043 · concept · ci_cd, multi_agent_research
 
+**Tasks:** 1.6
+
 **Q:** What is attention dilution in multi-step agent workflows?
 
 **A:** Processing too many items in one pass (many files, broad topics) reduces depth and consistency—some areas get superficial treatment while others are detailed.
@@ -563,6 +649,8 @@
 ---
 
 ## d1-044 · concept · multi_agent_research, developer_productivity
+
+**Tasks:** 1.6
 
 **Q:** What is an adaptive investigation plan for task decomposition?
 
@@ -577,6 +665,8 @@
 
 ## d1-045 · decision · customer_support
 
+**Tasks:** 1.5
+
 **Q:** PostToolUse hook: what heterogeneous MCP fields should you normalize before the model sees them?
 
 **A:** Timestamps (Unix vs ISO 8601), numeric status codes, and other inconsistent formats from different backend tools.
@@ -589,6 +679,8 @@
 ---
 
 ## d1-046 · decision · multi_agent_research
+
+**Tasks:** 1.2
 
 **Q:** Web search subagent times out. Best error propagation to the coordinator?
 
@@ -603,6 +695,8 @@
 
 ## d1-047 · anti_pattern · customer_support
 
+**Tasks:** 1.4
+
 **Q:** Agent skips identity verification before refunds. Why is a routing classifier the wrong first fix?
 
 **A:** Problem is tool ordering, not tool availability—a classifier limits which tools exist but does not enforce get_customer before lookup_order/refund.
@@ -615,6 +709,8 @@
 ---
 
 ## d1-048 · decision · customer_support
+
+**Tasks:** 5.2
 
 **Q:** When should a support agent escalate to a human instead of continuing the agentic loop?
 
@@ -629,6 +725,8 @@
 
 ## d1-049 · scenario_hook · developer_productivity
 
+**Tasks:** 2.3
+
 **Q:** Developer Productivity scenario—primary domains and D1 focus?
 
 **A:** D2 (tools/MCP), D3 (Claude Code), D1 (delegation/orchestration with built-in tools + MCP servers).
@@ -641,6 +739,8 @@
 ---
 
 ## d1-050 · concept · multi_agent_research
+
+**Tasks:** 1.2
 
 **Q:** Typical subagent roles in a multi-agent research pipeline (Exam Scenario 3)?
 
@@ -655,6 +755,8 @@
 
 ## d1-051 · anti_pattern · multi_agent_research
 
+**Tasks:** 5.3
+
 **Q:** Subagent catches timeout and returns empty results marked successful. Why wrong?
 
 **A:** Suppresses failure—coordinator cannot recover, retry, or annotate coverage gaps; risks incomplete research output.
@@ -667,6 +769,8 @@
 ---
 
 ## d1-052 · anti_pattern · multi_agent_research
+
+**Tasks:** 5.3
 
 **Q:** Subagent timeout propagates and terminates the entire research workflow. Why wrong?
 
@@ -681,6 +785,8 @@
 
 ## d1-053 · compare · customer_support, multi_agent_research
 
+**Tasks:** 1.4, 1.5
+
 **Q:** When is prompt-based workflow guidance enough vs requiring programmatic gates or hooks?
 
 **A:** Prompts suffice for soft ordering and preferences; programmatic enforcement when business rules need deterministic compliance (identity before money, refund caps).
@@ -693,6 +799,8 @@
 ---
 
 ## d1-054 · anti_pattern · multi_agent_research
+
+**Tasks:** 5.3
 
 **Q:** Subagent retries timeout internally then returns generic 'search unavailable' to coordinator. Gap?
 
@@ -707,6 +815,8 @@
 
 ## d1-055 · concept · customer_support, multi_agent_research
 
+**Tasks:** 1.1
+
 **Q:** Two stop_reason values that drive agentic loop control?
 
 **A:** tool_use (continue loop—execute tools and append results) and end_turn (terminate and present response).
@@ -719,6 +829,8 @@
 ---
 
 ## d1-056 · decision · multi_agent_research
+
+**Tasks:** 2.3
 
 **Q:** Give synthesis agent all web search tools to eliminate coordinator round-trips. Why avoid?
 
@@ -733,6 +845,8 @@
 
 ## d1-057 · concept · customer_support
 
+**Tasks:** 1.4
+
 **Q:** What is a programmatic prerequisite gate in a multi-step agent workflow?
 
 **A:** Code or hook that blocks downstream tool calls until a prerequisite step completes (e.g., no refund until verified customer ID).
@@ -745,6 +859,8 @@
 ---
 
 ## d2-001 · concept · customer_support, developer_productivity
+
+**Tasks:** 2.4
 
 **Q:** What does MCP (Model Context Protocol) provide to Claude agents?
 
@@ -760,6 +876,8 @@
 
 ## d2-002 · concept · customer_support, developer_productivity
 
+**Tasks:** 2.1
+
 **Q:** Primary mechanism LLMs use to select among similar tools?
 
 **A:** Tool descriptions—minimal descriptions lead to unreliable selection when tools overlap.
@@ -772,6 +890,8 @@
 ---
 
 ## d2-003 · decision · customer_support
+
+**Tasks:** 2.1
 
 **Q:** Agent calls get_customer for order queries (#12345) instead of lookup_order. Both have minimal descriptions. Best first fix?
 
@@ -788,6 +908,8 @@
 
 ## d2-004 · concept · customer_support, developer_productivity
 
+**Tasks:** 2.1
+
 **Q:** What should effective tool descriptions include beyond a one-line summary?
 
 **A:** Expected inputs, outputs, example queries, edge cases, and boundaries explaining when to use vs similar alternatives.
@@ -800,6 +922,8 @@
 ---
 
 ## d2-005 · anti_pattern · developer_productivity, multi_agent_research
+
+**Tasks:** 2.1
 
 **Q:** analyze_content and analyze_document have near-identical descriptions. Likely result?
 
@@ -814,6 +938,8 @@
 
 ## d2-006 · decision · multi_agent_research
 
+**Tasks:** 2.1
+
 **Q:** Generic analyze_content overlaps with analyze_document. Rename/fix strategy?
 
 **A:** Rename to purpose-specific names (e.g., extract_web_results) with web-specific descriptions that eliminate overlap.
@@ -826,6 +952,8 @@
 ---
 
 ## d2-007 · decision · multi_agent_research, structured_extraction
+
+**Tasks:** 2.1
 
 **Q:** One generic analyze_document tool does too much. How split it?
 
@@ -840,6 +968,8 @@
 
 ## d2-008 · concept · customer_support, developer_productivity
 
+**Tasks:** 2.1
+
 **Q:** How can system prompt wording undermine well-written tool descriptions?
 
 **A:** Keyword-sensitive instructions can create unintended tool associations that override description clarity.
@@ -852,6 +982,8 @@
 ---
 
 ## d2-009 · decision · customer_support
+
+**Tasks:** 2.1
 
 **Q:** Tool selection still wrong after improving descriptions. Next check?
 
@@ -866,6 +998,8 @@
 
 ## d2-010 · anti_pattern · developer_productivity
 
+**Tasks:** 2.1
+
 **Q:** Why expose one mega-tool that 'does anything on GitHub' to the agent?
 
 **A:** Harder correct selection, weak error semantics, and excessive blast radius if mis-invoked.
@@ -878,6 +1012,8 @@
 ---
 
 ## d2-011 · anti_pattern · customer_support
+
+**Tasks:** 2.1
 
 **Q:** Similar tools misroute. Why is consolidating into lookup_entity not the best first step?
 
@@ -892,6 +1028,8 @@
 
 ## d2-012 · concept · customer_support
 
+**Tasks:** 2.2
+
 **Q:** MCP pattern for communicating tool failures back to the agent?
 
 **A:** The isError flag on tool results, plus structured error metadata—not raw stack traces or generic messages.
@@ -904,6 +1042,8 @@
 ---
 
 ## d2-013 · concept · customer_support, multi_agent_research
+
+**Tasks:** 2.2
 
 **Q:** Four MCP error categories the exam distinguishes?
 
@@ -918,6 +1058,8 @@
 
 ## d2-014 · anti_pattern · customer_support
 
+**Tasks:** 2.2
+
 **Q:** Why return generic 'Operation failed' for all tool errors?
 
 **A:** Prevents the agent from choosing appropriate recovery—retry, explain to user, escalate, or accept empty results.
@@ -930,6 +1072,8 @@
 ---
 
 ## d2-015 · decision · customer_support
+
+**Tasks:** 2.2
 
 **Q:** Structured error metadata fields for MCP tools (name three)?
 
@@ -944,6 +1088,8 @@
 
 ## d2-016 · decision · customer_support
 
+**Tasks:** 2.2
+
 **Q:** Business rule violation (e.g., refund over policy limit). Error response design?
 
 **A:** isRetryable: false, customer-friendly explanation so the agent can communicate appropriately—not retry endlessly.
@@ -956,6 +1102,8 @@
 ---
 
 ## d2-017 · compare · customer_support, multi_agent_research
+
+**Tasks:** 2.2
 
 **Q:** Access failure (timeout) vs valid empty result (no matches)—how should tools report differently?
 
@@ -970,6 +1118,8 @@
 
 ## d2-018 · decision · multi_agent_research
 
+**Tasks:** 2.2
+
 **Q:** Transient failure in a subagent. Handle locally vs propagate to coordinator?
 
 **A:** Retry locally when possible; propagate only unresolved errors with partial results and what was attempted.
@@ -982,6 +1132,8 @@
 ---
 
 ## d2-019 · decision · customer_support
+
+**Tasks:** 2.2
 
 **Q:** Tool returns ambiguous error from external API. Best tool-layer behavior?
 
@@ -996,6 +1148,8 @@
 
 ## d2-020 · concept · multi_agent_research, developer_productivity
 
+**Tasks:** 2.3
+
 **Q:** Why giving an agent 18 tools instead of 4–5 hurts reliability?
 
 **A:** Increases decision complexity and degrades tool selection accuracy.
@@ -1008,6 +1162,8 @@
 ---
 
 ## d2-021 · anti_pattern · multi_agent_research
+
+**Tasks:** 2.3
 
 **Q:** Synthesis agent attempts web searches. Likely tool design issue?
 
@@ -1022,6 +1178,8 @@
 
 ## d2-022 · concept · multi_agent_research, developer_productivity
 
+**Tasks:** 2.3
+
 **Q:** What is scoped tool access for subagents?
 
 **A:** Each agent gets only tools for its role, plus limited cross-role tools for specific high-frequency needs.
@@ -1034,6 +1192,8 @@
 ---
 
 ## d2-023 · concept · customer_support, structured_extraction
+
+**Tasks:** 2.3
 
 **Q:** Three tool_choice configuration options on the Claude API?
 
@@ -1048,6 +1208,8 @@
 
 ## d2-024 · decision · structured_extraction
 
+**Tasks:** 2.3
+
 **Q:** When use tool_choice: "any"?
 
 **A:** When you need guaranteed tool invocation instead of conversational text—e.g., unknown document type among multiple extraction schemas.
@@ -1060,6 +1222,8 @@
 ---
 
 ## d2-025 · decision · structured_extraction
+
+**Tasks:** 2.3
 
 **Q:** Must run extract_metadata before enrichment tools. tool_choice approach?
 
@@ -1074,6 +1238,8 @@
 
 ## d2-026 · decision · multi_agent_research
 
+**Tasks:** 2.3
+
 **Q:** Replace generic fetch_url with what kind of constrained tool?
 
 **A:** Purpose-specific tool like load_document that validates document URLs and rejects non-document URLs.
@@ -1086,6 +1252,8 @@
 ---
 
 ## d2-027 · decision · multi_agent_research
+
+**Tasks:** 2.3
 
 **Q:** Synthesis needs simple fact-checks often. Scoped cross-role tool pattern?
 
@@ -1100,6 +1268,8 @@
 
 ## d2-028 · decision · customer_support
 
+**Tasks:** 2.3
+
 **Q:** Refund tool should only run after verified identity. Tool design choice?
 
 **A:** Least privilege: narrow tool exposure or refund tool requiring verified session token from prior identity tool.
@@ -1112,6 +1282,8 @@
 ---
 
 ## d2-029 · compare · developer_productivity
+
+**Tasks:** 2.4
 
 **Q:** Project-level vs user-level MCP server configuration?
 
@@ -1126,6 +1298,8 @@
 
 ## d2-030 · decision · developer_productivity
 
+**Tasks:** 2.4
+
 **Q:** Store GitHub token for team MCP server without committing secrets?
 
 **A:** Environment variable expansion in .mcp.json (e.g., ${GITHUB_TOKEN}) with secrets in env—not in the repo.
@@ -1138,6 +1312,8 @@
 ---
 
 ## d2-031 · concept · developer_productivity
+
+**Tasks:** 2.4
 
 **Q:** When are MCP tools from multiple servers available to the agent?
 
@@ -1152,6 +1328,8 @@
 
 ## d2-032 · concept · developer_productivity, multi_agent_research
 
+**Tasks:** 2.4
+
 **Q:** MCP resources vs MCP tools—when use resources?
 
 **A:** Resources expose content catalogs (issue summaries, doc hierarchies, DB schemas) to reduce exploratory tool calls.
@@ -1164,6 +1342,8 @@
 ---
 
 ## d2-033 · decision · developer_productivity
+
+**Tasks:** 2.4
 
 **Q:** Agent prefers Grep over a more capable MCP search tool. Fix?
 
@@ -1178,6 +1358,8 @@
 
 ## d2-034 · decision · developer_productivity
 
+**Tasks:** 2.4
+
 **Q:** Jira integration needed. Community MCP server vs custom?
 
 **A:** Prefer existing community MCP for standard integrations (Jira); custom servers for team-specific workflows.
@@ -1190,6 +1372,8 @@
 ---
 
 ## d2-035 · compare · developer_productivity
+
+**Tasks:** 2.4, 2.5
 
 **Q:** Built-in Claude Code tools vs custom MCP—when prefer MCP?
 
@@ -1204,6 +1388,8 @@
 
 ## d2-036 · concept · developer_productivity
 
+**Tasks:** 2.5
+
 **Q:** Built-in Grep vs Glob—primary use case for each?
 
 **A:** Grep: search file contents for patterns (function names, errors, imports). Glob: match file paths by name/extension patterns.
@@ -1216,6 +1402,8 @@
 ---
 
 ## d2-037 · decision · developer_productivity
+
+**Tasks:** 2.5
 
 **Q:** Find all test files named *.test.tsx anywhere in the repo. Which built-in tool?
 
@@ -1230,6 +1418,8 @@
 
 ## d2-038 · decision · developer_productivity
 
+**Tasks:** 2.5
+
 **Q:** Find all callers of a function across the codebase. Which built-in tool?
 
 **A:** Grep to search file contents for the function name/reference patterns.
@@ -1242,6 +1432,8 @@
 ---
 
 ## d2-039 · compare · developer_productivity
+
+**Tasks:** 2.5
 
 **Q:** Read/Write/Edit—when use Edit vs Read + Write?
 
@@ -1256,6 +1448,8 @@
 
 ## d2-040 · decision · developer_productivity
 
+**Tasks:** 2.5
+
 **Q:** Best incremental codebase exploration pattern?
 
 **A:** Grep for entry points → Read to follow imports and trace flows—not read all files upfront.
@@ -1268,6 +1462,8 @@
 ---
 
 ## d2-041 · decision · developer_productivity
+
+**Tasks:** 2.5
 
 **Q:** Trace usage across wrapper modules exporting many names?
 
@@ -1282,6 +1478,8 @@
 
 ## d2-042 · scenario_hook · customer_support, multi_agent_research, developer_productivity
 
+**Tasks:** 2.1
+
 **Q:** Which three exam scenarios list D2 as a primary domain?
 
 **A:** Customer Support, Multi-Agent Research, and Developer Productivity.
@@ -1294,6 +1492,8 @@
 ---
 
 ## d2-043 · concept · customer_support
+
+**Tasks:** 2.1, 2.4
 
 **Q:** Customer Support scenario MCP tools (Exam Scenario 1)—examples?
 
@@ -1308,6 +1508,8 @@
 
 ## d2-044 · concept · developer_productivity
 
+**Tasks:** 2.5
+
 **Q:** Developer Productivity scenario built-in tools (Exam Scenario 4)?
 
 **A:** Read, Write, Bash, Grep, Glob—plus MCP server integrations for external systems.
@@ -1320,6 +1522,8 @@
 ---
 
 ## d2-045 · anti_pattern · customer_support
+
+**Tasks:** 2.1
 
 **Q:** Improve tool selection with keyword routing layer parsing user input each turn. Why often wrong?
 
@@ -1334,6 +1538,8 @@
 
 ## d2-046 · compare · developer_productivity
 
+**Tasks:** 2.4
+
 **Q:** MCP tools vs MCP resources—division of responsibility?
 
 **A:** Tools perform actions (fetch, update, search); resources expose catalogs and static context (schemas, doc trees) to cut exploratory calls.
@@ -1346,6 +1552,8 @@
 ---
 
 ## d2-047 · concept · developer_productivity
+
+**Tasks:** 2.2
 
 **Q:** Why return structured isRetryable metadata on errors?
 
@@ -1360,6 +1568,8 @@
 
 ## d2-048 · concept · developer_productivity
 
+**Tasks:** 2.5
+
 **Q:** Built-in Bash tool—when use vs Grep?
 
 **A:** Bash for shell commands and scripted operations; Grep for searching file contents for patterns across the codebase.
@@ -1372,6 +1582,8 @@
 ---
 
 ## d2-049 · concept · customer_support, structured_extraction
+
+**Tasks:** 2.3, 4.3
 
 **Q:** tool_choice: "auto"—what can the model return?
 
@@ -1386,6 +1598,8 @@
 
 ## d2-050 · anti_pattern · customer_support
 
+**Tasks:** 2.1
+
 **Q:** Similar tools misroute. Add 5–8 few-shot tool-selection examples first?
 
 **A:** Adds token overhead without fixing root cause—inadequate tool descriptions are the primary selection mechanism.
@@ -1398,6 +1612,8 @@
 ---
 
 ## d2-051 · concept · developer_productivity
+
+**Tasks:** 2.5
 
 **Q:** Edit built-in tool—how does it modify files?
 
@@ -1412,6 +1628,8 @@
 
 ## d2-052 · decision · customer_support
 
+**Tasks:** 2.2
+
 **Q:** errorCategory for policy violation refund blocked?
 
 **A:** Business error with isRetryable: false and customer-friendly explanation—not transient or permission.
@@ -1424,6 +1642,8 @@
 ---
 
 ## d3-001 · concept · code_generation, developer_productivity
+
+**Tasks:** 3.1
 
 **Q:** What is CLAUDE.md in Claude Code workflows?
 
@@ -1439,6 +1659,8 @@
 
 ## d3-002 · concept · code_generation, developer_productivity
 
+**Tasks:** 3.1
+
 **Q:** CLAUDE.md configuration hierarchy (three levels)?
 
 **A:** User (~/.claude/CLAUDE.md), project (.claude/CLAUDE.md or root CLAUDE.md), and directory-level (subdirectory CLAUDE.md files).
@@ -1451,6 +1673,8 @@
 ---
 
 ## d3-003 · decision · code_generation
+
+**Tasks:** 3.1
 
 **Q:** New teammate doesn't receive team coding standards in Claude Code. Likely cause?
 
@@ -1465,6 +1689,8 @@
 
 ## d3-004 · concept · code_generation
 
+**Tasks:** 3.1
+
 **Q:** What is @import syntax in CLAUDE.md?
 
 **A:** References external files to keep CLAUDE.md modular—import standards files relevant to each package.
@@ -1477,6 +1703,8 @@
 ---
 
 ## d3-005 · decision · code_generation
+
+**Tasks:** 3.1
 
 **Q:** Monolithic CLAUDE.md is hard to maintain. Alternative organization?
 
@@ -1491,6 +1719,8 @@
 
 ## d3-006 · decision · code_generation
 
+**Tasks:** 3.1
+
 **Q:** Inconsistent Claude Code behavior across sessions—how diagnose loaded config?
 
 **A:** Use /memory to verify which memory files are loaded and what context is active.
@@ -1503,6 +1733,8 @@
 ---
 
 ## d3-007 · anti_pattern · code_generation
+
+**Tasks:** 3.1
 
 **Q:** Why skip shared project CLAUDE.md when multiple developers use Claude Code?
 
@@ -1517,6 +1749,8 @@
 
 ## d3-008 · decision · code_generation, ci_cd
 
+**Tasks:** 3.2
+
 **Q:** Team /review slash command for every developer on clone. Where create it?
 
 **A:** .claude/commands/ in the project repository—version-controlled and shared on clone/pull.
@@ -1529,6 +1763,8 @@
 ---
 
 ## d3-009 · compare · code_generation
+
+**Tasks:** 3.2
 
 **Q:** Project-scoped vs user-scoped slash commands?
 
@@ -1543,6 +1779,8 @@
 
 ## d3-010 · concept · code_generation, developer_productivity
 
+**Tasks:** 3.2
+
 **Q:** Skill frontmatter options in .claude/skills/SKILL.md (name three)?
 
 **A:** context: fork, allowed-tools, and argument-hint.
@@ -1555,6 +1793,8 @@
 ---
 
 ## d3-011 · decision · code_generation
+
+**Tasks:** 3.2
 
 **Q:** Skill produces verbose codebase analysis output. Frontmatter to isolate it?
 
@@ -1569,6 +1809,8 @@
 
 ## d3-012 · decision · code_generation
 
+**Tasks:** 3.2
+
 **Q:** Skill should only write files, not run destructive shell commands. Frontmatter?
 
 **A:** allowed-tools restricting tool access during skill execution (e.g., file write operations only).
@@ -1581,6 +1823,8 @@
 ---
 
 ## d3-013 · decision · code_generation
+
+**Tasks:** 3.2
 
 **Q:** Developer invokes skill without required arguments. Frontmatter help?
 
@@ -1595,6 +1839,8 @@
 
 ## d3-014 · compare · code_generation
 
+**Tasks:** 3.2
+
 **Q:** Skills vs CLAUDE.md—when use each?
 
 **A:** Skills: on-demand task-specific workflows. CLAUDE.md: always-loaded universal standards for the project.
@@ -1607,6 +1853,8 @@
 ---
 
 ## d3-015 · decision · code_generation
+
+**Tasks:** 3.2
 
 **Q:** Personal skill customization without affecting teammates?
 
@@ -1621,6 +1869,8 @@
 
 ## d3-016 · concept · code_generation
 
+**Tasks:** 3.3
+
 **Q:** How do .claude/rules/ path-specific rules activate?
 
 **A:** YAML frontmatter paths field with glob patterns—rules load only when editing matching files.
@@ -1633,6 +1883,8 @@
 ---
 
 ## d3-017 · decision · code_generation
+
+**Tasks:** 3.3
 
 **Q:** Test files spread as Button.test.tsx next to Button.tsx. Apply test conventions automatically?
 
@@ -1647,6 +1899,8 @@
 
 ## d3-018 · decision · code_generation
 
+**Tasks:** 3.3
+
 **Q:** React, API, and DB areas need different conventions; tests scattered everywhere. Best maintainable approach?
 
 **A:** .claude/rules/ with YAML frontmatter glob patterns (e.g., paths: ["**/*.test.tsx"], ["src/api/**/*"])—not inference from one monolithic CLAUDE.md.
@@ -1659,6 +1913,8 @@
 ---
 
 ## d3-019 · compare · code_generation
+
+**Tasks:** 3.3
 
 **Q:** Path-specific rules vs subdirectory CLAUDE.md for scattered test files?
 
@@ -1673,6 +1929,8 @@
 
 ## d3-020 · concept · code_generation
 
+**Tasks:** 3.3
+
 **Q:** Benefit of path-scoped rules loading only on matching files?
 
 **A:** Reduces irrelevant context and token usage—conventions apply only when relevant.
@@ -1685,6 +1943,8 @@
 ---
 
 ## d3-021 · decision · code_generation
+
+**Tasks:** 3.4
 
 **Q:** Restructure monolith into microservices—dozens of files, architectural decisions. Approach?
 
@@ -1699,6 +1959,8 @@
 
 ## d3-022 · compare · code_generation
 
+**Tasks:** 3.4
+
 **Q:** Plan mode vs direct execution—when use each?
 
 **A:** Plan mode: large-scale, multi-file, architectural, multiple valid approaches. Direct execution: simple, well-scoped single changes.
@@ -1711,6 +1973,8 @@
 ---
 
 ## d3-023 · decision · code_generation
+
+**Tasks:** 3.4
 
 **Q:** Single-file bug fix with clear stack trace. Plan mode or direct execution?
 
@@ -1725,6 +1989,8 @@
 
 ## d3-024 · concept · code_generation
 
+**Tasks:** 3.4
+
 **Q:** What is the Explore subagent used for in Claude Code?
 
 **A:** Isolates verbose discovery output and returns summaries—preserves main conversation context during exploration.
@@ -1737,6 +2003,8 @@
 ---
 
 ## d3-025 · decision · code_generation
+
+**Tasks:** 3.4
 
 **Q:** Library migration affecting 45+ files—workflow pattern?
 
@@ -1751,6 +2019,8 @@
 
 ## d3-026 · anti_pattern · code_generation
 
+**Tasks:** 3.4
+
 **Q:** Start monolith-to-microservices in direct execution, switch to plan if complexity emerges. Why wrong?
 
 **A:** Complexity is already stated—plan first prevents costly rework from late-discovered dependencies.
@@ -1763,6 +2033,8 @@
 ---
 
 ## d3-027 · decision · code_generation
+
+**Tasks:** 3.5
 
 **Q:** Natural language transformation spec produces inconsistent code. Best fix?
 
@@ -1777,6 +2049,8 @@
 
 ## d3-028 · concept · code_generation
 
+**Tasks:** 3.5
+
 **Q:** Test-driven iteration pattern with Claude Code?
 
 **A:** Write tests first (behavior, edge cases, performance), then iterate by sharing test failures to guide fixes.
@@ -1789,6 +2063,8 @@
 ---
 
 ## d3-029 · concept · code_generation
+
+**Tasks:** 3.5
 
 **Q:** What is the interview pattern in Claude Code workflows?
 
@@ -1803,6 +2079,8 @@
 
 ## d3-030 · compare · code_generation
 
+**Tasks:** 3.5
+
 **Q:** Fix multiple issues in one message vs sequentially?
 
 **A:** Single message when fixes interact; sequential iteration when issues are independent.
@@ -1815,6 +2093,8 @@
 ---
 
 ## d3-031 · decision · code_generation
+
+**Tasks:** 3.5
 
 **Q:** Migration script mishandles null edge cases. Iteration approach?
 
@@ -1829,6 +2109,8 @@
 
 ## d3-032 · decision · ci_cd
 
+**Tasks:** 3.6
+
 **Q:** CI job hangs—Claude Code waiting for interactive input. Fix?
 
 **A:** Use -p (or --print) flag for non-interactive mode: process prompt, output result, exit.
@@ -1841,6 +2123,8 @@
 ---
 
 ## d3-033 · decision · ci_cd
+
+**Tasks:** 3.6
 
 **Q:** Post structured PR review findings as inline comments from CI. CLI flags?
 
@@ -1855,6 +2139,8 @@
 
 ## d3-034 · concept · ci_cd
 
+**Tasks:** 3.6
+
 **Q:** How provide project context to CI-invoked Claude Code?
 
 **A:** CLAUDE.md with testing standards, fixture conventions, and review criteria loaded automatically.
@@ -1867,6 +2153,8 @@
 ---
 
 ## d3-035 · concept · ci_cd
+
+**Tasks:** 3.6
 
 **Q:** Why use an independent Claude instance to review code it generated in the same session?
 
@@ -1881,6 +2169,8 @@
 
 ## d3-036 · decision · ci_cd
 
+**Tasks:** 3.6
+
 **Q:** Re-run PR review after new commits—avoid duplicate inline comments?
 
 **A:** Include prior review findings in context; instruct Claude to report only new or still-unaddressed issues.
@@ -1893,6 +2183,8 @@
 ---
 
 ## d3-037 · decision · ci_cd
+
+**Tasks:** 3.6
 
 **Q:** CI test generation suggests scenarios already in the suite. Context fix?
 
@@ -1907,6 +2199,8 @@
 
 ## d3-038 · decision · ci_cd, code_generation
 
+**Tasks:** 3.6
+
 **Q:** Reduce low-value generated tests in Claude Code?
 
 **A:** Document testing standards, valuable test criteria, and available fixtures in CLAUDE.md.
@@ -1919,6 +2213,8 @@
 ---
 
 ## d3-039 · decision · ci_cd
+
+**Tasks:** 3.6
 
 **Q:** Running Claude Code in CI for PR review. Critical configuration concerns?
 
@@ -1933,6 +2229,8 @@
 
 ## d3-040 · anti_pattern · ci_cd
 
+**Tasks:** 3.6
+
 **Q:** CI non-interactive flags that do NOT exist (name two)?
 
 **A:** CLAUDE_HEADLESS env var and --batch flag—use -p/--print instead.
@@ -1945,6 +2243,8 @@
 ---
 
 ## d3-041 · scenario_hook · code_generation
+
+**Tasks:** 3.4, 5.1
 
 **Q:** Code Generation scenario (Scenario 2)—primary domains?
 
@@ -1959,6 +2259,8 @@
 
 ## d3-042 · scenario_hook · ci_cd
 
+**Tasks:** 3.6, 4.1
+
 **Q:** CI/CD with Claude Code scenario (Scenario 5)—primary domains?
 
 **A:** D3 (Claude Code) and D4 (prompt engineering/structured output for review findings).
@@ -1971,6 +2273,8 @@
 ---
 
 ## d3-043 · scenario_hook · developer_productivity, code_generation
+
+**Tasks:** 3.2, 3.4
 
 **Q:** Scenario 2 tools: slash commands, CLAUDE.md, plan mode—what is being tested?
 
@@ -1985,6 +2289,8 @@
 
 ## d3-044 · concept · code_generation
 
+**Tasks:** 3.3
+
 **Q:** Example path-scoped rule for Terraform files only?
 
 **A:** .claude/rules/ file with frontmatter paths: ["terraform/**/*"] loading only when editing matching files.
@@ -1997,6 +2303,8 @@
 ---
 
 ## d3-045 · anti_pattern · code_generation
+
+**Tasks:** 3.3
 
 **Q:** Put all area conventions in root CLAUDE.md headers—rely on Claude to infer which applies. Why unreliable?
 
@@ -2011,6 +2319,8 @@
 
 ## d3-046 · anti_pattern · code_generation
 
+**Tasks:** 3.4
+
 **Q:** Monolith-to-microservices: direct execution with comprehensive upfront structure instructions. Why wrong?
 
 **A:** Assumes structure without codebase exploration—dependencies discovered late cause costly rework; plan first.
@@ -2023,6 +2333,8 @@
 ---
 
 ## d3-047 · anti_pattern · code_generation
+
+**Tasks:** 3.3
 
 **Q:** Auto-apply conventions via skills in .claude/skills/ instead of path rules. Why insufficient?
 
@@ -2037,6 +2349,8 @@
 
 ## d3-048 · decision · code_generation
 
+**Tasks:** 3.5
+
 **Q:** Test-driven iteration before implementation—what should tests cover?
 
 **A:** Expected behavior, edge cases, and performance requirements—iterate by sharing failures with Claude.
@@ -2049,6 +2363,8 @@
 ---
 
 ## d3-049 · decision · code_generation
+
+**Tasks:** 3.2
 
 **Q:** context: fork for skills—another use case besides verbose codebase analysis?
 
@@ -2063,6 +2379,8 @@
 
 ## d3-050 · scenario_hook · developer_productivity
 
+**Tasks:** 1.2, 2.5, 3.2
+
 **Q:** Developer Productivity scenario (Scenario 4)—primary domains?
 
 **A:** D2 (built-in tools + MCP), D3 (Claude Code workflows), D1 (delegation/orchestration).
@@ -2075,6 +2393,8 @@
 ---
 
 ## d4-001 · concept · structured_extraction, ci_cd
+
+**Tasks:** 4.3
 
 **Q:** Why use structured output (JSON schema) instead of parsing free-text responses?
 
@@ -2090,6 +2410,8 @@
 
 ## d4-002 · compare · ci_cd
 
+**Tasks:** 4.1
+
 **Q:** Explicit review criteria vs vague instructions like 'be conservative'?
 
 **A:** Specific categorical criteria (flag when comment contradicts code) beat vague confidence filtering for precision.
@@ -2102,6 +2424,8 @@
 ---
 
 ## d4-003 · decision · ci_cd
+
+**Tasks:** 4.1
 
 **Q:** Automated review has high false positives in one category—developers ignore all findings. First response?
 
@@ -2116,6 +2440,8 @@
 
 ## d4-004 · decision · ci_cd
 
+**Tasks:** 4.1
+
 **Q:** How define consistent severity levels in automated code review prompts?
 
 **A:** Explicit severity criteria with concrete code examples for each level—not generic confidence thresholds.
@@ -2128,6 +2454,8 @@
 ---
 
 ## d4-005 · concept · ci_cd
+
+**Tasks:** 4.1
 
 **Q:** Why high false-positive rates in one review category hurt the whole system?
 
@@ -2142,6 +2470,8 @@
 
 ## d4-006 · decision · ci_cd
 
+**Tasks:** 4.1
+
 **Q:** Review prompt design: report bugs/security vs skip minor style?
 
 **A:** Define explicit categories to report versus skip—don't rely on confidence-based filtering alone.
@@ -2154,6 +2484,8 @@
 ---
 
 ## d4-007 · concept · structured_extraction, ci_cd
+
+**Tasks:** 4.2
 
 **Q:** When are few-shot examples most effective?
 
@@ -2168,6 +2500,8 @@
 
 ## d4-008 · decision · ci_cd
 
+**Tasks:** 4.2
+
 **Q:** Review output format inconsistent (location, severity, fix). Improvement?
 
 **A:** Few-shot examples demonstrating exact desired format (location, issue, severity, suggested fix).
@@ -2180,6 +2514,8 @@
 ---
 
 ## d4-009 · decision · ci_cd
+
+**Tasks:** 4.2
 
 **Q:** Reduce false positives while still catching real bugs in review?
 
@@ -2194,6 +2530,8 @@
 
 ## d4-010 · decision · structured_extraction
 
+**Tasks:** 4.2
+
 **Q:** Extraction fails on varied document layouts (inline citations vs bibliographies). Fix?
 
 **A:** Few-shot examples showing correct handling of each document structure variant.
@@ -2206,6 +2544,8 @@
 ---
 
 ## d4-011 · decision · structured_extraction
+
+**Tasks:** 4.2
 
 **Q:** Model returns null/empty for required fields on varied formats. Few-shot approach?
 
@@ -2220,6 +2560,8 @@
 
 ## d4-012 · decision · structured_extraction, ci_cd
 
+**Tasks:** 4.2
+
 **Q:** How many few-shot examples for ambiguous scenarios, and what show?
 
 **A:** 2–4 targeted examples with reasoning for why one action was chosen over plausible alternatives.
@@ -2232,6 +2574,8 @@
 ---
 
 ## d4-013 · concept · structured_extraction
+
+**Tasks:** 4.3
 
 **Q:** Most reliable approach for guaranteed schema-compliant JSON output?
 
@@ -2246,6 +2590,8 @@
 
 ## d4-014 · concept · structured_extraction
 
+**Tasks:** 4.3, 4.4
+
 **Q:** Strict JSON schemas via tool_use eliminate syntax errors—but what errors remain?
 
 **A:** Semantic errors: wrong field values, line items not summing to total, values in incorrect fields.
@@ -2258,6 +2604,8 @@
 ---
 
 ## d4-015 · decision · structured_extraction
+
+**Tasks:** 4.3
 
 **Q:** Source document may omit a field. Schema design to prevent fabrication?
 
@@ -2272,6 +2620,8 @@
 
 ## d4-016 · decision · structured_extraction
 
+**Tasks:** 4.3
+
 **Q:** Extensible category field in extraction schema—pattern?
 
 **A:** Enum with "other" plus a detail string field for categories not in the predefined list.
@@ -2284,6 +2634,8 @@
 ---
 
 ## d4-017 · decision · structured_extraction
+
+**Tasks:** 4.3
 
 **Q:** Ambiguous source data in extraction—enum design?
 
@@ -2298,6 +2650,8 @@
 
 ## d4-018 · decision · structured_extraction
 
+**Tasks:** 4.3
+
 **Q:** Inconsistent date formats in source documents alongside strict schema?
 
 **A:** Include format normalization rules in the prompt alongside the strict output schema.
@@ -2310,6 +2664,8 @@
 ---
 
 ## d4-019 · decision · structured_extraction
+
+**Tasks:** 4.3
 
 **Q:** Multiple extraction schemas; document type unknown at request time. tool_choice?
 
@@ -2324,6 +2680,8 @@
 
 ## d4-020 · decision · structured_extraction
 
+**Tasks:** 4.3
+
 **Q:** Where extract structured data from a tool_use extraction call?
 
 **A:** From the tool_use response block—schema defines tool input parameters; model fills structured fields there.
@@ -2336,6 +2694,8 @@
 ---
 
 ## d4-021 · concept · structured_extraction
+
+**Tasks:** 4.4
 
 **Q:** What is retry-with-error-feedback for extraction?
 
@@ -2350,6 +2710,8 @@
 
 ## d4-022 · compare · structured_extraction
 
+**Tasks:** 4.4
+
 **Q:** When will validation retries succeed vs fail?
 
 **A:** Succeed on format/structural mismatches. Fail when required info is absent from source (or only in external doc not provided).
@@ -2362,6 +2724,8 @@
 ---
 
 ## d4-023 · compare · structured_extraction, ci_cd
+
+**Tasks:** 4.4
 
 **Q:** Schema syntax errors vs semantic validation errors?
 
@@ -2376,6 +2740,8 @@
 
 ## d4-024 · decision · ci_cd
 
+**Tasks:** 4.4
+
 **Q:** Developers dismiss many automated findings. Feedback loop design?
 
 **A:** Add detected_pattern field to findings to analyze which constructs trigger false positives when dismissed.
@@ -2388,6 +2754,8 @@
 ---
 
 ## d4-025 · decision · structured_extraction
+
+**Tasks:** 4.4
 
 **Q:** Self-correction for invoice totals that don't add up?
 
@@ -2402,6 +2770,8 @@
 
 ## d4-026 · decision · structured_extraction
 
+**Tasks:** 4.3, 4.4
+
 **Q:** Extraction misses nullable fields intermittently. Best improvement?
 
 **A:** Tighten required vs optional schema, validation-retry loop, and explicit examples for null/edge cases.
@@ -2414,6 +2784,8 @@
 ---
 
 ## d4-027 · concept · ci_cd, structured_extraction
+
+**Tasks:** 4.5
 
 **Q:** Message Batches API tradeoffs (cost, latency)?
 
@@ -2428,6 +2800,8 @@
 
 ## d4-028 · decision · ci_cd
 
+**Tasks:** 4.5
+
 **Q:** Pre-merge blocking check vs overnight technical debt report—batch API for both?
 
 **A:** Batch only for latency-tolerant jobs (overnight reports); keep synchronous API for blocking pre-merge checks.
@@ -2440,6 +2814,8 @@
 ---
 
 ## d4-029 · concept · structured_extraction
+
+**Tasks:** 4.5
 
 **Q:** Message Batches API limitation on tool calling?
 
@@ -2454,6 +2830,8 @@
 
 ## d4-030 · concept · structured_extraction
 
+**Tasks:** 4.5
+
 **Q:** custom_id in Message Batches API—purpose?
 
 **A:** Correlate batch request/response pairs and identify failed documents for resubmission.
@@ -2466,6 +2844,8 @@
 ---
 
 ## d4-031 · decision · structured_extraction
+
+**Tasks:** 4.5
 
 **Q:** Batch job failures—resubmission strategy?
 
@@ -2480,6 +2860,8 @@
 
 ## d4-032 · decision · structured_extraction
 
+**Tasks:** 4.5
+
 **Q:** Before batch-processing 10,000 documents—cost reduction step?
 
 **A:** Refine prompts on a sample set first to maximize first-pass success and reduce resubmission costs.
@@ -2492,6 +2874,8 @@
 ---
 
 ## d4-033 · concept · structured_extraction
+
+**Tasks:** 4.6
 
 **Q:** Why self-review of generated code in the same session is limited?
 
@@ -2506,6 +2890,8 @@
 
 ## d4-034 · decision · ci_cd
 
+**Tasks:** 4.6
+
 **Q:** Best approach to catch subtle issues in AI-generated code?
 
 **A:** Second independent Claude instance reviewing without the generator's reasoning context.
@@ -2518,6 +2904,8 @@
 ---
 
 ## d4-035 · decision · ci_cd
+
+**Tasks:** 4.6
 
 **Q:** Large multi-file PR review—multi-pass architecture?
 
@@ -2532,6 +2920,8 @@
 
 ## d4-036 · decision · ci_cd
 
+**Tasks:** 4.6
+
 **Q:** Route review findings to human triage by severity—schema approach?
 
 **A:** Verification pass where model reports confidence alongside each finding for calibrated routing.
@@ -2544,6 +2934,8 @@
 ---
 
 ## d4-037 · compare · ci_cd, structured_extraction
+
+**Tasks:** 4.3
 
 **Q:** Prompt-only PR findings vs JSON schema for CI gates?
 
@@ -2558,6 +2950,8 @@
 
 ## d4-038 · anti_pattern · structured_extraction
 
+**Tasks:** 4.4
+
 **Q:** Why trust model self-reported confidence without validation?
 
 **A:** Not calibrated by default—use schema checks, cross-field rules, or human review thresholds for high-risk fields.
@@ -2570,6 +2964,8 @@
 ---
 
 ## d4-039 · anti_pattern · ci_cd
+
+**Tasks:** 4.6
 
 **Q:** Run three full PR review passes and only flag issues in 2+ passes. Why wrong?
 
@@ -2584,6 +2980,8 @@
 
 ## d4-040 · scenario_hook · structured_extraction
 
+**Tasks:** 4.3, 5.5
+
 **Q:** Structured Data Extraction scenario (Scenario 6)—primary domains?
 
 **A:** D4 (schemas, validation, batch) and D5 (reliability, human review for low confidence).
@@ -2596,6 +2994,8 @@
 ---
 
 ## d4-041 · scenario_hook · ci_cd
+
+**Tasks:** 4.3, 4.4
 
 **Q:** Scenario 6 extraction system requirements from the exam guide?
 
@@ -2610,6 +3010,8 @@
 
 ## d4-042 · concept · structured_extraction
 
+**Tasks:** 4.2
+
 **Q:** Few-shot examples reduce hallucination in extraction—example use cases?
 
 **A:** Informal measurements, varied document structures, and inconsistent field formats in source documents.
@@ -2622,6 +3024,8 @@
 ---
 
 ## d4-043 · anti_pattern · ci_cd
+
+**Tasks:** 4.5
 
 **Q:** Switch blocking pre-merge checks to batch API with status polling. Why wrong?
 
@@ -2636,6 +3040,8 @@
 
 ## d4-044 · decision · structured_extraction
 
+**Tasks:** 4.5
+
 **Q:** 30-hour SLA with 24-hour max batch processing—submission frequency?
 
 **A:** Calculate submission windows (e.g., 4-hour intervals) so batches complete within SLA with margin for retries.
@@ -2648,6 +3054,8 @@
 ---
 
 ## d4-045 · concept · ci_cd, structured_extraction
+
+**Tasks:** 4.6
 
 **Q:** Independent review instances vs extended thinking for self-review?
 
@@ -2662,6 +3070,8 @@
 
 ## d4-046 · concept · ci_cd
 
+**Tasks:** 4.1
+
 **Q:** Explicit review criteria example—comments vs code?
 
 **A:** Flag comments only when claimed behavior contradicts actual code—not vague 'check comment accuracy'.
@@ -2674,6 +3084,8 @@
 ---
 
 ## d4-047 · concept · ci_cd, structured_extraction
+
+**Tasks:** 4.2
 
 **Q:** How few-shot examples generalize beyond pre-specified cases?
 
@@ -2688,6 +3100,8 @@
 
 ## d4-048 · decision · ci_cd
 
+**Tasks:** 4.2
+
 **Q:** Few-shot use case: branch-level test coverage gaps?
 
 **A:** Show how to identify and report coverage gaps at branch level—ambiguous case requiring demonstrated judgment.
@@ -2700,6 +3114,8 @@
 ---
 
 ## d4-049 · anti_pattern · ci_cd
+
+**Tasks:** 4.5
 
 **Q:** Switch both blocking and overnight jobs to batch API with real-time fallback. Why over-engineered?
 
@@ -2714,6 +3130,8 @@
 
 ## d4-050 · anti_pattern · ci_cd
 
+**Tasks:** 4.6
+
 **Q:** Large PR review: switch to higher-tier model with larger context window. Why insufficient?
 
 **A:** Larger context doesn't fix attention dilution—split into per-file plus integration passes instead.
@@ -2726,6 +3144,8 @@
 ---
 
 ## d5-001 · concept · customer_support, multi_agent_research, code_generation
+
+**Tasks:** 5.4
 
 **Q:** What is context degradation in long agent sessions?
 
@@ -2740,6 +3160,8 @@
 
 ## d5-002 · concept · customer_support, structured_extraction
 
+**Tasks:** 5.1
+
 **Q:** Risk of progressive summarization in long support sessions?
 
 **A:** Condenses amounts, dates, percentages, and customer-stated expectations into vague summaries—loses critical transactional facts.
@@ -2752,6 +3174,8 @@
 ---
 
 ## d5-003 · concept · multi_agent_research, structured_extraction
+
+**Tasks:** 5.1
 
 **Q:** What is the 'lost in the middle' effect?
 
@@ -2766,6 +3190,8 @@
 
 ## d5-004 · decision · customer_support
 
+**Tasks:** 5.1
+
 **Q:** Preserve order amounts and dates across a long support conversation?
 
 **A:** Extract transactional facts into a persistent case facts block in each prompt—outside summarized history.
@@ -2778,6 +3204,8 @@
 ---
 
 ## d5-005 · decision · customer_support
+
+**Tasks:** 5.1
 
 **Q:** Order lookup returns 40+ fields but only 5 matter for returns. Context fix?
 
@@ -2792,6 +3220,8 @@
 
 ## d5-006 · decision · multi_agent_research
 
+**Tasks:** 5.1
+
 **Q:** Mitigate lost-in-the-middle when aggregating subagent results?
 
 **A:** Place key findings summary at the beginning; organize detailed results with explicit section headers.
@@ -2804,6 +3234,8 @@
 ---
 
 ## d5-007 · decision · multi_agent_research
+
+**Tasks:** 5.1
 
 **Q:** Downstream synthesis agent has limited context budget. Upstream agent output design?
 
@@ -2818,6 +3250,8 @@
 
 ## d5-008 · concept · customer_support, multi_agent_research
 
+**Tasks:** 5.1
+
 **Q:** Why pass complete conversation history in subsequent API requests?
 
 **A:** Maintains conversational coherence—the model needs prior turns to reason about the ongoing case.
@@ -2830,6 +3264,8 @@
 ---
 
 ## d5-009 · decision · customer_support
+
+**Tasks:** 5.1
 
 **Q:** Multi-issue support session (billing + return). Context layer approach?
 
@@ -2844,6 +3280,8 @@
 
 ## d5-010 · concept · customer_support
 
+**Tasks:** 5.2
+
 **Q:** Three appropriate escalation triggers (beyond 'complex case')?
 
 **A:** Customer explicitly requests human, policy exception/gap, and inability to make meaningful progress.
@@ -2856,6 +3294,8 @@
 ---
 
 ## d5-011 · decision · customer_support
+
+**Tasks:** 5.2
 
 **Q:** 55% FCR—escalates easy cases, handles hard policy exceptions alone. Best calibration fix?
 
@@ -2870,6 +3310,8 @@
 
 ## d5-012 · anti_pattern · customer_support
 
+**Tasks:** 5.2
+
 **Q:** Route to human when self-reported confidence score is below threshold. Why unreliable?
 
 **A:** LLM confidence is poorly calibrated—agent may be wrongly confident on hard cases and uncertain on easy ones.
@@ -2882,6 +3324,8 @@
 ---
 
 ## d5-013 · anti_pattern · customer_support
+
+**Tasks:** 5.2
 
 **Q:** Escalate on negative sentiment threshold. Why wrong for calibration?
 
@@ -2896,6 +3340,8 @@
 
 ## d5-014 · decision · customer_support
 
+**Tasks:** 5.2
+
 **Q:** Customer explicitly demands a human agent. Response?
 
 **A:** Honor immediately—do not attempt investigation first when they explicitly request a human.
@@ -2908,6 +3354,8 @@
 ---
 
 ## d5-015 · decision · customer_support
+
+**Tasks:** 5.2
 
 **Q:** Frustrated customer, issue is within agent capability. Approach?
 
@@ -2922,6 +3370,8 @@
 
 ## d5-016 · decision · customer_support
 
+**Tasks:** 5.2
+
 **Q:** Policy silent on competitor price matching (only covers own-site adjustments). Action?
 
 **A:** Escalate—policy gap/exception case, not autonomous resolution.
@@ -2934,6 +3384,8 @@
 ---
 
 ## d5-017 · decision · customer_support
+
+**Tasks:** 5.2
 
 **Q:** get_customer returns multiple matches. What should the agent do?
 
@@ -2948,6 +3400,8 @@
 
 ## d5-018 · decision · multi_agent_research
 
+**Tasks:** 5.1
+
 **Q:** Subagents need prior search results. Best context passing?
 
 **A:** Explicit structured handoffs (IDs, snippets, citations) via coordinator—not implicit shared memory.
@@ -2960,6 +3414,8 @@
 ---
 
 ## d5-019 · decision · multi_agent_research
+
+**Tasks:** 5.3
 
 **Q:** Web search subagent timeout—best error propagation to coordinator?
 
@@ -2974,6 +3430,8 @@
 
 ## d5-020 · anti_pattern · multi_agent_research
 
+**Tasks:** 5.3
+
 **Q:** Subagent returns empty results marked successful after timeout. Why anti-pattern?
 
 **A:** Silently suppresses errors—coordinator cannot recover or annotate coverage gaps.
@@ -2986,6 +3444,8 @@
 ---
 
 ## d5-021 · decision · multi_agent_research
+
+**Tasks:** 5.3
 
 **Q:** Synthesis output after partial subagent failures—what include?
 
@@ -3000,6 +3460,8 @@
 
 ## d5-022 · decision · customer_support, multi_agent_research
 
+**Tasks:** 5.3
+
 **Q:** Agent loop fails twice on same tool error. Next step?
 
 **A:** Escalate or change strategy (alternate tool, human handoff)—not infinite identical retries.
@@ -3012,6 +3474,8 @@
 ---
 
 ## d5-023 · concept · code_generation, developer_productivity
+
+**Tasks:** 5.4
 
 **Q:** Scratchpad files in long Claude Code exploration sessions—purpose?
 
@@ -3026,6 +3490,8 @@
 
 ## d5-024 · decision · code_generation, developer_productivity
 
+**Tasks:** 5.4
+
 **Q:** Verbose codebase exploration fills context. Claude Code command to reduce usage?
 
 **A:** /compact to condense verbose discovery output during extended sessions.
@@ -3038,6 +3504,8 @@
 ---
 
 ## d5-025 · decision · developer_productivity
+
+**Tasks:** 5.4
 
 **Q:** Multi-phase codebase exploration—context pattern between phases?
 
@@ -3052,6 +3520,8 @@
 
 ## d5-026 · concept · multi_agent_research, developer_productivity
 
+**Tasks:** 5.4
+
 **Q:** Crash recovery pattern for multi-agent workflows?
 
 **A:** Each agent exports state to a known location; coordinator loads manifest on resume and injects into prompts.
@@ -3064,6 +3534,8 @@
 ---
 
 ## d5-027 · anti_pattern · code_generation, developer_productivity
+
+**Tasks:** 2.5, 5.4
 
 **Q:** Why dump entire repo into context for every Claude Code task?
 
@@ -3078,6 +3550,8 @@
 
 ## d5-028 · concept · structured_extraction
 
+**Tasks:** 5.5
+
 **Q:** 97% overall extraction accuracy—why not automate all human review?
 
 **A:** Aggregate metrics may mask poor performance on specific document types or individual fields.
@@ -3090,6 +3564,8 @@
 ---
 
 ## d5-029 · decision · structured_extraction
+
+**Tasks:** 5.5
 
 **Q:** Ongoing quality monitoring for high-confidence extractions?
 
@@ -3104,6 +3580,8 @@
 
 ## d5-030 · decision · structured_extraction
 
+**Tasks:** 5.5
+
 **Q:** Calibrate human review routing for extractions?
 
 **A:** Model outputs field-level confidence; calibrate thresholds using labeled validation sets.
@@ -3116,6 +3594,8 @@
 ---
 
 ## d5-031 · decision · structured_extraction
+
+**Tasks:** 5.5
 
 **Q:** Before reducing human review on high-confidence extractions—verify what?
 
@@ -3130,6 +3610,8 @@
 
 ## d5-032 · decision · structured_extraction
 
+**Tasks:** 5.5
+
 **Q:** Limited reviewer capacity—prioritize which extractions for human review?
 
 **A:** Low model confidence, ambiguous source documents, or contradictory source data.
@@ -3142,6 +3624,8 @@
 ---
 
 ## d5-033 · concept · multi_agent_research
+
+**Tasks:** 5.6
 
 **Q:** How is source attribution lost in multi-agent research pipelines?
 
@@ -3156,6 +3640,8 @@
 
 ## d5-034 · decision · multi_agent_research
 
+**Tasks:** 5.6
+
 **Q:** Subagent output for downstream synthesis—provenance requirement?
 
 **A:** Structured claim-source mappings (URLs, document names, excerpts) preserved through synthesis.
@@ -3168,6 +3654,8 @@
 ---
 
 ## d5-035 · decision · multi_agent_research
+
+**Tasks:** 5.6
 
 **Q:** Two credible sources report different statistics. Synthesis handling?
 
@@ -3182,6 +3670,8 @@
 
 ## d5-036 · decision · multi_agent_research
 
+**Tasks:** 5.6
+
 **Q:** Why require publication/collection dates in structured subagent outputs?
 
 **A:** Enables correct temporal interpretation—prevents time differences being misread as contradictions.
@@ -3194,6 +3684,8 @@
 ---
 
 ## d5-037 · decision · multi_agent_research
+
+**Tasks:** 5.6
 
 **Q:** Research report structure for contested vs established findings?
 
@@ -3208,6 +3700,8 @@
 
 ## d5-038 · decision · multi_agent_research
 
+**Tasks:** 5.6
+
 **Q:** Synthesis output formatting for mixed content types?
 
 **A:** Render appropriately—financial data as tables, news as prose, technical findings as structured lists.
@@ -3220,6 +3714,8 @@
 ---
 
 ## d5-039 · scenario_hook · customer_support, multi_agent_research, structured_extraction
+
+**Tasks:** 5.1, 5.2, 5.3
 
 **Q:** Which three scenarios list D5 as a primary domain?
 
@@ -3234,6 +3730,8 @@
 
 ## d5-040 · scenario_hook · code_generation
 
+**Tasks:** 3.4, 5.1
+
 **Q:** Code Generation scenario (Scenario 2)—D5 focus areas?
 
 **A:** Context preservation across edits, plan vs execute context management, and session reliability.
@@ -3246,6 +3744,8 @@
 ---
 
 ## d5-041 · decision · multi_agent_research
+
+**Tasks:** 5.1
 
 **Q:** Subagent structured outputs for downstream synthesis—required metadata?
 
@@ -3260,6 +3760,8 @@
 
 ## d5-042 · anti_pattern · customer_support
 
+**Tasks:** 5.2
+
 **Q:** Deploy classifier model to predict escalation before agent runs. Why over-engineered first step?
 
 **A:** Requires labeled data and ML infra when prompt criteria with few-shot hasn't been tried yet.
@@ -3272,6 +3774,8 @@
 ---
 
 ## d5-043 · anti_pattern · multi_agent_research
+
+**Tasks:** 5.3
 
 **Q:** Subagent retries then returns generic 'search unavailable' to coordinator. Problem?
 
@@ -3286,6 +3790,8 @@
 
 ## d5-044 · anti_pattern · multi_agent_research
 
+**Tasks:** 5.3
+
 **Q:** Single subagent failure terminates entire multi-agent workflow. Why wrong?
 
 **A:** Often recoverable with partial results, alternate queries, or gap annotations—unnecessary full termination.
@@ -3298,6 +3804,8 @@
 ---
 
 ## d5-045 · decision · developer_productivity, code_generation
+
+**Tasks:** 5.4
 
 **Q:** Long codebase exploration—delegate specific questions while preserving coordination?
 
@@ -3312,6 +3820,8 @@
 
 ## d5-046 · decision · multi_agent_research
 
+**Tasks:** 5.6
+
 **Q:** Document analysis finds conflicting values from sources. Before synthesis?
 
 **A:** Complete analysis with conflicts included and explicitly annotated—let coordinator reconcile before passing to synthesis.
@@ -3325,6 +3835,8 @@
 
 ## d5-047 · decision · developer_productivity
 
+**Tasks:** 5.4
+
 **Q:** Scratchpad file during exploration—how use for follow-up questions?
 
 **A:** Record key findings in scratchpad; reference it for subsequent questions to counteract context degradation.
@@ -3337,6 +3849,8 @@
 ---
 
 ## meta-001 · meta · all
+
+**Tasks:** exam-format
 
 **Q:** What is the official exam code for Claude Certified Architect, Foundations?
 
@@ -3354,6 +3868,8 @@
 
 ## meta-002 · meta · all
 
+**Tasks:** exam-format
+
 **Q:** CCAR-F format: how many questions, time limit, and passing score?
 
 **A:** 60 scenario-based items, 120 minutes, pass at scaled 720 on a 100–1000 scale.
@@ -3367,6 +3883,8 @@
 
 ## meta-003 · meta · all
 
+**Tasks:** scenarios
+
 **Q:** How many scenarios appear on the exam, and from what pool?
 
 **A:** 4 scenarios per exam, drawn randomly from a published bank of 6.
@@ -3379,6 +3897,8 @@
 ---
 
 ## meta-004 · decision · all
+
+**Tasks:** cross-domain
 
 **Q:** Core heuristic when a scenario needs deterministic guarantees (money, identity, schema compliance)?
 

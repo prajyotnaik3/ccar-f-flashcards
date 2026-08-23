@@ -2,6 +2,8 @@
 
 ## d4-001 · concept · structured_extraction, ci_cd
 
+**Tasks:** 4.3
+
 **Q:** Why use structured output (JSON schema) instead of parsing free-text responses?
 
 **A:** Enables validation, automated retries on failure, and downstream automation without fragile regex on prose.
@@ -16,6 +18,8 @@
 
 ## d4-002 · compare · ci_cd
 
+**Tasks:** 4.1
+
 **Q:** Explicit review criteria vs vague instructions like 'be conservative'?
 
 **A:** Specific categorical criteria (flag when comment contradicts code) beat vague confidence filtering for precision.
@@ -28,6 +32,8 @@
 ---
 
 ## d4-003 · decision · ci_cd
+
+**Tasks:** 4.1
 
 **Q:** Automated review has high false positives in one category—developers ignore all findings. First response?
 
@@ -42,6 +48,8 @@
 
 ## d4-004 · decision · ci_cd
 
+**Tasks:** 4.1
+
 **Q:** How define consistent severity levels in automated code review prompts?
 
 **A:** Explicit severity criteria with concrete code examples for each level—not generic confidence thresholds.
@@ -54,6 +62,8 @@
 ---
 
 ## d4-005 · concept · ci_cd
+
+**Tasks:** 4.1
 
 **Q:** Why high false-positive rates in one review category hurt the whole system?
 
@@ -68,6 +78,8 @@
 
 ## d4-006 · decision · ci_cd
 
+**Tasks:** 4.1
+
 **Q:** Review prompt design: report bugs/security vs skip minor style?
 
 **A:** Define explicit categories to report versus skip—don't rely on confidence-based filtering alone.
@@ -80,6 +92,8 @@
 ---
 
 ## d4-007 · concept · structured_extraction, ci_cd
+
+**Tasks:** 4.2
 
 **Q:** When are few-shot examples most effective?
 
@@ -94,6 +108,8 @@
 
 ## d4-008 · decision · ci_cd
 
+**Tasks:** 4.2
+
 **Q:** Review output format inconsistent (location, severity, fix). Improvement?
 
 **A:** Few-shot examples demonstrating exact desired format (location, issue, severity, suggested fix).
@@ -106,6 +122,8 @@
 ---
 
 ## d4-009 · decision · ci_cd
+
+**Tasks:** 4.2
 
 **Q:** Reduce false positives while still catching real bugs in review?
 
@@ -120,6 +138,8 @@
 
 ## d4-010 · decision · structured_extraction
 
+**Tasks:** 4.2
+
 **Q:** Extraction fails on varied document layouts (inline citations vs bibliographies). Fix?
 
 **A:** Few-shot examples showing correct handling of each document structure variant.
@@ -132,6 +152,8 @@
 ---
 
 ## d4-011 · decision · structured_extraction
+
+**Tasks:** 4.2
 
 **Q:** Model returns null/empty for required fields on varied formats. Few-shot approach?
 
@@ -146,6 +168,8 @@
 
 ## d4-012 · decision · structured_extraction, ci_cd
 
+**Tasks:** 4.2
+
 **Q:** How many few-shot examples for ambiguous scenarios, and what show?
 
 **A:** 2–4 targeted examples with reasoning for why one action was chosen over plausible alternatives.
@@ -158,6 +182,8 @@
 ---
 
 ## d4-013 · concept · structured_extraction
+
+**Tasks:** 4.3
 
 **Q:** Most reliable approach for guaranteed schema-compliant JSON output?
 
@@ -172,6 +198,8 @@
 
 ## d4-014 · concept · structured_extraction
 
+**Tasks:** 4.3, 4.4
+
 **Q:** Strict JSON schemas via tool_use eliminate syntax errors—but what errors remain?
 
 **A:** Semantic errors: wrong field values, line items not summing to total, values in incorrect fields.
@@ -184,6 +212,8 @@
 ---
 
 ## d4-015 · decision · structured_extraction
+
+**Tasks:** 4.3
 
 **Q:** Source document may omit a field. Schema design to prevent fabrication?
 
@@ -198,6 +228,8 @@
 
 ## d4-016 · decision · structured_extraction
 
+**Tasks:** 4.3
+
 **Q:** Extensible category field in extraction schema—pattern?
 
 **A:** Enum with "other" plus a detail string field for categories not in the predefined list.
@@ -210,6 +242,8 @@
 ---
 
 ## d4-017 · decision · structured_extraction
+
+**Tasks:** 4.3
 
 **Q:** Ambiguous source data in extraction—enum design?
 
@@ -224,6 +258,8 @@
 
 ## d4-018 · decision · structured_extraction
 
+**Tasks:** 4.3
+
 **Q:** Inconsistent date formats in source documents alongside strict schema?
 
 **A:** Include format normalization rules in the prompt alongside the strict output schema.
@@ -236,6 +272,8 @@
 ---
 
 ## d4-019 · decision · structured_extraction
+
+**Tasks:** 4.3
 
 **Q:** Multiple extraction schemas; document type unknown at request time. tool_choice?
 
@@ -250,6 +288,8 @@
 
 ## d4-020 · decision · structured_extraction
 
+**Tasks:** 4.3
+
 **Q:** Where extract structured data from a tool_use extraction call?
 
 **A:** From the tool_use response block—schema defines tool input parameters; model fills structured fields there.
@@ -262,6 +302,8 @@
 ---
 
 ## d4-021 · concept · structured_extraction
+
+**Tasks:** 4.4
 
 **Q:** What is retry-with-error-feedback for extraction?
 
@@ -276,6 +318,8 @@
 
 ## d4-022 · compare · structured_extraction
 
+**Tasks:** 4.4
+
 **Q:** When will validation retries succeed vs fail?
 
 **A:** Succeed on format/structural mismatches. Fail when required info is absent from source (or only in external doc not provided).
@@ -288,6 +332,8 @@
 ---
 
 ## d4-023 · compare · structured_extraction, ci_cd
+
+**Tasks:** 4.4
 
 **Q:** Schema syntax errors vs semantic validation errors?
 
@@ -302,6 +348,8 @@
 
 ## d4-024 · decision · ci_cd
 
+**Tasks:** 4.4
+
 **Q:** Developers dismiss many automated findings. Feedback loop design?
 
 **A:** Add detected_pattern field to findings to analyze which constructs trigger false positives when dismissed.
@@ -314,6 +362,8 @@
 ---
 
 ## d4-025 · decision · structured_extraction
+
+**Tasks:** 4.4
 
 **Q:** Self-correction for invoice totals that don't add up?
 
@@ -328,6 +378,8 @@
 
 ## d4-026 · decision · structured_extraction
 
+**Tasks:** 4.3, 4.4
+
 **Q:** Extraction misses nullable fields intermittently. Best improvement?
 
 **A:** Tighten required vs optional schema, validation-retry loop, and explicit examples for null/edge cases.
@@ -340,6 +392,8 @@
 ---
 
 ## d4-027 · concept · ci_cd, structured_extraction
+
+**Tasks:** 4.5
 
 **Q:** Message Batches API tradeoffs (cost, latency)?
 
@@ -354,6 +408,8 @@
 
 ## d4-028 · decision · ci_cd
 
+**Tasks:** 4.5
+
 **Q:** Pre-merge blocking check vs overnight technical debt report—batch API for both?
 
 **A:** Batch only for latency-tolerant jobs (overnight reports); keep synchronous API for blocking pre-merge checks.
@@ -366,6 +422,8 @@
 ---
 
 ## d4-029 · concept · structured_extraction
+
+**Tasks:** 4.5
 
 **Q:** Message Batches API limitation on tool calling?
 
@@ -380,6 +438,8 @@
 
 ## d4-030 · concept · structured_extraction
 
+**Tasks:** 4.5
+
 **Q:** custom_id in Message Batches API—purpose?
 
 **A:** Correlate batch request/response pairs and identify failed documents for resubmission.
@@ -392,6 +452,8 @@
 ---
 
 ## d4-031 · decision · structured_extraction
+
+**Tasks:** 4.5
 
 **Q:** Batch job failures—resubmission strategy?
 
@@ -406,6 +468,8 @@
 
 ## d4-032 · decision · structured_extraction
 
+**Tasks:** 4.5
+
 **Q:** Before batch-processing 10,000 documents—cost reduction step?
 
 **A:** Refine prompts on a sample set first to maximize first-pass success and reduce resubmission costs.
@@ -418,6 +482,8 @@
 ---
 
 ## d4-033 · concept · structured_extraction
+
+**Tasks:** 4.6
 
 **Q:** Why self-review of generated code in the same session is limited?
 
@@ -432,6 +498,8 @@
 
 ## d4-034 · decision · ci_cd
 
+**Tasks:** 4.6
+
 **Q:** Best approach to catch subtle issues in AI-generated code?
 
 **A:** Second independent Claude instance reviewing without the generator's reasoning context.
@@ -444,6 +512,8 @@
 ---
 
 ## d4-035 · decision · ci_cd
+
+**Tasks:** 4.6
 
 **Q:** Large multi-file PR review—multi-pass architecture?
 
@@ -458,6 +528,8 @@
 
 ## d4-036 · decision · ci_cd
 
+**Tasks:** 4.6
+
 **Q:** Route review findings to human triage by severity—schema approach?
 
 **A:** Verification pass where model reports confidence alongside each finding for calibrated routing.
@@ -470,6 +542,8 @@
 ---
 
 ## d4-037 · compare · ci_cd, structured_extraction
+
+**Tasks:** 4.3
 
 **Q:** Prompt-only PR findings vs JSON schema for CI gates?
 
@@ -484,6 +558,8 @@
 
 ## d4-038 · anti_pattern · structured_extraction
 
+**Tasks:** 4.4
+
 **Q:** Why trust model self-reported confidence without validation?
 
 **A:** Not calibrated by default—use schema checks, cross-field rules, or human review thresholds for high-risk fields.
@@ -496,6 +572,8 @@
 ---
 
 ## d4-039 · anti_pattern · ci_cd
+
+**Tasks:** 4.6
 
 **Q:** Run three full PR review passes and only flag issues in 2+ passes. Why wrong?
 
@@ -510,6 +588,8 @@
 
 ## d4-040 · scenario_hook · structured_extraction
 
+**Tasks:** 4.3, 5.5
+
 **Q:** Structured Data Extraction scenario (Scenario 6)—primary domains?
 
 **A:** D4 (schemas, validation, batch) and D5 (reliability, human review for low confidence).
@@ -522,6 +602,8 @@
 ---
 
 ## d4-041 · scenario_hook · ci_cd
+
+**Tasks:** 4.3, 4.4
 
 **Q:** Scenario 6 extraction system requirements from the exam guide?
 
@@ -536,6 +618,8 @@
 
 ## d4-042 · concept · structured_extraction
 
+**Tasks:** 4.2
+
 **Q:** Few-shot examples reduce hallucination in extraction—example use cases?
 
 **A:** Informal measurements, varied document structures, and inconsistent field formats in source documents.
@@ -548,6 +632,8 @@
 ---
 
 ## d4-043 · anti_pattern · ci_cd
+
+**Tasks:** 4.5
 
 **Q:** Switch blocking pre-merge checks to batch API with status polling. Why wrong?
 
@@ -562,6 +648,8 @@
 
 ## d4-044 · decision · structured_extraction
 
+**Tasks:** 4.5
+
 **Q:** 30-hour SLA with 24-hour max batch processing—submission frequency?
 
 **A:** Calculate submission windows (e.g., 4-hour intervals) so batches complete within SLA with margin for retries.
@@ -574,6 +662,8 @@
 ---
 
 ## d4-045 · concept · ci_cd, structured_extraction
+
+**Tasks:** 4.6
 
 **Q:** Independent review instances vs extended thinking for self-review?
 
@@ -588,6 +678,8 @@
 
 ## d4-046 · concept · ci_cd
 
+**Tasks:** 4.1
+
 **Q:** Explicit review criteria example—comments vs code?
 
 **A:** Flag comments only when claimed behavior contradicts actual code—not vague 'check comment accuracy'.
@@ -600,6 +692,8 @@
 ---
 
 ## d4-047 · concept · ci_cd, structured_extraction
+
+**Tasks:** 4.2
 
 **Q:** How few-shot examples generalize beyond pre-specified cases?
 
@@ -614,6 +708,8 @@
 
 ## d4-048 · decision · ci_cd
 
+**Tasks:** 4.2
+
 **Q:** Few-shot use case: branch-level test coverage gaps?
 
 **A:** Show how to identify and report coverage gaps at branch level—ambiguous case requiring demonstrated judgment.
@@ -627,6 +723,8 @@
 
 ## d4-049 · anti_pattern · ci_cd
 
+**Tasks:** 4.5
+
 **Q:** Switch both blocking and overnight jobs to batch API with real-time fallback. Why over-engineered?
 
 **A:** Match API to latency needs—sync for blocking checks, batch for overnight; fallback adds unnecessary complexity.
@@ -639,6 +737,8 @@
 ---
 
 ## d4-050 · anti_pattern · ci_cd
+
+**Tasks:** 4.6
 
 **Q:** Large PR review: switch to higher-tier model with larger context window. Why insufficient?
 

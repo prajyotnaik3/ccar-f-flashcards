@@ -24,7 +24,8 @@ Each flashcard in `flashcards/domains/*.yaml` must have:
 
 - Unique `id` (e.g. `d1-001`)
 - `domain` (D1–D5), `type`, `front`, `back`
-- At least one `sources` entry
+- `tasks` — Exam Guide task IDs (e.g. `1.4`) or meta keys (`exam-format`, `scenarios`)
+- At least one `sources` entry (include `Task N.M` in source text when possible)
 - Valid `scenarios` tags when applicable
 
 Run validation before submitting:

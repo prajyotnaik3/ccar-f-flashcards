@@ -3,8 +3,6 @@
 
 from __future__ import annotations
 
-from pathlib import Path
-
 import genanki
 
 from card_loader import ROOT, domain_label, load_cards
@@ -20,11 +18,14 @@ def make_deck_id(suffix: int) -> int:
 def card_fields(card: dict) -> tuple[str, str]:
     scenarios = ", ".join(card.get("scenarios", []))
     tags_line = ", ".join(card.get("tags", []))
+    tasks_line = ", ".join(card.get("tasks", []))
     sources = "\n".join(f"• {s}" for s in card.get("sources", []))
     front = card["front"]
     back_parts = [card["back"]]
     if card.get("rationale"):
         back_parts.append(f"\n\nWhy: {card['rationale']}")
+    if tasks_line:
+        back_parts.append(f"\n\nTasks: {tasks_line}")
     if tags_line:
         back_parts.append(f"\n\nTags: {tags_line}")
     if scenarios:
@@ -32,6 +33,13 @@ def card_fields(card: dict) -> tuple[str, str]:
     if sources:
         back_parts.append(f"\n\nSources:\n{sources}")
     return front, "\n".join(back_parts)
+
+
+def anki_tags(card: dict) -> list[str]:
+    tags = list(card.get("tags", [])) + [card["domain"], card["type"]]
+    for task in card.get("tasks", []):
+        tags.append(f"task_{task.replace('.', '_')}")
+    return tags
 
 
 def main() -> None:
@@ -69,20 +77,19 @@ def main() -> None:
             note = genanki.Note(
                 model=model,
                 fields=[front, back],
-                tags=card.get("tags", []) + [card["domain"], card["type"]],
+                tags=anki_tags(card),
             )
             deck.add_note(note)
         decks.append(deck)
         print(f"Deck {deck_name}: {len(domain_cards)} notes")
 
-    # Mixed deck
     mixed = genanki.Deck(make_deck_id(99), "CCAR-F::Mixed (All)")
     for card in cards:
         front, back = card_fields(card)
         note = genanki.Note(
             model=model,
             fields=[front, back],
-            tags=card.get("tags", []) + [card["domain"], card["type"]],
+            tags=anki_tags(card),
         )
         mixed.add_note(note)
     decks.append(mixed)

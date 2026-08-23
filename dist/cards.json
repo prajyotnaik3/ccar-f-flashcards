@@ -21,6 +21,9 @@
       "tags": [
         "agent_loop",
         "stop_reason"
+      ],
+      "tasks": [
+        "1.1"
       ]
     },
     {
@@ -43,7 +46,10 @@
         "hooks",
         "customer_support"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "1.4"
+      ]
     },
     {
       "id": "d1-003",
@@ -62,6 +68,9 @@
       "tags": [
         "orchestration",
         "subagents"
+      ],
+      "tasks": [
+        "1.2"
       ]
     },
     {
@@ -81,6 +90,10 @@
       "tags": [
         "provenance",
         "subagents"
+      ],
+      "tasks": [
+        "1.2",
+        "1.3"
       ]
     },
     {
@@ -102,7 +115,10 @@
         "agent_loop",
         "stop_reason"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "1.1"
+      ]
     },
     {
       "id": "d1-006",
@@ -122,6 +138,9 @@
       "tags": [
         "agent_loop",
         "anti_pattern"
+      ],
+      "tasks": [
+        "1.1"
       ]
     },
     {
@@ -142,6 +161,9 @@
       "tags": [
         "agent_loop",
         "tool_selection"
+      ],
+      "tasks": [
+        "1.1"
       ]
     },
     {
@@ -162,6 +184,9 @@
       "tags": [
         "agent_loop",
         "context"
+      ],
+      "tasks": [
+        "1.1"
       ]
     },
     {
@@ -182,7 +207,10 @@
         "orchestration",
         "coordinator"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "1.2"
+      ]
     },
     {
       "id": "d1-010",
@@ -202,7 +230,11 @@
         "subagents",
         "context"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "1.2",
+        "1.3"
+      ]
     },
     {
       "id": "d1-011",
@@ -221,6 +253,9 @@
       "tags": [
         "decomposition",
         "coordinator"
+      ],
+      "tasks": [
+        "1.2"
       ]
     },
     {
@@ -240,6 +275,9 @@
       "tags": [
         "coordinator",
         "orchestration"
+      ],
+      "tasks": [
+        "1.2"
       ]
     },
     {
@@ -259,6 +297,9 @@
       "tags": [
         "decomposition",
         "subagents"
+      ],
+      "tasks": [
+        "1.2"
       ]
     },
     {
@@ -278,6 +319,9 @@
       "tags": [
         "orchestration",
         "refinement"
+      ],
+      "tasks": [
+        "1.2"
       ]
     },
     {
@@ -297,6 +341,9 @@
       "tags": [
         "coordinator",
         "observability"
+      ],
+      "tasks": [
+        "1.2"
       ]
     },
     {
@@ -318,7 +365,10 @@
         "Task_tool",
         "subagents"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "1.3"
+      ]
     },
     {
       "id": "d1-017",
@@ -337,6 +387,9 @@
       "tags": [
         "context_passing",
         "synthesis"
+      ],
+      "tasks": [
+        "1.3"
       ]
     },
     {
@@ -356,6 +409,9 @@
       "tags": [
         "provenance",
         "context_passing"
+      ],
+      "tasks": [
+        "1.3"
       ]
     },
     {
@@ -375,6 +431,9 @@
       "tags": [
         "parallel",
         "subagents"
+      ],
+      "tasks": [
+        "1.3"
       ]
     },
     {
@@ -394,6 +453,9 @@
       "tags": [
         "prompting",
         "coordinator"
+      ],
+      "tasks": [
+        "1.3"
       ]
     },
     {
@@ -414,6 +476,9 @@
       "tags": [
         "AgentDefinition",
         "subagents"
+      ],
+      "tasks": [
+        "1.3"
       ]
     },
     {
@@ -434,6 +499,9 @@
       "tags": [
         "fork_session",
         "session"
+      ],
+      "tasks": [
+        "1.3"
       ]
     },
     {
@@ -454,7 +522,10 @@
         "prerequisites",
         "hooks"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "1.4"
+      ]
     },
     {
       "id": "d1-024",
@@ -473,6 +544,9 @@
       "tags": [
         "decomposition",
         "customer_support"
+      ],
+      "tasks": [
+        "1.4"
       ]
     },
     {
@@ -493,7 +567,10 @@
         "escalation",
         "handoff"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "1.4"
+      ]
     },
     {
       "id": "d1-026",
@@ -512,6 +589,9 @@
       "tags": [
         "handoff",
         "escalation"
+      ],
+      "tasks": [
+        "1.4"
       ]
     },
     {
@@ -532,6 +612,9 @@
       "tags": [
         "hooks",
         "PostToolUse"
+      ],
+      "tasks": [
+        "1.5"
       ]
     },
     {
@@ -551,6 +634,9 @@
       "tags": [
         "hooks",
         "normalization"
+      ],
+      "tasks": [
+        "1.5"
       ]
     },
     {
@@ -571,7 +657,10 @@
         "hooks",
         "compliance"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "1.5"
+      ]
     },
     {
       "id": "d1-030",
@@ -590,6 +679,9 @@
       "tags": [
         "hooks",
         "interception"
+      ],
+      "tasks": [
+        "1.5"
       ]
     },
     {
@@ -610,6 +702,9 @@
       "tags": [
         "decomposition",
         "prompt_chaining"
+      ],
+      "tasks": [
+        "1.6"
       ]
     },
     {
@@ -629,6 +724,9 @@
       "tags": [
         "decomposition",
         "review"
+      ],
+      "tasks": [
+        "1.6"
       ]
     },
     {
@@ -649,6 +747,9 @@
       "tags": [
         "decomposition",
         "testing"
+      ],
+      "tasks": [
+        "1.6"
       ]
     },
     {
@@ -668,6 +769,9 @@
       ],
       "tags": [
         "prompt_chaining"
+      ],
+      "tasks": [
+        "1.6"
       ]
     },
     {
@@ -687,6 +791,9 @@
       "tags": [
         "session",
         "resume"
+      ],
+      "tasks": [
+        "1.7"
       ]
     },
     {
@@ -706,6 +813,9 @@
       "tags": [
         "fork_session",
         "session"
+      ],
+      "tasks": [
+        "1.7"
       ]
     },
     {
@@ -725,6 +835,9 @@
       "tags": [
         "session",
         "resume"
+      ],
+      "tasks": [
+        "1.7"
       ]
     },
     {
@@ -744,6 +857,9 @@
       "tags": [
         "session",
         "context"
+      ],
+      "tasks": [
+        "1.7"
       ]
     },
     {
@@ -763,6 +879,10 @@
       "tags": [
         "subagents",
         "tool_scoping"
+      ],
+      "tasks": [
+        "1.2",
+        "1.3"
       ]
     },
     {
@@ -783,7 +903,10 @@
       "tags": [
         "scenarios"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "1.2"
+      ]
     },
     {
       "id": "d1-041",
@@ -802,6 +925,9 @@
       "tags": [
         "coordinator",
         "orchestration"
+      ],
+      "tasks": [
+        "1.2"
       ]
     },
     {
@@ -823,7 +949,10 @@
         "subagents",
         "context"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "1.3"
+      ]
     },
     {
       "id": "d1-043",
@@ -843,6 +972,9 @@
       "tags": [
         "decomposition",
         "attention"
+      ],
+      "tasks": [
+        "1.6"
       ]
     },
     {
@@ -863,6 +995,9 @@
       "tags": [
         "decomposition",
         "adaptive"
+      ],
+      "tasks": [
+        "1.6"
       ]
     },
     {
@@ -882,6 +1017,9 @@
       "tags": [
         "hooks",
         "normalization"
+      ],
+      "tasks": [
+        "1.5"
       ]
     },
     {
@@ -901,6 +1039,9 @@
       "tags": [
         "error_propagation",
         "coordinator"
+      ],
+      "tasks": [
+        "1.2"
       ]
     },
     {
@@ -920,6 +1061,9 @@
       "tags": [
         "prerequisites",
         "anti_pattern"
+      ],
+      "tasks": [
+        "1.4"
       ]
     },
     {
@@ -940,7 +1084,10 @@
         "escalation",
         "agent_loop"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "5.2"
+      ]
     },
     {
       "id": "d1-049",
@@ -959,6 +1106,9 @@
       "tags": [
         "scenarios",
         "developer_productivity"
+      ],
+      "tasks": [
+        "2.3"
       ]
     },
     {
@@ -978,6 +1128,9 @@
       "tags": [
         "subagents",
         "research"
+      ],
+      "tasks": [
+        "1.2"
       ]
     },
     {
@@ -997,6 +1150,9 @@
       "tags": [
         "error_propagation",
         "anti_pattern"
+      ],
+      "tasks": [
+        "5.3"
       ]
     },
     {
@@ -1016,6 +1172,9 @@
       "tags": [
         "error_propagation",
         "anti_pattern"
+      ],
+      "tasks": [
+        "5.3"
       ]
     },
     {
@@ -1036,6 +1195,10 @@
       "tags": [
         "hooks",
         "prerequisites"
+      ],
+      "tasks": [
+        "1.4",
+        "1.5"
       ]
     },
     {
@@ -1055,6 +1218,9 @@
       "tags": [
         "error_propagation",
         "anti_pattern"
+      ],
+      "tasks": [
+        "5.3"
       ]
     },
     {
@@ -1076,7 +1242,10 @@
         "stop_reason",
         "agent_loop"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "1.1"
+      ]
     },
     {
       "id": "d1-056",
@@ -1095,6 +1264,9 @@
       "tags": [
         "tool_scoping",
         "anti_pattern"
+      ],
+      "tasks": [
+        "2.3"
       ]
     },
     {
@@ -1115,7 +1287,10 @@
         "prerequisites",
         "gates"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "1.4"
+      ]
     },
     {
       "id": "d2-001",
@@ -1135,6 +1310,9 @@
       ],
       "tags": [
         "mcp_basics"
+      ],
+      "tasks": [
+        "2.4"
       ]
     },
     {
@@ -1155,7 +1333,10 @@
       "tags": [
         "tool_descriptions"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "2.1"
+      ]
     },
     {
       "id": "d2-003",
@@ -1176,7 +1357,10 @@
         "tool_descriptions",
         "customer_support"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "2.1"
+      ]
     },
     {
       "id": "d2-004",
@@ -1195,6 +1379,9 @@
       ],
       "tags": [
         "tool_descriptions"
+      ],
+      "tasks": [
+        "2.1"
       ]
     },
     {
@@ -1215,6 +1402,9 @@
       "tags": [
         "tool_descriptions",
         "anti_pattern"
+      ],
+      "tasks": [
+        "2.1"
       ]
     },
     {
@@ -1234,6 +1424,9 @@
       "tags": [
         "tool_descriptions",
         "naming"
+      ],
+      "tasks": [
+        "2.1"
       ]
     },
     {
@@ -1254,6 +1447,9 @@
       "tags": [
         "tool_design",
         "splitting"
+      ],
+      "tasks": [
+        "2.1"
       ]
     },
     {
@@ -1274,6 +1470,9 @@
       "tags": [
         "tool_descriptions",
         "system_prompt"
+      ],
+      "tasks": [
+        "2.1"
       ]
     },
     {
@@ -1293,6 +1492,9 @@
       "tags": [
         "system_prompt",
         "tool_descriptions"
+      ],
+      "tasks": [
+        "2.1"
       ]
     },
     {
@@ -1312,6 +1514,9 @@
       "tags": [
         "tool_design",
         "anti_pattern"
+      ],
+      "tasks": [
+        "2.1"
       ]
     },
     {
@@ -1331,6 +1536,9 @@
       "tags": [
         "tool_descriptions",
         "anti_pattern"
+      ],
+      "tasks": [
+        "2.1"
       ]
     },
     {
@@ -1352,7 +1560,10 @@
         "mcp",
         "isError"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "2.2"
+      ]
     },
     {
       "id": "d2-013",
@@ -1372,6 +1583,9 @@
       "tags": [
         "errors",
         "error_category"
+      ],
+      "tasks": [
+        "2.2"
       ]
     },
     {
@@ -1391,6 +1605,9 @@
       "tags": [
         "errors",
         "anti_pattern"
+      ],
+      "tasks": [
+        "2.2"
       ]
     },
     {
@@ -1411,7 +1628,10 @@
         "errors",
         "structured_errors"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "2.2"
+      ]
     },
     {
       "id": "d2-016",
@@ -1430,6 +1650,9 @@
       "tags": [
         "errors",
         "business_errors"
+      ],
+      "tasks": [
+        "2.2"
       ]
     },
     {
@@ -1450,6 +1673,9 @@
       "tags": [
         "errors",
         "empty_results"
+      ],
+      "tasks": [
+        "2.2"
       ]
     },
     {
@@ -1469,6 +1695,9 @@
       "tags": [
         "errors",
         "subagents"
+      ],
+      "tasks": [
+        "2.2"
       ]
     },
     {
@@ -1488,6 +1717,9 @@
       "tags": [
         "errors",
         "reliability"
+      ],
+      "tasks": [
+        "2.2"
       ]
     },
     {
@@ -1509,7 +1741,10 @@
         "tool_scoping",
         "least_privilege"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "2.3"
+      ]
     },
     {
       "id": "d2-021",
@@ -1528,6 +1763,9 @@
       "tags": [
         "tool_scoping",
         "anti_pattern"
+      ],
+      "tasks": [
+        "2.3"
       ]
     },
     {
@@ -1548,6 +1786,9 @@
       "tags": [
         "tool_scoping",
         "least_privilege"
+      ],
+      "tasks": [
+        "2.3"
       ]
     },
     {
@@ -1568,7 +1809,10 @@
       "tags": [
         "tool_choice"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "2.3"
+      ]
     },
     {
       "id": "d2-024",
@@ -1586,6 +1830,9 @@
       ],
       "tags": [
         "tool_choice"
+      ],
+      "tasks": [
+        "2.3"
       ]
     },
     {
@@ -1605,6 +1852,9 @@
       "tags": [
         "tool_choice",
         "forced_tool"
+      ],
+      "tasks": [
+        "2.3"
       ]
     },
     {
@@ -1624,6 +1874,9 @@
       "tags": [
         "tool_design",
         "constraints"
+      ],
+      "tasks": [
+        "2.3"
       ]
     },
     {
@@ -1643,6 +1896,9 @@
       "tags": [
         "tool_scoping",
         "verify_fact"
+      ],
+      "tasks": [
+        "2.3"
       ]
     },
     {
@@ -1663,7 +1919,10 @@
         "tool_boundaries",
         "least_privilege"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "2.3"
+      ]
     },
     {
       "id": "d2-029",
@@ -1683,7 +1942,10 @@
         "mcp_config",
         "scoping"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "2.4"
+      ]
     },
     {
       "id": "d2-030",
@@ -1702,6 +1964,9 @@
       "tags": [
         "mcp_config",
         "credentials"
+      ],
+      "tasks": [
+        "2.4"
       ]
     },
     {
@@ -1721,6 +1986,9 @@
       "tags": [
         "mcp_config",
         "discovery"
+      ],
+      "tasks": [
+        "2.4"
       ]
     },
     {
@@ -1740,6 +2008,9 @@
       ],
       "tags": [
         "mcp_resources"
+      ],
+      "tasks": [
+        "2.4"
       ]
     },
     {
@@ -1759,6 +2030,9 @@
       "tags": [
         "tool_descriptions",
         "mcp"
+      ],
+      "tasks": [
+        "2.4"
       ]
     },
     {
@@ -1778,6 +2052,9 @@
       "tags": [
         "mcp_config",
         "community"
+      ],
+      "tasks": [
+        "2.4"
       ]
     },
     {
@@ -1797,6 +2074,10 @@
       "tags": [
         "mcp",
         "claude_code"
+      ],
+      "tasks": [
+        "2.4",
+        "2.5"
       ]
     },
     {
@@ -1818,7 +2099,10 @@
         "Grep",
         "Glob"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "2.5"
+      ]
     },
     {
       "id": "d2-037",
@@ -1837,6 +2121,9 @@
       "tags": [
         "builtin_tools",
         "Glob"
+      ],
+      "tasks": [
+        "2.5"
       ]
     },
     {
@@ -1856,6 +2143,9 @@
       "tags": [
         "builtin_tools",
         "Grep"
+      ],
+      "tasks": [
+        "2.5"
       ]
     },
     {
@@ -1877,6 +2167,9 @@
         "Edit",
         "Read",
         "Write"
+      ],
+      "tasks": [
+        "2.5"
       ]
     },
     {
@@ -1896,6 +2189,9 @@
       "tags": [
         "builtin_tools",
         "exploration"
+      ],
+      "tasks": [
+        "2.5"
       ]
     },
     {
@@ -1916,6 +2212,9 @@
         "builtin_tools",
         "Grep",
         "exploration"
+      ],
+      "tasks": [
+        "2.5"
       ]
     },
     {
@@ -1937,7 +2236,10 @@
       "tags": [
         "scenarios"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "2.1"
+      ]
     },
     {
       "id": "d2-043",
@@ -1956,6 +2258,10 @@
       "tags": [
         "scenarios",
         "customer_support"
+      ],
+      "tasks": [
+        "2.1",
+        "2.4"
       ]
     },
     {
@@ -1975,6 +2281,9 @@
       "tags": [
         "scenarios",
         "builtin_tools"
+      ],
+      "tasks": [
+        "2.5"
       ]
     },
     {
@@ -1994,6 +2303,9 @@
       "tags": [
         "anti_pattern",
         "routing"
+      ],
+      "tasks": [
+        "2.1"
       ]
     },
     {
@@ -2013,6 +2325,9 @@
       "tags": [
         "mcp_tools",
         "mcp_resources"
+      ],
+      "tasks": [
+        "2.4"
       ]
     },
     {
@@ -2032,6 +2347,9 @@
       "tags": [
         "errors",
         "isRetryable"
+      ],
+      "tasks": [
+        "2.2"
       ]
     },
     {
@@ -2051,6 +2369,9 @@
       "tags": [
         "builtin_tools",
         "Bash"
+      ],
+      "tasks": [
+        "2.5"
       ]
     },
     {
@@ -2071,6 +2392,10 @@
       "tags": [
         "tool_choice",
         "auto"
+      ],
+      "tasks": [
+        "2.3",
+        "4.3"
       ]
     },
     {
@@ -2091,6 +2416,9 @@
         "tool_descriptions",
         "few_shot",
         "anti_pattern"
+      ],
+      "tasks": [
+        "2.1"
       ]
     },
     {
@@ -2110,6 +2438,9 @@
       "tags": [
         "builtin_tools",
         "Edit"
+      ],
+      "tasks": [
+        "2.5"
       ]
     },
     {
@@ -2129,6 +2460,9 @@
       "tags": [
         "errors",
         "business_errors"
+      ],
+      "tasks": [
+        "2.2"
       ]
     },
     {
@@ -2149,6 +2483,9 @@
       ],
       "tags": [
         "claude_md"
+      ],
+      "tasks": [
+        "3.1"
       ]
     },
     {
@@ -2170,7 +2507,10 @@
         "claude_md",
         "hierarchy"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "3.1"
+      ]
     },
     {
       "id": "d3-003",
@@ -2189,6 +2529,9 @@
       "tags": [
         "claude_md",
         "hierarchy"
+      ],
+      "tasks": [
+        "3.1"
       ]
     },
     {
@@ -2208,6 +2551,9 @@
       "tags": [
         "claude_md",
         "import"
+      ],
+      "tasks": [
+        "3.1"
       ]
     },
     {
@@ -2227,6 +2573,9 @@
       "tags": [
         "claude_md",
         "rules"
+      ],
+      "tasks": [
+        "3.1"
       ]
     },
     {
@@ -2246,6 +2595,9 @@
       "tags": [
         "claude_md",
         "memory"
+      ],
+      "tasks": [
+        "3.1"
       ]
     },
     {
@@ -2265,6 +2617,9 @@
       "tags": [
         "claude_md",
         "team"
+      ],
+      "tasks": [
+        "3.1"
       ]
     },
     {
@@ -2285,7 +2640,10 @@
       "tags": [
         "slash_commands"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "3.2"
+      ]
     },
     {
       "id": "d3-009",
@@ -2304,6 +2662,9 @@
       "tags": [
         "slash_commands",
         "scoping"
+      ],
+      "tasks": [
+        "3.2"
       ]
     },
     {
@@ -2325,7 +2686,10 @@
         "skills",
         "frontmatter"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "3.2"
+      ]
     },
     {
       "id": "d3-011",
@@ -2344,6 +2708,9 @@
       "tags": [
         "skills",
         "context_fork"
+      ],
+      "tasks": [
+        "3.2"
       ]
     },
     {
@@ -2363,6 +2730,9 @@
       "tags": [
         "skills",
         "allowed_tools"
+      ],
+      "tasks": [
+        "3.2"
       ]
     },
     {
@@ -2382,6 +2752,9 @@
       "tags": [
         "skills",
         "argument_hint"
+      ],
+      "tasks": [
+        "3.2"
       ]
     },
     {
@@ -2401,6 +2774,9 @@
       "tags": [
         "skills",
         "claude_md"
+      ],
+      "tasks": [
+        "3.2"
       ]
     },
     {
@@ -2420,6 +2796,9 @@
       "tags": [
         "skills",
         "scoping"
+      ],
+      "tasks": [
+        "3.2"
       ]
     },
     {
@@ -2440,7 +2819,10 @@
         "rules",
         "path_scoping"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "3.3"
+      ]
     },
     {
       "id": "d3-017",
@@ -2459,6 +2841,9 @@
       "tags": [
         "rules",
         "glob"
+      ],
+      "tasks": [
+        "3.3"
       ]
     },
     {
@@ -2478,6 +2863,9 @@
       "tags": [
         "rules",
         "glob"
+      ],
+      "tasks": [
+        "3.3"
       ]
     },
     {
@@ -2497,6 +2885,9 @@
       "tags": [
         "rules",
         "claude_md"
+      ],
+      "tasks": [
+        "3.3"
       ]
     },
     {
@@ -2516,6 +2907,9 @@
       "tags": [
         "rules",
         "context"
+      ],
+      "tasks": [
+        "3.3"
       ]
     },
     {
@@ -2535,7 +2929,10 @@
       "tags": [
         "plan_mode"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "3.4"
+      ]
     },
     {
       "id": "d3-022",
@@ -2555,7 +2952,10 @@
         "plan_mode",
         "direct_execution"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "3.4"
+      ]
     },
     {
       "id": "d3-023",
@@ -2573,6 +2973,9 @@
       ],
       "tags": [
         "direct_execution"
+      ],
+      "tasks": [
+        "3.4"
       ]
     },
     {
@@ -2592,6 +2995,9 @@
       "tags": [
         "Explore_subagent",
         "context"
+      ],
+      "tasks": [
+        "3.4"
       ]
     },
     {
@@ -2611,6 +3017,9 @@
       "tags": [
         "plan_mode",
         "direct_execution"
+      ],
+      "tasks": [
+        "3.4"
       ]
     },
     {
@@ -2630,6 +3039,9 @@
       "tags": [
         "plan_mode",
         "anti_pattern"
+      ],
+      "tasks": [
+        "3.4"
       ]
     },
     {
@@ -2649,6 +3061,9 @@
       "tags": [
         "iterative_refinement",
         "examples"
+      ],
+      "tasks": [
+        "3.5"
       ]
     },
     {
@@ -2668,6 +3083,9 @@
       "tags": [
         "iterative_refinement",
         "testing"
+      ],
+      "tasks": [
+        "3.5"
       ]
     },
     {
@@ -2687,6 +3105,9 @@
       "tags": [
         "iterative_refinement",
         "interview"
+      ],
+      "tasks": [
+        "3.5"
       ]
     },
     {
@@ -2705,6 +3126,9 @@
       ],
       "tags": [
         "iterative_refinement"
+      ],
+      "tasks": [
+        "3.5"
       ]
     },
     {
@@ -2724,6 +3148,9 @@
       "tags": [
         "iterative_refinement",
         "edge_cases"
+      ],
+      "tasks": [
+        "3.5"
       ]
     },
     {
@@ -2744,7 +3171,10 @@
         "ci_cd",
         "non_interactive"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "3.6"
+      ]
     },
     {
       "id": "d3-033",
@@ -2763,6 +3193,9 @@
       "tags": [
         "ci_cd",
         "structured_output"
+      ],
+      "tasks": [
+        "3.6"
       ]
     },
     {
@@ -2782,6 +3215,9 @@
       "tags": [
         "ci_cd",
         "claude_md"
+      ],
+      "tasks": [
+        "3.6"
       ]
     },
     {
@@ -2801,6 +3237,9 @@
       "tags": [
         "ci_cd",
         "self_review"
+      ],
+      "tasks": [
+        "3.6"
       ]
     },
     {
@@ -2820,6 +3259,9 @@
       "tags": [
         "ci_cd",
         "review"
+      ],
+      "tasks": [
+        "3.6"
       ]
     },
     {
@@ -2839,6 +3281,9 @@
       "tags": [
         "ci_cd",
         "testing"
+      ],
+      "tasks": [
+        "3.6"
       ]
     },
     {
@@ -2859,6 +3304,9 @@
       "tags": [
         "claude_md",
         "testing"
+      ],
+      "tasks": [
+        "3.6"
       ]
     },
     {
@@ -2878,6 +3326,9 @@
       "tags": [
         "ci_cd",
         "automation"
+      ],
+      "tasks": [
+        "3.6"
       ]
     },
     {
@@ -2897,6 +3348,9 @@
       "tags": [
         "ci_cd",
         "anti_pattern"
+      ],
+      "tasks": [
+        "3.6"
       ]
     },
     {
@@ -2915,6 +3369,10 @@
       ],
       "tags": [
         "scenarios"
+      ],
+      "tasks": [
+        "3.4",
+        "5.1"
       ]
     },
     {
@@ -2934,7 +3392,11 @@
       "tags": [
         "scenarios"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "3.6",
+        "4.1"
+      ]
     },
     {
       "id": "d3-043",
@@ -2954,6 +3416,10 @@
       "tags": [
         "scenarios",
         "code_generation"
+      ],
+      "tasks": [
+        "3.2",
+        "3.4"
       ]
     },
     {
@@ -2973,6 +3439,9 @@
       "tags": [
         "rules",
         "glob"
+      ],
+      "tasks": [
+        "3.3"
       ]
     },
     {
@@ -2992,6 +3461,9 @@
       "tags": [
         "rules",
         "anti_pattern"
+      ],
+      "tasks": [
+        "3.3"
       ]
     },
     {
@@ -3011,6 +3483,9 @@
       "tags": [
         "plan_mode",
         "anti_pattern"
+      ],
+      "tasks": [
+        "3.4"
       ]
     },
     {
@@ -3031,6 +3506,9 @@
         "skills",
         "rules",
         "anti_pattern"
+      ],
+      "tasks": [
+        "3.3"
       ]
     },
     {
@@ -3050,6 +3528,9 @@
       "tags": [
         "iterative_refinement",
         "testing"
+      ],
+      "tasks": [
+        "3.5"
       ]
     },
     {
@@ -3069,6 +3550,9 @@
       "tags": [
         "skills",
         "context_fork"
+      ],
+      "tasks": [
+        "3.2"
       ]
     },
     {
@@ -3088,6 +3572,11 @@
       "tags": [
         "scenarios",
         "developer_productivity"
+      ],
+      "tasks": [
+        "1.2",
+        "2.5",
+        "3.2"
       ]
     },
     {
@@ -3108,6 +3597,9 @@
       ],
       "tags": [
         "structured_output"
+      ],
+      "tasks": [
+        "4.3"
       ]
     },
     {
@@ -3128,7 +3620,10 @@
         "prompt_criteria",
         "false_positives"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "4.1"
+      ]
     },
     {
       "id": "d4-003",
@@ -3147,6 +3642,9 @@
       "tags": [
         "false_positives",
         "review"
+      ],
+      "tasks": [
+        "4.1"
       ]
     },
     {
@@ -3166,6 +3664,9 @@
       "tags": [
         "severity",
         "review"
+      ],
+      "tasks": [
+        "4.1"
       ]
     },
     {
@@ -3185,6 +3686,9 @@
       "tags": [
         "false_positives",
         "trust"
+      ],
+      "tasks": [
+        "4.1"
       ]
     },
     {
@@ -3204,6 +3708,9 @@
       "tags": [
         "review",
         "prompt_criteria"
+      ],
+      "tasks": [
+        "4.1"
       ]
     },
     {
@@ -3223,6 +3730,9 @@
       ],
       "tags": [
         "few_shot"
+      ],
+      "tasks": [
+        "4.2"
       ]
     },
     {
@@ -3242,6 +3752,9 @@
       "tags": [
         "few_shot",
         "review"
+      ],
+      "tasks": [
+        "4.2"
       ]
     },
     {
@@ -3261,6 +3774,9 @@
       "tags": [
         "few_shot",
         "false_positives"
+      ],
+      "tasks": [
+        "4.2"
       ]
     },
     {
@@ -3280,6 +3796,9 @@
       "tags": [
         "few_shot",
         "extraction"
+      ],
+      "tasks": [
+        "4.2"
       ]
     },
     {
@@ -3299,6 +3818,9 @@
       "tags": [
         "few_shot",
         "extraction"
+      ],
+      "tasks": [
+        "4.2"
       ]
     },
     {
@@ -3318,6 +3840,9 @@
       ],
       "tags": [
         "few_shot"
+      ],
+      "tasks": [
+        "4.2"
       ]
     },
     {
@@ -3338,7 +3863,10 @@
         "tool_use",
         "json_schema"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "4.3"
+      ]
     },
     {
       "id": "d4-014",
@@ -3357,6 +3885,10 @@
       "tags": [
         "validation",
         "semantic_errors"
+      ],
+      "tasks": [
+        "4.3",
+        "4.4"
       ]
     },
     {
@@ -3377,7 +3909,10 @@
         "schema_design",
         "nullable"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "4.3"
+      ]
     },
     {
       "id": "d4-016",
@@ -3396,6 +3931,9 @@
       "tags": [
         "schema_design",
         "enum"
+      ],
+      "tasks": [
+        "4.3"
       ]
     },
     {
@@ -3415,6 +3953,9 @@
       "tags": [
         "schema_design",
         "enum"
+      ],
+      "tasks": [
+        "4.3"
       ]
     },
     {
@@ -3434,6 +3975,9 @@
       "tags": [
         "schema_design",
         "normalization"
+      ],
+      "tasks": [
+        "4.3"
       ]
     },
     {
@@ -3453,6 +3997,9 @@
       "tags": [
         "tool_choice",
         "extraction"
+      ],
+      "tasks": [
+        "4.3"
       ]
     },
     {
@@ -3472,6 +4019,9 @@
       "tags": [
         "tool_use",
         "extraction"
+      ],
+      "tasks": [
+        "4.3"
       ]
     },
     {
@@ -3492,7 +4042,10 @@
         "validation",
         "retry"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "4.4"
+      ]
     },
     {
       "id": "d4-022",
@@ -3511,6 +4064,9 @@
       "tags": [
         "validation",
         "retry"
+      ],
+      "tasks": [
+        "4.4"
       ]
     },
     {
@@ -3531,6 +4087,9 @@
       "tags": [
         "validation",
         "semantic_errors"
+      ],
+      "tasks": [
+        "4.4"
       ]
     },
     {
@@ -3550,6 +4109,9 @@
       "tags": [
         "feedback_loop",
         "review"
+      ],
+      "tasks": [
+        "4.4"
       ]
     },
     {
@@ -3569,6 +4131,9 @@
       "tags": [
         "validation",
         "self_correction"
+      ],
+      "tasks": [
+        "4.4"
       ]
     },
     {
@@ -3589,7 +4154,11 @@
         "validation",
         "nullable"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "4.3",
+        "4.4"
+      ]
     },
     {
       "id": "d4-027",
@@ -3609,7 +4178,10 @@
       "tags": [
         "batch_api"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "4.5"
+      ]
     },
     {
       "id": "d4-028",
@@ -3628,6 +4200,9 @@
       "tags": [
         "batch_api",
         "latency"
+      ],
+      "tasks": [
+        "4.5"
       ]
     },
     {
@@ -3647,6 +4222,9 @@
       "tags": [
         "batch_api",
         "tool_use"
+      ],
+      "tasks": [
+        "4.5"
       ]
     },
     {
@@ -3666,6 +4244,9 @@
       "tags": [
         "batch_api",
         "custom_id"
+      ],
+      "tasks": [
+        "4.5"
       ]
     },
     {
@@ -3685,6 +4266,9 @@
       "tags": [
         "batch_api",
         "failures"
+      ],
+      "tasks": [
+        "4.5"
       ]
     },
     {
@@ -3704,6 +4288,9 @@
       "tags": [
         "batch_api",
         "prompt_refinement"
+      ],
+      "tasks": [
+        "4.5"
       ]
     },
     {
@@ -3723,6 +4310,9 @@
       "tags": [
         "self_review",
         "multi_instance"
+      ],
+      "tasks": [
+        "4.6"
       ]
     },
     {
@@ -3742,6 +4332,9 @@
       "tags": [
         "multi_instance",
         "review"
+      ],
+      "tasks": [
+        "4.6"
       ]
     },
     {
@@ -3761,6 +4354,9 @@
       "tags": [
         "multi_pass",
         "review"
+      ],
+      "tasks": [
+        "4.6"
       ]
     },
     {
@@ -3780,6 +4376,9 @@
       "tags": [
         "review",
         "confidence"
+      ],
+      "tasks": [
+        "4.6"
       ]
     },
     {
@@ -3800,6 +4399,9 @@
       "tags": [
         "structured_output",
         "ci_cd"
+      ],
+      "tasks": [
+        "4.3"
       ]
     },
     {
@@ -3819,6 +4421,9 @@
       "tags": [
         "confidence",
         "validation"
+      ],
+      "tasks": [
+        "4.4"
       ]
     },
     {
@@ -3838,6 +4443,9 @@
       "tags": [
         "multi_pass",
         "anti_pattern"
+      ],
+      "tasks": [
+        "4.6"
       ]
     },
     {
@@ -3857,7 +4465,11 @@
       "tags": [
         "scenarios"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "4.3",
+        "5.5"
+      ]
     },
     {
       "id": "d4-041",
@@ -3876,6 +4488,10 @@
       "tags": [
         "scenarios",
         "extraction"
+      ],
+      "tasks": [
+        "4.3",
+        "4.4"
       ]
     },
     {
@@ -3895,6 +4511,9 @@
       "tags": [
         "few_shot",
         "hallucination"
+      ],
+      "tasks": [
+        "4.2"
       ]
     },
     {
@@ -3914,6 +4533,9 @@
       "tags": [
         "batch_api",
         "anti_pattern"
+      ],
+      "tasks": [
+        "4.5"
       ]
     },
     {
@@ -3933,6 +4555,9 @@
       "tags": [
         "batch_api",
         "sla"
+      ],
+      "tasks": [
+        "4.5"
       ]
     },
     {
@@ -3953,6 +4578,9 @@
       "tags": [
         "multi_instance",
         "self_review"
+      ],
+      "tasks": [
+        "4.6"
       ]
     },
     {
@@ -3972,6 +4600,9 @@
       "tags": [
         "prompt_criteria",
         "review"
+      ],
+      "tasks": [
+        "4.1"
       ]
     },
     {
@@ -3992,6 +4623,9 @@
       "tags": [
         "few_shot",
         "generalization"
+      ],
+      "tasks": [
+        "4.2"
       ]
     },
     {
@@ -4011,6 +4645,9 @@
       "tags": [
         "few_shot",
         "testing"
+      ],
+      "tasks": [
+        "4.2"
       ]
     },
     {
@@ -4030,6 +4667,9 @@
       "tags": [
         "batch_api",
         "anti_pattern"
+      ],
+      "tasks": [
+        "4.5"
       ]
     },
     {
@@ -4049,6 +4689,9 @@
       "tags": [
         "multi_pass",
         "anti_pattern"
+      ],
+      "tasks": [
+        "4.6"
       ]
     },
     {
@@ -4069,6 +4712,9 @@
       ],
       "tags": [
         "context_degradation"
+      ],
+      "tasks": [
+        "5.4"
       ]
     },
     {
@@ -4090,7 +4736,10 @@
         "summarization",
         "case_facts"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "5.1"
+      ]
     },
     {
       "id": "d5-003",
@@ -4110,6 +4759,9 @@
       "tags": [
         "lost_in_middle",
         "position"
+      ],
+      "tasks": [
+        "5.1"
       ]
     },
     {
@@ -4130,7 +4782,10 @@
         "case_facts",
         "context"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "5.1"
+      ]
     },
     {
       "id": "d5-005",
@@ -4149,6 +4804,9 @@
       "tags": [
         "trimming",
         "tool_results"
+      ],
+      "tasks": [
+        "5.1"
       ]
     },
     {
@@ -4168,6 +4826,9 @@
       "tags": [
         "lost_in_middle",
         "aggregation"
+      ],
+      "tasks": [
+        "5.1"
       ]
     },
     {
@@ -4187,6 +4848,9 @@
       "tags": [
         "structured_output",
         "subagents"
+      ],
+      "tasks": [
+        "5.1"
       ]
     },
     {
@@ -4206,6 +4870,9 @@
       ],
       "tags": [
         "conversation_history"
+      ],
+      "tasks": [
+        "5.1"
       ]
     },
     {
@@ -4225,6 +4892,9 @@
       "tags": [
         "case_facts",
         "multi_issue"
+      ],
+      "tasks": [
+        "5.1"
       ]
     },
     {
@@ -4244,7 +4914,10 @@
       "tags": [
         "escalation"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "5.2"
+      ]
     },
     {
       "id": "d5-011",
@@ -4263,6 +4936,9 @@
       "tags": [
         "escalation",
         "few_shot"
+      ],
+      "tasks": [
+        "5.2"
       ]
     },
     {
@@ -4283,6 +4959,9 @@
         "escalation",
         "confidence",
         "anti_pattern"
+      ],
+      "tasks": [
+        "5.2"
       ]
     },
     {
@@ -4303,6 +4982,9 @@
         "escalation",
         "sentiment",
         "anti_pattern"
+      ],
+      "tasks": [
+        "5.2"
       ]
     },
     {
@@ -4322,6 +5004,9 @@
       "tags": [
         "escalation",
         "customer_request"
+      ],
+      "tasks": [
+        "5.2"
       ]
     },
     {
@@ -4341,6 +5026,9 @@
       "tags": [
         "escalation",
         "de_escalation"
+      ],
+      "tasks": [
+        "5.2"
       ]
     },
     {
@@ -4360,6 +5048,9 @@
       "tags": [
         "escalation",
         "policy_gap"
+      ],
+      "tasks": [
+        "5.2"
       ]
     },
     {
@@ -4379,6 +5070,9 @@
       "tags": [
         "ambiguity",
         "identity"
+      ],
+      "tasks": [
+        "5.2"
       ]
     },
     {
@@ -4399,7 +5093,10 @@
         "context_passing",
         "subagents"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "5.1"
+      ]
     },
     {
       "id": "d5-019",
@@ -4417,6 +5114,9 @@
       ],
       "tags": [
         "error_propagation"
+      ],
+      "tasks": [
+        "5.3"
       ]
     },
     {
@@ -4436,6 +5136,9 @@
       "tags": [
         "error_propagation",
         "anti_pattern"
+      ],
+      "tasks": [
+        "5.3"
       ]
     },
     {
@@ -4455,6 +5158,9 @@
       "tags": [
         "synthesis",
         "coverage"
+      ],
+      "tasks": [
+        "5.3"
       ]
     },
     {
@@ -4475,6 +5181,9 @@
       "tags": [
         "errors",
         "escalation"
+      ],
+      "tasks": [
+        "5.3"
       ]
     },
     {
@@ -4495,6 +5204,9 @@
       "tags": [
         "scratchpad",
         "exploration"
+      ],
+      "tasks": [
+        "5.4"
       ]
     },
     {
@@ -4515,6 +5227,9 @@
       "tags": [
         "compact",
         "exploration"
+      ],
+      "tasks": [
+        "5.4"
       ]
     },
     {
@@ -4534,6 +5249,9 @@
       "tags": [
         "exploration",
         "summarization"
+      ],
+      "tasks": [
+        "5.4"
       ]
     },
     {
@@ -4554,6 +5272,9 @@
       "tags": [
         "crash_recovery",
         "manifests"
+      ],
+      "tasks": [
+        "5.4"
       ]
     },
     {
@@ -4574,6 +5295,10 @@
       "tags": [
         "context",
         "anti_pattern"
+      ],
+      "tasks": [
+        "2.5",
+        "5.4"
       ]
     },
     {
@@ -4593,6 +5318,9 @@
       "tags": [
         "human_review",
         "metrics"
+      ],
+      "tasks": [
+        "5.5"
       ]
     },
     {
@@ -4612,6 +5340,9 @@
       "tags": [
         "human_review",
         "sampling"
+      ],
+      "tasks": [
+        "5.5"
       ]
     },
     {
@@ -4632,7 +5363,10 @@
         "confidence",
         "human_review"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "5.5"
+      ]
     },
     {
       "id": "d5-031",
@@ -4651,6 +5385,9 @@
       "tags": [
         "human_review",
         "segmentation"
+      ],
+      "tasks": [
+        "5.5"
       ]
     },
     {
@@ -4670,6 +5407,9 @@
       "tags": [
         "human_review",
         "routing"
+      ],
+      "tasks": [
+        "5.5"
       ]
     },
     {
@@ -4689,6 +5429,9 @@
       "tags": [
         "provenance",
         "synthesis"
+      ],
+      "tasks": [
+        "5.6"
       ]
     },
     {
@@ -4709,7 +5452,10 @@
         "provenance",
         "claim_source"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "5.6"
+      ]
     },
     {
       "id": "d5-035",
@@ -4728,6 +5474,9 @@
       "tags": [
         "provenance",
         "conflicts"
+      ],
+      "tasks": [
+        "5.6"
       ]
     },
     {
@@ -4747,6 +5496,9 @@
       "tags": [
         "temporal",
         "provenance"
+      ],
+      "tasks": [
+        "5.6"
       ]
     },
     {
@@ -4766,6 +5518,9 @@
       "tags": [
         "synthesis",
         "provenance"
+      ],
+      "tasks": [
+        "5.6"
       ]
     },
     {
@@ -4785,6 +5540,9 @@
       "tags": [
         "synthesis",
         "formatting"
+      ],
+      "tasks": [
+        "5.6"
       ]
     },
     {
@@ -4806,7 +5564,12 @@
       "tags": [
         "scenarios"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "5.1",
+        "5.2",
+        "5.3"
+      ]
     },
     {
       "id": "d5-040",
@@ -4825,6 +5588,10 @@
       "tags": [
         "scenarios",
         "code_generation"
+      ],
+      "tasks": [
+        "3.4",
+        "5.1"
       ]
     },
     {
@@ -4844,6 +5611,9 @@
       "tags": [
         "metadata",
         "subagents"
+      ],
+      "tasks": [
+        "5.1"
       ]
     },
     {
@@ -4863,6 +5633,9 @@
       "tags": [
         "escalation",
         "anti_pattern"
+      ],
+      "tasks": [
+        "5.2"
       ]
     },
     {
@@ -4882,6 +5655,9 @@
       "tags": [
         "error_propagation",
         "anti_pattern"
+      ],
+      "tasks": [
+        "5.3"
       ]
     },
     {
@@ -4901,6 +5677,9 @@
       "tags": [
         "error_propagation",
         "anti_pattern"
+      ],
+      "tasks": [
+        "5.3"
       ]
     },
     {
@@ -4921,6 +5700,9 @@
       "tags": [
         "subagents",
         "exploration"
+      ],
+      "tasks": [
+        "5.4"
       ]
     },
     {
@@ -4940,6 +5722,9 @@
       "tags": [
         "provenance",
         "conflicts"
+      ],
+      "tasks": [
+        "5.6"
       ]
     },
     {
@@ -4959,6 +5744,9 @@
       "tags": [
         "scratchpad",
         "exploration"
+      ],
+      "tasks": [
+        "5.4"
       ]
     },
     {
@@ -4979,7 +5767,10 @@
       "tags": [
         "exam_basics"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "exam-format"
+      ]
     },
     {
       "id": "meta-002",
@@ -4997,7 +5788,10 @@
       "tags": [
         "exam_basics"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "exam-format"
+      ]
     },
     {
       "id": "meta-003",
@@ -5016,7 +5810,10 @@
         "exam_basics",
         "scenarios"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "scenarios"
+      ]
     },
     {
       "id": "meta-004",
@@ -5037,7 +5834,10 @@
         "heuristic",
         "exam_day"
       ],
-      "exam_day": true
+      "exam_day": true,
+      "tasks": [
+        "cross-domain"
+      ]
     }
   ]
 }

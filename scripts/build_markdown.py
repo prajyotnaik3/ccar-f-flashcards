@@ -13,8 +13,11 @@ OUT_DIR = ROOT / "dist" / "markdown"
 def card_to_markdown(card: dict) -> str:
     scenarios = ", ".join(card.get("scenarios", []))
     tags = ", ".join(card.get("tags", []))
+    tasks = ", ".join(card.get("tasks", []))
     lines = [
         f"## {card['id']} · {card['type']} · {scenarios}",
+        "",
+        f"**Tasks:** {tasks}",
         "",
         f"**Q:** {card['front']}",
         "",

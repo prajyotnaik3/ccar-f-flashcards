@@ -3,7 +3,7 @@
   "$id": "https://github.com/ccar-f-flashcards/card.schema.json",
   "title": "CCAR-F Flashcard",
   "type": "object",
-  "required": ["id", "domain", "type", "front", "back", "sources"],
+  "required": ["id", "domain", "type", "front", "back", "sources", "tasks"],
   "properties": {
     "id": {
       "type": "string",
@@ -52,6 +52,16 @@
     "tags": {
       "type": "array",
       "items": { "type": "string" }
+    },
+    "tasks": {
+      "type": "array",
+      "description": "Official Exam Guide task statement IDs (e.g. 1.4) or meta keys",
+      "items": {
+        "type": "string",
+        "pattern": "^([1-5]\\.[1-9]|exam-format|scenarios|cross-domain)$"
+      },
+      "minItems": 1,
+      "uniqueItems": true
     },
     "exam_day": {
       "type": "boolean",

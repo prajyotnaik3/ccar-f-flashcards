@@ -13,6 +13,7 @@ SCRIPTS = [
     "build_json.py",
     "build_anki.py",
     "build_cheatsheet.py",
+    "build_task_coverage.py",
 ]
 
 

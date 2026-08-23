@@ -17,11 +17,12 @@ The repo maps flashcards to the official blueprint—not a replacement for the P
 | Resource | Purpose |
 |----------|---------|
 | [docs/exam-guide-index.md](docs/exam-guide-index.md) | Task statements → domain YAML + viewer filter links |
+| [docs/task-coverage.md](docs/task-coverage.md) | Card count per task + `?task=` viewer links |
 | [docs/exam-guide/README.md](docs/exam-guide/README.md) | Download PDF + optional local copy |
 | [web/study.html](web/study.html) | Study hub on GitHub Pages |
 | `./scripts/setup_exam_guide.sh` | Copy PDF from Downloads into `docs/exam-guide/` (gitignored) |
 
-**Workflow:** Read PDF Section 6 task for a domain → drill cards via [viewer](https://prajyotnaik3.github.io/ccar-f-flashcards/) (`?domain=D1`) → read Section 9 rationales.
+| **Workflow:** Read PDF Section 6 task for a domain → drill cards via [viewer](https://prajyotnaik3.github.io/ccar-f-flashcards/) (`?domain=D1` or `?task=1.4`) → read Section 9 rationales.
 
 ## Quick start
 
@@ -57,14 +58,19 @@ Edit YAML in `flashcards/domains/`. Each card needs `id`, `domain`, `type`, `fro
   domain: D1
   type: decision
   scenarios: [customer_support]
+  tasks: ["1.4"]
   front: "Your question here"
   back: "Best answer / pattern"
   rationale: "Why this beats alternatives"
   sources:
-    - "Official CCAR-F Exam Guide — D1 task X"
+    - "Official CCAR-F Exam Guide — D1, Task 1.4"
   tags: [escalation]
   exam_day: true   # optional: include on cheat sheet
 ```
+
+Re-run `python scripts/apply_task_ids.py` if you add cards without `tasks` (infers from sources).
+
+See [docs/task-coverage.md](docs/task-coverage.md) for per-task card counts.
 
 Then run `python scripts/build_all.py`.
 

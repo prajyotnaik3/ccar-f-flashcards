@@ -2,6 +2,8 @@
 
 ## d5-001 · concept · customer_support, multi_agent_research, code_generation
 
+**Tasks:** 5.4
+
 **Q:** What is context degradation in long agent sessions?
 
 **A:** Reasoning quality drops as irrelevant history accumulates—inconsistent answers and vague 'typical pattern' references instead of specifics.
@@ -14,6 +16,8 @@
 ---
 
 ## d5-002 · concept · customer_support, structured_extraction
+
+**Tasks:** 5.1
 
 **Q:** Risk of progressive summarization in long support sessions?
 
@@ -28,6 +32,8 @@
 
 ## d5-003 · concept · multi_agent_research, structured_extraction
 
+**Tasks:** 5.1
+
 **Q:** What is the 'lost in the middle' effect?
 
 **A:** Models reliably use info at the start and end of long inputs but may omit findings buried in middle sections.
@@ -40,6 +46,8 @@
 ---
 
 ## d5-004 · decision · customer_support
+
+**Tasks:** 5.1
 
 **Q:** Preserve order amounts and dates across a long support conversation?
 
@@ -54,6 +62,8 @@
 
 ## d5-005 · decision · customer_support
 
+**Tasks:** 5.1
+
 **Q:** Order lookup returns 40+ fields but only 5 matter for returns. Context fix?
 
 **A:** Trim verbose tool outputs to relevant fields before they accumulate in conversation context.
@@ -66,6 +76,8 @@
 ---
 
 ## d5-006 · decision · multi_agent_research
+
+**Tasks:** 5.1
 
 **Q:** Mitigate lost-in-the-middle when aggregating subagent results?
 
@@ -80,6 +92,8 @@
 
 ## d5-007 · decision · multi_agent_research
 
+**Tasks:** 5.1
+
 **Q:** Downstream synthesis agent has limited context budget. Upstream agent output design?
 
 **A:** Return structured key facts, citations, and relevance scores—not verbose reasoning chains.
@@ -92,6 +106,8 @@
 ---
 
 ## d5-008 · concept · customer_support, multi_agent_research
+
+**Tasks:** 5.1
 
 **Q:** Why pass complete conversation history in subsequent API requests?
 
@@ -106,6 +122,8 @@
 
 ## d5-009 · decision · customer_support
 
+**Tasks:** 5.1
+
 **Q:** Multi-issue support session (billing + return). Context layer approach?
 
 **A:** Persist structured issue data (order IDs, amounts, statuses) in a separate context layer for each concern.
@@ -118,6 +136,8 @@
 ---
 
 ## d5-010 · concept · customer_support
+
+**Tasks:** 5.2
 
 **Q:** Three appropriate escalation triggers (beyond 'complex case')?
 
@@ -132,6 +152,8 @@
 
 ## d5-011 · decision · customer_support
 
+**Tasks:** 5.2
+
 **Q:** 55% FCR—escalates easy cases, handles hard policy exceptions alone. Best calibration fix?
 
 **A:** Add explicit escalation criteria with few-shot examples showing escalate vs resolve autonomously.
@@ -144,6 +166,8 @@
 ---
 
 ## d5-012 · anti_pattern · customer_support
+
+**Tasks:** 5.2
 
 **Q:** Route to human when self-reported confidence score is below threshold. Why unreliable?
 
@@ -158,6 +182,8 @@
 
 ## d5-013 · anti_pattern · customer_support
 
+**Tasks:** 5.2
+
 **Q:** Escalate on negative sentiment threshold. Why wrong for calibration?
 
 **A:** Sentiment doesn't correlate with case complexity—the actual issue is unclear escalation boundaries.
@@ -170,6 +196,8 @@
 ---
 
 ## d5-014 · decision · customer_support
+
+**Tasks:** 5.2
 
 **Q:** Customer explicitly demands a human agent. Response?
 
@@ -184,6 +212,8 @@
 
 ## d5-015 · decision · customer_support
 
+**Tasks:** 5.2
+
 **Q:** Frustrated customer, issue is within agent capability. Approach?
 
 **A:** Acknowledge frustration and offer resolution; escalate only if customer reiterates preference for human.
@@ -196,6 +226,8 @@
 ---
 
 ## d5-016 · decision · customer_support
+
+**Tasks:** 5.2
 
 **Q:** Policy silent on competitor price matching (only covers own-site adjustments). Action?
 
@@ -210,6 +242,8 @@
 
 ## d5-017 · decision · customer_support
 
+**Tasks:** 5.2
+
 **Q:** get_customer returns multiple matches. What should the agent do?
 
 **A:** Ask for additional identifiers—never pick a match heuristically.
@@ -222,6 +256,8 @@
 ---
 
 ## d5-018 · decision · multi_agent_research
+
+**Tasks:** 5.1
 
 **Q:** Subagents need prior search results. Best context passing?
 
@@ -236,6 +272,8 @@
 
 ## d5-019 · decision · multi_agent_research
 
+**Tasks:** 5.3
+
 **Q:** Web search subagent timeout—best error propagation to coordinator?
 
 **A:** Structured context: failure type, attempted query, partial results, and alternative approaches.
@@ -248,6 +286,8 @@
 ---
 
 ## d5-020 · anti_pattern · multi_agent_research
+
+**Tasks:** 5.3
 
 **Q:** Subagent returns empty results marked successful after timeout. Why anti-pattern?
 
@@ -262,6 +302,8 @@
 
 ## d5-021 · decision · multi_agent_research
 
+**Tasks:** 5.3
+
 **Q:** Synthesis output after partial subagent failures—what include?
 
 **A:** Coverage annotations: which findings are well-supported vs which topic areas have gaps from unavailable sources.
@@ -274,6 +316,8 @@
 ---
 
 ## d5-022 · decision · customer_support, multi_agent_research
+
+**Tasks:** 5.3
 
 **Q:** Agent loop fails twice on same tool error. Next step?
 
@@ -288,6 +332,8 @@
 
 ## d5-023 · concept · code_generation, developer_productivity
 
+**Tasks:** 5.4
+
 **Q:** Scratchpad files in long Claude Code exploration sessions—purpose?
 
 **A:** Persist key findings across context boundaries; reference for later questions to counteract degradation.
@@ -300,6 +346,8 @@
 ---
 
 ## d5-024 · decision · code_generation, developer_productivity
+
+**Tasks:** 5.4
 
 **Q:** Verbose codebase exploration fills context. Claude Code command to reduce usage?
 
@@ -314,6 +362,8 @@
 
 ## d5-025 · decision · developer_productivity
 
+**Tasks:** 5.4
+
 **Q:** Multi-phase codebase exploration—context pattern between phases?
 
 **A:** Summarize key findings from one phase, inject summary into context before spawning subagents for the next.
@@ -326,6 +376,8 @@
 ---
 
 ## d5-026 · concept · multi_agent_research, developer_productivity
+
+**Tasks:** 5.4
 
 **Q:** Crash recovery pattern for multi-agent workflows?
 
@@ -340,6 +392,8 @@
 
 ## d5-027 · anti_pattern · code_generation, developer_productivity
 
+**Tasks:** 2.5, 5.4
+
 **Q:** Why dump entire repo into context for every Claude Code task?
 
 **A:** Wastes tokens and adds noise—use Grep/Glob and scoped reads incrementally.
@@ -352,6 +406,8 @@
 ---
 
 ## d5-028 · concept · structured_extraction
+
+**Tasks:** 5.5
 
 **Q:** 97% overall extraction accuracy—why not automate all human review?
 
@@ -366,6 +422,8 @@
 
 ## d5-029 · decision · structured_extraction
 
+**Tasks:** 5.5
+
 **Q:** Ongoing quality monitoring for high-confidence extractions?
 
 **A:** Stratified random sampling to measure error rates and detect novel error patterns.
@@ -378,6 +436,8 @@
 ---
 
 ## d5-030 · decision · structured_extraction
+
+**Tasks:** 5.5
 
 **Q:** Calibrate human review routing for extractions?
 
@@ -392,6 +452,8 @@
 
 ## d5-031 · decision · structured_extraction
 
+**Tasks:** 5.5
+
 **Q:** Before reducing human review on high-confidence extractions—verify what?
 
 **A:** Accuracy by document type and field segment—consistent performance across all segments.
@@ -404,6 +466,8 @@
 ---
 
 ## d5-032 · decision · structured_extraction
+
+**Tasks:** 5.5
 
 **Q:** Limited reviewer capacity—prioritize which extractions for human review?
 
@@ -418,6 +482,8 @@
 
 ## d5-033 · concept · multi_agent_research
 
+**Tasks:** 5.6
+
 **Q:** How is source attribution lost in multi-agent research pipelines?
 
 **A:** Summarization compresses findings without preserving claim-to-source mappings.
@@ -430,6 +496,8 @@
 ---
 
 ## d5-034 · decision · multi_agent_research
+
+**Tasks:** 5.6
 
 **Q:** Subagent output for downstream synthesis—provenance requirement?
 
@@ -444,6 +512,8 @@
 
 ## d5-035 · decision · multi_agent_research
 
+**Tasks:** 5.6
+
 **Q:** Two credible sources report different statistics. Synthesis handling?
 
 **A:** Annotate conflict with source attribution—do not arbitrarily pick one value.
@@ -456,6 +526,8 @@
 ---
 
 ## d5-036 · decision · multi_agent_research
+
+**Tasks:** 5.6
 
 **Q:** Why require publication/collection dates in structured subagent outputs?
 
@@ -470,6 +542,8 @@
 
 ## d5-037 · decision · multi_agent_research
 
+**Tasks:** 5.6
+
 **Q:** Research report structure for contested vs established findings?
 
 **A:** Explicit sections distinguishing well-established findings from contested ones with methodological context.
@@ -482,6 +556,8 @@
 ---
 
 ## d5-038 · decision · multi_agent_research
+
+**Tasks:** 5.6
 
 **Q:** Synthesis output formatting for mixed content types?
 
@@ -496,6 +572,8 @@
 
 ## d5-039 · scenario_hook · customer_support, multi_agent_research, structured_extraction
 
+**Tasks:** 5.1, 5.2, 5.3
+
 **Q:** Which three scenarios list D5 as a primary domain?
 
 **A:** Customer Support, Multi-Agent Research, and Structured Data Extraction.
@@ -508,6 +586,8 @@
 ---
 
 ## d5-040 · scenario_hook · code_generation
+
+**Tasks:** 3.4, 5.1
 
 **Q:** Code Generation scenario (Scenario 2)—D5 focus areas?
 
@@ -522,6 +602,8 @@
 
 ## d5-041 · decision · multi_agent_research
 
+**Tasks:** 5.1
+
 **Q:** Subagent structured outputs for downstream synthesis—required metadata?
 
 **A:** Dates, source locations, and methodological context—not just claims without provenance context.
@@ -534,6 +616,8 @@
 ---
 
 ## d5-042 · anti_pattern · customer_support
+
+**Tasks:** 5.2
 
 **Q:** Deploy classifier model to predict escalation before agent runs. Why over-engineered first step?
 
@@ -548,6 +632,8 @@
 
 ## d5-043 · anti_pattern · multi_agent_research
 
+**Tasks:** 5.3
+
 **Q:** Subagent retries then returns generic 'search unavailable' to coordinator. Problem?
 
 **A:** Hides failure type, attempted query, and partial results—coordinator cannot make informed recovery.
@@ -560,6 +646,8 @@
 ---
 
 ## d5-044 · anti_pattern · multi_agent_research
+
+**Tasks:** 5.3
 
 **Q:** Single subagent failure terminates entire multi-agent workflow. Why wrong?
 
@@ -574,6 +662,8 @@
 
 ## d5-045 · decision · developer_productivity, code_generation
 
+**Tasks:** 5.4
+
 **Q:** Long codebase exploration—delegate specific questions while preserving coordination?
 
 **A:** Spawn subagents for focused tasks (find test files, trace refund flow) while main agent keeps high-level coordination.
@@ -587,6 +677,8 @@
 
 ## d5-046 · decision · multi_agent_research
 
+**Tasks:** 5.6
+
 **Q:** Document analysis finds conflicting values from sources. Before synthesis?
 
 **A:** Complete analysis with conflicts included and explicitly annotated—let coordinator reconcile before passing to synthesis.
@@ -599,6 +691,8 @@
 ---
 
 ## d5-047 · decision · developer_productivity
+
+**Tasks:** 5.4
 
 **Q:** Scratchpad file during exploration—how use for follow-up questions?
 

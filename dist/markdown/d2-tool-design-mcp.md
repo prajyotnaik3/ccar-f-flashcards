@@ -2,6 +2,8 @@
 
 ## d2-001 · concept · customer_support, developer_productivity
 
+**Tasks:** 2.4
+
 **Q:** What does MCP (Model Context Protocol) provide to Claude agents?
 
 **A:** A standard way for AI clients to discover and invoke tools, resources, and prompts from external servers.
@@ -16,6 +18,8 @@
 
 ## d2-002 · concept · customer_support, developer_productivity
 
+**Tasks:** 2.1
+
 **Q:** Primary mechanism LLMs use to select among similar tools?
 
 **A:** Tool descriptions—minimal descriptions lead to unreliable selection when tools overlap.
@@ -28,6 +32,8 @@
 ---
 
 ## d2-003 · decision · customer_support
+
+**Tasks:** 2.1
 
 **Q:** Agent calls get_customer for order queries (#12345) instead of lookup_order. Both have minimal descriptions. Best first fix?
 
@@ -44,6 +50,8 @@
 
 ## d2-004 · concept · customer_support, developer_productivity
 
+**Tasks:** 2.1
+
 **Q:** What should effective tool descriptions include beyond a one-line summary?
 
 **A:** Expected inputs, outputs, example queries, edge cases, and boundaries explaining when to use vs similar alternatives.
@@ -56,6 +64,8 @@
 ---
 
 ## d2-005 · anti_pattern · developer_productivity, multi_agent_research
+
+**Tasks:** 2.1
 
 **Q:** analyze_content and analyze_document have near-identical descriptions. Likely result?
 
@@ -70,6 +80,8 @@
 
 ## d2-006 · decision · multi_agent_research
 
+**Tasks:** 2.1
+
 **Q:** Generic analyze_content overlaps with analyze_document. Rename/fix strategy?
 
 **A:** Rename to purpose-specific names (e.g., extract_web_results) with web-specific descriptions that eliminate overlap.
@@ -82,6 +94,8 @@
 ---
 
 ## d2-007 · decision · multi_agent_research, structured_extraction
+
+**Tasks:** 2.1
 
 **Q:** One generic analyze_document tool does too much. How split it?
 
@@ -96,6 +110,8 @@
 
 ## d2-008 · concept · customer_support, developer_productivity
 
+**Tasks:** 2.1
+
 **Q:** How can system prompt wording undermine well-written tool descriptions?
 
 **A:** Keyword-sensitive instructions can create unintended tool associations that override description clarity.
@@ -108,6 +124,8 @@
 ---
 
 ## d2-009 · decision · customer_support
+
+**Tasks:** 2.1
 
 **Q:** Tool selection still wrong after improving descriptions. Next check?
 
@@ -122,6 +140,8 @@
 
 ## d2-010 · anti_pattern · developer_productivity
 
+**Tasks:** 2.1
+
 **Q:** Why expose one mega-tool that 'does anything on GitHub' to the agent?
 
 **A:** Harder correct selection, weak error semantics, and excessive blast radius if mis-invoked.
@@ -134,6 +154,8 @@
 ---
 
 ## d2-011 · anti_pattern · customer_support
+
+**Tasks:** 2.1
 
 **Q:** Similar tools misroute. Why is consolidating into lookup_entity not the best first step?
 
@@ -148,6 +170,8 @@
 
 ## d2-012 · concept · customer_support
 
+**Tasks:** 2.2
+
 **Q:** MCP pattern for communicating tool failures back to the agent?
 
 **A:** The isError flag on tool results, plus structured error metadata—not raw stack traces or generic messages.
@@ -160,6 +184,8 @@
 ---
 
 ## d2-013 · concept · customer_support, multi_agent_research
+
+**Tasks:** 2.2
 
 **Q:** Four MCP error categories the exam distinguishes?
 
@@ -174,6 +200,8 @@
 
 ## d2-014 · anti_pattern · customer_support
 
+**Tasks:** 2.2
+
 **Q:** Why return generic 'Operation failed' for all tool errors?
 
 **A:** Prevents the agent from choosing appropriate recovery—retry, explain to user, escalate, or accept empty results.
@@ -186,6 +214,8 @@
 ---
 
 ## d2-015 · decision · customer_support
+
+**Tasks:** 2.2
 
 **Q:** Structured error metadata fields for MCP tools (name three)?
 
@@ -200,6 +230,8 @@
 
 ## d2-016 · decision · customer_support
 
+**Tasks:** 2.2
+
 **Q:** Business rule violation (e.g., refund over policy limit). Error response design?
 
 **A:** isRetryable: false, customer-friendly explanation so the agent can communicate appropriately—not retry endlessly.
@@ -212,6 +244,8 @@
 ---
 
 ## d2-017 · compare · customer_support, multi_agent_research
+
+**Tasks:** 2.2
 
 **Q:** Access failure (timeout) vs valid empty result (no matches)—how should tools report differently?
 
@@ -226,6 +260,8 @@
 
 ## d2-018 · decision · multi_agent_research
 
+**Tasks:** 2.2
+
 **Q:** Transient failure in a subagent. Handle locally vs propagate to coordinator?
 
 **A:** Retry locally when possible; propagate only unresolved errors with partial results and what was attempted.
@@ -238,6 +274,8 @@
 ---
 
 ## d2-019 · decision · customer_support
+
+**Tasks:** 2.2
 
 **Q:** Tool returns ambiguous error from external API. Best tool-layer behavior?
 
@@ -252,6 +290,8 @@
 
 ## d2-020 · concept · multi_agent_research, developer_productivity
 
+**Tasks:** 2.3
+
 **Q:** Why giving an agent 18 tools instead of 4–5 hurts reliability?
 
 **A:** Increases decision complexity and degrades tool selection accuracy.
@@ -264,6 +304,8 @@
 ---
 
 ## d2-021 · anti_pattern · multi_agent_research
+
+**Tasks:** 2.3
 
 **Q:** Synthesis agent attempts web searches. Likely tool design issue?
 
@@ -278,6 +320,8 @@
 
 ## d2-022 · concept · multi_agent_research, developer_productivity
 
+**Tasks:** 2.3
+
 **Q:** What is scoped tool access for subagents?
 
 **A:** Each agent gets only tools for its role, plus limited cross-role tools for specific high-frequency needs.
@@ -290,6 +334,8 @@
 ---
 
 ## d2-023 · concept · customer_support, structured_extraction
+
+**Tasks:** 2.3
 
 **Q:** Three tool_choice configuration options on the Claude API?
 
@@ -304,6 +350,8 @@
 
 ## d2-024 · decision · structured_extraction
 
+**Tasks:** 2.3
+
 **Q:** When use tool_choice: "any"?
 
 **A:** When you need guaranteed tool invocation instead of conversational text—e.g., unknown document type among multiple extraction schemas.
@@ -316,6 +364,8 @@
 ---
 
 ## d2-025 · decision · structured_extraction
+
+**Tasks:** 2.3
 
 **Q:** Must run extract_metadata before enrichment tools. tool_choice approach?
 
@@ -330,6 +380,8 @@
 
 ## d2-026 · decision · multi_agent_research
 
+**Tasks:** 2.3
+
 **Q:** Replace generic fetch_url with what kind of constrained tool?
 
 **A:** Purpose-specific tool like load_document that validates document URLs and rejects non-document URLs.
@@ -342,6 +394,8 @@
 ---
 
 ## d2-027 · decision · multi_agent_research
+
+**Tasks:** 2.3
 
 **Q:** Synthesis needs simple fact-checks often. Scoped cross-role tool pattern?
 
@@ -356,6 +410,8 @@
 
 ## d2-028 · decision · customer_support
 
+**Tasks:** 2.3
+
 **Q:** Refund tool should only run after verified identity. Tool design choice?
 
 **A:** Least privilege: narrow tool exposure or refund tool requiring verified session token from prior identity tool.
@@ -368,6 +424,8 @@
 ---
 
 ## d2-029 · compare · developer_productivity
+
+**Tasks:** 2.4
 
 **Q:** Project-level vs user-level MCP server configuration?
 
@@ -382,6 +440,8 @@
 
 ## d2-030 · decision · developer_productivity
 
+**Tasks:** 2.4
+
 **Q:** Store GitHub token for team MCP server without committing secrets?
 
 **A:** Environment variable expansion in .mcp.json (e.g., ${GITHUB_TOKEN}) with secrets in env—not in the repo.
@@ -394,6 +454,8 @@
 ---
 
 ## d2-031 · concept · developer_productivity
+
+**Tasks:** 2.4
 
 **Q:** When are MCP tools from multiple servers available to the agent?
 
@@ -408,6 +470,8 @@
 
 ## d2-032 · concept · developer_productivity, multi_agent_research
 
+**Tasks:** 2.4
+
 **Q:** MCP resources vs MCP tools—when use resources?
 
 **A:** Resources expose content catalogs (issue summaries, doc hierarchies, DB schemas) to reduce exploratory tool calls.
@@ -420,6 +484,8 @@
 ---
 
 ## d2-033 · decision · developer_productivity
+
+**Tasks:** 2.4
 
 **Q:** Agent prefers Grep over a more capable MCP search tool. Fix?
 
@@ -434,6 +500,8 @@
 
 ## d2-034 · decision · developer_productivity
 
+**Tasks:** 2.4
+
 **Q:** Jira integration needed. Community MCP server vs custom?
 
 **A:** Prefer existing community MCP for standard integrations (Jira); custom servers for team-specific workflows.
@@ -446,6 +514,8 @@
 ---
 
 ## d2-035 · compare · developer_productivity
+
+**Tasks:** 2.4, 2.5
 
 **Q:** Built-in Claude Code tools vs custom MCP—when prefer MCP?
 
@@ -460,6 +530,8 @@
 
 ## d2-036 · concept · developer_productivity
 
+**Tasks:** 2.5
+
 **Q:** Built-in Grep vs Glob—primary use case for each?
 
 **A:** Grep: search file contents for patterns (function names, errors, imports). Glob: match file paths by name/extension patterns.
@@ -472,6 +544,8 @@
 ---
 
 ## d2-037 · decision · developer_productivity
+
+**Tasks:** 2.5
 
 **Q:** Find all test files named *.test.tsx anywhere in the repo. Which built-in tool?
 
@@ -486,6 +560,8 @@
 
 ## d2-038 · decision · developer_productivity
 
+**Tasks:** 2.5
+
 **Q:** Find all callers of a function across the codebase. Which built-in tool?
 
 **A:** Grep to search file contents for the function name/reference patterns.
@@ -498,6 +574,8 @@
 ---
 
 ## d2-039 · compare · developer_productivity
+
+**Tasks:** 2.5
 
 **Q:** Read/Write/Edit—when use Edit vs Read + Write?
 
@@ -512,6 +590,8 @@
 
 ## d2-040 · decision · developer_productivity
 
+**Tasks:** 2.5
+
 **Q:** Best incremental codebase exploration pattern?
 
 **A:** Grep for entry points → Read to follow imports and trace flows—not read all files upfront.
@@ -524,6 +604,8 @@
 ---
 
 ## d2-041 · decision · developer_productivity
+
+**Tasks:** 2.5
 
 **Q:** Trace usage across wrapper modules exporting many names?
 
@@ -538,6 +620,8 @@
 
 ## d2-042 · scenario_hook · customer_support, multi_agent_research, developer_productivity
 
+**Tasks:** 2.1
+
 **Q:** Which three exam scenarios list D2 as a primary domain?
 
 **A:** Customer Support, Multi-Agent Research, and Developer Productivity.
@@ -550,6 +634,8 @@
 ---
 
 ## d2-043 · concept · customer_support
+
+**Tasks:** 2.1, 2.4
 
 **Q:** Customer Support scenario MCP tools (Exam Scenario 1)—examples?
 
@@ -564,6 +650,8 @@
 
 ## d2-044 · concept · developer_productivity
 
+**Tasks:** 2.5
+
 **Q:** Developer Productivity scenario built-in tools (Exam Scenario 4)?
 
 **A:** Read, Write, Bash, Grep, Glob—plus MCP server integrations for external systems.
@@ -576,6 +664,8 @@
 ---
 
 ## d2-045 · anti_pattern · customer_support
+
+**Tasks:** 2.1
 
 **Q:** Improve tool selection with keyword routing layer parsing user input each turn. Why often wrong?
 
@@ -590,6 +680,8 @@
 
 ## d2-046 · compare · developer_productivity
 
+**Tasks:** 2.4
+
 **Q:** MCP tools vs MCP resources—division of responsibility?
 
 **A:** Tools perform actions (fetch, update, search); resources expose catalogs and static context (schemas, doc trees) to cut exploratory calls.
@@ -602,6 +694,8 @@
 ---
 
 ## d2-047 · concept · developer_productivity
+
+**Tasks:** 2.2
 
 **Q:** Why return structured isRetryable metadata on errors?
 
@@ -616,6 +710,8 @@
 
 ## d2-048 · concept · developer_productivity
 
+**Tasks:** 2.5
+
 **Q:** Built-in Bash tool—when use vs Grep?
 
 **A:** Bash for shell commands and scripted operations; Grep for searching file contents for patterns across the codebase.
@@ -628,6 +724,8 @@
 ---
 
 ## d2-049 · concept · customer_support, structured_extraction
+
+**Tasks:** 2.3, 4.3
 
 **Q:** tool_choice: "auto"—what can the model return?
 
@@ -642,6 +740,8 @@
 
 ## d2-050 · anti_pattern · customer_support
 
+**Tasks:** 2.1
+
 **Q:** Similar tools misroute. Add 5–8 few-shot tool-selection examples first?
 
 **A:** Adds token overhead without fixing root cause—inadequate tool descriptions are the primary selection mechanism.
@@ -655,6 +755,8 @@
 
 ## d2-051 · concept · developer_productivity
 
+**Tasks:** 2.5
+
 **Q:** Edit built-in tool—how does it modify files?
 
 **A:** Targeted modifications using unique text matching as anchor—fails when anchor text is not unique.
@@ -667,6 +769,8 @@
 ---
 
 ## d2-052 · decision · customer_support
+
+**Tasks:** 2.2
 
 **Q:** errorCategory for policy violation refund blocked?
 

@@ -5,6 +5,7 @@ let flipped = false;
 
 const elDomain = document.getElementById("filter-domain");
 const elScenario = document.getElementById("filter-scenario");
+const elTask = document.getElementById("filter-task");
 const elCounter = document.getElementById("counter");
 const elMeta = document.getElementById("card-meta");
 const elFront = document.getElementById("card-front");
@@ -14,17 +15,49 @@ const elCard = document.getElementById("card");
 function applyFilters() {
   const domain = elDomain.value;
   const scenario = elScenario.value;
+  const task = elTask.value;
   filtered = allCards.filter((c) => {
     if (domain && c.domain !== domain) return false;
     if (scenario) {
       const scenarios = c.scenarios || [];
       if (!scenarios.includes(scenario) && !scenarios.includes("all")) return false;
     }
+    if (task) {
+      const tasks = c.tasks || [];
+      if (!tasks.includes(task)) return false;
+    }
     return true;
   });
   index = 0;
   flipped = false;
   render();
+}
+
+function populateTaskFilter() {
+  const tasks = new Set();
+  for (const card of allCards) {
+    for (const t of card.tasks || []) {
+      tasks.add(t);
+    }
+  }
+  const sorted = [...tasks].sort((a, b) => {
+    const parse = (x) => {
+      if (/^[1-5]\.\d$/.test(x)) {
+        const [d, t] = x.split(".").map(Number);
+        return [0, d, t];
+      }
+      return [1, 0, x];
+    };
+    const pa = parse(a);
+    const pb = parse(b);
+    return pa[0] - pb[0] || pa[1] - pb[1] || pa[2] - pb[2] || String(a).localeCompare(String(b));
+  });
+  for (const t of sorted) {
+    const opt = document.createElement("option");
+    opt.value = t;
+    opt.textContent = t;
+    elTask.appendChild(opt);
+  }
 }
 
 function render() {
@@ -38,7 +71,8 @@ function render() {
 
   const card = filtered[index];
   elCounter.textContent = `${index + 1} / ${filtered.length}`;
-  elMeta.textContent = `${card.id} · ${card.domain} · ${card.type} · ${(card.scenarios || []).join(", ")}`;
+  const tasks = (card.tasks || []).join(", ");
+  elMeta.textContent = `${card.id} · ${card.domain} · ${card.type} · tasks: ${tasks} · ${(card.scenarios || []).join(", ")}`;
   elFront.textContent = card.front;
   elBack.innerHTML = `<strong>A:</strong> ${card.back}` +
     (card.rationale ? `<br><br><strong>Why:</strong> ${card.rationale}` : "");
@@ -81,6 +115,7 @@ document.getElementById("prev-btn").addEventListener("click", prev);
 document.getElementById("shuffle-btn").addEventListener("click", shuffle);
 elDomain.addEventListener("change", applyFilters);
 elScenario.addEventListener("change", applyFilters);
+elTask.addEventListener("change", applyFilters);
 elCard.addEventListener("click", flip);
 
 document.addEventListener("keydown", (e) => {
@@ -98,12 +133,15 @@ fetch("cards.json")
   .then((r) => r.json())
   .then((data) => {
     allCards = data.cards || [];
+    populateTaskFilter();
     const params = new URLSearchParams(window.location.search);
     const domain = params.get("domain");
     const scenario = params.get("scenario");
+    const task = params.get("task");
     if (domain) elDomain.value = domain;
     if (scenario) elScenario.value = scenario;
-    if (domain || scenario) {
+    if (task) elTask.value = task;
+    if (domain || scenario || task) {
       applyFilters();
     } else {
       filtered = [...allCards];

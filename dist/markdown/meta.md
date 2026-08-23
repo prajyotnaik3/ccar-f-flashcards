@@ -2,6 +2,8 @@
 
 ## meta-001 · meta · all
 
+**Tasks:** exam-format
+
 **Q:** What is the official exam code for Claude Certified Architect, Foundations?
 
 **A:** CCAR-F (also written CCA-F or CCAF in older materials).
@@ -18,6 +20,8 @@
 
 ## meta-002 · meta · all
 
+**Tasks:** exam-format
+
 **Q:** CCAR-F format: how many questions, time limit, and passing score?
 
 **A:** 60 scenario-based items, 120 minutes, pass at scaled 720 on a 100–1000 scale.
@@ -31,6 +35,8 @@
 
 ## meta-003 · meta · all
 
+**Tasks:** scenarios
+
 **Q:** How many scenarios appear on the exam, and from what pool?
 
 **A:** 4 scenarios per exam, drawn randomly from a published bank of 6.
@@ -43,6 +49,8 @@
 ---
 
 ## meta-004 · decision · all
+
+**Tasks:** cross-domain
 
 **Q:** Core heuristic when a scenario needs deterministic guarantees (money, identity, schema compliance)?
 

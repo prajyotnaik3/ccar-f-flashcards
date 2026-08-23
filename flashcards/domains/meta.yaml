@@ -2,50 +2,65 @@
   domain: META
   type: meta
   difficulty: easy
-  scenarios: [all]
-  front: "What is the official exam code for Claude Certified Architect, Foundations?"
-  back: "CCAR-F (also written CCA-F or CCAF in older materials)."
-  rationale: "Pearson lists CCAR-F as the current code."
+  scenarios:
+  - all
+  front: What is the official exam code for Claude Certified Architect, Foundations?
+  back: CCAR-F (also written CCA-F or CCAF in older materials).
+  rationale: Pearson lists CCAR-F as the current code.
   sources:
-    - "Official CCAR-F Exam Guide"
-    - "https://docs.anthropic.com/en/docs/about-claude/models"
-  tags: [exam_basics]
+  - Official CCAR-F Exam Guide
+  - https://docs.anthropic.com/en/docs/about-claude/models
+  tags:
+  - exam_basics
   exam_day: true
-
+  tasks:
+  - exam-format
 - id: meta-002
   domain: META
   type: meta
   difficulty: easy
-  scenarios: [all]
-  front: "CCAR-F format: how many questions, time limit, and passing score?"
-  back: "60 scenario-based items, 120 minutes, pass at scaled 720 on a 100–1000 scale."
+  scenarios:
+  - all
+  front: 'CCAR-F format: how many questions, time limit, and passing score?'
+  back: 60 scenario-based items, 120 minutes, pass at scaled 720 on a 100–1000 scale.
   sources:
-    - "Official CCAR-F Exam Guide"
-  tags: [exam_basics]
+  - Official CCAR-F Exam Guide
+  tags:
+  - exam_basics
   exam_day: true
-
+  tasks:
+  - exam-format
 - id: meta-003
   domain: META
   type: meta
   difficulty: medium
-  scenarios: [all]
-  front: "How many scenarios appear on the exam, and from what pool?"
-  back: "4 scenarios per exam, drawn randomly from a published bank of 6."
+  scenarios:
+  - all
+  front: How many scenarios appear on the exam, and from what pool?
+  back: 4 scenarios per exam, drawn randomly from a published bank of 6.
   sources:
-    - "Official CCAR-F Exam Guide"
-  tags: [exam_basics, scenarios]
+  - Official CCAR-F Exam Guide
+  tags:
+  - exam_basics
+  - scenarios
   exam_day: true
-
+  tasks:
+  - scenarios
 - id: meta-004
   domain: META
   type: decision
   difficulty: hard
-  scenarios: [all]
-  front: "Core heuristic when a scenario needs deterministic guarantees (money, identity, schema compliance)?"
-  back: "Prefer structural/programmatic fixes (hooks, prerequisites, scoped tools, tool_use schemas) over prompt-only instructions."
-  rationale: "Exam tests judgment: prompts are insufficient for hard guarantees."
+  scenarios:
+  - all
+  front: Core heuristic when a scenario needs deterministic guarantees (money, identity, schema compliance)?
+  back: Prefer structural/programmatic fixes (hooks, prerequisites, scoped tools, tool_use schemas) over prompt-only instructions.
+  rationale: 'Exam tests judgment: prompts are insufficient for hard guarantees.'
   sources:
-    - "Community study guides aligned to Exam Guide patterns"
-    - "Official CCAR-F Exam Guide — sample rationales"
-  tags: [heuristic, exam_day]
+  - Community study guides aligned to Exam Guide patterns
+  - Official CCAR-F Exam Guide — sample rationales
+  tags:
+  - heuristic
+  - exam_day
   exam_day: true
+  tasks:
+  - cross-domain
