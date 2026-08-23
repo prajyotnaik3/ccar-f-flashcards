@@ -2,7 +2,7 @@
 
 Auto-generated from flashcards with `exam_day: true`.
 
-**33 cards** — review the night before the exam.
+**39 cards** — review the night before the exam.
 
 ### d1-002 (D1)
 
@@ -123,13 +123,43 @@ Auto-generated from flashcards with `exam_day: true`.
 
 ### d3-002 (D3)
 
-- **Q:** Plan mode vs full Agent mode in Claude Code for a large refactor?
-- **A:** Plan mode when you want reviewable steps before edits; Agent mode when executing a well-scoped implementation with approvals.
+- **Q:** CLAUDE.md configuration hierarchy (three levels)?
+- **A:** User (~/.claude/CLAUDE.md), project (.claude/CLAUDE.md or root CLAUDE.md), and directory-level (subdirectory CLAUDE.md files).
 
-### d3-005 (D3)
+### d3-008 (D3)
 
-- **Q:** CI/CD with Claude Code scenario—primary domains?
-- **A:** D3 (Claude Code config), D4 (structured output for findings), D5 (reliability in automated runs).
+- **Q:** Team /review slash command for every developer on clone. Where create it?
+- **A:** .claude/commands/ in the project repository—version-controlled and shared on clone/pull.
+
+### d3-010 (D3)
+
+- **Q:** Skill frontmatter options in .claude/skills/SKILL.md (name three)?
+- **A:** context: fork, allowed-tools, and argument-hint.
+
+### d3-016 (D3)
+
+- **Q:** How do .claude/rules/ path-specific rules activate?
+- **A:** YAML frontmatter paths field with glob patterns—rules load only when editing matching files.
+
+### d3-021 (D3)
+
+- **Q:** Restructure monolith into microservices—dozens of files, architectural decisions. Approach?
+- **A:** Plan mode: explore codebase, understand dependencies, design approach before making changes.
+
+### d3-022 (D3)
+
+- **Q:** Plan mode vs direct execution—when use each?
+- **A:** Plan mode: large-scale, multi-file, architectural, multiple valid approaches. Direct execution: simple, well-scoped single changes.
+
+### d3-032 (D3)
+
+- **Q:** CI job hangs—Claude Code waiting for interactive input. Fix?
+- **A:** Use -p (or --print) flag for non-interactive mode: process prompt, output result, exit.
+
+### d3-042 (D3)
+
+- **Q:** CI/CD with Claude Code scenario (Scenario 5)—primary domains?
+- **A:** D3 (Claude Code) and D4 (prompt engineering/structured output for review findings).
 
 ### d4-002 (D4)
 

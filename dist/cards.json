@@ -1,5 +1,5 @@
 {
-  "count": 123,
+  "count": 163,
   "cards": [
     {
       "id": "d1-001",
@@ -2042,12 +2042,12 @@
       "difficulty": "easy",
       "scenarios": [
         "code_generation",
-        "ci_cd"
+        "developer_productivity"
       ],
       "front": "What is CLAUDE.md in Claude Code workflows?",
-      "back": "Project-level instructions and context file that Claude Code reads to align behavior, conventions, and constraints.",
+      "back": "Project instructions and context Claude Code loads to align behavior, conventions, and constraints.",
       "sources": [
-        "Official CCAR-F Exam Guide — D3",
+        "Official CCAR-F Exam Guide — D3, Task 3.1",
         "https://docs.anthropic.com/en/docs/claude-code/overview"
       ],
       "tags": [
@@ -2058,19 +2058,20 @@
       "id": "d3-002",
       "domain": "D3",
       "weight": 20,
-      "type": "compare",
+      "type": "concept",
       "difficulty": "medium",
       "scenarios": [
-        "code_generation"
+        "code_generation",
+        "developer_productivity"
       ],
-      "front": "Plan mode vs full Agent mode in Claude Code for a large refactor?",
-      "back": "Plan mode when you want reviewable steps before edits; Agent mode when executing a well-scoped implementation with approvals.",
+      "front": "CLAUDE.md configuration hierarchy (three levels)?",
+      "back": "User (~/.claude/CLAUDE.md), project (.claude/CLAUDE.md or root CLAUDE.md), and directory-level (subdirectory CLAUDE.md files).",
       "sources": [
-        "Official CCAR-F Exam Guide — D3, Code Generation scenario"
+        "Official CCAR-F Exam Guide — D3, Task 3.1"
       ],
       "tags": [
-        "plan_mode",
-        "agent_mode"
+        "claude_md",
+        "hierarchy"
       ],
       "exam_day": true
     },
@@ -2081,20 +2082,77 @@
       "type": "decision",
       "difficulty": "medium",
       "scenarios": [
-        "ci_cd"
+        "code_generation"
       ],
-      "front": "Running Claude Code in CI for PR review. Critical configuration concern?",
-      "back": "Non-interactive execution, explicit permissions, deterministic outputs (structured findings), and independent verification—not open-ended agent runs.",
+      "front": "New teammate doesn't receive team coding standards in Claude Code. Likely cause?",
+      "back": "Instructions are in user-level ~/.claude/CLAUDE.md—not shared via version control; move to project-level config.",
       "sources": [
-        "Official CCAR-F Exam Guide — D3, CI/CD scenario"
+        "Official CCAR-F Exam Guide — D3, Task 3.1"
       ],
       "tags": [
-        "ci_cd",
-        "automation"
+        "claude_md",
+        "hierarchy"
       ]
     },
     {
       "id": "d3-004",
+      "domain": "D3",
+      "weight": 20,
+      "type": "concept",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "What is @import syntax in CLAUDE.md?",
+      "back": "References external files to keep CLAUDE.md modular—import standards files relevant to each package.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.1"
+      ],
+      "tags": [
+        "claude_md",
+        "import"
+      ]
+    },
+    {
+      "id": "d3-005",
+      "domain": "D3",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Monolithic CLAUDE.md is hard to maintain. Alternative organization?",
+      "back": "Split into focused files in .claude/rules/ (e.g., testing.md, api-conventions.md, deployment.md).",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.1"
+      ],
+      "tags": [
+        "claude_md",
+        "rules"
+      ]
+    },
+    {
+      "id": "d3-006",
+      "domain": "D3",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Inconsistent Claude Code behavior across sessions—how diagnose loaded config?",
+      "back": "Use /memory to verify which memory files are loaded and what context is active.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.1"
+      ],
+      "tags": [
+        "claude_md",
+        "memory"
+      ]
+    },
+    {
+      "id": "d3-007",
       "domain": "D3",
       "weight": 20,
       "type": "anti_pattern",
@@ -2102,10 +2160,10 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Why skip shared CLAUDE.md when multiple developers use Claude Code on one repo?",
-      "back": "Inconsistent conventions, duplicated context in prompts, and drift in how the agent edits code across team members.",
+      "front": "Why skip shared project CLAUDE.md when multiple developers use Claude Code?",
+      "back": "Inconsistent conventions, duplicated prompt context, and drift in how the agent edits code across teammates.",
       "sources": [
-        "Official CCAR-F Exam Guide — D3"
+        "Official CCAR-F Exam Guide — D3, Task 3.1"
       ],
       "tags": [
         "claude_md",
@@ -2113,7 +2171,657 @@
       ]
     },
     {
-      "id": "d3-005",
+      "id": "d3-008",
+      "domain": "D3",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "easy",
+      "scenarios": [
+        "code_generation",
+        "ci_cd"
+      ],
+      "front": "Team /review slash command for every developer on clone. Where create it?",
+      "back": ".claude/commands/ in the project repository—version-controlled and shared on clone/pull.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.2; Sample Q4"
+      ],
+      "tags": [
+        "slash_commands"
+      ],
+      "exam_day": true
+    },
+    {
+      "id": "d3-009",
+      "domain": "D3",
+      "weight": 20,
+      "type": "compare",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Project-scoped vs user-scoped slash commands?",
+      "back": ".claude/commands/ in repo (shared via git) vs ~/.claude/commands/ (personal, not version controlled).",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.2"
+      ],
+      "tags": [
+        "slash_commands",
+        "scoping"
+      ]
+    },
+    {
+      "id": "d3-010",
+      "domain": "D3",
+      "weight": 20,
+      "type": "concept",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation",
+        "developer_productivity"
+      ],
+      "front": "Skill frontmatter options in .claude/skills/SKILL.md (name three)?",
+      "back": "context: fork, allowed-tools, and argument-hint.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.2"
+      ],
+      "tags": [
+        "skills",
+        "frontmatter"
+      ],
+      "exam_day": true
+    },
+    {
+      "id": "d3-011",
+      "domain": "D3",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Skill produces verbose codebase analysis output. Frontmatter to isolate it?",
+      "back": "context: fork—runs skill in isolated sub-agent context so output doesn't pollute main conversation.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.2"
+      ],
+      "tags": [
+        "skills",
+        "context_fork"
+      ]
+    },
+    {
+      "id": "d3-012",
+      "domain": "D3",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Skill should only write files, not run destructive shell commands. Frontmatter?",
+      "back": "allowed-tools restricting tool access during skill execution (e.g., file write operations only).",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.2"
+      ],
+      "tags": [
+        "skills",
+        "allowed_tools"
+      ]
+    },
+    {
+      "id": "d3-013",
+      "domain": "D3",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "easy",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Developer invokes skill without required arguments. Frontmatter help?",
+      "back": "argument-hint prompts for required parameters when the skill is invoked without them.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.2"
+      ],
+      "tags": [
+        "skills",
+        "argument_hint"
+      ]
+    },
+    {
+      "id": "d3-014",
+      "domain": "D3",
+      "weight": 20,
+      "type": "compare",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Skills vs CLAUDE.md—when use each?",
+      "back": "Skills: on-demand task-specific workflows. CLAUDE.md: always-loaded universal standards for the project.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.2"
+      ],
+      "tags": [
+        "skills",
+        "claude_md"
+      ]
+    },
+    {
+      "id": "d3-015",
+      "domain": "D3",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Personal skill customization without affecting teammates?",
+      "back": "Create personal variants in ~/.claude/skills/ with different names—not in shared project skills.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.2"
+      ],
+      "tags": [
+        "skills",
+        "scoping"
+      ]
+    },
+    {
+      "id": "d3-016",
+      "domain": "D3",
+      "weight": 20,
+      "type": "concept",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "How do .claude/rules/ path-specific rules activate?",
+      "back": "YAML frontmatter paths field with glob patterns—rules load only when editing matching files.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.3"
+      ],
+      "tags": [
+        "rules",
+        "path_scoping"
+      ],
+      "exam_day": true
+    },
+    {
+      "id": "d3-017",
+      "domain": "D3",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Test files spread as Button.test.tsx next to Button.tsx. Apply test conventions automatically?",
+      "back": ".claude/rules/ with glob paths like **/*.test.tsx—applies by file type across all directories.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.3; Sample Q6"
+      ],
+      "tags": [
+        "rules",
+        "glob"
+      ]
+    },
+    {
+      "id": "d3-018",
+      "domain": "D3",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "hard",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "React, API, and DB areas need different conventions; tests scattered everywhere. Best maintainable approach?",
+      "back": ".claude/rules/ with YAML frontmatter glob patterns (e.g., paths: [\"**/*.test.tsx\"], [\"src/api/**/*\"])—not inference from one monolithic CLAUDE.md.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.3; Sample Q6"
+      ],
+      "tags": [
+        "rules",
+        "glob"
+      ]
+    },
+    {
+      "id": "d3-019",
+      "domain": "D3",
+      "weight": 20,
+      "type": "compare",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Path-specific rules vs subdirectory CLAUDE.md for scattered test files?",
+      "back": "Path-specific glob rules apply by file pattern anywhere in the tree; subdirectory CLAUDE.md is directory-bound.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.3"
+      ],
+      "tags": [
+        "rules",
+        "claude_md"
+      ]
+    },
+    {
+      "id": "d3-020",
+      "domain": "D3",
+      "weight": 20,
+      "type": "concept",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Benefit of path-scoped rules loading only on matching files?",
+      "back": "Reduces irrelevant context and token usage—conventions apply only when relevant.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.3"
+      ],
+      "tags": [
+        "rules",
+        "context"
+      ]
+    },
+    {
+      "id": "d3-021",
+      "domain": "D3",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "hard",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Restructure monolith into microservices—dozens of files, architectural decisions. Approach?",
+      "back": "Plan mode: explore codebase, understand dependencies, design approach before making changes.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.4; Sample Q5"
+      ],
+      "tags": [
+        "plan_mode"
+      ],
+      "exam_day": true
+    },
+    {
+      "id": "d3-022",
+      "domain": "D3",
+      "weight": 20,
+      "type": "compare",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Plan mode vs direct execution—when use each?",
+      "back": "Plan mode: large-scale, multi-file, architectural, multiple valid approaches. Direct execution: simple, well-scoped single changes.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.4"
+      ],
+      "tags": [
+        "plan_mode",
+        "direct_execution"
+      ],
+      "exam_day": true
+    },
+    {
+      "id": "d3-023",
+      "domain": "D3",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "easy",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Single-file bug fix with clear stack trace. Plan mode or direct execution?",
+      "back": "Direct execution—well-understood change with clear scope.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.4"
+      ],
+      "tags": [
+        "direct_execution"
+      ]
+    },
+    {
+      "id": "d3-024",
+      "domain": "D3",
+      "weight": 20,
+      "type": "concept",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "What is the Explore subagent used for in Claude Code?",
+      "back": "Isolates verbose discovery output and returns summaries—preserves main conversation context during exploration.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.4"
+      ],
+      "tags": [
+        "Explore_subagent",
+        "context"
+      ]
+    },
+    {
+      "id": "d3-025",
+      "domain": "D3",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Library migration affecting 45+ files—workflow pattern?",
+      "back": "Plan mode for investigation and design, then direct execution to implement the planned approach.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.4"
+      ],
+      "tags": [
+        "plan_mode",
+        "direct_execution"
+      ]
+    },
+    {
+      "id": "d3-026",
+      "domain": "D3",
+      "weight": 20,
+      "type": "anti_pattern",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Start monolith-to-microservices in direct execution, switch to plan if complexity emerges. Why wrong?",
+      "back": "Complexity is already stated—plan first prevents costly rework from late-discovered dependencies.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.4; Sample Q5"
+      ],
+      "tags": [
+        "plan_mode",
+        "anti_pattern"
+      ]
+    },
+    {
+      "id": "d3-027",
+      "domain": "D3",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Natural language transformation spec produces inconsistent code. Best fix?",
+      "back": "Provide 2–3 concrete input/output examples showing expected transformations.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.5"
+      ],
+      "tags": [
+        "iterative_refinement",
+        "examples"
+      ]
+    },
+    {
+      "id": "d3-028",
+      "domain": "D3",
+      "weight": 20,
+      "type": "concept",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Test-driven iteration pattern with Claude Code?",
+      "back": "Write tests first (behavior, edge cases, performance), then iterate by sharing test failures to guide fixes.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.5"
+      ],
+      "tags": [
+        "iterative_refinement",
+        "testing"
+      ]
+    },
+    {
+      "id": "d3-029",
+      "domain": "D3",
+      "weight": 20,
+      "type": "concept",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "What is the interview pattern in Claude Code workflows?",
+      "back": "Have Claude ask clarifying questions to surface design considerations before implementing in unfamiliar domains.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.5"
+      ],
+      "tags": [
+        "iterative_refinement",
+        "interview"
+      ]
+    },
+    {
+      "id": "d3-030",
+      "domain": "D3",
+      "weight": 20,
+      "type": "compare",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Fix multiple issues in one message vs sequentially?",
+      "back": "Single message when fixes interact; sequential iteration when issues are independent.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.5"
+      ],
+      "tags": [
+        "iterative_refinement"
+      ]
+    },
+    {
+      "id": "d3-031",
+      "domain": "D3",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Migration script mishandles null edge cases. Iteration approach?",
+      "back": "Provide specific test cases with example input and expected output for the failing edge case.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.5"
+      ],
+      "tags": [
+        "iterative_refinement",
+        "edge_cases"
+      ]
+    },
+    {
+      "id": "d3-032",
+      "domain": "D3",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "easy",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "CI job hangs—Claude Code waiting for interactive input. Fix?",
+      "back": "Use -p (or --print) flag for non-interactive mode: process prompt, output result, exit.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.6; Sample Q10"
+      ],
+      "tags": [
+        "ci_cd",
+        "non_interactive"
+      ],
+      "exam_day": true
+    },
+    {
+      "id": "d3-033",
+      "domain": "D3",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "Post structured PR review findings as inline comments from CI. CLI flags?",
+      "back": "--output-format json with --json-schema for machine-parseable structured findings.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.6"
+      ],
+      "tags": [
+        "ci_cd",
+        "structured_output"
+      ]
+    },
+    {
+      "id": "d3-034",
+      "domain": "D3",
+      "weight": 20,
+      "type": "concept",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "How provide project context to CI-invoked Claude Code?",
+      "back": "CLAUDE.md with testing standards, fixture conventions, and review criteria loaded automatically.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.6"
+      ],
+      "tags": [
+        "ci_cd",
+        "claude_md"
+      ]
+    },
+    {
+      "id": "d3-035",
+      "domain": "D3",
+      "weight": 20,
+      "type": "concept",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "Why use an independent Claude instance to review code it generated in the same session?",
+      "back": "Session context isolation—generator retains reasoning context and is less likely to question its own decisions.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.6"
+      ],
+      "tags": [
+        "ci_cd",
+        "self_review"
+      ]
+    },
+    {
+      "id": "d3-036",
+      "domain": "D3",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "Re-run PR review after new commits—avoid duplicate inline comments?",
+      "back": "Include prior review findings in context; instruct Claude to report only new or still-unaddressed issues.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.6"
+      ],
+      "tags": [
+        "ci_cd",
+        "review"
+      ]
+    },
+    {
+      "id": "d3-037",
+      "domain": "D3",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "CI test generation suggests scenarios already in the suite. Context fix?",
+      "back": "Provide existing test files in context so generation avoids duplicate coverage.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.6"
+      ],
+      "tags": [
+        "ci_cd",
+        "testing"
+      ]
+    },
+    {
+      "id": "d3-038",
+      "domain": "D3",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd",
+        "code_generation"
+      ],
+      "front": "Reduce low-value generated tests in Claude Code?",
+      "back": "Document testing standards, valuable test criteria, and available fixtures in CLAUDE.md.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.6"
+      ],
+      "tags": [
+        "claude_md",
+        "testing"
+      ]
+    },
+    {
+      "id": "d3-039",
+      "domain": "D3",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "Running Claude Code in CI for PR review. Critical configuration concerns?",
+      "back": "Non-interactive (-p), explicit permissions, structured/deterministic outputs, independent review instance—not open-ended agent runs.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.6"
+      ],
+      "tags": [
+        "ci_cd",
+        "automation"
+      ]
+    },
+    {
+      "id": "d3-040",
+      "domain": "D3",
+      "weight": 20,
+      "type": "anti_pattern",
+      "difficulty": "easy",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "CI non-interactive flags that do NOT exist (name two)?",
+      "back": "CLAUDE_HEADLESS env var and --batch flag—use -p/--print instead.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.6; Sample Q10"
+      ],
+      "tags": [
+        "ci_cd",
+        "anti_pattern"
+      ]
+    },
+    {
+      "id": "d3-041",
+      "domain": "D3",
+      "weight": 20,
+      "type": "scenario_hook",
+      "difficulty": "easy",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Code Generation scenario (Scenario 2)—primary domains?",
+      "back": "D3 (Claude Code config/workflows) and D5 (context management/reliability).",
+      "sources": [
+        "Official CCAR-F Exam Guide — scenario map"
+      ],
+      "tags": [
+        "scenarios"
+      ]
+    },
+    {
+      "id": "d3-042",
       "domain": "D3",
       "weight": 20,
       "type": "scenario_hook",
@@ -2121,8 +2829,8 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "CI/CD with Claude Code scenario—primary domains?",
-      "back": "D3 (Claude Code config), D4 (structured output for findings), D5 (reliability in automated runs).",
+      "front": "CI/CD with Claude Code scenario (Scenario 5)—primary domains?",
+      "back": "D3 (Claude Code) and D4 (prompt engineering/structured output for review findings).",
       "sources": [
         "Official CCAR-F Exam Guide — scenario map"
       ],
@@ -2130,6 +2838,64 @@
         "scenarios"
       ],
       "exam_day": true
+    },
+    {
+      "id": "d3-043",
+      "domain": "D3",
+      "weight": 20,
+      "type": "scenario_hook",
+      "difficulty": "easy",
+      "scenarios": [
+        "developer_productivity",
+        "code_generation"
+      ],
+      "front": "Scenario 2 tools: slash commands, CLAUDE.md, plan mode—what is being tested?",
+      "back": "Integrating Claude Code into dev workflow: team config, custom commands, and when to plan vs execute directly.",
+      "sources": [
+        "Official CCAR-F Exam Guide — Scenario 2"
+      ],
+      "tags": [
+        "scenarios",
+        "code_generation"
+      ]
+    },
+    {
+      "id": "d3-044",
+      "domain": "D3",
+      "weight": 20,
+      "type": "concept",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Example path-scoped rule for Terraform files only?",
+      "back": ".claude/rules/ file with frontmatter paths: [\"terraform/**/*\"] loading only when editing matching files.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.3"
+      ],
+      "tags": [
+        "rules",
+        "glob"
+      ]
+    },
+    {
+      "id": "d3-045",
+      "domain": "D3",
+      "weight": 20,
+      "type": "anti_pattern",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Put all area conventions in root CLAUDE.md headers—rely on Claude to infer which applies. Why unreliable?",
+      "back": "Relies on inference vs explicit path matching—rules with glob patterns give deterministic automatic application.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.3; Sample Q6"
+      ],
+      "tags": [
+        "rules",
+        "anti_pattern"
+      ]
     },
     {
       "id": "d4-001",
