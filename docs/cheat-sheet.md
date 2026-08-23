@@ -2,7 +2,7 @@
 
 Auto-generated from flashcards with `exam_day: true`.
 
-**44 cards** — review the night before the exam.
+**49 cards** — review the night before the exam.
 
 ### d1-002 (D1)
 
@@ -198,13 +198,38 @@ Auto-generated from flashcards with `exam_day: true`.
 
 ### d5-002 (D5)
 
-- **Q:** Subagents need prior search results. Best context passing approach?
-- **A:** Explicit structured handoffs (IDs, snippets, citations) via coordinator—not assuming shared implicit memory.
+- **Q:** Risk of progressive summarization in long support sessions?
+- **A:** Condenses amounts, dates, percentages, and customer-stated expectations into vague summaries—loses critical transactional facts.
 
-### d5-005 (D5)
+### d5-004 (D5)
 
-- **Q:** Customer Support scenario—domains beyond D1?
-- **A:** D2 (tool boundaries for refunds/account), D5 (escalation, handoffs, failure handling).
+- **Q:** Preserve order amounts and dates across a long support conversation?
+- **A:** Extract transactional facts into a persistent case facts block in each prompt—outside summarized history.
+
+### d5-010 (D5)
+
+- **Q:** Three appropriate escalation triggers (beyond 'complex case')?
+- **A:** Customer explicitly requests human, policy exception/gap, and inability to make meaningful progress.
+
+### d5-018 (D5)
+
+- **Q:** Subagents need prior search results. Best context passing?
+- **A:** Explicit structured handoffs (IDs, snippets, citations) via coordinator—not implicit shared memory.
+
+### d5-030 (D5)
+
+- **Q:** Calibrate human review routing for extractions?
+- **A:** Model outputs field-level confidence; calibrate thresholds using labeled validation sets.
+
+### d5-034 (D5)
+
+- **Q:** Subagent output for downstream synthesis—provenance requirement?
+- **A:** Structured claim-source mappings (URLs, document names, excerpts) preserved through synthesis.
+
+### d5-039 (D5)
+
+- **Q:** Which three scenarios list D5 as a primary domain?
+- **A:** Customer Support, Multi-Agent Research, and Structured Data Extraction.
 
 ### meta-001 (META)
 
