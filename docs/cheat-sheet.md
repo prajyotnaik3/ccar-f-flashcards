@@ -2,7 +2,7 @@
 
 Auto-generated from flashcards with `exam_day: true`.
 
-**39 cards** — review the night before the exam.
+**44 cards** — review the night before the exam.
 
 ### d1-002 (D1)
 
@@ -163,13 +163,38 @@ Auto-generated from flashcards with `exam_day: true`.
 
 ### d4-002 (D4)
 
+- **Q:** Explicit review criteria vs vague instructions like 'be conservative'?
+- **A:** Specific categorical criteria (flag when comment contradicts code) beat vague confidence filtering for precision.
+
+### d4-013 (D4)
+
+- **Q:** Most reliable approach for guaranteed schema-compliant JSON output?
+- **A:** tool_use with JSON schemas—eliminates JSON syntax errors vs free-text JSON generation.
+
+### d4-015 (D4)
+
+- **Q:** Source document may omit a field. Schema design to prevent fabrication?
+- **A:** Make fields optional/nullable when information may be absent—don't require fields the source lacks.
+
+### d4-021 (D4)
+
+- **Q:** What is retry-with-error-feedback for extraction?
+- **A:** On validation failure, send follow-up with original document, failed extraction, and specific validation errors for self-correction.
+
+### d4-026 (D4)
+
 - **Q:** Extraction misses nullable fields intermittently. Best improvement?
-- **A:** Tighten schema (required vs optional), add validation-retry loop, and explicit examples for edge/null cases—not longer vague prompts alone.
+- **A:** Tighten required vs optional schema, validation-retry loop, and explicit examples for null/edge cases.
 
-### d4-005 (D4)
+### d4-027 (D4)
 
-- **Q:** Structured Data Extraction scenario—primary domains?
-- **A:** D4 (schemas, validation), D5 (reliability, human review for low confidence).
+- **Q:** Message Batches API tradeoffs (cost, latency)?
+- **A:** 50% cost savings, up to 24-hour processing window, no guaranteed latency SLA.
+
+### d4-040 (D4)
+
+- **Q:** Structured Data Extraction scenario (Scenario 6)—primary domains?
+- **A:** D4 (schemas, validation, batch) and D5 (reliability, human review for low confidence).
 
 ### d5-002 (D5)
 

@@ -1,5 +1,5 @@
 {
-  "count": 163,
+  "count": 203,
   "cards": [
     {
       "id": "d1-001",
@@ -2907,10 +2907,10 @@
         "structured_extraction",
         "ci_cd"
       ],
-      "front": "Why use structured output (JSON schema) with Claude instead of free-text parsing?",
-      "back": "Enables validation, retries on schema failure, and downstream automation without fragile regex on prose.",
+      "front": "Why use structured output (JSON schema) instead of parsing free-text responses?",
+      "back": "Enables validation, automated retries on failure, and downstream automation without fragile regex on prose.",
       "sources": [
-        "Official CCAR-F Exam Guide — D4",
+        "Official CCAR-F Exam Guide — D4, Task 4.3",
         "https://docs.anthropic.com/en/docs/build-with-claude/structured-outputs"
       ],
       "tags": [
@@ -2921,15 +2921,379 @@
       "id": "d4-002",
       "domain": "D4",
       "weight": 20,
+      "type": "compare",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "Explicit review criteria vs vague instructions like 'be conservative'?",
+      "back": "Specific categorical criteria (flag when comment contradicts code) beat vague confidence filtering for precision.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.1"
+      ],
+      "tags": [
+        "prompt_criteria",
+        "false_positives"
+      ],
+      "exam_day": true
+    },
+    {
+      "id": "d4-003",
+      "domain": "D4",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "Automated review has high false positives in one category—developers ignore all findings. First response?",
+      "back": "Temporarily disable the high false-positive category to restore trust while improving prompts for that category.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.1"
+      ],
+      "tags": [
+        "false_positives",
+        "review"
+      ]
+    },
+    {
+      "id": "d4-004",
+      "domain": "D4",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "How define consistent severity levels in automated code review prompts?",
+      "back": "Explicit severity criteria with concrete code examples for each level—not generic confidence thresholds.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.1"
+      ],
+      "tags": [
+        "severity",
+        "review"
+      ]
+    },
+    {
+      "id": "d4-005",
+      "domain": "D4",
+      "weight": 20,
+      "type": "concept",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "Why high false-positive rates in one review category hurt the whole system?",
+      "back": "Developers lose trust and dismiss accurate findings in other categories too.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.1"
+      ],
+      "tags": [
+        "false_positives",
+        "trust"
+      ]
+    },
+    {
+      "id": "d4-006",
+      "domain": "D4",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "Review prompt design: report bugs/security vs skip minor style?",
+      "back": "Define explicit categories to report versus skip—don't rely on confidence-based filtering alone.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.1"
+      ],
+      "tags": [
+        "review",
+        "prompt_criteria"
+      ]
+    },
+    {
+      "id": "d4-007",
+      "domain": "D4",
+      "weight": 20,
+      "type": "concept",
+      "difficulty": "medium",
+      "scenarios": [
+        "structured_extraction",
+        "ci_cd"
+      ],
+      "front": "When are few-shot examples most effective?",
+      "back": "When detailed instructions alone produce inconsistent format or ambiguous-case handling—enables generalization to novel patterns.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.2"
+      ],
+      "tags": [
+        "few_shot"
+      ]
+    },
+    {
+      "id": "d4-008",
+      "domain": "D4",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "Review output format inconsistent (location, severity, fix). Improvement?",
+      "back": "Few-shot examples demonstrating exact desired format (location, issue, severity, suggested fix).",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.2"
+      ],
+      "tags": [
+        "few_shot",
+        "review"
+      ]
+    },
+    {
+      "id": "d4-009",
+      "domain": "D4",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "Reduce false positives while still catching real bugs in review?",
+      "back": "Few-shot examples distinguishing acceptable local patterns from genuine issues—shows reasoning for each.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.2"
+      ],
+      "tags": [
+        "few_shot",
+        "false_positives"
+      ]
+    },
+    {
+      "id": "d4-010",
+      "domain": "D4",
+      "weight": 20,
       "type": "decision",
       "difficulty": "medium",
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "Extraction misses nullable fields intermittently. Best improvement?",
-      "back": "Tighten schema (required vs optional), add validation-retry loop, and explicit examples for edge/null cases—not longer vague prompts alone.",
+      "front": "Extraction fails on varied document layouts (inline citations vs bibliographies). Fix?",
+      "back": "Few-shot examples showing correct handling of each document structure variant.",
       "sources": [
-        "Official CCAR-F Exam Guide — D4, Structured Extraction scenario"
+        "Official CCAR-F Exam Guide — D4, Task 4.2"
+      ],
+      "tags": [
+        "few_shot",
+        "extraction"
+      ]
+    },
+    {
+      "id": "d4-011",
+      "domain": "D4",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "structured_extraction"
+      ],
+      "front": "Model returns null/empty for required fields on varied formats. Few-shot approach?",
+      "back": "Examples demonstrating correct extraction from each format variant—not just schema tightening alone.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.2"
+      ],
+      "tags": [
+        "few_shot",
+        "extraction"
+      ]
+    },
+    {
+      "id": "d4-012",
+      "domain": "D4",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "structured_extraction",
+        "ci_cd"
+      ],
+      "front": "How many few-shot examples for ambiguous scenarios, and what show?",
+      "back": "2–4 targeted examples with reasoning for why one action was chosen over plausible alternatives.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.2"
+      ],
+      "tags": [
+        "few_shot"
+      ]
+    },
+    {
+      "id": "d4-013",
+      "domain": "D4",
+      "weight": 20,
+      "type": "concept",
+      "difficulty": "medium",
+      "scenarios": [
+        "structured_extraction"
+      ],
+      "front": "Most reliable approach for guaranteed schema-compliant JSON output?",
+      "back": "tool_use with JSON schemas—eliminates JSON syntax errors vs free-text JSON generation.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.3"
+      ],
+      "tags": [
+        "tool_use",
+        "json_schema"
+      ],
+      "exam_day": true
+    },
+    {
+      "id": "d4-014",
+      "domain": "D4",
+      "weight": 20,
+      "type": "concept",
+      "difficulty": "hard",
+      "scenarios": [
+        "structured_extraction"
+      ],
+      "front": "Strict JSON schemas via tool_use eliminate syntax errors—but what errors remain?",
+      "back": "Semantic errors: wrong field values, line items not summing to total, values in incorrect fields.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.3–4.4"
+      ],
+      "tags": [
+        "validation",
+        "semantic_errors"
+      ]
+    },
+    {
+      "id": "d4-015",
+      "domain": "D4",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "structured_extraction"
+      ],
+      "front": "Source document may omit a field. Schema design to prevent fabrication?",
+      "back": "Make fields optional/nullable when information may be absent—don't require fields the source lacks.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.3"
+      ],
+      "tags": [
+        "schema_design",
+        "nullable"
+      ],
+      "exam_day": true
+    },
+    {
+      "id": "d4-016",
+      "domain": "D4",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "structured_extraction"
+      ],
+      "front": "Extensible category field in extraction schema—pattern?",
+      "back": "Enum with \"other\" plus a detail string field for categories not in the predefined list.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.3"
+      ],
+      "tags": [
+        "schema_design",
+        "enum"
+      ]
+    },
+    {
+      "id": "d4-017",
+      "domain": "D4",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "structured_extraction"
+      ],
+      "front": "Ambiguous source data in extraction—enum design?",
+      "back": "Add enum value like \"unclear\" for ambiguous cases rather than forcing a wrong category.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.3"
+      ],
+      "tags": [
+        "schema_design",
+        "enum"
+      ]
+    },
+    {
+      "id": "d4-018",
+      "domain": "D4",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "structured_extraction"
+      ],
+      "front": "Inconsistent date formats in source documents alongside strict schema?",
+      "back": "Include format normalization rules in the prompt alongside the strict output schema.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.3"
+      ],
+      "tags": [
+        "schema_design",
+        "normalization"
+      ]
+    },
+    {
+      "id": "d4-019",
+      "domain": "D4",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "structured_extraction"
+      ],
+      "front": "Multiple extraction schemas; document type unknown at request time. tool_choice?",
+      "back": "tool_choice: \"any\" to guarantee structured tool output instead of conversational text.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.3"
+      ],
+      "tags": [
+        "tool_choice",
+        "extraction"
+      ]
+    },
+    {
+      "id": "d4-020",
+      "domain": "D4",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "structured_extraction"
+      ],
+      "front": "Where extract structured data from a tool_use extraction call?",
+      "back": "From the tool_use response block—schema defines tool input parameters; model fills structured fields there.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.3"
+      ],
+      "tags": [
+        "tool_use",
+        "extraction"
+      ]
+    },
+    {
+      "id": "d4-021",
+      "domain": "D4",
+      "weight": 20,
+      "type": "concept",
+      "difficulty": "medium",
+      "scenarios": [
+        "structured_extraction"
+      ],
+      "front": "What is retry-with-error-feedback for extraction?",
+      "back": "On validation failure, send follow-up with original document, failed extraction, and specific validation errors for self-correction.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.4"
       ],
       "tags": [
         "validation",
@@ -2938,7 +3302,315 @@
       "exam_day": true
     },
     {
-      "id": "d4-003",
+      "id": "d4-022",
+      "domain": "D4",
+      "weight": 20,
+      "type": "compare",
+      "difficulty": "hard",
+      "scenarios": [
+        "structured_extraction"
+      ],
+      "front": "When will validation retries succeed vs fail?",
+      "back": "Succeed on format/structural mismatches. Fail when required info is absent from source (or only in external doc not provided).",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.4"
+      ],
+      "tags": [
+        "validation",
+        "retry"
+      ]
+    },
+    {
+      "id": "d4-023",
+      "domain": "D4",
+      "weight": 20,
+      "type": "compare",
+      "difficulty": "medium",
+      "scenarios": [
+        "structured_extraction",
+        "ci_cd"
+      ],
+      "front": "Schema syntax errors vs semantic validation errors?",
+      "back": "Syntax errors eliminated by tool_use strict schemas; semantic errors need cross-field rules (totals, field placement).",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.4"
+      ],
+      "tags": [
+        "validation",
+        "semantic_errors"
+      ]
+    },
+    {
+      "id": "d4-024",
+      "domain": "D4",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "Developers dismiss many automated findings. Feedback loop design?",
+      "back": "Add detected_pattern field to findings to analyze which constructs trigger false positives when dismissed.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.4"
+      ],
+      "tags": [
+        "feedback_loop",
+        "review"
+      ]
+    },
+    {
+      "id": "d4-025",
+      "domain": "D4",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "structured_extraction"
+      ],
+      "front": "Self-correction for invoice totals that don't add up?",
+      "back": "Extract calculated_total alongside stated_total and flag discrepancies; add conflict_detected for inconsistent source data.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.4"
+      ],
+      "tags": [
+        "validation",
+        "self_correction"
+      ]
+    },
+    {
+      "id": "d4-026",
+      "domain": "D4",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "structured_extraction"
+      ],
+      "front": "Extraction misses nullable fields intermittently. Best improvement?",
+      "back": "Tighten required vs optional schema, validation-retry loop, and explicit examples for null/edge cases.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.3–4.4; Structured Extraction scenario"
+      ],
+      "tags": [
+        "validation",
+        "nullable"
+      ],
+      "exam_day": true
+    },
+    {
+      "id": "d4-027",
+      "domain": "D4",
+      "weight": 20,
+      "type": "concept",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd",
+        "structured_extraction"
+      ],
+      "front": "Message Batches API tradeoffs (cost, latency)?",
+      "back": "50% cost savings, up to 24-hour processing window, no guaranteed latency SLA.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.5; Appendix"
+      ],
+      "tags": [
+        "batch_api"
+      ],
+      "exam_day": true
+    },
+    {
+      "id": "d4-028",
+      "domain": "D4",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "Pre-merge blocking check vs overnight technical debt report—batch API for both?",
+      "back": "Batch only for latency-tolerant jobs (overnight reports); keep synchronous API for blocking pre-merge checks.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.5; Sample Q11"
+      ],
+      "tags": [
+        "batch_api",
+        "latency"
+      ]
+    },
+    {
+      "id": "d4-029",
+      "domain": "D4",
+      "weight": 20,
+      "type": "concept",
+      "difficulty": "medium",
+      "scenarios": [
+        "structured_extraction"
+      ],
+      "front": "Message Batches API limitation on tool calling?",
+      "back": "No multi-turn tool calling within a single batch request—cannot execute tools mid-request and return results.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.5"
+      ],
+      "tags": [
+        "batch_api",
+        "tool_use"
+      ]
+    },
+    {
+      "id": "d4-030",
+      "domain": "D4",
+      "weight": 20,
+      "type": "concept",
+      "difficulty": "easy",
+      "scenarios": [
+        "structured_extraction"
+      ],
+      "front": "custom_id in Message Batches API—purpose?",
+      "back": "Correlate batch request/response pairs and identify failed documents for resubmission.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.5"
+      ],
+      "tags": [
+        "batch_api",
+        "custom_id"
+      ]
+    },
+    {
+      "id": "d4-031",
+      "domain": "D4",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "structured_extraction"
+      ],
+      "front": "Batch job failures—resubmission strategy?",
+      "back": "Resubmit only failed documents by custom_id with modifications (e.g., chunk oversized docs that exceeded context).",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.5"
+      ],
+      "tags": [
+        "batch_api",
+        "failures"
+      ]
+    },
+    {
+      "id": "d4-032",
+      "domain": "D4",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "structured_extraction"
+      ],
+      "front": "Before batch-processing 10,000 documents—cost reduction step?",
+      "back": "Refine prompts on a sample set first to maximize first-pass success and reduce resubmission costs.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.5"
+      ],
+      "tags": [
+        "batch_api",
+        "prompt_refinement"
+      ]
+    },
+    {
+      "id": "d4-033",
+      "domain": "D4",
+      "weight": 20,
+      "type": "concept",
+      "difficulty": "hard",
+      "scenarios": [
+        "structured_extraction"
+      ],
+      "front": "Why self-review of generated code in the same session is limited?",
+      "back": "Model retains generation reasoning context—less likely to question its own decisions than an independent reviewer.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.6"
+      ],
+      "tags": [
+        "self_review",
+        "multi_instance"
+      ]
+    },
+    {
+      "id": "d4-034",
+      "domain": "D4",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "Best approach to catch subtle issues in AI-generated code?",
+      "back": "Second independent Claude instance reviewing without the generator's reasoning context.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.6"
+      ],
+      "tags": [
+        "multi_instance",
+        "review"
+      ]
+    },
+    {
+      "id": "d4-035",
+      "domain": "D4",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "Large multi-file PR review—multi-pass architecture?",
+      "back": "Per-file passes for local issues plus separate integration pass for cross-file data flow.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.6; Sample Q12"
+      ],
+      "tags": [
+        "multi_pass",
+        "review"
+      ]
+    },
+    {
+      "id": "d4-036",
+      "domain": "D4",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "Route review findings to human triage by severity—schema approach?",
+      "back": "Verification pass where model reports confidence alongside each finding for calibrated routing.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.6"
+      ],
+      "tags": [
+        "review",
+        "confidence"
+      ]
+    },
+    {
+      "id": "d4-037",
+      "domain": "D4",
+      "weight": 20,
+      "type": "compare",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd",
+        "structured_extraction"
+      ],
+      "front": "Prompt-only PR findings vs JSON schema for CI gates?",
+      "back": "Schema for machine consumption (CI gates, dashboards); prompts alone only for human-readable narrative.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.3; CI/CD scenario"
+      ],
+      "tags": [
+        "structured_output",
+        "ci_cd"
+      ]
+    },
+    {
+      "id": "d4-038",
       "domain": "D4",
       "weight": 20,
       "type": "anti_pattern",
@@ -2946,10 +3618,10 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "Why trust model self-reported 'confidence' without validation?",
-      "back": "Confidence is not calibrated by default; use schema checks, cross-field rules, or human review thresholds for high-risk fields.",
+      "front": "Why trust model self-reported confidence without validation?",
+      "back": "Not calibrated by default—use schema checks, cross-field rules, or human review thresholds for high-risk fields.",
       "sources": [
-        "Official CCAR-F Exam Guide — D4"
+        "Official CCAR-F Exam Guide — D4, Task 4.4; D5 crossover"
       ],
       "tags": [
         "confidence",
@@ -2957,26 +3629,26 @@
       ]
     },
     {
-      "id": "d4-004",
+      "id": "d4-039",
       "domain": "D4",
       "weight": 20,
-      "type": "compare",
+      "type": "anti_pattern",
       "difficulty": "medium",
       "scenarios": [
         "ci_cd"
       ],
-      "front": "Prompt-only PR review checklist vs schema for review findings?",
-      "back": "Schema for machine consumption (CI gates, dashboards); prompts alone are fine for human-readable narrative only.",
+      "front": "Run three full PR review passes and only flag issues in 2+ passes. Why wrong?",
+      "back": "Suppresses real bugs caught intermittently—consensus filtering hides attention-dilution problems; split passes instead.",
       "sources": [
-        "Official CCAR-F Exam Guide — D4, CI/CD scenario"
+        "Official CCAR-F Exam Guide — D4, Task 4.6; Sample Q12"
       ],
       "tags": [
-        "ci_cd",
-        "structured_output"
+        "multi_pass",
+        "anti_pattern"
       ]
     },
     {
-      "id": "d4-005",
+      "id": "d4-040",
       "domain": "D4",
       "weight": 20,
       "type": "scenario_hook",
@@ -2984,8 +3656,8 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "Structured Data Extraction scenario—primary domains?",
-      "back": "D4 (schemas, validation), D5 (reliability, human review for low confidence).",
+      "front": "Structured Data Extraction scenario (Scenario 6)—primary domains?",
+      "back": "D4 (schemas, validation, batch) and D5 (reliability, human review for low confidence).",
       "sources": [
         "Official CCAR-F Exam Guide — scenario map"
       ],
@@ -2993,6 +3665,102 @@
         "scenarios"
       ],
       "exam_day": true
+    },
+    {
+      "id": "d4-041",
+      "domain": "D4",
+      "weight": 20,
+      "type": "scenario_hook",
+      "difficulty": "easy",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "Scenario 6 extraction system requirements from the exam guide?",
+      "back": "Extract from unstructured docs, validate with JSON schemas, handle edge cases, integrate with downstream systems.",
+      "sources": [
+        "Official CCAR-F Exam Guide — Scenario 6"
+      ],
+      "tags": [
+        "scenarios",
+        "extraction"
+      ]
+    },
+    {
+      "id": "d4-042",
+      "domain": "D4",
+      "weight": 20,
+      "type": "concept",
+      "difficulty": "medium",
+      "scenarios": [
+        "structured_extraction"
+      ],
+      "front": "Few-shot examples reduce hallucination in extraction—example use cases?",
+      "back": "Informal measurements, varied document structures, and inconsistent field formats in source documents.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.2"
+      ],
+      "tags": [
+        "few_shot",
+        "hallucination"
+      ]
+    },
+    {
+      "id": "d4-043",
+      "domain": "D4",
+      "weight": 20,
+      "type": "anti_pattern",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "Switch blocking pre-merge checks to batch API with status polling. Why wrong?",
+      "back": "Batch has no latency SLA—unacceptable for workflows where developers wait to merge.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.5; Sample Q11"
+      ],
+      "tags": [
+        "batch_api",
+        "anti_pattern"
+      ]
+    },
+    {
+      "id": "d4-044",
+      "domain": "D4",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "hard",
+      "scenarios": [
+        "structured_extraction"
+      ],
+      "front": "30-hour SLA with 24-hour max batch processing—submission frequency?",
+      "back": "Calculate submission windows (e.g., 4-hour intervals) so batches complete within SLA with margin for retries.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.5"
+      ],
+      "tags": [
+        "batch_api",
+        "sla"
+      ]
+    },
+    {
+      "id": "d4-045",
+      "domain": "D4",
+      "weight": 20,
+      "type": "concept",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd",
+        "structured_extraction"
+      ],
+      "front": "Independent review instances vs extended thinking for self-review?",
+      "back": "Independent instances without generator context catch more subtle issues than self-review instructions or extended thinking alone.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.6"
+      ],
+      "tags": [
+        "multi_instance",
+        "self_review"
+      ]
     },
     {
       "id": "d5-001",
