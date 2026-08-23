@@ -548,3 +548,65 @@
   sources:
     - "Official CCAR-F Exam Guide — D4, Task 4.6"
   tags: [multi_instance, self_review]
+
+# --- Audit gap-fill (tasks 4.1–4.6) ---
+
+- id: d4-046
+  domain: D4
+  weight: 20
+  type: concept
+  difficulty: medium
+  scenarios: [ci_cd]
+  front: "Explicit review criteria example—comments vs code?"
+  back: "Flag comments only when claimed behavior contradicts actual code—not vague 'check comment accuracy'."
+  sources:
+    - "Official CCAR-F Exam Guide — D4, Task 4.1"
+  tags: [prompt_criteria, review]
+
+- id: d4-047
+  domain: D4
+  weight: 20
+  type: concept
+  difficulty: medium
+  scenarios: [ci_cd, structured_extraction]
+  front: "How few-shot examples generalize beyond pre-specified cases?"
+  back: "Demonstrate judgment and reasoning on ambiguous examples so the model applies similar logic to novel patterns."
+  sources:
+    - "Official CCAR-F Exam Guide — D4, Task 4.2"
+  tags: [few_shot, generalization]
+
+- id: d4-048
+  domain: D4
+  weight: 20
+  type: decision
+  difficulty: medium
+  scenarios: [ci_cd]
+  front: "Few-shot use case: branch-level test coverage gaps?"
+  back: "Show how to identify and report coverage gaps at branch level—ambiguous case requiring demonstrated judgment."
+  sources:
+    - "Official CCAR-F Exam Guide — D4, Task 4.2"
+  tags: [few_shot, testing]
+
+- id: d4-049
+  domain: D4
+  weight: 20
+  type: anti_pattern
+  difficulty: medium
+  scenarios: [ci_cd]
+  front: "Switch both blocking and overnight jobs to batch API with real-time fallback. Why over-engineered?"
+  back: "Match API to latency needs—sync for blocking checks, batch for overnight; fallback adds unnecessary complexity."
+  sources:
+    - "Official CCAR-F Exam Guide — D4, Task 4.5; Sample Q11"
+  tags: [batch_api, anti_pattern]
+
+- id: d4-050
+  domain: D4
+  weight: 20
+  type: anti_pattern
+  difficulty: medium
+  scenarios: [ci_cd]
+  front: "Large PR review: switch to higher-tier model with larger context window. Why insufficient?"
+  back: "Larger context doesn't fix attention dilution—split into per-file plus integration passes instead."
+  sources:
+    - "Official CCAR-F Exam Guide — D4, Task 4.6; Sample Q12"
+  tags: [multi_pass, anti_pattern]

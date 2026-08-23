@@ -1,5 +1,5 @@
 {
-  "count": 238,
+  "count": 260,
   "cards": [
     {
       "id": "d1-001",
@@ -2035,6 +2035,103 @@
       ]
     },
     {
+      "id": "d2-048",
+      "domain": "D2",
+      "weight": 18,
+      "type": "concept",
+      "difficulty": "easy",
+      "scenarios": [
+        "developer_productivity"
+      ],
+      "front": "Built-in Bash tool—when use vs Grep?",
+      "back": "Bash for shell commands and scripted operations; Grep for searching file contents for patterns across the codebase.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D2, Task 2.5; Scenario 4; Appendix"
+      ],
+      "tags": [
+        "builtin_tools",
+        "Bash"
+      ]
+    },
+    {
+      "id": "d2-049",
+      "domain": "D2",
+      "weight": 18,
+      "type": "concept",
+      "difficulty": "medium",
+      "scenarios": [
+        "customer_support",
+        "structured_extraction"
+      ],
+      "front": "tool_choice: \"auto\"—what can the model return?",
+      "back": "The model may respond with conversational text instead of calling a tool—no guaranteed tool invocation.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D2, Task 2.3; D4 Task 4.3"
+      ],
+      "tags": [
+        "tool_choice",
+        "auto"
+      ]
+    },
+    {
+      "id": "d2-050",
+      "domain": "D2",
+      "weight": 18,
+      "type": "anti_pattern",
+      "difficulty": "medium",
+      "scenarios": [
+        "customer_support"
+      ],
+      "front": "Similar tools misroute. Add 5–8 few-shot tool-selection examples first?",
+      "back": "Adds token overhead without fixing root cause—inadequate tool descriptions are the primary selection mechanism.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D2, Task 2.1; Sample Q2"
+      ],
+      "tags": [
+        "tool_descriptions",
+        "few_shot",
+        "anti_pattern"
+      ]
+    },
+    {
+      "id": "d2-051",
+      "domain": "D2",
+      "weight": 18,
+      "type": "concept",
+      "difficulty": "medium",
+      "scenarios": [
+        "developer_productivity"
+      ],
+      "front": "Edit built-in tool—how does it modify files?",
+      "back": "Targeted modifications using unique text matching as anchor—fails when anchor text is not unique.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D2, Task 2.5"
+      ],
+      "tags": [
+        "builtin_tools",
+        "Edit"
+      ]
+    },
+    {
+      "id": "d2-052",
+      "domain": "D2",
+      "weight": 18,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "customer_support"
+      ],
+      "front": "errorCategory for policy violation refund blocked?",
+      "back": "Business error with isRetryable: false and customer-friendly explanation—not transient or permission.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D2, Task 2.2"
+      ],
+      "tags": [
+        "errors",
+        "business_errors"
+      ]
+    },
+    {
       "id": "d3-001",
       "domain": "D3",
       "weight": 20,
@@ -2895,6 +2992,102 @@
       "tags": [
         "rules",
         "anti_pattern"
+      ]
+    },
+    {
+      "id": "d3-046",
+      "domain": "D3",
+      "weight": 20,
+      "type": "anti_pattern",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Monolith-to-microservices: direct execution with comprehensive upfront structure instructions. Why wrong?",
+      "back": "Assumes structure without codebase exploration—dependencies discovered late cause costly rework; plan first.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.4; Sample Q5"
+      ],
+      "tags": [
+        "plan_mode",
+        "anti_pattern"
+      ]
+    },
+    {
+      "id": "d3-047",
+      "domain": "D3",
+      "weight": 20,
+      "type": "anti_pattern",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Auto-apply conventions via skills in .claude/skills/ instead of path rules. Why insufficient?",
+      "back": "Skills require manual invocation or model choice—not deterministic path-based automatic application.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.3; Sample Q6"
+      ],
+      "tags": [
+        "skills",
+        "rules",
+        "anti_pattern"
+      ]
+    },
+    {
+      "id": "d3-048",
+      "domain": "D3",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "Test-driven iteration before implementation—what should tests cover?",
+      "back": "Expected behavior, edge cases, and performance requirements—iterate by sharing failures with Claude.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.5"
+      ],
+      "tags": [
+        "iterative_refinement",
+        "testing"
+      ]
+    },
+    {
+      "id": "d3-049",
+      "domain": "D3",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "code_generation"
+      ],
+      "front": "context: fork for skills—another use case besides verbose codebase analysis?",
+      "back": "Exploratory brainstorming of alternatives—isolates speculative output from the main session.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D3, Task 3.2"
+      ],
+      "tags": [
+        "skills",
+        "context_fork"
+      ]
+    },
+    {
+      "id": "d3-050",
+      "domain": "D3",
+      "weight": 20,
+      "type": "scenario_hook",
+      "difficulty": "easy",
+      "scenarios": [
+        "developer_productivity"
+      ],
+      "front": "Developer Productivity scenario (Scenario 4)—primary domains?",
+      "back": "D2 (built-in tools + MCP), D3 (Claude Code workflows), D1 (delegation/orchestration).",
+      "sources": [
+        "Official CCAR-F Exam Guide — scenario map"
+      ],
+      "tags": [
+        "scenarios",
+        "developer_productivity"
       ]
     },
     {
@@ -3763,6 +3956,102 @@
       ]
     },
     {
+      "id": "d4-046",
+      "domain": "D4",
+      "weight": 20,
+      "type": "concept",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "Explicit review criteria example—comments vs code?",
+      "back": "Flag comments only when claimed behavior contradicts actual code—not vague 'check comment accuracy'.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.1"
+      ],
+      "tags": [
+        "prompt_criteria",
+        "review"
+      ]
+    },
+    {
+      "id": "d4-047",
+      "domain": "D4",
+      "weight": 20,
+      "type": "concept",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd",
+        "structured_extraction"
+      ],
+      "front": "How few-shot examples generalize beyond pre-specified cases?",
+      "back": "Demonstrate judgment and reasoning on ambiguous examples so the model applies similar logic to novel patterns.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.2"
+      ],
+      "tags": [
+        "few_shot",
+        "generalization"
+      ]
+    },
+    {
+      "id": "d4-048",
+      "domain": "D4",
+      "weight": 20,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "Few-shot use case: branch-level test coverage gaps?",
+      "back": "Show how to identify and report coverage gaps at branch level—ambiguous case requiring demonstrated judgment.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.2"
+      ],
+      "tags": [
+        "few_shot",
+        "testing"
+      ]
+    },
+    {
+      "id": "d4-049",
+      "domain": "D4",
+      "weight": 20,
+      "type": "anti_pattern",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "Switch both blocking and overnight jobs to batch API with real-time fallback. Why over-engineered?",
+      "back": "Match API to latency needs—sync for blocking checks, batch for overnight; fallback adds unnecessary complexity.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.5; Sample Q11"
+      ],
+      "tags": [
+        "batch_api",
+        "anti_pattern"
+      ]
+    },
+    {
+      "id": "d4-050",
+      "domain": "D4",
+      "weight": 20,
+      "type": "anti_pattern",
+      "difficulty": "medium",
+      "scenarios": [
+        "ci_cd"
+      ],
+      "front": "Large PR review: switch to higher-tier model with larger context window. Why insufficient?",
+      "back": "Larger context doesn't fix attention dilution—split into per-file plus integration passes instead.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D4, Task 4.6; Sample Q12"
+      ],
+      "tags": [
+        "multi_pass",
+        "anti_pattern"
+      ]
+    },
+    {
       "id": "d5-001",
       "domain": "D5",
       "weight": 15,
@@ -4536,6 +4825,140 @@
       "tags": [
         "scenarios",
         "code_generation"
+      ]
+    },
+    {
+      "id": "d5-041",
+      "domain": "D5",
+      "weight": 15,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "multi_agent_research"
+      ],
+      "front": "Subagent structured outputs for downstream synthesis—required metadata?",
+      "back": "Dates, source locations, and methodological context—not just claims without provenance context.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D5, Task 5.1"
+      ],
+      "tags": [
+        "metadata",
+        "subagents"
+      ]
+    },
+    {
+      "id": "d5-042",
+      "domain": "D5",
+      "weight": 15,
+      "type": "anti_pattern",
+      "difficulty": "medium",
+      "scenarios": [
+        "customer_support"
+      ],
+      "front": "Deploy classifier model to predict escalation before agent runs. Why over-engineered first step?",
+      "back": "Requires labeled data and ML infra when prompt criteria with few-shot hasn't been tried yet.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D5, Task 5.2; Sample Q3"
+      ],
+      "tags": [
+        "escalation",
+        "anti_pattern"
+      ]
+    },
+    {
+      "id": "d5-043",
+      "domain": "D5",
+      "weight": 15,
+      "type": "anti_pattern",
+      "difficulty": "medium",
+      "scenarios": [
+        "multi_agent_research"
+      ],
+      "front": "Subagent retries then returns generic 'search unavailable' to coordinator. Problem?",
+      "back": "Hides failure type, attempted query, and partial results—coordinator cannot make informed recovery.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D5, Task 5.3; Sample Q8"
+      ],
+      "tags": [
+        "error_propagation",
+        "anti_pattern"
+      ]
+    },
+    {
+      "id": "d5-044",
+      "domain": "D5",
+      "weight": 15,
+      "type": "anti_pattern",
+      "difficulty": "medium",
+      "scenarios": [
+        "multi_agent_research"
+      ],
+      "front": "Single subagent failure terminates entire multi-agent workflow. Why wrong?",
+      "back": "Often recoverable with partial results, alternate queries, or gap annotations—unnecessary full termination.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D5, Task 5.3"
+      ],
+      "tags": [
+        "error_propagation",
+        "anti_pattern"
+      ]
+    },
+    {
+      "id": "d5-045",
+      "domain": "D5",
+      "weight": 15,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "developer_productivity",
+        "code_generation"
+      ],
+      "front": "Long codebase exploration—delegate specific questions while preserving coordination?",
+      "back": "Spawn subagents for focused tasks (find test files, trace refund flow) while main agent keeps high-level coordination.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D5, Task 5.4"
+      ],
+      "tags": [
+        "subagents",
+        "exploration"
+      ]
+    },
+    {
+      "id": "d5-046",
+      "domain": "D5",
+      "weight": 15,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "multi_agent_research"
+      ],
+      "front": "Document analysis finds conflicting values from sources. Before synthesis?",
+      "back": "Complete analysis with conflicts included and explicitly annotated—let coordinator reconcile before passing to synthesis.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D5, Task 5.6"
+      ],
+      "tags": [
+        "provenance",
+        "conflicts"
+      ]
+    },
+    {
+      "id": "d5-047",
+      "domain": "D5",
+      "weight": 15,
+      "type": "decision",
+      "difficulty": "medium",
+      "scenarios": [
+        "developer_productivity"
+      ],
+      "front": "Scratchpad file during exploration—how use for follow-up questions?",
+      "back": "Record key findings in scratchpad; reference it for subsequent questions to counteract context degradation.",
+      "sources": [
+        "Official CCAR-F Exam Guide — D5, Task 5.4"
+      ],
+      "tags": [
+        "scratchpad",
+        "exploration"
       ]
     },
     {

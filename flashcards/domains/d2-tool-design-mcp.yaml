@@ -576,3 +576,65 @@
   sources:
     - "Official CCAR-F Exam Guide — D2, Task 2.2"
   tags: [errors, isRetryable]
+
+# --- Audit gap-fill (tasks 2.1–2.5) ---
+
+- id: d2-048
+  domain: D2
+  weight: 18
+  type: concept
+  difficulty: easy
+  scenarios: [developer_productivity]
+  front: "Built-in Bash tool—when use vs Grep?"
+  back: "Bash for shell commands and scripted operations; Grep for searching file contents for patterns across the codebase."
+  sources:
+    - "Official CCAR-F Exam Guide — D2, Task 2.5; Scenario 4; Appendix"
+  tags: [builtin_tools, Bash]
+
+- id: d2-049
+  domain: D2
+  weight: 18
+  type: concept
+  difficulty: medium
+  scenarios: [customer_support, structured_extraction]
+  front: "tool_choice: \"auto\"—what can the model return?"
+  back: "The model may respond with conversational text instead of calling a tool—no guaranteed tool invocation."
+  sources:
+    - "Official CCAR-F Exam Guide — D2, Task 2.3; D4 Task 4.3"
+  tags: [tool_choice, auto]
+
+- id: d2-050
+  domain: D2
+  weight: 18
+  type: anti_pattern
+  difficulty: medium
+  scenarios: [customer_support]
+  front: "Similar tools misroute. Add 5–8 few-shot tool-selection examples first?"
+  back: "Adds token overhead without fixing root cause—inadequate tool descriptions are the primary selection mechanism."
+  sources:
+    - "Official CCAR-F Exam Guide — D2, Task 2.1; Sample Q2"
+  tags: [tool_descriptions, few_shot, anti_pattern]
+
+- id: d2-051
+  domain: D2
+  weight: 18
+  type: concept
+  difficulty: medium
+  scenarios: [developer_productivity]
+  front: "Edit built-in tool—how does it modify files?"
+  back: "Targeted modifications using unique text matching as anchor—fails when anchor text is not unique."
+  sources:
+    - "Official CCAR-F Exam Guide — D2, Task 2.5"
+  tags: [builtin_tools, Edit]
+
+- id: d2-052
+  domain: D2
+  weight: 18
+  type: decision
+  difficulty: medium
+  scenarios: [customer_support]
+  front: "errorCategory for policy violation refund blocked?"
+  back: "Business error with isRetryable: false and customer-friendly explanation—not transient or permission."
+  sources:
+    - "Official CCAR-F Exam Guide — D2, Task 2.2"
+  tags: [errors, business_errors]

@@ -1358,6 +1358,71 @@
 
 ---
 
+## d2-048 · concept · developer_productivity
+
+**Q:** Built-in Bash tool—when use vs Grep?
+
+**A:** Bash for shell commands and scripted operations; Grep for searching file contents for patterns across the codebase.
+
+**Tags:** builtin_tools, Bash
+
+**Sources:**
+- Official CCAR-F Exam Guide — D2, Task 2.5; Scenario 4; Appendix
+
+---
+
+## d2-049 · concept · customer_support, structured_extraction
+
+**Q:** tool_choice: "auto"—what can the model return?
+
+**A:** The model may respond with conversational text instead of calling a tool—no guaranteed tool invocation.
+
+**Tags:** tool_choice, auto
+
+**Sources:**
+- Official CCAR-F Exam Guide — D2, Task 2.3; D4 Task 4.3
+
+---
+
+## d2-050 · anti_pattern · customer_support
+
+**Q:** Similar tools misroute. Add 5–8 few-shot tool-selection examples first?
+
+**A:** Adds token overhead without fixing root cause—inadequate tool descriptions are the primary selection mechanism.
+
+**Tags:** tool_descriptions, few_shot, anti_pattern
+
+**Sources:**
+- Official CCAR-F Exam Guide — D2, Task 2.1; Sample Q2
+
+---
+
+## d2-051 · concept · developer_productivity
+
+**Q:** Edit built-in tool—how does it modify files?
+
+**A:** Targeted modifications using unique text matching as anchor—fails when anchor text is not unique.
+
+**Tags:** builtin_tools, Edit
+
+**Sources:**
+- Official CCAR-F Exam Guide — D2, Task 2.5
+
+---
+
+## d2-052 · decision · customer_support
+
+**Q:** errorCategory for policy violation refund blocked?
+
+**A:** Business error with isRetryable: false and customer-friendly explanation—not transient or permission.
+
+**Tags:** errors, business_errors
+
+**Sources:**
+- Official CCAR-F Exam Guide — D2, Task 2.2
+
+---
+
 ## d3-001 · concept · code_generation, developer_productivity
 
 **Q:** What is CLAUDE.md in Claude Code workflows?
@@ -1941,6 +2006,71 @@
 
 **Sources:**
 - Official CCAR-F Exam Guide — D3, Task 3.3; Sample Q6
+
+---
+
+## d3-046 · anti_pattern · code_generation
+
+**Q:** Monolith-to-microservices: direct execution with comprehensive upfront structure instructions. Why wrong?
+
+**A:** Assumes structure without codebase exploration—dependencies discovered late cause costly rework; plan first.
+
+**Tags:** plan_mode, anti_pattern
+
+**Sources:**
+- Official CCAR-F Exam Guide — D3, Task 3.4; Sample Q5
+
+---
+
+## d3-047 · anti_pattern · code_generation
+
+**Q:** Auto-apply conventions via skills in .claude/skills/ instead of path rules. Why insufficient?
+
+**A:** Skills require manual invocation or model choice—not deterministic path-based automatic application.
+
+**Tags:** skills, rules, anti_pattern
+
+**Sources:**
+- Official CCAR-F Exam Guide — D3, Task 3.3; Sample Q6
+
+---
+
+## d3-048 · decision · code_generation
+
+**Q:** Test-driven iteration before implementation—what should tests cover?
+
+**A:** Expected behavior, edge cases, and performance requirements—iterate by sharing failures with Claude.
+
+**Tags:** iterative_refinement, testing
+
+**Sources:**
+- Official CCAR-F Exam Guide — D3, Task 3.5
+
+---
+
+## d3-049 · decision · code_generation
+
+**Q:** context: fork for skills—another use case besides verbose codebase analysis?
+
+**A:** Exploratory brainstorming of alternatives—isolates speculative output from the main session.
+
+**Tags:** skills, context_fork
+
+**Sources:**
+- Official CCAR-F Exam Guide — D3, Task 3.2
+
+---
+
+## d3-050 · scenario_hook · developer_productivity
+
+**Q:** Developer Productivity scenario (Scenario 4)—primary domains?
+
+**A:** D2 (built-in tools + MCP), D3 (Claude Code workflows), D1 (delegation/orchestration).
+
+**Tags:** scenarios, developer_productivity
+
+**Sources:**
+- Official CCAR-F Exam Guide — scenario map
 
 ---
 
@@ -2530,6 +2660,71 @@
 
 ---
 
+## d4-046 · concept · ci_cd
+
+**Q:** Explicit review criteria example—comments vs code?
+
+**A:** Flag comments only when claimed behavior contradicts actual code—not vague 'check comment accuracy'.
+
+**Tags:** prompt_criteria, review
+
+**Sources:**
+- Official CCAR-F Exam Guide — D4, Task 4.1
+
+---
+
+## d4-047 · concept · ci_cd, structured_extraction
+
+**Q:** How few-shot examples generalize beyond pre-specified cases?
+
+**A:** Demonstrate judgment and reasoning on ambiguous examples so the model applies similar logic to novel patterns.
+
+**Tags:** few_shot, generalization
+
+**Sources:**
+- Official CCAR-F Exam Guide — D4, Task 4.2
+
+---
+
+## d4-048 · decision · ci_cd
+
+**Q:** Few-shot use case: branch-level test coverage gaps?
+
+**A:** Show how to identify and report coverage gaps at branch level—ambiguous case requiring demonstrated judgment.
+
+**Tags:** few_shot, testing
+
+**Sources:**
+- Official CCAR-F Exam Guide — D4, Task 4.2
+
+---
+
+## d4-049 · anti_pattern · ci_cd
+
+**Q:** Switch both blocking and overnight jobs to batch API with real-time fallback. Why over-engineered?
+
+**A:** Match API to latency needs—sync for blocking checks, batch for overnight; fallback adds unnecessary complexity.
+
+**Tags:** batch_api, anti_pattern
+
+**Sources:**
+- Official CCAR-F Exam Guide — D4, Task 4.5; Sample Q11
+
+---
+
+## d4-050 · anti_pattern · ci_cd
+
+**Q:** Large PR review: switch to higher-tier model with larger context window. Why insufficient?
+
+**A:** Larger context doesn't fix attention dilution—split into per-file plus integration passes instead.
+
+**Tags:** multi_pass, anti_pattern
+
+**Sources:**
+- Official CCAR-F Exam Guide — D4, Task 4.6; Sample Q12
+
+---
+
 ## d5-001 · concept · customer_support, multi_agent_research, code_generation
 
 **Q:** What is context degradation in long agent sessions?
@@ -3047,6 +3242,97 @@
 
 **Sources:**
 - Official CCAR-F Exam Guide — Scenario 2
+
+---
+
+## d5-041 · decision · multi_agent_research
+
+**Q:** Subagent structured outputs for downstream synthesis—required metadata?
+
+**A:** Dates, source locations, and methodological context—not just claims without provenance context.
+
+**Tags:** metadata, subagents
+
+**Sources:**
+- Official CCAR-F Exam Guide — D5, Task 5.1
+
+---
+
+## d5-042 · anti_pattern · customer_support
+
+**Q:** Deploy classifier model to predict escalation before agent runs. Why over-engineered first step?
+
+**A:** Requires labeled data and ML infra when prompt criteria with few-shot hasn't been tried yet.
+
+**Tags:** escalation, anti_pattern
+
+**Sources:**
+- Official CCAR-F Exam Guide — D5, Task 5.2; Sample Q3
+
+---
+
+## d5-043 · anti_pattern · multi_agent_research
+
+**Q:** Subagent retries then returns generic 'search unavailable' to coordinator. Problem?
+
+**A:** Hides failure type, attempted query, and partial results—coordinator cannot make informed recovery.
+
+**Tags:** error_propagation, anti_pattern
+
+**Sources:**
+- Official CCAR-F Exam Guide — D5, Task 5.3; Sample Q8
+
+---
+
+## d5-044 · anti_pattern · multi_agent_research
+
+**Q:** Single subagent failure terminates entire multi-agent workflow. Why wrong?
+
+**A:** Often recoverable with partial results, alternate queries, or gap annotations—unnecessary full termination.
+
+**Tags:** error_propagation, anti_pattern
+
+**Sources:**
+- Official CCAR-F Exam Guide — D5, Task 5.3
+
+---
+
+## d5-045 · decision · developer_productivity, code_generation
+
+**Q:** Long codebase exploration—delegate specific questions while preserving coordination?
+
+**A:** Spawn subagents for focused tasks (find test files, trace refund flow) while main agent keeps high-level coordination.
+
+**Tags:** subagents, exploration
+
+**Sources:**
+- Official CCAR-F Exam Guide — D5, Task 5.4
+
+---
+
+## d5-046 · decision · multi_agent_research
+
+**Q:** Document analysis finds conflicting values from sources. Before synthesis?
+
+**A:** Complete analysis with conflicts included and explicitly annotated—let coordinator reconcile before passing to synthesis.
+
+**Tags:** provenance, conflicts
+
+**Sources:**
+- Official CCAR-F Exam Guide — D5, Task 5.6
+
+---
+
+## d5-047 · decision · developer_productivity
+
+**Q:** Scratchpad file during exploration—how use for follow-up questions?
+
+**A:** Record key findings in scratchpad; reference it for subsequent questions to counteract context degradation.
+
+**Tags:** scratchpad, exploration
+
+**Sources:**
+- Official CCAR-F Exam Guide — D5, Task 5.4
 
 ---
 

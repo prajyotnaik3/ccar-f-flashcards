@@ -584,3 +584,68 @@
 **Sources:**
 - Official CCAR-F Exam Guide — D4, Task 4.6
 
+---
+
+## d4-046 · concept · ci_cd
+
+**Q:** Explicit review criteria example—comments vs code?
+
+**A:** Flag comments only when claimed behavior contradicts actual code—not vague 'check comment accuracy'.
+
+**Tags:** prompt_criteria, review
+
+**Sources:**
+- Official CCAR-F Exam Guide — D4, Task 4.1
+
+---
+
+## d4-047 · concept · ci_cd, structured_extraction
+
+**Q:** How few-shot examples generalize beyond pre-specified cases?
+
+**A:** Demonstrate judgment and reasoning on ambiguous examples so the model applies similar logic to novel patterns.
+
+**Tags:** few_shot, generalization
+
+**Sources:**
+- Official CCAR-F Exam Guide — D4, Task 4.2
+
+---
+
+## d4-048 · decision · ci_cd
+
+**Q:** Few-shot use case: branch-level test coverage gaps?
+
+**A:** Show how to identify and report coverage gaps at branch level—ambiguous case requiring demonstrated judgment.
+
+**Tags:** few_shot, testing
+
+**Sources:**
+- Official CCAR-F Exam Guide — D4, Task 4.2
+
+---
+
+## d4-049 · anti_pattern · ci_cd
+
+**Q:** Switch both blocking and overnight jobs to batch API with real-time fallback. Why over-engineered?
+
+**A:** Match API to latency needs—sync for blocking checks, batch for overnight; fallback adds unnecessary complexity.
+
+**Tags:** batch_api, anti_pattern
+
+**Sources:**
+- Official CCAR-F Exam Guide — D4, Task 4.5; Sample Q11
+
+---
+
+## d4-050 · anti_pattern · ci_cd
+
+**Q:** Large PR review: switch to higher-tier model with larger context window. Why insufficient?
+
+**A:** Larger context doesn't fix attention dilution—split into per-file plus integration passes instead.
+
+**Tags:** multi_pass, anti_pattern
+
+**Sources:**
+- Official CCAR-F Exam Guide — D4, Task 4.6; Sample Q12
+

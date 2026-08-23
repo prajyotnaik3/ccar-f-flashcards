@@ -518,3 +518,94 @@
 **Sources:**
 - Official CCAR-F Exam Guide — Scenario 2
 
+---
+
+## d5-041 · decision · multi_agent_research
+
+**Q:** Subagent structured outputs for downstream synthesis—required metadata?
+
+**A:** Dates, source locations, and methodological context—not just claims without provenance context.
+
+**Tags:** metadata, subagents
+
+**Sources:**
+- Official CCAR-F Exam Guide — D5, Task 5.1
+
+---
+
+## d5-042 · anti_pattern · customer_support
+
+**Q:** Deploy classifier model to predict escalation before agent runs. Why over-engineered first step?
+
+**A:** Requires labeled data and ML infra when prompt criteria with few-shot hasn't been tried yet.
+
+**Tags:** escalation, anti_pattern
+
+**Sources:**
+- Official CCAR-F Exam Guide — D5, Task 5.2; Sample Q3
+
+---
+
+## d5-043 · anti_pattern · multi_agent_research
+
+**Q:** Subagent retries then returns generic 'search unavailable' to coordinator. Problem?
+
+**A:** Hides failure type, attempted query, and partial results—coordinator cannot make informed recovery.
+
+**Tags:** error_propagation, anti_pattern
+
+**Sources:**
+- Official CCAR-F Exam Guide — D5, Task 5.3; Sample Q8
+
+---
+
+## d5-044 · anti_pattern · multi_agent_research
+
+**Q:** Single subagent failure terminates entire multi-agent workflow. Why wrong?
+
+**A:** Often recoverable with partial results, alternate queries, or gap annotations—unnecessary full termination.
+
+**Tags:** error_propagation, anti_pattern
+
+**Sources:**
+- Official CCAR-F Exam Guide — D5, Task 5.3
+
+---
+
+## d5-045 · decision · developer_productivity, code_generation
+
+**Q:** Long codebase exploration—delegate specific questions while preserving coordination?
+
+**A:** Spawn subagents for focused tasks (find test files, trace refund flow) while main agent keeps high-level coordination.
+
+**Tags:** subagents, exploration
+
+**Sources:**
+- Official CCAR-F Exam Guide — D5, Task 5.4
+
+---
+
+## d5-046 · decision · multi_agent_research
+
+**Q:** Document analysis finds conflicting values from sources. Before synthesis?
+
+**A:** Complete analysis with conflicts included and explicitly annotated—let coordinator reconcile before passing to synthesis.
+
+**Tags:** provenance, conflicts
+
+**Sources:**
+- Official CCAR-F Exam Guide — D5, Task 5.6
+
+---
+
+## d5-047 · decision · developer_productivity
+
+**Q:** Scratchpad file during exploration—how use for follow-up questions?
+
+**A:** Record key findings in scratchpad; reference it for subsequent questions to counteract context degradation.
+
+**Tags:** scratchpad, exploration
+
+**Sources:**
+- Official CCAR-F Exam Guide — D5, Task 5.4
+

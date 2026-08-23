@@ -612,3 +612,68 @@
 **Sources:**
 - Official CCAR-F Exam Guide — D2, Task 2.2
 
+---
+
+## d2-048 · concept · developer_productivity
+
+**Q:** Built-in Bash tool—when use vs Grep?
+
+**A:** Bash for shell commands and scripted operations; Grep for searching file contents for patterns across the codebase.
+
+**Tags:** builtin_tools, Bash
+
+**Sources:**
+- Official CCAR-F Exam Guide — D2, Task 2.5; Scenario 4; Appendix
+
+---
+
+## d2-049 · concept · customer_support, structured_extraction
+
+**Q:** tool_choice: "auto"—what can the model return?
+
+**A:** The model may respond with conversational text instead of calling a tool—no guaranteed tool invocation.
+
+**Tags:** tool_choice, auto
+
+**Sources:**
+- Official CCAR-F Exam Guide — D2, Task 2.3; D4 Task 4.3
+
+---
+
+## d2-050 · anti_pattern · customer_support
+
+**Q:** Similar tools misroute. Add 5–8 few-shot tool-selection examples first?
+
+**A:** Adds token overhead without fixing root cause—inadequate tool descriptions are the primary selection mechanism.
+
+**Tags:** tool_descriptions, few_shot, anti_pattern
+
+**Sources:**
+- Official CCAR-F Exam Guide — D2, Task 2.1; Sample Q2
+
+---
+
+## d2-051 · concept · developer_productivity
+
+**Q:** Edit built-in tool—how does it modify files?
+
+**A:** Targeted modifications using unique text matching as anchor—fails when anchor text is not unique.
+
+**Tags:** builtin_tools, Edit
+
+**Sources:**
+- Official CCAR-F Exam Guide — D2, Task 2.5
+
+---
+
+## d2-052 · decision · customer_support
+
+**Q:** errorCategory for policy violation refund blocked?
+
+**A:** Business error with isRetryable: false and customer-friendly explanation—not transient or permission.
+
+**Tags:** errors, business_errors
+
+**Sources:**
+- Official CCAR-F Exam Guide — D2, Task 2.2
+

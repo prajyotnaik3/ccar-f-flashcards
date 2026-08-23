@@ -549,3 +549,65 @@
   sources:
     - "Official CCAR-F Exam Guide — D3, Task 3.3; Sample Q6"
   tags: [rules, anti_pattern]
+
+# --- Audit gap-fill (tasks 3.1–3.6) ---
+
+- id: d3-046
+  domain: D3
+  weight: 20
+  type: anti_pattern
+  difficulty: medium
+  scenarios: [code_generation]
+  front: "Monolith-to-microservices: direct execution with comprehensive upfront structure instructions. Why wrong?"
+  back: "Assumes structure without codebase exploration—dependencies discovered late cause costly rework; plan first."
+  sources:
+    - "Official CCAR-F Exam Guide — D3, Task 3.4; Sample Q5"
+  tags: [plan_mode, anti_pattern]
+
+- id: d3-047
+  domain: D3
+  weight: 20
+  type: anti_pattern
+  difficulty: medium
+  scenarios: [code_generation]
+  front: "Auto-apply conventions via skills in .claude/skills/ instead of path rules. Why insufficient?"
+  back: "Skills require manual invocation or model choice—not deterministic path-based automatic application."
+  sources:
+    - "Official CCAR-F Exam Guide — D3, Task 3.3; Sample Q6"
+  tags: [skills, rules, anti_pattern]
+
+- id: d3-048
+  domain: D3
+  weight: 20
+  type: decision
+  difficulty: medium
+  scenarios: [code_generation]
+  front: "Test-driven iteration before implementation—what should tests cover?"
+  back: "Expected behavior, edge cases, and performance requirements—iterate by sharing failures with Claude."
+  sources:
+    - "Official CCAR-F Exam Guide — D3, Task 3.5"
+  tags: [iterative_refinement, testing]
+
+- id: d3-049
+  domain: D3
+  weight: 20
+  type: decision
+  difficulty: medium
+  scenarios: [code_generation]
+  front: "context: fork for skills—another use case besides verbose codebase analysis?"
+  back: "Exploratory brainstorming of alternatives—isolates speculative output from the main session."
+  sources:
+    - "Official CCAR-F Exam Guide — D3, Task 3.2"
+  tags: [skills, context_fork]
+
+- id: d3-050
+  domain: D3
+  weight: 20
+  type: scenario_hook
+  difficulty: easy
+  scenarios: [developer_productivity]
+  front: "Developer Productivity scenario (Scenario 4)—primary domains?"
+  back: "D2 (built-in tools + MCP), D3 (Claude Code workflows), D1 (delegation/orchestration)."
+  sources:
+    - "Official CCAR-F Exam Guide — scenario map"
+  tags: [scenarios, developer_productivity]

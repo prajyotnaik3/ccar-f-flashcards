@@ -487,3 +487,89 @@
   sources:
     - "Official CCAR-F Exam Guide — Scenario 2"
   tags: [scenarios, code_generation]
+
+# --- Audit gap-fill (tasks 5.1–5.6) ---
+
+- id: d5-041
+  domain: D5
+  weight: 15
+  type: decision
+  difficulty: medium
+  scenarios: [multi_agent_research]
+  front: "Subagent structured outputs for downstream synthesis—required metadata?"
+  back: "Dates, source locations, and methodological context—not just claims without provenance context."
+  sources:
+    - "Official CCAR-F Exam Guide — D5, Task 5.1"
+  tags: [metadata, subagents]
+
+- id: d5-042
+  domain: D5
+  weight: 15
+  type: anti_pattern
+  difficulty: medium
+  scenarios: [customer_support]
+  front: "Deploy classifier model to predict escalation before agent runs. Why over-engineered first step?"
+  back: "Requires labeled data and ML infra when prompt criteria with few-shot hasn't been tried yet."
+  sources:
+    - "Official CCAR-F Exam Guide — D5, Task 5.2; Sample Q3"
+  tags: [escalation, anti_pattern]
+
+- id: d5-043
+  domain: D5
+  weight: 15
+  type: anti_pattern
+  difficulty: medium
+  scenarios: [multi_agent_research]
+  front: "Subagent retries then returns generic 'search unavailable' to coordinator. Problem?"
+  back: "Hides failure type, attempted query, and partial results—coordinator cannot make informed recovery."
+  sources:
+    - "Official CCAR-F Exam Guide — D5, Task 5.3; Sample Q8"
+  tags: [error_propagation, anti_pattern]
+
+- id: d5-044
+  domain: D5
+  weight: 15
+  type: anti_pattern
+  difficulty: medium
+  scenarios: [multi_agent_research]
+  front: "Single subagent failure terminates entire multi-agent workflow. Why wrong?"
+  back: "Often recoverable with partial results, alternate queries, or gap annotations—unnecessary full termination."
+  sources:
+    - "Official CCAR-F Exam Guide — D5, Task 5.3"
+  tags: [error_propagation, anti_pattern]
+
+- id: d5-045
+  domain: D5
+  weight: 15
+  type: decision
+  difficulty: medium
+  scenarios: [developer_productivity, code_generation]
+  front: "Long codebase exploration—delegate specific questions while preserving coordination?"
+  back: "Spawn subagents for focused tasks (find test files, trace refund flow) while main agent keeps high-level coordination."
+  sources:
+    - "Official CCAR-F Exam Guide — D5, Task 5.4"
+  tags: [subagents, exploration]
+
+- id: d5-046
+  domain: D5
+  weight: 15
+  type: decision
+  difficulty: medium
+  scenarios: [multi_agent_research]
+  front: "Document analysis finds conflicting values from sources. Before synthesis?"
+  back: "Complete analysis with conflicts included and explicitly annotated—let coordinator reconcile before passing to synthesis."
+  sources:
+    - "Official CCAR-F Exam Guide — D5, Task 5.6"
+  tags: [provenance, conflicts]
+
+- id: d5-047
+  domain: D5
+  weight: 15
+  type: decision
+  difficulty: medium
+  scenarios: [developer_productivity]
+  front: "Scratchpad file during exploration—how use for follow-up questions?"
+  back: "Record key findings in scratchpad; reference it for subsequent questions to counteract context degradation."
+  sources:
+    - "Official CCAR-F Exam Guide — D5, Task 5.4"
+  tags: [scratchpad, exploration]

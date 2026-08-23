@@ -584,3 +584,68 @@
 **Sources:**
 - Official CCAR-F Exam Guide — D3, Task 3.3; Sample Q6
 
+---
+
+## d3-046 · anti_pattern · code_generation
+
+**Q:** Monolith-to-microservices: direct execution with comprehensive upfront structure instructions. Why wrong?
+
+**A:** Assumes structure without codebase exploration—dependencies discovered late cause costly rework; plan first.
+
+**Tags:** plan_mode, anti_pattern
+
+**Sources:**
+- Official CCAR-F Exam Guide — D3, Task 3.4; Sample Q5
+
+---
+
+## d3-047 · anti_pattern · code_generation
+
+**Q:** Auto-apply conventions via skills in .claude/skills/ instead of path rules. Why insufficient?
+
+**A:** Skills require manual invocation or model choice—not deterministic path-based automatic application.
+
+**Tags:** skills, rules, anti_pattern
+
+**Sources:**
+- Official CCAR-F Exam Guide — D3, Task 3.3; Sample Q6
+
+---
+
+## d3-048 · decision · code_generation
+
+**Q:** Test-driven iteration before implementation—what should tests cover?
+
+**A:** Expected behavior, edge cases, and performance requirements—iterate by sharing failures with Claude.
+
+**Tags:** iterative_refinement, testing
+
+**Sources:**
+- Official CCAR-F Exam Guide — D3, Task 3.5
+
+---
+
+## d3-049 · decision · code_generation
+
+**Q:** context: fork for skills—another use case besides verbose codebase analysis?
+
+**A:** Exploratory brainstorming of alternatives—isolates speculative output from the main session.
+
+**Tags:** skills, context_fork
+
+**Sources:**
+- Official CCAR-F Exam Guide — D3, Task 3.2
+
+---
+
+## d3-050 · scenario_hook · developer_productivity
+
+**Q:** Developer Productivity scenario (Scenario 4)—primary domains?
+
+**A:** D2 (built-in tools + MCP), D3 (Claude Code workflows), D1 (delegation/orchestration).
+
+**Tags:** scenarios, developer_productivity
+
+**Sources:**
+- Official CCAR-F Exam Guide — scenario map
+
