@@ -2,23 +2,73 @@
 
 Auto-generated from flashcards with `exam_day: true`.
 
-**14 cards** — review the night before the exam.
+**24 cards** — review the night before the exam.
 
 ### d1-002 (D1)
 
-- **Q:** Support agent must verify identity before refund tools run. Best first approach?
-- **A:** Structural gate: prerequisite step, scoped tool permissions, or hook—before relying on prompt rules.
-- **Why:** Identity and money require deterministic enforcement.
+- **Q:** 12% of support cases skip get_customer and call lookup_order by name only, causing wrong refunds. Most effective fix?
+- **A:** Programmatic prerequisite: block lookup_order and process_refund until get_customer returns a verified customer ID.
+- **Why:** Financial identity steps need deterministic enforcement; prompts and few-shot alone are probabilistic.
 
 ### d1-005 (D1)
 
-- **Q:** When should a support agent escalate to a human instead of continuing the loop?
-- **A:** When policy requires human judgment, identity cannot be verified, tool failures persist, or confidence/validation thresholds are not met.
+- **Q:** When should an agentic loop continue vs terminate?
+- **A:** Continue when stop_reason is tool_use; terminate when stop_reason is end_turn.
 
-### d1-006 (D1)
+### d1-009 (D1)
 
-- **Q:** Developer Productivity scenario—primary domains tested?
-- **A:** D2 (tools/MCP), D3 (Claude Code), D1 (delegation/orchestration).
+- **Q:** What is hub-and-spoke multi-agent architecture?
+- **A:** Coordinator manages all inter-subagent communication, error handling, and information routing; subagents do not talk directly.
+
+### d1-010 (D1)
+
+- **Q:** Do subagents automatically inherit the coordinator's conversation history?
+- **A:** No—subagents operate with isolated context; parent history is not inherited automatically.
+
+### d1-016 (D1)
+
+- **Q:** What tool spawns subagents in the Agent SDK, and what must allowedTools include?
+- **A:** The Task tool; allowedTools must include "Task" for a coordinator to invoke subagents.
+
+### d1-023 (D1)
+
+- **Q:** Programmatic enforcement (hooks, gates) vs prompt-based workflow ordering?
+- **A:** Prompts have non-zero failure rate; programmatic gates give deterministic compliance when identity verification or financial ops require it.
+
+### d1-025 (D1)
+
+- **Q:** What must a structured human handoff include when escalating mid-process?
+- **A:** Customer details, root cause analysis, recommended actions—humans may lack full conversation transcript.
+
+### d1-029 (D1)
+
+- **Q:** Business rule: block refunds over $500 and escalate. Hooks vs prompt instructions?
+- **A:** Tool call interception hook—hooks guarantee compliance; prompts are probabilistic.
+
+### d1-040 (D1)
+
+- **Q:** Customer Support and Multi-Agent Research scenarios—shared primary domain?
+- **A:** D1 (Agentic Architecture & Orchestration)—plus D2 tools/MCP and D5 context/reliability for both.
+
+### d1-042 (D1)
+
+- **Q:** Do subagents share memory across separate Task invocations?
+- **A:** No—each invocation is isolated; context must be explicitly provided in the prompt every time.
+
+### d1-048 (D1)
+
+- **Q:** When should a support agent escalate to a human instead of continuing the agentic loop?
+- **A:** Policy requires human judgment, identity cannot be verified, tool failures persist, or validation/confidence thresholds are not met.
+
+### d1-055 (D1)
+
+- **Q:** Two stop_reason values that drive agentic loop control?
+- **A:** tool_use (continue loop—execute tools and append results) and end_turn (terminate and present response).
+
+### d1-057 (D1)
+
+- **Q:** What is a programmatic prerequisite gate in a multi-step agent workflow?
+- **A:** Code or hook that blocks downstream tool calls until a prerequisite step completes (e.g., no refund until verified customer ID).
 
 ### d2-002 (D2)
 
