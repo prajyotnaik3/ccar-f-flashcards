@@ -2,7 +2,7 @@
 
 Auto-generated from flashcards with `exam_day: true`.
 
-**24 cards** — review the night before the exam.
+**33 cards** — review the night before the exam.
 
 ### d1-002 (D1)
 
@@ -72,8 +72,54 @@ Auto-generated from flashcards with `exam_day: true`.
 
 ### d2-002 (D2)
 
-- **Q:** Refund tool should only run after verified identity. MCP/tool design choice?
-- **A:** Narrow tool exposure: separate tools with least privilege, or a refund tool that requires verified session token from a prior identity tool.
+- **Q:** Primary mechanism LLMs use to select among similar tools?
+- **A:** Tool descriptions—minimal descriptions lead to unreliable selection when tools overlap.
+
+### d2-003 (D2)
+
+- **Q:** Agent calls get_customer for order queries (#12345) instead of lookup_order. Both have minimal descriptions. Best first fix?
+- **A:** Expand each tool description: input formats, example queries, edge cases, and when to use vs similar tools.
+- **Why:** Descriptions are the primary selection mechanism; few-shot and routing layers don't fix inadequate descriptions first.
+
+### d2-012 (D2)
+
+- **Q:** MCP pattern for communicating tool failures back to the agent?
+- **A:** The isError flag on tool results, plus structured error metadata—not raw stack traces or generic messages.
+
+### d2-015 (D2)
+
+- **Q:** Structured error metadata fields for MCP tools (name three)?
+- **A:** errorCategory (transient/validation/permission/business), isRetryable boolean, and human-readable description.
+
+### d2-020 (D2)
+
+- **Q:** Why giving an agent 18 tools instead of 4–5 hurts reliability?
+- **A:** Increases decision complexity and degrades tool selection accuracy.
+
+### d2-023 (D2)
+
+- **Q:** Three tool_choice configuration options on the Claude API?
+- **A:** "auto" (model may return text), "any" (must call a tool), and forced selection {"type": "tool", "name": "..."}.
+
+### d2-028 (D2)
+
+- **Q:** Refund tool should only run after verified identity. Tool design choice?
+- **A:** Least privilege: narrow tool exposure or refund tool requiring verified session token from prior identity tool.
+
+### d2-029 (D2)
+
+- **Q:** Project-level vs user-level MCP server configuration?
+- **A:** Project .mcp.json for shared team tooling (version controlled); user ~/.claude.json for personal/experimental servers.
+
+### d2-036 (D2)
+
+- **Q:** Built-in Grep vs Glob—primary use case for each?
+- **A:** Grep: search file contents for patterns (function names, errors, imports). Glob: match file paths by name/extension patterns.
+
+### d2-042 (D2)
+
+- **Q:** Which three exam scenarios list D2 as a primary domain?
+- **A:** Customer Support, Multi-Agent Research, and Developer Productivity.
 
 ### d3-002 (D3)
 
