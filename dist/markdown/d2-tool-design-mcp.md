@@ -20,7 +20,7 @@
 
 **Tasks:** 2.1
 
-**Q:** Primary mechanism LLMs use to select among similar tools?
+**Q:** What is the primary mechanism LLMs use to select among similar tools?
 
 **A:** Tool descriptions—minimal descriptions lead to unreliable selection when tools overlap.
 
@@ -82,11 +82,11 @@
 
 **Tasks:** 2.1
 
-**Q:** Generic analyze_content overlaps with analyze_document. Rename/fix strategy?
+**Q:** Generic analyze_content overlaps with analyze_document. How should you rename or fix the tools?
 
 **A:** Rename to purpose-specific names (e.g., extract_web_results) with web-specific descriptions that eliminate overlap.
 
-**Why:** Exam judgment aligned to task 2.1: Rename to purpose-specific names (e.
+**Why:** Rename overlapping tools to purpose-specific names (for example extract_web_results) and write web-specific descriptions so selection is unambiguous.
 
 **Tags:** tool_descriptions, naming
 
@@ -99,7 +99,7 @@
 
 **Tasks:** 2.1
 
-**Q:** One generic analyze_document tool does too much. How split it?
+**Q:** One generic analyze_document tool does too much. How should you split it?
 
 **A:** Purpose-specific tools with clear contracts: extract_data_points, summarize_content, verify_claim_against_source.
 
@@ -131,11 +131,11 @@
 
 **Tasks:** 2.1
 
-**Q:** Tool selection still wrong after improving descriptions. Next check?
+**Q:** Tool selection is still wrong after improving descriptions. What should you check next?
 
 **A:** Review system prompt for keyword-sensitive instructions that might override tool descriptions.
 
-**Why:** Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
+**Why:** After descriptions are fixed, check the system prompt. Keyword-sensitive instructions can create unintended tool associations that override good descriptions.
 
 **Tags:** system_prompt, tool_descriptions
 
@@ -148,7 +148,7 @@
 
 **Tasks:** 2.1
 
-**Q:** Why expose one mega-tool that 'does anything on GitHub' to the agent?
+**Q:** Why is exposing one mega-tool that 'does anything on GitHub' a problem?
 
 **A:** Harder correct selection, weak error semantics, and excessive blast radius if mis-invoked.
 
@@ -178,7 +178,7 @@
 
 **Tasks:** 2.2
 
-**Q:** MCP pattern for communicating tool failures back to the agent?
+**Q:** How should MCP tools communicate failures back to the agent?
 
 **A:** The isError flag on tool results, plus structured error metadata—not raw stack traces or generic messages.
 
@@ -193,7 +193,7 @@
 
 **Tasks:** 2.2
 
-**Q:** Four MCP error categories the exam distinguishes?
+**Q:** Which four MCP error categories does the exam distinguish?
 
 **A:** Transient (timeouts, unavailability), validation (invalid input), business (policy violations), permission (access denied).
 
@@ -208,7 +208,7 @@
 
 **Tasks:** 2.2
 
-**Q:** Why return generic 'Operation failed' for all tool errors?
+**Q:** Why is returning generic 'Operation failed' for all tool errors a problem?
 
 **A:** Prevents the agent from choosing appropriate recovery—retry, explain to user, escalate, or accept empty results.
 
@@ -223,11 +223,11 @@
 
 **Tasks:** 2.2
 
-**Q:** Structured error metadata fields for MCP tools (name three)?
+**Q:** Name three structured error metadata fields for MCP tools.
 
 **A:** errorCategory (transient/validation/permission/business), isRetryable boolean, and human-readable description.
 
-**Why:** Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.
+**Why:** Task 2.2 wants structured metadata: errorCategory, isRetryable, and a human-readable description so the agent can retry, explain, or stop.
 
 **Tags:** errors, structured_errors
 
@@ -240,7 +240,7 @@
 
 **Tasks:** 2.2
 
-**Q:** Business rule violation (e.g., refund over policy limit). Error response design?
+**Q:** How should you design the error response for a business-rule violation (for example, a refund over the policy limit)?
 
 **A:** isRetryable: false, customer-friendly explanation so the agent can communicate appropriately—not retry endlessly.
 
@@ -272,7 +272,7 @@
 
 **Tasks:** 2.2
 
-**Q:** Transient failure in a subagent. Handle locally vs propagate to coordinator?
+**Q:** When a subagent hits a transient failure, when should it retry locally versus propagate to the coordinator?
 
 **A:** Retry locally when possible; propagate only unresolved errors with partial results and what was attempted.
 
@@ -289,11 +289,11 @@
 
 **Tasks:** 2.2
 
-**Q:** Tool returns ambiguous error from external API. Best tool-layer behavior?
+**Q:** A tool returns an ambiguous error from an external API. How should the tool layer behave?
 
 **A:** Structured error payload (category, message, retryable flag)—not raw stack traces or silent failure.
 
-**Why:** not raw stack traces or silent failure.
+**Why:** Translate ambiguous API failures into category, message, and retryable flag. Raw stack traces and silent failures both block recovery.
 
 **Tags:** errors, reliability
 
@@ -306,7 +306,7 @@
 
 **Tasks:** 2.3
 
-**Q:** Why giving an agent 18 tools instead of 4–5 hurts reliability?
+**Q:** Why does giving an agent 18 tools instead of 4–5 hurt reliability?
 
 **A:** Increases decision complexity and degrades tool selection accuracy.
 
@@ -321,7 +321,7 @@
 
 **Tasks:** 2.3
 
-**Q:** Synthesis agent attempts web searches. Likely tool design issue?
+**Q:** The synthesis agent attempts web searches. What tool-design issue is likely?
 
 **A:** Agent has tools outside its specialization—scoped access should limit synthesis to synthesis-appropriate tools.
 
@@ -351,7 +351,7 @@
 
 **Tasks:** 2.3
 
-**Q:** Three tool_choice configuration options on the Claude API?
+**Q:** What are the three tool_choice configuration options on the Claude API?
 
 **A:** "auto" (model may return text), "any" (must call a tool), and forced selection {"type": "tool", "name": "..."}.
 
@@ -366,11 +366,11 @@
 
 **Tasks:** 2.3
 
-**Q:** When use tool_choice: "any"?
+**Q:** When should you set tool_choice to "any"?
 
 **A:** When you need guaranteed tool invocation instead of conversational text—e.g., unknown document type among multiple extraction schemas.
 
-**Why:** e.g., unknown document type among multiple extraction schemas.
+**Why:** tool_choice "any" forces a tool call (the model may choose which). Use it when you need structured extraction and the document type is unknown.
 
 **Tags:** tool_choice
 
@@ -383,7 +383,7 @@
 
 **Tasks:** 2.3
 
-**Q:** Must run extract_metadata before enrichment tools. tool_choice approach?
+**Q:** You must run extract_metadata before enrichment tools. How should you set tool_choice?
 
 **A:** Force specific tool first with {"type": "tool", "name": "extract_metadata"}, then process enrichment in follow-up turns.
 
@@ -417,7 +417,7 @@
 
 **Tasks:** 2.3
 
-**Q:** Synthesis needs simple fact-checks often. Scoped cross-role tool pattern?
+**Q:** Synthesis often needs simple fact-checks. What scoped cross-role tool pattern should you use?
 
 **A:** Provide verify_fact for high-frequency simple lookups; route complex verification through coordinator to search agent.
 
@@ -434,11 +434,11 @@
 
 **Tasks:** 2.3
 
-**Q:** Refund tool should only run after verified identity. Tool design choice?
+**Q:** A refund tool should run only after verified identity. What tool-design choice enforces that?
 
 **A:** Least privilege: narrow tool exposure or refund tool requiring verified session token from prior identity tool.
 
-**Why:** Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter.
+**Why:** Least privilege: do not expose refund until identity is verified, or require a verified session token from get_customer. Prompts cannot guarantee ordering.
 
 **Tags:** tool_boundaries, least_privilege
 
@@ -451,7 +451,7 @@
 
 **Tasks:** 2.4
 
-**Q:** Project-level vs user-level MCP server configuration?
+**Q:** How do project-level and user-level MCP server configurations differ?
 
 **A:** Project .mcp.json for shared team tooling (version controlled); user ~/.claude.json for personal/experimental servers.
 
@@ -466,11 +466,11 @@
 
 **Tasks:** 2.4
 
-**Q:** Store GitHub token for team MCP server without committing secrets?
+**Q:** How do you store a GitHub token for a team MCP server without committing secrets?
 
 **A:** Environment variable expansion in .mcp.json (e.g., ${GITHUB_TOKEN}) with secrets in env—not in the repo.
 
-**Why:** Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.
+**Why:** Put ${GITHUB_TOKEN} (or similar) in project .mcp.json and keep the secret in the environment so the repo never contains credentials.
 
 **Tags:** mcp_config, credentials
 
@@ -498,7 +498,7 @@
 
 **Tasks:** 2.4
 
-**Q:** MCP resources vs MCP tools—when use resources?
+**Q:** When should you use MCP resources instead of MCP tools?
 
 **A:** Resources expose content catalogs (issue summaries, doc hierarchies, DB schemas) to reduce exploratory tool calls.
 
@@ -513,11 +513,11 @@
 
 **Tasks:** 2.4
 
-**Q:** Agent prefers Grep over a more capable MCP search tool. Fix?
+**Q:** The agent prefers Grep over a more capable MCP search tool. How do you fix that?
 
 **A:** Enhance MCP tool descriptions to explain capabilities and outputs in detail so the model understands when MCP beats built-ins.
 
-**Why:** Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.
+**Why:** If Grep wins over a richer MCP search tool, the MCP description is too weak. Spell out capabilities and outputs so the model knows when MCP is better.
 
 **Tags:** tool_descriptions, mcp
 
@@ -530,11 +530,11 @@
 
 **Tasks:** 2.4
 
-**Q:** Jira integration needed. Community MCP server vs custom?
+**Q:** You need Jira integration. Should you use a community MCP server or a custom one?
 
 **A:** Prefer existing community MCP for standard integrations (Jira); custom servers for team-specific workflows.
 
-**Why:** Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.
+**Why:** Use a community MCP for standard SaaS (Jira). Reserve custom servers for team-specific workflows the community server cannot cover.
 
 **Tags:** mcp_config, community
 
@@ -547,7 +547,7 @@
 
 **Tasks:** 2.4, 2.5
 
-**Q:** Built-in Claude Code tools vs custom MCP—when prefer MCP?
+**Q:** When should you prefer custom MCP over built-in Claude Code tools?
 
 **A:** MCP for external systems (GitHub, DB, SaaS) or sharing tools across clients; built-ins for local repo operations.
 
@@ -562,7 +562,7 @@
 
 **Tasks:** 2.5
 
-**Q:** Built-in Grep vs Glob—primary use case for each?
+**Q:** What is the primary use case for built-in Grep versus Glob?
 
 **A:** Grep: search file contents for patterns (function names, errors, imports). Glob: match file paths by name/extension patterns.
 
@@ -577,11 +577,11 @@
 
 **Tasks:** 2.5
 
-**Q:** Find all test files named *.test.tsx anywhere in the repo. Which built-in tool?
+**Q:** Which built-in tool finds all test files named *.test.tsx anywhere in the repo?
 
 **A:** Glob with pattern like **/*.test.tsx.
 
-**Why:** Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.
+**Why:** Glob matches file paths. **/*.test.tsx finds tests by name anywhere; Grep searches file contents, not filenames.
 
 **Tags:** builtin_tools, Glob
 
@@ -594,11 +594,11 @@
 
 **Tasks:** 2.5
 
-**Q:** Find all callers of a function across the codebase. Which built-in tool?
+**Q:** Which built-in tool finds all callers of a function across the codebase?
 
 **A:** Grep to search file contents for the function name/reference patterns.
 
-**Why:** Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.
+**Why:** Callers are content matches. Grep for the function name; Glob would only find files whose names happen to match.
 
 **Tags:** builtin_tools, Grep
 
@@ -611,7 +611,7 @@
 
 **Tasks:** 2.5
 
-**Q:** Read/Write/Edit—when use Edit vs Read + Write?
+**Q:** When should you use Edit versus Read plus Write?
 
 **A:** Edit for targeted changes with unique anchor text; Read + Write when Edit fails due to non-unique matches.
 
@@ -626,11 +626,11 @@
 
 **Tasks:** 2.5
 
-**Q:** Best incremental codebase exploration pattern?
+**Q:** What is the best incremental pattern for exploring a codebase?
 
 **A:** Grep for entry points → Read to follow imports and trace flows—not read all files upfront.
 
-**Why:** not read all files upfront.
+**Why:** Start with Grep for entry points, then Read along imports. Loading every file upfront wastes context and dilutes attention.
 
 **Tags:** builtin_tools, exploration
 
@@ -643,11 +643,11 @@
 
 **Tasks:** 2.5
 
-**Q:** Trace usage across wrapper modules exporting many names?
+**Q:** How do you trace usage across wrapper modules that export many names?
 
 **A:** Identify all exported names first, then Grep for each name across the codebase.
 
-**Why:** Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.
+**Why:** Wrapper modules re-export many names. List exports first, then Grep each name so you do not miss aliased callers.
 
 **Tags:** builtin_tools, Grep, exploration
 
@@ -675,7 +675,7 @@
 
 **Tasks:** 2.1, 2.4
 
-**Q:** Customer Support scenario MCP tools (Exam Scenario 1)—examples?
+**Q:** What MCP tools appear in the Customer Support scenario (Exam Scenario 1)?
 
 **A:** get_customer, lookup_order, process_refund, escalate_to_human—backend integration via custom MCP tools.
 
@@ -690,7 +690,7 @@
 
 **Tasks:** 2.5
 
-**Q:** Developer Productivity scenario built-in tools (Exam Scenario 4)?
+**Q:** What built-in tools appear in the Developer Productivity scenario (Exam Scenario 4)?
 
 **A:** Read, Write, Bash, Grep, Glob—plus MCP server integrations for external systems.
 
@@ -705,7 +705,7 @@
 
 **Tasks:** 2.1
 
-**Q:** Improve tool selection with keyword routing layer parsing user input each turn. Why often wrong?
+**Q:** Why is adding a keyword-routing layer that parses user input each turn often the wrong way to improve tool selection?
 
 **A:** Over-engineered—bypasses LLM NLU; fix descriptions first; routing doesn't solve ordering or description gaps.
 
@@ -720,7 +720,7 @@
 
 **Tasks:** 2.4
 
-**Q:** MCP tools vs MCP resources—division of responsibility?
+**Q:** How do MCP tools and MCP resources divide responsibility?
 
 **A:** Tools perform actions (fetch, update, search); resources expose catalogs and static context (schemas, doc trees) to cut exploratory calls.
 
@@ -735,7 +735,7 @@
 
 **Tasks:** 2.2
 
-**Q:** Why return structured isRetryable metadata on errors?
+**Q:** Why should error results include structured isRetryable metadata?
 
 **A:** Lets the agent retry transient failures and avoid wasted retries on non-retryable business or validation errors.
 
@@ -750,7 +750,7 @@
 
 **Tasks:** 2.5
 
-**Q:** Built-in Bash tool—when use vs Grep?
+**Q:** When should you use the built-in Bash tool versus Grep?
 
 **A:** Bash for shell commands and scripted operations; Grep for searching file contents for patterns across the codebase.
 
@@ -765,7 +765,7 @@
 
 **Tasks:** 2.3, 4.3
 
-**Q:** tool_choice: "auto"—what can the model return?
+**Q:** What can the model return when tool_choice is "auto"?
 
 **A:** The model may respond with conversational text instead of calling a tool—no guaranteed tool invocation.
 
@@ -780,7 +780,7 @@
 
 **Tasks:** 2.1
 
-**Q:** Similar tools misroute. Add 5–8 few-shot tool-selection examples first?
+**Q:** Similar tools misroute. Why is adding 5–8 few-shot tool-selection examples the wrong first step?
 
 **A:** Adds token overhead without fixing root cause—inadequate tool descriptions are the primary selection mechanism.
 
@@ -795,7 +795,7 @@
 
 **Tasks:** 2.5
 
-**Q:** Edit built-in tool—how does it modify files?
+**Q:** How does the built-in Edit tool modify files?
 
 **A:** Targeted modifications using unique text matching as anchor—fails when anchor text is not unique.
 
@@ -810,11 +810,11 @@
 
 **Tasks:** 2.2
 
-**Q:** errorCategory for policy violation refund blocked?
+**Q:** Which errorCategory should you use when a policy violation blocks a refund?
 
 **A:** Business error with isRetryable: false and customer-friendly explanation—not transient or permission.
 
-**Why:** not transient or permission.
+**Why:** Policy violations are business errors: isRetryable false plus a customer-friendly explanation. They are not transient timeouts or permission denials.
 
 **Tags:** errors, business_errors
 

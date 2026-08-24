@@ -19,7 +19,7 @@
 
 **Tasks:** 5.1
 
-**Q:** Risk of progressive summarization in long support sessions?
+**Q:** What is the risk of progressive summarization in long support sessions?
 
 **A:** Condenses amounts, dates, percentages, and customer-stated expectations into vague summaries—loses critical transactional facts.
 
@@ -49,11 +49,11 @@
 
 **Tasks:** 5.1
 
-**Q:** Preserve order amounts and dates across a long support conversation?
+**Q:** How do you preserve order amounts and dates across a long support conversation?
 
 **A:** Extract transactional facts into a persistent case facts block in each prompt—outside summarized history.
 
-**Why:** outside summarized history.
+**Why:** Keep amounts, dates, and order IDs in a persistent case-facts block outside summarized history so progressive summarization cannot wash them out.
 
 **Tags:** case_facts, context
 
@@ -66,11 +66,11 @@
 
 **Tasks:** 5.1
 
-**Q:** Order lookup returns 40+ fields but only 5 matter for returns. Context fix?
+**Q:** Order lookup returns 40+ fields but only 5 matter for returns. How should you fix the context?
 
 **A:** Trim verbose tool outputs to relevant fields before they accumulate in conversation context.
 
-**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+**Why:** Trim 40-field order payloads to the few return-relevant fields before they accumulate. Verbose tool results crowd out the facts that matter.
 
 **Tags:** trimming, tool_results
 
@@ -83,7 +83,7 @@
 
 **Tasks:** 5.1
 
-**Q:** Mitigate lost-in-the-middle when aggregating subagent results?
+**Q:** How do you mitigate lost-in-the-middle when aggregating subagent results?
 
 **A:** Place key findings summary at the beginning; organize detailed results with explicit section headers.
 
@@ -100,11 +100,11 @@
 
 **Tasks:** 5.1
 
-**Q:** Downstream synthesis agent has limited context budget. Upstream agent output design?
+**Q:** The downstream synthesis agent has a limited context budget. How should upstream agents shape their output?
 
 **A:** Return structured key facts, citations, and relevance scores—not verbose reasoning chains.
 
-**Why:** not verbose reasoning chains.
+**Why:** When downstream context is tight, upstream agents should return key facts, citations, and relevance scores—not long reasoning chains.
 
 **Tags:** structured_output, subagents
 
@@ -117,7 +117,7 @@
 
 **Tasks:** 5.1
 
-**Q:** Why pass complete conversation history in subsequent API requests?
+**Q:** Why should you pass complete conversation history in subsequent API requests?
 
 **A:** Maintains conversational coherence—the model needs prior turns to reason about the ongoing case.
 
@@ -132,11 +132,11 @@
 
 **Tasks:** 5.1
 
-**Q:** Multi-issue support session (billing + return). Context layer approach?
+**Q:** A support session covers multiple issues (billing and a return). How should you structure the context layer?
 
 **A:** Persist structured issue data (order IDs, amounts, statuses) in a separate context layer for each concern.
 
-**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+**Why:** For billing plus a return, persist structured issue data (IDs, amounts, statuses) in a separate layer per concern so one summary does not merge them.
 
 **Tags:** case_facts, multi_issue
 
@@ -149,7 +149,7 @@
 
 **Tasks:** 5.2
 
-**Q:** Three appropriate escalation triggers (beyond 'complex case')?
+**Q:** Name three appropriate escalation triggers besides calling the case 'complex'.
 
 **A:** Customer explicitly requests human, policy exception/gap, and inability to make meaningful progress.
 
@@ -164,7 +164,7 @@
 
 **Tasks:** 5.2
 
-**Q:** 55% FCR—escalates easy cases, handles hard policy exceptions alone. Best calibration fix?
+**Q:** First-contact resolution is 55%: the agent escalates easy cases and handles hard policy exceptions alone. What is the best calibration fix?
 
 **A:** Add explicit escalation criteria with few-shot examples showing escalate vs resolve autonomously.
 
@@ -181,7 +181,7 @@
 
 **Tasks:** 5.2
 
-**Q:** Route to human when self-reported confidence score is below threshold. Why unreliable?
+**Q:** Why is routing to a human when self-reported confidence is below a threshold unreliable?
 
 **A:** LLM confidence is poorly calibrated—agent may be wrongly confident on hard cases and uncertain on easy ones.
 
@@ -196,7 +196,7 @@
 
 **Tasks:** 5.2
 
-**Q:** Escalate on negative sentiment threshold. Why wrong for calibration?
+**Q:** Why is escalating on a negative-sentiment threshold the wrong calibration fix?
 
 **A:** Sentiment doesn't correlate with case complexity—the actual issue is unclear escalation boundaries.
 
@@ -211,7 +211,7 @@
 
 **Tasks:** 5.2
 
-**Q:** Customer explicitly demands a human agent. Response?
+**Q:** The customer explicitly demands a human agent. What should the agent do?
 
 **A:** Honor immediately—do not attempt investigation first when they explicitly request a human.
 
@@ -228,11 +228,11 @@
 
 **Tasks:** 5.2
 
-**Q:** Frustrated customer, issue is within agent capability. Approach?
+**Q:** The customer is frustrated, but the issue is within the agent's capability. What should the agent do?
 
 **A:** Acknowledge frustration and offer resolution; escalate only if customer reiterates preference for human.
 
-**Why:** Escalation calibration needs explicit criteria—ambiguous boundaries cause wrong routing between autonomous resolution and human handoff.
+**Why:** Frustration alone is not an escalation trigger if the issue is in scope. Acknowledge, offer to resolve, and escalate only if they still want a human.
 
 **Tags:** escalation, de_escalation
 
@@ -245,7 +245,7 @@
 
 **Tasks:** 5.2
 
-**Q:** Policy silent on competitor price matching (only covers own-site adjustments). Action?
+**Q:** Policy is silent on competitor price matching (it only covers own-site adjustments). What should the agent do?
 
 **A:** Escalate—policy gap/exception case, not autonomous resolution.
 
@@ -279,7 +279,7 @@
 
 **Tasks:** 5.1
 
-**Q:** Subagents need prior search results. Best context passing?
+**Q:** Subagents need prior search results. What is the best way to pass that context?
 
 **A:** Explicit structured handoffs (IDs, snippets, citations) via coordinator—not implicit shared memory.
 
@@ -296,7 +296,7 @@
 
 **Tasks:** 5.3
 
-**Q:** Web search subagent timeout—best error propagation to coordinator?
+**Q:** The web search subagent times out. What error context should you propagate to the coordinator?
 
 **A:** Structured context: failure type, attempted query, partial results, and alternative approaches.
 
@@ -313,7 +313,7 @@
 
 **Tasks:** 5.3
 
-**Q:** Subagent returns empty results marked successful after timeout. Why anti-pattern?
+**Q:** Why is it an anti-pattern for a subagent to return empty results marked successful after a timeout?
 
 **A:** Silently suppresses errors—coordinator cannot recover or annotate coverage gaps.
 
@@ -328,7 +328,7 @@
 
 **Tasks:** 5.3
 
-**Q:** Synthesis output after partial subagent failures—what include?
+**Q:** After partial subagent failures, what should synthesis output include?
 
 **A:** Coverage annotations: which findings are well-supported vs which topic areas have gaps from unavailable sources.
 
@@ -345,7 +345,7 @@
 
 **Tasks:** 5.3
 
-**Q:** Agent loop fails twice on same tool error. Next step?
+**Q:** The agent loop fails twice on the same tool error. What should you do next?
 
 **A:** Escalate or change strategy (alternate tool, human handoff)—not infinite identical retries.
 
@@ -362,7 +362,7 @@
 
 **Tasks:** 5.4
 
-**Q:** Scratchpad files in long Claude Code exploration sessions—purpose?
+**Q:** What is the purpose of scratchpad files in long Claude Code exploration sessions?
 
 **A:** Persist key findings across context boundaries; reference for later questions to counteract degradation.
 
@@ -377,11 +377,11 @@
 
 **Tasks:** 5.4
 
-**Q:** Verbose codebase exploration fills context. Claude Code command to reduce usage?
+**Q:** Verbose codebase exploration fills the context. Which Claude Code command reduces usage?
 
 **A:** /compact to condense verbose discovery output during extended sessions.
 
-**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+**Why:** /compact condenses verbose discovery output in long Claude Code sessions. It is the documented command for context pressure during exploration.
 
 **Tags:** compact, exploration
 
@@ -394,11 +394,11 @@
 
 **Tasks:** 5.4
 
-**Q:** Multi-phase codebase exploration—context pattern between phases?
+**Q:** In multi-phase codebase exploration, how should you manage context between phases?
 
 **A:** Summarize key findings from one phase, inject summary into context before spawning subagents for the next.
 
-**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+**Why:** Summarize each exploration phase and inject that summary before the next subagents spawn so later phases do not inherit a huge raw trace.
 
 **Tags:** exploration, summarization
 
@@ -411,7 +411,7 @@
 
 **Tasks:** 5.4
 
-**Q:** Crash recovery pattern for multi-agent workflows?
+**Q:** What crash-recovery pattern should multi-agent workflows use?
 
 **A:** Each agent exports state to a known location; coordinator loads manifest on resume and injects into prompts.
 
@@ -426,7 +426,7 @@
 
 **Tasks:** 2.5, 5.4
 
-**Q:** Why dump entire repo into context for every Claude Code task?
+**Q:** Why is dumping the entire repo into context for every Claude Code task a problem?
 
 **A:** Wastes tokens and adds noise—use Grep/Glob and scoped reads incrementally.
 
@@ -441,7 +441,7 @@
 
 **Tasks:** 5.5
 
-**Q:** 97% overall extraction accuracy—why not automate all human review?
+**Q:** Overall extraction accuracy is 97%. Why should you not automate away all human review?
 
 **A:** Aggregate metrics may mask poor performance on specific document types or individual fields.
 
@@ -456,7 +456,7 @@
 
 **Tasks:** 5.5
 
-**Q:** Ongoing quality monitoring for high-confidence extractions?
+**Q:** How should you monitor quality for high-confidence extractions over time?
 
 **A:** Stratified random sampling to measure error rates and detect novel error patterns.
 
@@ -473,11 +473,11 @@
 
 **Tasks:** 5.5
 
-**Q:** Calibrate human review routing for extractions?
+**Q:** How do you calibrate human-review routing for extractions?
 
 **A:** Model outputs field-level confidence; calibrate thresholds using labeled validation sets.
 
-**Why:** Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
+**Why:** Have the model emit field-level confidence, then set review thresholds on a labeled validation set. Uncalibrated scores are not production routing rules.
 
 **Tags:** confidence, human_review
 
@@ -490,7 +490,7 @@
 
 **Tasks:** 5.5
 
-**Q:** Before reducing human review on high-confidence extractions—verify what?
+**Q:** Before reducing human review on high-confidence extractions, what should you verify?
 
 **A:** Accuracy by document type and field segment—consistent performance across all segments.
 
@@ -507,11 +507,11 @@
 
 **Tasks:** 5.5
 
-**Q:** Limited reviewer capacity—prioritize which extractions for human review?
+**Q:** Reviewer capacity is limited. Which extractions should you prioritize for human review?
 
 **A:** Low model confidence, ambiguous source documents, or contradictory source data.
 
-**Why:** Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
+**Why:** With limited reviewers, send low-confidence extractions and ambiguous or contradictory source documents to humans first.
 
 **Tags:** human_review, routing
 
@@ -539,7 +539,7 @@
 
 **Tasks:** 5.6
 
-**Q:** Subagent output for downstream synthesis—provenance requirement?
+**Q:** What provenance must subagent output include for downstream synthesis?
 
 **A:** Structured claim-source mappings (URLs, document names, excerpts) preserved through synthesis.
 
@@ -556,7 +556,7 @@
 
 **Tasks:** 5.6
 
-**Q:** Two credible sources report different statistics. Synthesis handling?
+**Q:** Two credible sources report different statistics. How should synthesis handle that?
 
 **A:** Annotate conflict with source attribution—do not arbitrarily pick one value.
 
@@ -573,7 +573,7 @@
 
 **Tasks:** 5.6
 
-**Q:** Why require publication/collection dates in structured subagent outputs?
+**Q:** Why should structured subagent outputs include publication or collection dates?
 
 **A:** Enables correct temporal interpretation—prevents time differences being misread as contradictions.
 
@@ -590,11 +590,11 @@
 
 **Tasks:** 5.6
 
-**Q:** Research report structure for contested vs established findings?
+**Q:** How should a research report structure contested findings versus established ones?
 
 **A:** Explicit sections distinguishing well-established findings from contested ones with methodological context.
 
-**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+**Why:** Structure the report with explicit well-established vs contested sections and keep methodological context. Do not flatten everything into one confident narrative.
 
 **Tags:** synthesis, provenance
 
@@ -607,7 +607,7 @@
 
 **Tasks:** 5.6
 
-**Q:** Synthesis output formatting for mixed content types?
+**Q:** How should synthesis format mixed content types?
 
 **A:** Render appropriately—financial data as tables, news as prose, technical findings as structured lists.
 
@@ -620,13 +620,13 @@
 
 ---
 
-## d5-039 · scenario_hook · customer_support, multi_agent_research, structured_extraction
+## d5-039 · scenario_hook · customer_support, code_generation, multi_agent_research, structured_extraction
 
 **Tasks:** 5.1, 5.2, 5.3
 
-**Q:** Which three scenarios list D5 as a primary domain?
+**Q:** Which exam scenarios list D5 as a primary domain?
 
-**A:** Customer Support, Multi-Agent Research, and Structured Data Extraction.
+**A:** Four: Customer Support, Code Generation, Multi-Agent Research, and Structured Data Extraction. Developer Productivity and CI/CD do not list D5 as primary.
 
 **Tags:** scenarios
 
@@ -639,7 +639,7 @@
 
 **Tasks:** 3.4, 5.1
 
-**Q:** Code Generation scenario (Scenario 2)—D5 focus areas?
+**Q:** What D5 focus areas does the Code Generation scenario (Scenario 2) emphasize?
 
 **A:** Context preservation across edits, plan vs execute context management, and session reliability.
 
@@ -654,7 +654,7 @@
 
 **Tasks:** 5.1
 
-**Q:** Subagent structured outputs for downstream synthesis—required metadata?
+**Q:** What metadata must structured subagent outputs include for downstream synthesis?
 
 **A:** Dates, source locations, and methodological context—not just claims without provenance context.
 
@@ -671,7 +671,7 @@
 
 **Tasks:** 5.2
 
-**Q:** Deploy classifier model to predict escalation before agent runs. Why over-engineered first step?
+**Q:** Why is deploying a classifier to predict escalation before the agent runs an over-engineered first step?
 
 **A:** Requires labeled data and ML infra when prompt criteria with few-shot hasn't been tried yet.
 
@@ -686,7 +686,7 @@
 
 **Tasks:** 5.3
 
-**Q:** Subagent retries then returns generic 'search unavailable' to coordinator. Problem?
+**Q:** A subagent retries, then returns generic 'search unavailable' to the coordinator. What is the problem?
 
 **A:** Hides failure type, attempted query, and partial results—coordinator cannot make informed recovery.
 
@@ -701,7 +701,7 @@
 
 **Tasks:** 5.3
 
-**Q:** Single subagent failure terminates entire multi-agent workflow. Why wrong?
+**Q:** A single subagent failure terminates the entire multi-agent workflow. Why is that wrong?
 
 **A:** Often recoverable with partial results, alternate queries, or gap annotations—unnecessary full termination.
 
@@ -716,7 +716,7 @@
 
 **Tasks:** 5.4
 
-**Q:** Long codebase exploration—delegate specific questions while preserving coordination?
+**Q:** During long codebase exploration, how do you delegate specific questions while preserving coordination?
 
 **A:** Spawn subagents for focused tasks (find test files, trace refund flow) while main agent keeps high-level coordination.
 
@@ -733,7 +733,7 @@
 
 **Tasks:** 5.6
 
-**Q:** Document analysis finds conflicting values from sources. Before synthesis?
+**Q:** Document analysis finds conflicting values from sources. What should happen before synthesis?
 
 **A:** Complete analysis with conflicts included and explicitly annotated—let coordinator reconcile before passing to synthesis.
 
@@ -750,11 +750,11 @@
 
 **Tasks:** 5.4
 
-**Q:** Scratchpad file during exploration—how use for follow-up questions?
+**Q:** How should you use a scratchpad file during exploration for follow-up questions?
 
 **A:** Record key findings in scratchpad; reference it for subsequent questions to counteract context degradation.
 
-**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+**Why:** Write key findings to a scratchpad and reread it on follow-up questions so later turns do not fall back on vague 'typical patterns'.
 
 **Tags:** scratchpad, exploration
 

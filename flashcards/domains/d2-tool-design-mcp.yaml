@@ -26,7 +26,7 @@
   scenarios:
   - customer_support
   - developer_productivity
-  front: Primary mechanism LLMs use to select among similar tools?
+  front: 'What is the primary mechanism LLMs use to select among similar tools?'
   back: Tool descriptions—minimal descriptions lead to unreliable selection when tools overlap.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.1
@@ -93,7 +93,7 @@
   difficulty: medium
   scenarios:
   - multi_agent_research
-  front: Generic analyze_content overlaps with analyze_document. Rename/fix strategy?
+  front: 'Generic analyze_content overlaps with analyze_document. How should you rename or fix the tools?'
   back: Rename to purpose-specific names (e.g., extract_web_results) with web-specific descriptions that eliminate overlap.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.1
@@ -102,7 +102,7 @@
   - naming
   tasks:
   - '2.1'
-  rationale: 'Exam judgment aligned to task 2.1: Rename to purpose-specific names (e.'
+  rationale: 'Rename overlapping tools to purpose-specific names (for example extract_web_results) and write web-specific descriptions so selection is unambiguous.'
 - id: d2-007
   domain: D2
   weight: 18
@@ -111,7 +111,7 @@
   scenarios:
   - multi_agent_research
   - structured_extraction
-  front: One generic analyze_document tool does too much. How split it?
+  front: One generic analyze_document tool does too much. How should you split it?
   back: 'Purpose-specific tools with clear contracts: extract_data_points, summarize_content, verify_claim_against_source.'
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.1
@@ -145,7 +145,7 @@
   difficulty: medium
   scenarios:
   - customer_support
-  front: Tool selection still wrong after improving descriptions. Next check?
+  front: Tool selection is still wrong after improving descriptions. What should you check next?
   back: Review system prompt for keyword-sensitive instructions that might override tool descriptions.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.1
@@ -154,7 +154,7 @@
   - tool_descriptions
   tasks:
   - '2.1'
-  rationale: Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
+  rationale: After descriptions are fixed, check the system prompt. Keyword-sensitive instructions can create unintended tool associations that override good descriptions.
 - id: d2-010
   domain: D2
   weight: 18
@@ -162,7 +162,7 @@
   difficulty: medium
   scenarios:
   - developer_productivity
-  front: Why expose one mega-tool that 'does anything on GitHub' to the agent?
+  front: "Why is exposing one mega-tool that 'does anything on GitHub' a problem?"
   back: Harder correct selection, weak error semantics, and excessive blast radius if mis-invoked.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.1
@@ -194,7 +194,7 @@
   difficulty: medium
   scenarios:
   - customer_support
-  front: MCP pattern for communicating tool failures back to the agent?
+  front: 'How should MCP tools communicate failures back to the agent?'
   back: The isError flag on tool results, plus structured error metadata—not raw stack traces or generic messages.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.2
@@ -213,7 +213,7 @@
   scenarios:
   - customer_support
   - multi_agent_research
-  front: Four MCP error categories the exam distinguishes?
+  front: 'Which four MCP error categories does the exam distinguish?'
   back: Transient (timeouts, unavailability), validation (invalid input), business (policy violations), permission (access denied).
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.2
@@ -229,7 +229,7 @@
   difficulty: medium
   scenarios:
   - customer_support
-  front: Why return generic 'Operation failed' for all tool errors?
+  front: Why is returning generic 'Operation failed' for all tool errors a problem?
   back: Prevents the agent from choosing appropriate recovery—retry, explain to user, escalate, or accept empty results.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.2
@@ -245,7 +245,7 @@
   difficulty: medium
   scenarios:
   - customer_support
-  front: Structured error metadata fields for MCP tools (name three)?
+  front: Name three structured error metadata fields for MCP tools.
   back: errorCategory (transient/validation/permission/business), isRetryable boolean, and human-readable description.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.2
@@ -255,7 +255,7 @@
   exam_day: true
   tasks:
   - '2.2'
-  rationale: 'Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.'
+  rationale: 'Task 2.2 wants structured metadata: errorCategory, isRetryable, and a human-readable description so the agent can retry, explain, or stop.'
 - id: d2-016
   domain: D2
   weight: 18
@@ -263,7 +263,7 @@
   difficulty: medium
   scenarios:
   - customer_support
-  front: Business rule violation (e.g., refund over policy limit). Error response design?
+  front: 'How should you design the error response for a business-rule violation (for example, a refund over the policy limit)?'
   back: 'isRetryable: false, customer-friendly explanation so the agent can communicate appropriately—not retry endlessly.'
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.2
@@ -297,7 +297,7 @@
   difficulty: medium
   scenarios:
   - multi_agent_research
-  front: Transient failure in a subagent. Handle locally vs propagate to coordinator?
+  front: 'When a subagent hits a transient failure, when should it retry locally versus propagate to the coordinator?'
   back: Retry locally when possible; propagate only unresolved errors with partial results and what was attempted.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.2
@@ -314,7 +314,7 @@
   difficulty: medium
   scenarios:
   - customer_support
-  front: Tool returns ambiguous error from external API. Best tool-layer behavior?
+  front: A tool returns an ambiguous error from an external API. How should the tool layer behave?
   back: Structured error payload (category, message, retryable flag)—not raw stack traces or silent failure.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.2
@@ -323,7 +323,7 @@
   - reliability
   tasks:
   - '2.2'
-  rationale: not raw stack traces or silent failure.
+  rationale: Translate ambiguous API failures into category, message, and retryable flag. Raw stack traces and silent failures both block recovery.
 - id: d2-020
   domain: D2
   weight: 18
@@ -332,7 +332,7 @@
   scenarios:
   - multi_agent_research
   - developer_productivity
-  front: Why giving an agent 18 tools instead of 4–5 hurts reliability?
+  front: 'Why does giving an agent 18 tools instead of 4–5 hurt reliability?'
   back: Increases decision complexity and degrades tool selection accuracy.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.3
@@ -349,7 +349,7 @@
   difficulty: medium
   scenarios:
   - multi_agent_research
-  front: Synthesis agent attempts web searches. Likely tool design issue?
+  front: The synthesis agent attempts web searches. What tool-design issue is likely?
   back: Agent has tools outside its specialization—scoped access should limit synthesis to synthesis-appropriate tools.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.3
@@ -383,7 +383,7 @@
   scenarios:
   - customer_support
   - structured_extraction
-  front: Three tool_choice configuration options on the Claude API?
+  front: What are the three tool_choice configuration options on the Claude API?
   back: '"auto" (model may return text), "any" (must call a tool), and forced selection {"type": "tool", "name": "..."}.'
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.3; Appendix
@@ -399,7 +399,7 @@
   difficulty: medium
   scenarios:
   - structured_extraction
-  front: 'When use tool_choice: "any"?'
+  front: 'When should you set tool_choice to "any"?'
   back: When you need guaranteed tool invocation instead of conversational text—e.g., unknown document type among multiple extraction schemas.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.3
@@ -407,7 +407,7 @@
   - tool_choice
   tasks:
   - '2.3'
-  rationale: e.g., unknown document type among multiple extraction schemas.
+  rationale: tool_choice "any" forces a tool call (the model may choose which). Use it when you need structured extraction and the document type is unknown.
 - id: d2-025
   domain: D2
   weight: 18
@@ -415,7 +415,7 @@
   difficulty: medium
   scenarios:
   - structured_extraction
-  front: Must run extract_metadata before enrichment tools. tool_choice approach?
+  front: 'You must run extract_metadata before enrichment tools. How should you set tool_choice?'
   back: 'Force specific tool first with {"type": "tool", "name": "extract_metadata"}, then process enrichment in follow-up turns.'
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.3
@@ -449,7 +449,7 @@
   difficulty: hard
   scenarios:
   - multi_agent_research
-  front: Synthesis needs simple fact-checks often. Scoped cross-role tool pattern?
+  front: 'Synthesis often needs simple fact-checks. What scoped cross-role tool pattern should you use?'
   back: Provide verify_fact for high-frequency simple lookups; route complex verification through coordinator to search agent.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.3; D1 Sample Q9
@@ -466,7 +466,7 @@
   difficulty: medium
   scenarios:
   - customer_support
-  front: Refund tool should only run after verified identity. Tool design choice?
+  front: 'A refund tool should run only after verified identity. What tool-design choice enforces that?'
   back: 'Least privilege: narrow tool exposure or refund tool requiring verified session token from prior identity tool.'
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.3; Customer Support scenario
@@ -476,7 +476,7 @@
   exam_day: true
   tasks:
   - '2.3'
-  rationale: Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter.
+  rationale: 'Least privilege: do not expose refund until identity is verified, or require a verified session token from get_customer. Prompts cannot guarantee ordering.'
 - id: d2-029
   domain: D2
   weight: 18
@@ -484,7 +484,7 @@
   difficulty: medium
   scenarios:
   - developer_productivity
-  front: Project-level vs user-level MCP server configuration?
+  front: 'How do project-level and user-level MCP server configurations differ?'
   back: Project .mcp.json for shared team tooling (version controlled); user ~/.claude.json for personal/experimental servers.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.4
@@ -501,7 +501,7 @@
   difficulty: medium
   scenarios:
   - developer_productivity
-  front: Store GitHub token for team MCP server without committing secrets?
+  front: 'How do you store a GitHub token for a team MCP server without committing secrets?'
   back: Environment variable expansion in .mcp.json (e.g., ${GITHUB_TOKEN}) with secrets in env—not in the repo.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.4
@@ -510,7 +510,7 @@
   - credentials
   tasks:
   - '2.4'
-  rationale: 'Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.'
+  rationale: 'Put ${GITHUB_TOKEN} (or similar) in project .mcp.json and keep the secret in the environment so the repo never contains credentials.'
 - id: d2-031
   domain: D2
   weight: 18
@@ -535,7 +535,7 @@
   scenarios:
   - developer_productivity
   - multi_agent_research
-  front: MCP resources vs MCP tools—when use resources?
+  front: When should you use MCP resources instead of MCP tools?
   back: Resources expose content catalogs (issue summaries, doc hierarchies, DB schemas) to reduce exploratory tool calls.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.4
@@ -550,7 +550,7 @@
   difficulty: medium
   scenarios:
   - developer_productivity
-  front: Agent prefers Grep over a more capable MCP search tool. Fix?
+  front: 'The agent prefers Grep over a more capable MCP search tool. How do you fix that?'
   back: Enhance MCP tool descriptions to explain capabilities and outputs in detail so the model understands when MCP beats built-ins.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.4
@@ -559,7 +559,7 @@
   - mcp
   tasks:
   - '2.4'
-  rationale: 'Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.'
+  rationale: 'If Grep wins over a richer MCP search tool, the MCP description is too weak. Spell out capabilities and outputs so the model knows when MCP is better.'
 - id: d2-034
   domain: D2
   weight: 18
@@ -567,7 +567,7 @@
   difficulty: easy
   scenarios:
   - developer_productivity
-  front: Jira integration needed. Community MCP server vs custom?
+  front: 'You need Jira integration. Should you use a community MCP server or a custom one?'
   back: Prefer existing community MCP for standard integrations (Jira); custom servers for team-specific workflows.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.4
@@ -576,7 +576,7 @@
   - community
   tasks:
   - '2.4'
-  rationale: 'Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.'
+  rationale: 'Use a community MCP for standard SaaS (Jira). Reserve custom servers for team-specific workflows the community server cannot cover.'
 - id: d2-035
   domain: D2
   weight: 18
@@ -584,7 +584,7 @@
   difficulty: medium
   scenarios:
   - developer_productivity
-  front: Built-in Claude Code tools vs custom MCP—when prefer MCP?
+  front: 'When should you prefer custom MCP over built-in Claude Code tools?'
   back: MCP for external systems (GitHub, DB, SaaS) or sharing tools across clients; built-ins for local repo operations.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.4–2.5
@@ -601,7 +601,7 @@
   difficulty: easy
   scenarios:
   - developer_productivity
-  front: Built-in Grep vs Glob—primary use case for each?
+  front: 'What is the primary use case for built-in Grep versus Glob?'
   back: 'Grep: search file contents for patterns (function names, errors, imports). Glob: match file paths by name/extension patterns.'
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.5
@@ -619,7 +619,7 @@
   difficulty: easy
   scenarios:
   - developer_productivity
-  front: Find all test files named *.test.tsx anywhere in the repo. Which built-in tool?
+  front: 'Which built-in tool finds all test files named *.test.tsx anywhere in the repo?'
   back: Glob with pattern like **/*.test.tsx.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.5
@@ -628,7 +628,7 @@
   - Glob
   tasks:
   - '2.5'
-  rationale: 'Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.'
+  rationale: 'Glob matches file paths. **/*.test.tsx finds tests by name anywhere; Grep searches file contents, not filenames.'
 - id: d2-038
   domain: D2
   weight: 18
@@ -636,7 +636,7 @@
   difficulty: medium
   scenarios:
   - developer_productivity
-  front: Find all callers of a function across the codebase. Which built-in tool?
+  front: 'Which built-in tool finds all callers of a function across the codebase?'
   back: Grep to search file contents for the function name/reference patterns.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.5
@@ -645,7 +645,7 @@
   - Grep
   tasks:
   - '2.5'
-  rationale: 'Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.'
+  rationale: 'Callers are content matches. Grep for the function name; Glob would only find files whose names happen to match.'
 - id: d2-039
   domain: D2
   weight: 18
@@ -653,7 +653,7 @@
   difficulty: medium
   scenarios:
   - developer_productivity
-  front: Read/Write/Edit—when use Edit vs Read + Write?
+  front: 'When should you use Edit versus Read plus Write?'
   back: Edit for targeted changes with unique anchor text; Read + Write when Edit fails due to non-unique matches.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.5
@@ -671,7 +671,7 @@
   difficulty: medium
   scenarios:
   - developer_productivity
-  front: Best incremental codebase exploration pattern?
+  front: 'What is the best incremental pattern for exploring a codebase?'
   back: Grep for entry points → Read to follow imports and trace flows—not read all files upfront.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.5
@@ -680,7 +680,7 @@
   - exploration
   tasks:
   - '2.5'
-  rationale: not read all files upfront.
+  rationale: Start with Grep for entry points, then Read along imports. Loading every file upfront wastes context and dilutes attention.
 - id: d2-041
   domain: D2
   weight: 18
@@ -688,7 +688,7 @@
   difficulty: hard
   scenarios:
   - developer_productivity
-  front: Trace usage across wrapper modules exporting many names?
+  front: 'How do you trace usage across wrapper modules that export many names?'
   back: Identify all exported names first, then Grep for each name across the codebase.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.5
@@ -698,7 +698,7 @@
   - exploration
   tasks:
   - '2.5'
-  rationale: 'Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection.'
+  rationale: 'Wrapper modules re-export many names. List exports first, then Grep each name so you do not miss aliased callers.'
 - id: d2-042
   domain: D2
   weight: 18
@@ -724,7 +724,7 @@
   difficulty: medium
   scenarios:
   - customer_support
-  front: Customer Support scenario MCP tools (Exam Scenario 1)—examples?
+  front: 'What MCP tools appear in the Customer Support scenario (Exam Scenario 1)?'
   back: get_customer, lookup_order, process_refund, escalate_to_human—backend integration via custom MCP tools.
   sources:
   - Official CCAR-F Exam Guide — Scenario 1
@@ -741,7 +741,7 @@
   difficulty: medium
   scenarios:
   - developer_productivity
-  front: Developer Productivity scenario built-in tools (Exam Scenario 4)?
+  front: 'What built-in tools appear in the Developer Productivity scenario (Exam Scenario 4)?'
   back: Read, Write, Bash, Grep, Glob—plus MCP server integrations for external systems.
   sources:
   - Official CCAR-F Exam Guide — Scenario 4
@@ -757,7 +757,7 @@
   difficulty: medium
   scenarios:
   - customer_support
-  front: Improve tool selection with keyword routing layer parsing user input each turn. Why often wrong?
+  front: 'Why is adding a keyword-routing layer that parses user input each turn often the wrong way to improve tool selection?'
   back: Over-engineered—bypasses LLM NLU; fix descriptions first; routing doesn't solve ordering or description gaps.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.1; Sample Q2
@@ -773,7 +773,7 @@
   difficulty: medium
   scenarios:
   - developer_productivity
-  front: MCP tools vs MCP resources—division of responsibility?
+  front: 'How do MCP tools and MCP resources divide responsibility?'
   back: Tools perform actions (fetch, update, search); resources expose catalogs and static context (schemas, doc trees) to cut exploratory calls.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.4; Appendix in-scope
@@ -789,7 +789,7 @@
   difficulty: easy
   scenarios:
   - developer_productivity
-  front: Why return structured isRetryable metadata on errors?
+  front: 'Why should error results include structured isRetryable metadata?'
   back: Lets the agent retry transient failures and avoid wasted retries on non-retryable business or validation errors.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.2
@@ -805,7 +805,7 @@
   difficulty: easy
   scenarios:
   - developer_productivity
-  front: Built-in Bash tool—when use vs Grep?
+  front: 'When should you use the built-in Bash tool versus Grep?'
   back: Bash for shell commands and scripted operations; Grep for searching file contents for patterns across the codebase.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.5; Scenario 4; Appendix
@@ -822,7 +822,7 @@
   scenarios:
   - customer_support
   - structured_extraction
-  front: 'tool_choice: "auto"—what can the model return?'
+  front: 'What can the model return when tool_choice is "auto"?'
   back: The model may respond with conversational text instead of calling a tool—no guaranteed tool invocation.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.3; D4 Task 4.3
@@ -839,7 +839,7 @@
   difficulty: medium
   scenarios:
   - customer_support
-  front: Similar tools misroute. Add 5–8 few-shot tool-selection examples first?
+  front: 'Similar tools misroute. Why is adding 5–8 few-shot tool-selection examples the wrong first step?'
   back: Adds token overhead without fixing root cause—inadequate tool descriptions are the primary selection mechanism.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.1; Sample Q2
@@ -856,7 +856,7 @@
   difficulty: medium
   scenarios:
   - developer_productivity
-  front: Edit built-in tool—how does it modify files?
+  front: 'How does the built-in Edit tool modify files?'
   back: Targeted modifications using unique text matching as anchor—fails when anchor text is not unique.
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.5
@@ -872,7 +872,7 @@
   difficulty: medium
   scenarios:
   - customer_support
-  front: errorCategory for policy violation refund blocked?
+  front: 'Which errorCategory should you use when a policy violation blocks a refund?'
   back: 'Business error with isRetryable: false and customer-friendly explanation—not transient or permission.'
   sources:
   - Official CCAR-F Exam Guide — D2, Task 2.2
@@ -881,4 +881,4 @@
   - business_errors
   tasks:
   - '2.2'
-  rationale: not transient or permission.
+  rationale: 'Policy violations are business errors: isRetryable false plus a customer-friendly explanation. They are not transient timeouts or permission denials.'

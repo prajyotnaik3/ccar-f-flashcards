@@ -4,7 +4,7 @@
 
 **Tasks:** 4.3
 
-**Q:** Why use structured output (JSON schema) instead of parsing free-text responses?
+**Q:** Why should you use structured output (JSON schema) instead of parsing free-text responses?
 
 **A:** Enables validation, automated retries on failure, and downstream automation without fragile regex on prose.
 
@@ -20,7 +20,7 @@
 
 **Tasks:** 4.1
 
-**Q:** Explicit review criteria vs vague instructions like 'be conservative'?
+**Q:** Why are explicit review criteria better than vague instructions like 'be conservative'?
 
 **A:** Specific categorical criteria (flag when comment contradicts code) beat vague confidence filtering for precision.
 
@@ -35,11 +35,11 @@
 
 **Tasks:** 4.1
 
-**Q:** Automated review has high false positives in one category—developers ignore all findings. First response?
+**Q:** Automated review has high false positives in one category, and developers ignore all findings. What should you do first?
 
 **A:** Temporarily disable the high false-positive category to restore trust while improving prompts for that category.
 
-**Why:** Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
+**Why:** High false positives in one category destroy trust in every category. Disable that category while you tighten its prompt, then turn it back on.
 
 **Tags:** false_positives, review
 
@@ -52,7 +52,7 @@
 
 **Tasks:** 4.1
 
-**Q:** How define consistent severity levels in automated code review prompts?
+**Q:** How do you define consistent severity levels in automated code review prompts?
 
 **A:** Explicit severity criteria with concrete code examples for each level—not generic confidence thresholds.
 
@@ -69,7 +69,7 @@
 
 **Tasks:** 4.1
 
-**Q:** Why high false-positive rates in one review category hurt the whole system?
+**Q:** Why do high false-positive rates in one review category hurt the whole system?
 
 **A:** Developers lose trust and dismiss accurate findings in other categories too.
 
@@ -84,7 +84,7 @@
 
 **Tasks:** 4.1
 
-**Q:** Review prompt design: report bugs/security vs skip minor style?
+**Q:** How should a review prompt distinguish bugs and security issues from minor style nits?
 
 **A:** Define explicit categories to report versus skip—don't rely on confidence-based filtering alone.
 
@@ -116,11 +116,11 @@
 
 **Tasks:** 4.2
 
-**Q:** Review output format inconsistent (location, severity, fix). Improvement?
+**Q:** Review output format is inconsistent (location, severity, fix). How should you improve it?
 
 **A:** Few-shot examples demonstrating exact desired format (location, issue, severity, suggested fix).
 
-**Why:** Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
+**Why:** Few-shot examples of the exact format (location, issue, severity, suggested fix) beat more prose instructions when structure is inconsistent.
 
 **Tags:** few_shot, review
 
@@ -133,7 +133,7 @@
 
 **Tasks:** 4.2
 
-**Q:** Reduce false positives while still catching real bugs in review?
+**Q:** How do you reduce false positives in review while still catching real bugs?
 
 **A:** Few-shot examples distinguishing acceptable local patterns from genuine issues—shows reasoning for each.
 
@@ -150,7 +150,7 @@
 
 **Tasks:** 4.2
 
-**Q:** Extraction fails on varied document layouts (inline citations vs bibliographies). Fix?
+**Q:** Extraction fails on varied document layouts (inline citations versus bibliographies). How do you fix that?
 
 **A:** Few-shot examples showing correct handling of each document structure variant.
 
@@ -167,7 +167,7 @@
 
 **Tasks:** 4.2
 
-**Q:** Model returns null/empty for required fields on varied formats. Few-shot approach?
+**Q:** The model returns null or empty required fields on varied formats. What few-shot approach should you use?
 
 **A:** Examples demonstrating correct extraction from each format variant—not just schema tightening alone.
 
@@ -184,7 +184,7 @@
 
 **Tasks:** 4.2
 
-**Q:** How many few-shot examples for ambiguous scenarios, and what show?
+**Q:** How many few-shot examples should you use for ambiguous scenarios, and what should they show?
 
 **A:** 2–4 targeted examples with reasoning for why one action was chosen over plausible alternatives.
 
@@ -201,7 +201,7 @@
 
 **Tasks:** 4.3
 
-**Q:** Most reliable approach for guaranteed schema-compliant JSON output?
+**Q:** What is the most reliable approach for guaranteed schema-compliant JSON output?
 
 **A:** tool_use with JSON schemas—eliminates JSON syntax errors vs free-text JSON generation.
 
@@ -231,7 +231,7 @@
 
 **Tasks:** 4.3
 
-**Q:** Source document may omit a field. Schema design to prevent fabrication?
+**Q:** The source document may omit a field. How should you design the schema to prevent fabrication?
 
 **A:** Make fields optional/nullable when information may be absent—don't require fields the source lacks.
 
@@ -248,11 +248,11 @@
 
 **Tasks:** 4.3
 
-**Q:** Extensible category field in extraction schema—pattern?
+**Q:** What schema pattern should you use for an extensible category field?
 
 **A:** Enum with "other" plus a detail string field for categories not in the predefined list.
 
-**Why:** Correct choice avoids the wrong pattern: not in the predefined list..
+**Why:** Use an enum plus an 'other' value and a detail string so unknown categories are captured instead of forced into a wrong bucket.
 
 **Tags:** schema_design, enum
 
@@ -265,7 +265,7 @@
 
 **Tasks:** 4.3
 
-**Q:** Ambiguous source data in extraction—enum design?
+**Q:** Source data can be ambiguous. How should you design the extraction enum?
 
 **A:** Add enum value like "unclear" for ambiguous cases rather than forcing a wrong category.
 
@@ -282,11 +282,11 @@
 
 **Tasks:** 4.3
 
-**Q:** Inconsistent date formats in source documents alongside strict schema?
+**Q:** Source documents have inconsistent date formats, but the output schema is strict. What should you do?
 
 **A:** Include format normalization rules in the prompt alongside the strict output schema.
 
-**Why:** Structured output plus validation-retry separates syntax from semantics; schemas must reflect absent data, not force fabrication.
+**Why:** Keep the output schema strict, and put date-normalization rules in the prompt so inconsistent source formats still map to one output shape.
 
 **Tags:** schema_design, normalization
 
@@ -299,11 +299,11 @@
 
 **Tasks:** 4.3
 
-**Q:** Multiple extraction schemas; document type unknown at request time. tool_choice?
+**Q:** You have multiple extraction schemas and the document type is unknown at request time. How should you set tool_choice?
 
 **A:** tool_choice: "any" to guarantee structured tool output instead of conversational text.
 
-**Why:** Structured output plus validation-retry separates syntax from semantics; schemas must reflect absent data, not force fabrication.
+**Why:** tool_choice "any" guarantees a tool call when several extraction schemas exist and the document type is unknown—auto may return chat text instead.
 
 **Tags:** tool_choice, extraction
 
@@ -316,7 +316,7 @@
 
 **Tasks:** 4.3
 
-**Q:** Where extract structured data from a tool_use extraction call?
+**Q:** Where do you extract structured data from a tool_use extraction call?
 
 **A:** From the tool_use response block—schema defines tool input parameters; model fills structured fields there.
 
@@ -348,7 +348,7 @@
 
 **Tasks:** 4.4
 
-**Q:** When will validation retries succeed vs fail?
+**Q:** When do validation retries succeed, and when do they fail?
 
 **A:** Succeed on format/structural mismatches. Fail when required info is absent from source (or only in external doc not provided).
 
@@ -363,7 +363,7 @@
 
 **Tasks:** 4.4
 
-**Q:** Schema syntax errors vs semantic validation errors?
+**Q:** How do schema syntax errors differ from semantic validation errors?
 
 **A:** Syntax errors eliminated by tool_use strict schemas; semantic errors need cross-field rules (totals, field placement).
 
@@ -378,7 +378,7 @@
 
 **Tasks:** 4.4
 
-**Q:** Developers dismiss many automated findings. Feedback loop design?
+**Q:** Developers dismiss many automated findings. How should you design the feedback loop?
 
 **A:** Add detected_pattern field to findings to analyze which constructs trigger false positives when dismissed.
 
@@ -395,7 +395,7 @@
 
 **Tasks:** 4.4
 
-**Q:** Self-correction for invoice totals that don't add up?
+**Q:** How should extraction self-correct when invoice totals do not add up?
 
 **A:** Extract calculated_total alongside stated_total and flag discrepancies; add conflict_detected for inconsistent source data.
 
@@ -412,11 +412,11 @@
 
 **Tasks:** 4.3, 4.4
 
-**Q:** Extraction misses nullable fields intermittently. Best improvement?
+**Q:** Extraction misses nullable fields intermittently. What is the best improvement?
 
 **A:** Tighten required vs optional schema, validation-retry loop, and explicit examples for null/edge cases.
 
-**Why:** Structured output plus validation-retry separates syntax from semantics; schemas must reflect absent data, not force fabrication.
+**Why:** Mark truly optional fields nullable, retry with validation errors, and add few-shot null/edge examples. Tightening every field to required causes fabrication.
 
 **Tags:** validation, nullable
 
@@ -429,7 +429,7 @@
 
 **Tasks:** 4.5
 
-**Q:** Message Batches API tradeoffs (cost, latency)?
+**Q:** What are the cost and latency tradeoffs of the Message Batches API?
 
 **A:** 50% cost savings, up to 24-hour processing window, no guaranteed latency SLA.
 
@@ -444,7 +444,7 @@
 
 **Tasks:** 4.5
 
-**Q:** Pre-merge blocking check vs overnight technical debt report—batch API for both?
+**Q:** Should you use the Batch API for both a pre-merge blocking check and an overnight technical-debt report?
 
 **A:** Batch only for latency-tolerant jobs (overnight reports); keep synchronous API for blocking pre-merge checks.
 
@@ -461,7 +461,7 @@
 
 **Tasks:** 4.5
 
-**Q:** Message Batches API limitation on tool calling?
+**Q:** What is the Message Batches API limitation on tool calling?
 
 **A:** No multi-turn tool calling within a single batch request—cannot execute tools mid-request and return results.
 
@@ -476,7 +476,7 @@
 
 **Tasks:** 4.5
 
-**Q:** custom_id in Message Batches API—purpose?
+**Q:** What is the purpose of custom_id in the Message Batches API?
 
 **A:** Correlate batch request/response pairs and identify failed documents for resubmission.
 
@@ -491,11 +491,11 @@
 
 **Tasks:** 4.5
 
-**Q:** Batch job failures—resubmission strategy?
+**Q:** How should you resubmit failed documents from a batch job?
 
 **A:** Resubmit only failed documents by custom_id with modifications (e.g., chunk oversized docs that exceeded context).
 
-**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+**Why:** Resubmit only failed custom_id items, with fixes such as chunking docs that exceeded context. Do not resubmit the whole batch.
 
 **Tags:** batch_api, failures
 
@@ -508,11 +508,11 @@
 
 **Tasks:** 4.5
 
-**Q:** Before batch-processing 10,000 documents—cost reduction step?
+**Q:** Before batch-processing 10,000 documents, what cost-reduction step should you take first?
 
 **A:** Refine prompts on a sample set first to maximize first-pass success and reduce resubmission costs.
 
-**Why:** Match API latency and cost to workflow: blocking paths need synchronous calls; overnight jobs can use batch savings.
+**Why:** Refine prompts on a sample before 10k documents so first-pass success is high and you avoid expensive resubmission loops.
 
 **Tags:** batch_api, prompt_refinement
 
@@ -525,7 +525,7 @@
 
 **Tasks:** 4.6
 
-**Q:** Why self-review of generated code in the same session is limited?
+**Q:** Why is self-review of generated code in the same session limited?
 
 **A:** Model retains generation reasoning context—less likely to question its own decisions than an independent reviewer.
 
@@ -540,11 +540,11 @@
 
 **Tasks:** 4.6
 
-**Q:** Best approach to catch subtle issues in AI-generated code?
+**Q:** What is the best approach to catch subtle issues in AI-generated code?
 
 **A:** Second independent Claude instance reviewing without the generator's reasoning context.
 
-**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+**Why:** A second Claude instance without the generator's reasoning context catches subtle bugs better than same-session self-review or extended thinking alone.
 
 **Tags:** multi_instance, review
 
@@ -557,7 +557,7 @@
 
 **Tasks:** 4.6
 
-**Q:** Large multi-file PR review—multi-pass architecture?
+**Q:** For a large multi-file PR review, what multi-pass architecture should you use?
 
 **A:** Per-file passes for local issues plus separate integration pass for cross-file data flow.
 
@@ -574,11 +574,11 @@
 
 **Tasks:** 4.6
 
-**Q:** Route review findings to human triage by severity—schema approach?
+**Q:** How should you route automated review findings to human triage?
 
-**A:** Verification pass where model reports confidence alongside each finding for calibrated routing.
+**A:** Run a verification pass where the model reports confidence alongside each finding, then route using calibrated thresholds (high-severity / low-confidence to humans).
 
-**Why:** Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
+**Why:** Task 4.6 uses a verification pass with self-reported confidence for calibrated routing. That is different from using uncalibrated confidence as an escalation trigger in support.
 
 **Tags:** review, confidence
 
@@ -591,7 +591,7 @@
 
 **Tasks:** 4.3
 
-**Q:** Prompt-only PR findings vs JSON schema for CI gates?
+**Q:** When should PR findings be prompt-only versus JSON schema for CI gates?
 
 **A:** Schema for machine consumption (CI gates, dashboards); prompts alone only for human-readable narrative.
 
@@ -606,7 +606,7 @@
 
 **Tasks:** 4.4
 
-**Q:** Why trust model self-reported confidence without validation?
+**Q:** Why is it a problem to trust model self-reported confidence without validation?
 
 **A:** Not calibrated by default—use schema checks, cross-field rules, or human review thresholds for high-risk fields.
 
@@ -621,7 +621,7 @@
 
 **Tasks:** 4.6
 
-**Q:** Run three full PR review passes and only flag issues in 2+ passes. Why wrong?
+**Q:** Why is it wrong to run three full PR review passes and only flag issues that appear in two or more?
 
 **A:** Suppresses real bugs caught intermittently—consensus filtering hides attention-dilution problems; split passes instead.
 
@@ -636,7 +636,7 @@
 
 **Tasks:** 4.3, 5.5
 
-**Q:** Structured Data Extraction scenario (Scenario 6)—primary domains?
+**Q:** What are the primary domains for the Structured Data Extraction scenario (Scenario 6)?
 
 **A:** D4 (schemas, validation, batch) and D5 (reliability, human review for low confidence).
 
@@ -651,7 +651,7 @@
 
 **Tasks:** 4.3, 4.4
 
-**Q:** Scenario 6 extraction system requirements from the exam guide?
+**Q:** What extraction-system requirements does the exam guide list for Scenario 6?
 
 **A:** Extract from unstructured docs, validate with JSON schemas, handle edge cases, integrate with downstream systems.
 
@@ -666,7 +666,7 @@
 
 **Tasks:** 4.2
 
-**Q:** Few-shot examples reduce hallucination in extraction—example use cases?
+**Q:** What extraction use cases benefit from few-shot examples to reduce hallucination?
 
 **A:** Informal measurements, varied document structures, and inconsistent field formats in source documents.
 
@@ -681,7 +681,7 @@
 
 **Tasks:** 4.5
 
-**Q:** Switch blocking pre-merge checks to batch API with status polling. Why wrong?
+**Q:** Why is switching blocking pre-merge checks to the Batch API with status polling wrong?
 
 **A:** Batch has no latency SLA—unacceptable for workflows where developers wait to merge.
 
@@ -696,11 +696,11 @@
 
 **Tasks:** 4.5
 
-**Q:** 30-hour SLA with 24-hour max batch processing—submission frequency?
+**Q:** You have a 30-hour SLA and batches can take up to 24 hours. How often should you submit batches?
 
 **A:** Calculate submission windows (e.g., 4-hour intervals) so batches complete within SLA with margin for retries.
 
-**Why:** Match API latency and cost to workflow: blocking paths need synchronous calls; overnight jobs can use batch savings.
+**Why:** Batches can take up to 24 hours. For a 30-hour SLA, submit on a shorter cadence (for example every 4 hours) so there is margin for retries.
 
 **Tags:** batch_api, sla
 
@@ -713,7 +713,7 @@
 
 **Tasks:** 4.6
 
-**Q:** Independent review instances vs extended thinking for self-review?
+**Q:** Why prefer independent review instances over extended thinking for self-review?
 
 **A:** Independent instances without generator context catch more subtle issues than self-review instructions or extended thinking alone.
 
@@ -728,7 +728,7 @@
 
 **Tasks:** 4.1
 
-**Q:** Explicit review criteria example—comments vs code?
+**Q:** What is an example of explicit review criteria for comments versus code?
 
 **A:** Flag comments only when claimed behavior contradicts actual code—not vague 'check comment accuracy'.
 
@@ -743,7 +743,7 @@
 
 **Tasks:** 4.2
 
-**Q:** How few-shot examples generalize beyond pre-specified cases?
+**Q:** How do few-shot examples generalize beyond the cases you pre-specify?
 
 **A:** Demonstrate judgment and reasoning on ambiguous examples so the model applies similar logic to novel patterns.
 
@@ -758,7 +758,7 @@
 
 **Tasks:** 4.2
 
-**Q:** Few-shot use case: branch-level test coverage gaps?
+**Q:** How should few-shot examples teach the model to report branch-level test coverage gaps?
 
 **A:** Show how to identify and report coverage gaps at branch level—ambiguous case requiring demonstrated judgment.
 
@@ -775,7 +775,7 @@
 
 **Tasks:** 4.5
 
-**Q:** Switch both blocking and overnight jobs to batch API with real-time fallback. Why over-engineered?
+**Q:** Why is switching both blocking and overnight jobs to the Batch API with a real-time fallback over-engineered?
 
 **A:** Match API to latency needs—sync for blocking checks, batch for overnight; fallback adds unnecessary complexity.
 
@@ -790,7 +790,7 @@
 
 **Tasks:** 4.6
 
-**Q:** Large PR review: switch to higher-tier model with larger context window. Why insufficient?
+**Q:** For a large PR review, why is switching to a higher-tier model with a larger context window insufficient?
 
 **A:** Larger context doesn't fix attention dilution—split into per-file plus integration passes instead.
 

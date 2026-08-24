@@ -20,7 +20,7 @@
 
 **Tasks:** 3.1
 
-**Q:** CLAUDE.md configuration hierarchy (three levels)?
+**Q:** What are the three levels of the CLAUDE.md configuration hierarchy?
 
 **A:** User (~/.claude/CLAUDE.md), project (.claude/CLAUDE.md or root CLAUDE.md), and directory-level (subdirectory CLAUDE.md files).
 
@@ -35,11 +35,11 @@
 
 **Tasks:** 3.1
 
-**Q:** New teammate doesn't receive team coding standards in Claude Code. Likely cause?
+**Q:** A new teammate does not receive team coding standards in Claude Code. What is the likely cause?
 
 **A:** Instructions are in user-level ~/.claude/CLAUDE.md—not shared via version control; move to project-level config.
 
-**Why:** not shared via version control; move to project-level config.
+**Why:** User-level ~/.claude/CLAUDE.md is not in git. Team standards belong in project CLAUDE.md so clones pick them up.
 
 **Tags:** claude_md, hierarchy
 
@@ -67,11 +67,11 @@
 
 **Tasks:** 3.1
 
-**Q:** Monolithic CLAUDE.md is hard to maintain. Alternative organization?
+**Q:** A monolithic CLAUDE.md is hard to maintain. How should you reorganize it?
 
 **A:** Split into focused files in .claude/rules/ (e.g., testing.md, api-conventions.md, deployment.md).
 
-**Why:** Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter.
+**Why:** Split a monolithic CLAUDE.md into focused files under .claude/rules/ (testing.md, api-conventions.md, deployment.md) instead of one huge always-loaded file.
 
 **Tags:** claude_md, rules
 
@@ -84,11 +84,11 @@
 
 **Tasks:** 3.1
 
-**Q:** Inconsistent Claude Code behavior across sessions—how diagnose loaded config?
+**Q:** Claude Code behaves inconsistently across sessions. How do you diagnose which config is loaded?
 
 **A:** Use /memory to verify which memory files are loaded and what context is active.
 
-**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+**Why:** /memory shows which memory files are loaded. Use it when behavior drifts across sessions because the wrong CLAUDE.md layer is active.
 
 **Tags:** claude_md, memory
 
@@ -101,7 +101,7 @@
 
 **Tasks:** 3.1
 
-**Q:** Why skip shared project CLAUDE.md when multiple developers use Claude Code?
+**Q:** Why is it a problem to skip a shared project CLAUDE.md when multiple developers use Claude Code?
 
 **A:** Inconsistent conventions, duplicated prompt context, and drift in how the agent edits code across teammates.
 
@@ -116,7 +116,7 @@
 
 **Tasks:** 3.2
 
-**Q:** Team /review slash command for every developer on clone. Where create it?
+**Q:** Where should you create a team /review slash command so every developer gets it on clone?
 
 **A:** .claude/commands/ in the project repository—version-controlled and shared on clone/pull.
 
@@ -133,7 +133,7 @@
 
 **Tasks:** 3.2
 
-**Q:** Project-scoped vs user-scoped slash commands?
+**Q:** How do project-scoped and user-scoped slash commands differ?
 
 **A:** .claude/commands/ in repo (shared via git) vs ~/.claude/commands/ (personal, not version controlled).
 
@@ -148,7 +148,7 @@
 
 **Tasks:** 3.2
 
-**Q:** Skill frontmatter options in .claude/skills/SKILL.md (name three)?
+**Q:** Name three Skill frontmatter options in .claude/skills/SKILL.md.
 
 **A:** context: fork, allowed-tools, and argument-hint.
 
@@ -163,7 +163,7 @@
 
 **Tasks:** 3.2
 
-**Q:** Skill produces verbose codebase analysis output. Frontmatter to isolate it?
+**Q:** A skill produces verbose codebase analysis. Which frontmatter option isolates that output?
 
 **A:** context: fork—runs skill in isolated sub-agent context so output doesn't pollute main conversation.
 
@@ -180,11 +180,11 @@
 
 **Tasks:** 3.2
 
-**Q:** Skill should only write files, not run destructive shell commands. Frontmatter?
+**Q:** A skill should only write files, not run destructive shell commands. Which frontmatter option enforces that?
 
 **A:** allowed-tools restricting tool access during skill execution (e.g., file write operations only).
 
-**Why:** Exam judgment aligned to task 3.2: allowed-tools restricting tool access during skill execution (e.
+**Why:** allowed-tools in skill frontmatter limits what the skill can invoke—for example file writes only, so it cannot run destructive shell commands.
 
 **Tags:** skills, allowed_tools
 
@@ -197,7 +197,7 @@
 
 **Tasks:** 3.2
 
-**Q:** Developer invokes skill without required arguments. Frontmatter help?
+**Q:** A developer invokes a skill without required arguments. Which frontmatter option helps?
 
 **A:** argument-hint prompts for required parameters when the skill is invoked without them.
 
@@ -214,7 +214,7 @@
 
 **Tasks:** 3.2
 
-**Q:** Skills vs CLAUDE.md—when use each?
+**Q:** When should you use Skills versus CLAUDE.md?
 
 **A:** Skills: on-demand task-specific workflows. CLAUDE.md: always-loaded universal standards for the project.
 
@@ -229,7 +229,7 @@
 
 **Tasks:** 3.2
 
-**Q:** Personal skill customization without affecting teammates?
+**Q:** How do you customize a skill for yourself without affecting teammates?
 
 **A:** Create personal variants in ~/.claude/skills/ with different names—not in shared project skills.
 
@@ -261,7 +261,7 @@
 
 **Tasks:** 3.3
 
-**Q:** Test files spread as Button.test.tsx next to Button.tsx. Apply test conventions automatically?
+**Q:** Test files sit as Button.test.tsx next to Button.tsx. How do you apply test conventions automatically?
 
 **A:** .claude/rules/ with glob paths like **/*.test.tsx—applies by file type across all directories.
 
@@ -295,7 +295,7 @@
 
 **Tasks:** 3.3
 
-**Q:** Path-specific rules vs subdirectory CLAUDE.md for scattered test files?
+**Q:** For scattered test files, when should you use path-specific rules versus subdirectory CLAUDE.md?
 
 **A:** Path-specific glob rules apply by file pattern anywhere in the tree; subdirectory CLAUDE.md is directory-bound.
 
@@ -310,7 +310,7 @@
 
 **Tasks:** 3.3
 
-**Q:** Benefit of path-scoped rules loading only on matching files?
+**Q:** What is the benefit of path-scoped rules loading only for matching files?
 
 **A:** Reduces irrelevant context and token usage—conventions apply only when relevant.
 
@@ -325,7 +325,7 @@
 
 **Tasks:** 3.4
 
-**Q:** Restructure monolith into microservices—dozens of files, architectural decisions. Approach?
+**Q:** You need to restructure a monolith into microservices across dozens of files. Which approach should you take first?
 
 **A:** Plan mode: explore codebase, understand dependencies, design approach before making changes.
 
@@ -342,7 +342,7 @@
 
 **Tasks:** 3.4
 
-**Q:** Plan mode vs direct execution—when use each?
+**Q:** When should you use plan mode versus direct execution?
 
 **A:** Plan mode: large-scale, multi-file, architectural, multiple valid approaches. Direct execution: simple, well-scoped single changes.
 
@@ -357,7 +357,7 @@
 
 **Tasks:** 3.4
 
-**Q:** Single-file bug fix with clear stack trace. Plan mode or direct execution?
+**Q:** For a single-file bug fix with a clear stack trace, should you use plan mode or direct execution?
 
 **A:** Direct execution—well-understood change with clear scope.
 
@@ -389,11 +389,11 @@
 
 **Tasks:** 3.4
 
-**Q:** Library migration affecting 45+ files—workflow pattern?
+**Q:** A library migration affects 45+ files. What workflow pattern should you use?
 
 **A:** Plan mode for investigation and design, then direct execution to implement the planned approach.
 
-**Why:** Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter.
+**Why:** Plan mode for investigation and design on a 45+ file migration, then direct execution to implement the agreed plan.
 
 **Tags:** plan_mode, direct_execution
 
@@ -406,7 +406,7 @@
 
 **Tasks:** 3.4
 
-**Q:** Start monolith-to-microservices in direct execution, switch to plan if complexity emerges. Why wrong?
+**Q:** Why is it wrong to start a monolith-to-microservices split in direct execution and switch to plan only if complexity emerges?
 
 **A:** Complexity is already stated—plan first prevents costly rework from late-discovered dependencies.
 
@@ -421,7 +421,7 @@
 
 **Tasks:** 3.5
 
-**Q:** Natural language transformation spec produces inconsistent code. Best fix?
+**Q:** A natural-language transformation spec produces inconsistent code. What is the best fix?
 
 **A:** Provide 2–3 concrete input/output examples showing expected transformations.
 
@@ -438,7 +438,7 @@
 
 **Tasks:** 3.5
 
-**Q:** Test-driven iteration pattern with Claude Code?
+**Q:** What is the test-driven iteration pattern with Claude Code?
 
 **A:** Write tests first (behavior, edge cases, performance), then iterate by sharing test failures to guide fixes.
 
@@ -468,7 +468,7 @@
 
 **Tasks:** 3.5
 
-**Q:** Fix multiple issues in one message vs sequentially?
+**Q:** When should you fix multiple issues in one message versus sequentially?
 
 **A:** Single message when fixes interact; sequential iteration when issues are independent.
 
@@ -483,7 +483,7 @@
 
 **Tasks:** 3.5
 
-**Q:** Migration script mishandles null edge cases. Iteration approach?
+**Q:** A migration script mishandles null edge cases. How should you iterate with Claude?
 
 **A:** Provide specific test cases with example input and expected output for the failing edge case.
 
@@ -500,7 +500,7 @@
 
 **Tasks:** 3.6
 
-**Q:** CI job hangs—Claude Code waiting for interactive input. Fix?
+**Q:** A CI job hangs because Claude Code is waiting for interactive input. How do you fix that?
 
 **A:** Use -p (or --print) flag for non-interactive mode: process prompt, output result, exit.
 
@@ -517,11 +517,11 @@
 
 **Tasks:** 3.6
 
-**Q:** Post structured PR review findings as inline comments from CI. CLI flags?
+**Q:** Which CLI flags post structured PR review findings as inline comments from CI?
 
 **A:** --output-format json with --json-schema for machine-parseable structured findings.
 
-**Why:** Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
+**Why:** --output-format json with --json-schema produces machine-parseable findings so CI can post inline PR comments. This is not a review-architecture question.
 
 **Tags:** ci_cd, structured_output
 
@@ -534,7 +534,7 @@
 
 **Tasks:** 3.6
 
-**Q:** How provide project context to CI-invoked Claude Code?
+**Q:** How do you provide project context to Claude Code invoked from CI?
 
 **A:** CLAUDE.md with testing standards, fixture conventions, and review criteria loaded automatically.
 
@@ -564,11 +564,11 @@
 
 **Tasks:** 3.6
 
-**Q:** Re-run PR review after new commits—avoid duplicate inline comments?
+**Q:** When re-running a PR review after new commits, how do you avoid duplicate inline comments?
 
 **A:** Include prior review findings in context; instruct Claude to report only new or still-unaddressed issues.
 
-**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+**Why:** Pass prior findings back in and instruct Claude to report only new or still-open issues so re-runs do not spam duplicate comments.
 
 **Tags:** ci_cd, review
 
@@ -581,11 +581,11 @@
 
 **Tasks:** 3.6
 
-**Q:** CI test generation suggests scenarios already in the suite. Context fix?
+**Q:** CI test generation suggests scenarios already in the suite. What context should you add?
 
 **A:** Provide existing test files in context so generation avoids duplicate coverage.
 
-**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+**Why:** Put existing test files in context so generation does not propose coverage the suite already has.
 
 **Tags:** ci_cd, testing
 
@@ -598,11 +598,11 @@
 
 **Tasks:** 3.6
 
-**Q:** Reduce low-value generated tests in Claude Code?
+**Q:** How do you reduce low-value generated tests in Claude Code?
 
 **A:** Document testing standards, valuable test criteria, and available fixtures in CLAUDE.md.
 
-**Why:** Exam judgment aligned to task 3.6: Document testing standards, valuable test criteria, and available fixtures in CLAUDE.
+**Why:** Document testing standards, what a valuable test looks like, and available fixtures in CLAUDE.md so CI generation produces fewer low-value tests.
 
 **Tags:** claude_md, testing
 
@@ -615,11 +615,11 @@
 
 **Tasks:** 3.6
 
-**Q:** Running Claude Code in CI for PR review. Critical configuration concerns?
+**Q:** When running Claude Code in CI for PR review, what configuration concerns matter most?
 
 **A:** Non-interactive (-p), explicit permissions, structured/deterministic outputs, independent review instance—not open-ended agent runs.
 
-**Why:** not open-ended agent runs.
+**Why:** CI needs -p (non-interactive), tight permissions, structured output, and an independent review instance—not an open-ended interactive agent.
 
 **Tags:** ci_cd, automation
 
@@ -632,7 +632,7 @@
 
 **Tasks:** 3.6
 
-**Q:** CI non-interactive flags that do NOT exist (name two)?
+**Q:** Name two CI non-interactive flags that do not exist for Claude Code.
 
 **A:** CLAUDE_HEADLESS env var and --batch flag—use -p/--print instead.
 
@@ -647,7 +647,7 @@
 
 **Tasks:** 3.4, 5.1
 
-**Q:** Code Generation scenario (Scenario 2)—primary domains?
+**Q:** What are the primary domains for the Code Generation scenario (Scenario 2)?
 
 **A:** D3 (Claude Code config/workflows) and D5 (context management/reliability).
 
@@ -662,7 +662,7 @@
 
 **Tasks:** 3.6, 4.1
 
-**Q:** CI/CD with Claude Code scenario (Scenario 5)—primary domains?
+**Q:** What are the primary domains for the CI/CD with Claude Code scenario (Scenario 5)?
 
 **A:** D3 (Claude Code) and D4 (prompt engineering/structured output for review findings).
 
@@ -677,7 +677,7 @@
 
 **Tasks:** 3.2, 3.4
 
-**Q:** Scenario 2 tools: slash commands, CLAUDE.md, plan mode—what is being tested?
+**Q:** Scenario 2 involves slash commands, CLAUDE.md, and plan mode. What skill is the exam testing?
 
 **A:** Integrating Claude Code into dev workflow: team config, custom commands, and when to plan vs execute directly.
 
@@ -692,7 +692,7 @@
 
 **Tasks:** 3.3
 
-**Q:** Example path-scoped rule for Terraform files only?
+**Q:** What is an example path-scoped rule that applies only to Terraform files?
 
 **A:** .claude/rules/ file with frontmatter paths: ["terraform/**/*"] loading only when editing matching files.
 
@@ -722,7 +722,7 @@
 
 **Tasks:** 3.4
 
-**Q:** Monolith-to-microservices: direct execution with comprehensive upfront structure instructions. Why wrong?
+**Q:** For a monolith-to-microservices split, why is direct execution with comprehensive upfront structure instructions wrong?
 
 **A:** Assumes structure without codebase exploration—dependencies discovered late cause costly rework; plan first.
 
@@ -737,7 +737,7 @@
 
 **Tasks:** 3.3
 
-**Q:** Auto-apply conventions via skills in .claude/skills/ instead of path rules. Why insufficient?
+**Q:** Why is auto-applying conventions via skills in .claude/skills/ insufficient compared with path rules?
 
 **A:** Skills require manual invocation or model choice—not deterministic path-based automatic application.
 
@@ -752,7 +752,7 @@
 
 **Tasks:** 3.5
 
-**Q:** Test-driven iteration before implementation—what should tests cover?
+**Q:** In test-driven iteration before implementation, what should the tests cover?
 
 **A:** Expected behavior, edge cases, and performance requirements—iterate by sharing failures with Claude.
 
@@ -769,7 +769,7 @@
 
 **Tasks:** 3.2
 
-**Q:** context: fork for skills—another use case besides verbose codebase analysis?
+**Q:** Besides verbose codebase analysis, what is another use case for context: fork on skills?
 
 **A:** Exploratory brainstorming of alternatives—isolates speculative output from the main session.
 
@@ -786,7 +786,7 @@
 
 **Tasks:** 1.2, 2.5, 3.2
 
-**Q:** Developer Productivity scenario (Scenario 4)—primary domains?
+**Q:** What are the primary domains for the Developer Productivity scenario (Scenario 4)?
 
 **A:** D2 (built-in tools + MCP), D3 (Claude Code workflows), D1 (delegation/orchestration).
 

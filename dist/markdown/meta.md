@@ -22,9 +22,9 @@
 
 **Tasks:** exam-format
 
-**Q:** CCAR-F format: how many questions, time limit, and passing score?
+**Q:** How many questions, how much time, and what passing score does CCAR-F use?
 
-**A:** 60 scenario-based items, 120 minutes, pass at scaled 720 on a 100–1000 scale.
+**A:** 60 items in 120 minutes; pass at scaled 720 on a 100–1000 scale. Items are multiple-choice or multiple-response (each item says how many to select).
 
 **Tags:** exam_basics
 
@@ -52,7 +52,7 @@
 
 **Tasks:** cross-domain
 
-**Q:** Core heuristic when a scenario needs deterministic guarantees (money, identity, schema compliance)?
+**Q:** When a scenario needs deterministic guarantees (money, identity, or schema compliance), what should you prefer?
 
 **A:** Prefer structural/programmatic fixes (hooks, prerequisites, scoped tools, tool_use schemas) over prompt-only instructions.
 
@@ -70,7 +70,7 @@
 
 **Tasks:** cross-domain
 
-**Q:** Sample Q1 (Customer Support): Why programmatic prerequisite (A) beats prompt, few-shot, or routing for skipped get_customer?
+**Q:** Sample Q1 (Customer Support): Why does a programmatic prerequisite beat a prompt, few-shot examples, or routing when get_customer is skipped?
 
 **A:** Blocks lookup_order and process_refund until get_customer returns verified ID—deterministic enforcement for identity before refunds.
 
@@ -87,7 +87,7 @@
 
 **Tasks:** cross-domain
 
-**Q:** Sample Q2 (Customer Support): Why expand tool descriptions (B) before few-shot, routing, or tool consolidation?
+**Q:** Sample Q2 (Customer Support): Why should you expand tool descriptions before adding few-shot examples, routing, or consolidating tools?
 
 **A:** Descriptions are the primary LLM tool-selection signal—add inputs, examples, edge cases, and boundaries vs similar tools.
 
@@ -104,7 +104,7 @@
 
 **Tasks:** cross-domain
 
-**Q:** Sample Q3 (Customer Support): Why explicit escalation criteria with few-shot (A) beats confidence scores, classifiers, or sentiment?
+**Q:** Sample Q3 (Customer Support): Why do explicit escalation criteria with few-shot examples beat confidence scores, classifiers, or sentiment?
 
 **A:** Fix unclear escalate-vs-resolve boundaries—the proportionate first response before adding infrastructure.
 
@@ -138,7 +138,7 @@
 
 **Tasks:** cross-domain
 
-**Q:** Sample Q5 (Code Generation): Monolith-to-microservices across dozens of files—why plan mode first (A)?
+**Q:** Sample Q5 (Code Generation): For a monolith-to-microservices split across dozens of files, why start in plan mode?
 
 **A:** Explore dependencies and design service boundaries before editing—large architectural scope is already stated.
 
@@ -155,7 +155,7 @@
 
 **Tasks:** cross-domain
 
-**Q:** Sample Q6 (Code Generation): Tests spread as *.test.tsx—why .claude/rules/ with globs (A)?
+**Q:** Sample Q6 (Code Generation): Tests are spread as *.test.tsx. Why use .claude/rules/ with globs?
 
 **A:** Glob patterns (e.g. **/*.test.tsx) auto-apply conventions by path regardless of directory.
 
@@ -172,7 +172,7 @@
 
 **Tasks:** cross-domain
 
-**Q:** Sample Q7 (Multi-Agent Research): Report covers only visual arts—why coordinator decomposition (B)?
+**Q:** Sample Q7 (Multi-Agent Research): The report covers only visual arts. Why is coordinator decomposition the root cause?
 
 **A:** Logs show narrow subtasks (digital art, graphic design, photography)—subagents succeeded within assigned scope.
 
@@ -189,7 +189,7 @@
 
 **Tasks:** cross-domain
 
-**Q:** Sample Q8 (Multi-Agent Research): Search subagent times out—why structured error context to coordinator (A)?
+**Q:** Sample Q8 (Multi-Agent Research): The search subagent times out. Why return structured error context to the coordinator?
 
 **A:** Return failure type, attempted query, partial results, and alternatives so coordinator can recover intelligently.
 
@@ -206,7 +206,7 @@
 
 **Tasks:** cross-domain
 
-**Q:** Sample Q9 (Multi-Agent Research): 85% simple fact-checks—why scoped verify_fact on synthesis (A)?
+**Q:** Sample Q9 (Multi-Agent Research): 85% of checks are simple facts. Why give synthesis a scoped verify_fact tool?
 
 **A:** Least privilege for common lookups; complex verification still routes through coordinator to search agent.
 
@@ -223,7 +223,7 @@
 
 **Tasks:** cross-domain
 
-**Q:** Sample Q10 (CI/CD): Pipeline hangs waiting for input—why -p flag (A)?
+**Q:** Sample Q10 (CI/CD): The pipeline hangs waiting for input. Why use the -p flag?
 
 **A:** claude -p runs non-interactive: process prompt, output to stdout, exit—required for CI/CD.
 
@@ -240,7 +240,7 @@
 
 **Tasks:** cross-domain
 
-**Q:** Sample Q11: Batch API for pre-merge checks and overnight reports—why batch only overnight jobs (A)?
+**Q:** Sample Q11: Why use the Batch API only for overnight jobs, not for pre-merge checks?
 
 **A:** Batches save ~50% cost but lack latency SLA—unsuitable for blocking merge gates.
 
@@ -257,7 +257,7 @@
 
 **Tasks:** cross-domain
 
-**Q:** Sample Q12 (CI/CD): 14-file PR review inconsistent—why split per-file and integration passes (A)?
+**Q:** Sample Q12 (CI/CD): A 14-file PR review is inconsistent. Why split into per-file and integration passes?
 
 **A:** Per-file local analysis then cross-file integration pass—fixes attention dilution across many files.
 

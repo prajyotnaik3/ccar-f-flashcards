@@ -26,7 +26,7 @@
   scenarios:
   - customer_support
   - structured_extraction
-  front: Risk of progressive summarization in long support sessions?
+  front: 'What is the risk of progressive summarization in long support sessions?'
   back: Condenses amounts, dates, percentages, and customer-stated expectations into vague summaries—loses critical transactional facts.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.1
@@ -60,7 +60,7 @@
   difficulty: medium
   scenarios:
   - customer_support
-  front: Preserve order amounts and dates across a long support conversation?
+  front: 'How do you preserve order amounts and dates across a long support conversation?'
   back: Extract transactional facts into a persistent case facts block in each prompt—outside summarized history.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.1
@@ -70,7 +70,7 @@
   exam_day: true
   tasks:
   - '5.1'
-  rationale: outside summarized history.
+  rationale: Keep amounts, dates, and order IDs in a persistent case-facts block outside summarized history so progressive summarization cannot wash them out.
 - id: d5-005
   domain: D5
   weight: 15
@@ -78,7 +78,7 @@
   difficulty: medium
   scenarios:
   - customer_support
-  front: Order lookup returns 40+ fields but only 5 matter for returns. Context fix?
+  front: 'Order lookup returns 40+ fields but only 5 matter for returns. How should you fix the context?'
   back: Trim verbose tool outputs to relevant fields before they accumulate in conversation context.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.1
@@ -87,7 +87,7 @@
   - tool_results
   tasks:
   - '5.1'
-  rationale: Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+  rationale: Trim 40-field order payloads to the few return-relevant fields before they accumulate. Verbose tool results crowd out the facts that matter.
 - id: d5-006
   domain: D5
   weight: 15
@@ -95,7 +95,7 @@
   difficulty: medium
   scenarios:
   - multi_agent_research
-  front: Mitigate lost-in-the-middle when aggregating subagent results?
+  front: 'How do you mitigate lost-in-the-middle when aggregating subagent results?'
   back: Place key findings summary at the beginning; organize detailed results with explicit section headers.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.1
@@ -112,7 +112,7 @@
   difficulty: medium
   scenarios:
   - multi_agent_research
-  front: Downstream synthesis agent has limited context budget. Upstream agent output design?
+  front: 'The downstream synthesis agent has a limited context budget. How should upstream agents shape their output?'
   back: Return structured key facts, citations, and relevance scores—not verbose reasoning chains.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.1
@@ -121,7 +121,7 @@
   - subagents
   tasks:
   - '5.1'
-  rationale: not verbose reasoning chains.
+  rationale: When downstream context is tight, upstream agents should return key facts, citations, and relevance scores—not long reasoning chains.
 - id: d5-008
   domain: D5
   weight: 15
@@ -130,7 +130,7 @@
   scenarios:
   - customer_support
   - multi_agent_research
-  front: Why pass complete conversation history in subsequent API requests?
+  front: Why should you pass complete conversation history in subsequent API requests?
   back: Maintains conversational coherence—the model needs prior turns to reason about the ongoing case.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.1
@@ -145,7 +145,7 @@
   difficulty: medium
   scenarios:
   - customer_support
-  front: Multi-issue support session (billing + return). Context layer approach?
+  front: 'A support session covers multiple issues (billing and a return). How should you structure the context layer?'
   back: Persist structured issue data (order IDs, amounts, statuses) in a separate context layer for each concern.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.1
@@ -154,7 +154,7 @@
   - multi_issue
   tasks:
   - '5.1'
-  rationale: Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+  rationale: For billing plus a return, persist structured issue data (IDs, amounts, statuses) in a separate layer per concern so one summary does not merge them.
 - id: d5-010
   domain: D5
   weight: 15
@@ -162,7 +162,7 @@
   difficulty: medium
   scenarios:
   - customer_support
-  front: Three appropriate escalation triggers (beyond 'complex case')?
+  front: "Name three appropriate escalation triggers besides calling the case 'complex'."
   back: Customer explicitly requests human, policy exception/gap, and inability to make meaningful progress.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.2
@@ -178,7 +178,7 @@
   difficulty: medium
   scenarios:
   - customer_support
-  front: 55% FCR—escalates easy cases, handles hard policy exceptions alone. Best calibration fix?
+  front: 'First-contact resolution is 55%: the agent escalates easy cases and handles hard policy exceptions alone. What is the best calibration fix?'
   back: Add explicit escalation criteria with few-shot examples showing escalate vs resolve autonomously.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.2; Sample Q3
@@ -195,7 +195,7 @@
   difficulty: medium
   scenarios:
   - customer_support
-  front: Route to human when self-reported confidence score is below threshold. Why unreliable?
+  front: Why is routing to a human when self-reported confidence is below a threshold unreliable?
   back: LLM confidence is poorly calibrated—agent may be wrongly confident on hard cases and uncertain on easy ones.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.2; Sample Q3
@@ -212,7 +212,7 @@
   difficulty: medium
   scenarios:
   - customer_support
-  front: Escalate on negative sentiment threshold. Why wrong for calibration?
+  front: Why is escalating on a negative-sentiment threshold the wrong calibration fix?
   back: Sentiment doesn't correlate with case complexity—the actual issue is unclear escalation boundaries.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.2; Sample Q3
@@ -229,7 +229,7 @@
   difficulty: medium
   scenarios:
   - customer_support
-  front: Customer explicitly demands a human agent. Response?
+  front: 'The customer explicitly demands a human agent. What should the agent do?'
   back: Honor immediately—do not attempt investigation first when they explicitly request a human.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.2
@@ -246,7 +246,7 @@
   difficulty: medium
   scenarios:
   - customer_support
-  front: Frustrated customer, issue is within agent capability. Approach?
+  front: "The customer is frustrated, but the issue is within the agent's capability. What should the agent do?"
   back: Acknowledge frustration and offer resolution; escalate only if customer reiterates preference for human.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.2
@@ -255,7 +255,7 @@
   - de_escalation
   tasks:
   - '5.2'
-  rationale: Escalation calibration needs explicit criteria—ambiguous boundaries cause wrong routing between autonomous resolution and human handoff.
+  rationale: Frustration alone is not an escalation trigger if the issue is in scope. Acknowledge, offer to resolve, and escalate only if they still want a human.
 - id: d5-016
   domain: D5
   weight: 15
@@ -263,7 +263,7 @@
   difficulty: medium
   scenarios:
   - customer_support
-  front: Policy silent on competitor price matching (only covers own-site adjustments). Action?
+  front: 'Policy is silent on competitor price matching (it only covers own-site adjustments). What should the agent do?'
   back: Escalate—policy gap/exception case, not autonomous resolution.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.2
@@ -297,7 +297,7 @@
   difficulty: medium
   scenarios:
   - multi_agent_research
-  front: Subagents need prior search results. Best context passing?
+  front: 'Subagents need prior search results. What is the best way to pass that context?'
   back: Explicit structured handoffs (IDs, snippets, citations) via coordinator—not implicit shared memory.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.1; Multi-Agent Research scenario
@@ -315,7 +315,7 @@
   difficulty: hard
   scenarios:
   - multi_agent_research
-  front: Web search subagent timeout—best error propagation to coordinator?
+  front: 'The web search subagent times out. What error context should you propagate to the coordinator?'
   back: 'Structured context: failure type, attempted query, partial results, and alternative approaches.'
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.3; Sample Q8
@@ -331,7 +331,7 @@
   difficulty: medium
   scenarios:
   - multi_agent_research
-  front: Subagent returns empty results marked successful after timeout. Why anti-pattern?
+  front: Why is it an anti-pattern for a subagent to return empty results marked successful after a timeout?
   back: Silently suppresses errors—coordinator cannot recover or annotate coverage gaps.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.3; Sample Q8
@@ -347,7 +347,7 @@
   difficulty: medium
   scenarios:
   - multi_agent_research
-  front: Synthesis output after partial subagent failures—what include?
+  front: 'After partial subagent failures, what should synthesis output include?'
   back: 'Coverage annotations: which findings are well-supported vs which topic areas have gaps from unavailable sources.'
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.3
@@ -365,7 +365,7 @@
   scenarios:
   - customer_support
   - multi_agent_research
-  front: Agent loop fails twice on same tool error. Next step?
+  front: The agent loop fails twice on the same tool error. What should you do next?
   back: Escalate or change strategy (alternate tool, human handoff)—not infinite identical retries.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.3
@@ -383,7 +383,7 @@
   scenarios:
   - code_generation
   - developer_productivity
-  front: Scratchpad files in long Claude Code exploration sessions—purpose?
+  front: 'What is the purpose of scratchpad files in long Claude Code exploration sessions?'
   back: Persist key findings across context boundaries; reference for later questions to counteract degradation.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.4
@@ -400,7 +400,7 @@
   scenarios:
   - code_generation
   - developer_productivity
-  front: Verbose codebase exploration fills context. Claude Code command to reduce usage?
+  front: 'Verbose codebase exploration fills the context. Which Claude Code command reduces usage?'
   back: /compact to condense verbose discovery output during extended sessions.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.4; Appendix
@@ -409,7 +409,7 @@
   - exploration
   tasks:
   - '5.4'
-  rationale: Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+  rationale: /compact condenses verbose discovery output in long Claude Code sessions. It is the documented command for context pressure during exploration.
 - id: d5-025
   domain: D5
   weight: 15
@@ -417,7 +417,7 @@
   difficulty: medium
   scenarios:
   - developer_productivity
-  front: Multi-phase codebase exploration—context pattern between phases?
+  front: 'In multi-phase codebase exploration, how should you manage context between phases?'
   back: Summarize key findings from one phase, inject summary into context before spawning subagents for the next.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.4
@@ -426,7 +426,7 @@
   - summarization
   tasks:
   - '5.4'
-  rationale: Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+  rationale: Summarize each exploration phase and inject that summary before the next subagents spawn so later phases do not inherit a huge raw trace.
 - id: d5-026
   domain: D5
   weight: 15
@@ -435,7 +435,7 @@
   scenarios:
   - multi_agent_research
   - developer_productivity
-  front: Crash recovery pattern for multi-agent workflows?
+  front: 'What crash-recovery pattern should multi-agent workflows use?'
   back: Each agent exports state to a known location; coordinator loads manifest on resume and injects into prompts.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.4
@@ -452,7 +452,7 @@
   scenarios:
   - code_generation
   - developer_productivity
-  front: Why dump entire repo into context for every Claude Code task?
+  front: 'Why is dumping the entire repo into context for every Claude Code task a problem?'
   back: Wastes tokens and adds noise—use Grep/Glob and scoped reads incrementally.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.4; D2 Task 2.5
@@ -469,7 +469,7 @@
   difficulty: medium
   scenarios:
   - structured_extraction
-  front: 97% overall extraction accuracy—why not automate all human review?
+  front: Overall extraction accuracy is 97%. Why should you not automate away all human review?
   back: Aggregate metrics may mask poor performance on specific document types or individual fields.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.5
@@ -485,7 +485,7 @@
   difficulty: medium
   scenarios:
   - structured_extraction
-  front: Ongoing quality monitoring for high-confidence extractions?
+  front: 'How should you monitor quality for high-confidence extractions over time?'
   back: Stratified random sampling to measure error rates and detect novel error patterns.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.5
@@ -502,7 +502,7 @@
   difficulty: medium
   scenarios:
   - structured_extraction
-  front: Calibrate human review routing for extractions?
+  front: 'How do you calibrate human-review routing for extractions?'
   back: Model outputs field-level confidence; calibrate thresholds using labeled validation sets.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.5
@@ -512,7 +512,7 @@
   exam_day: true
   tasks:
   - '5.5'
-  rationale: Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
+  rationale: Have the model emit field-level confidence, then set review thresholds on a labeled validation set. Uncalibrated scores are not production routing rules.
 - id: d5-031
   domain: D5
   weight: 15
@@ -520,7 +520,7 @@
   difficulty: medium
   scenarios:
   - structured_extraction
-  front: Before reducing human review on high-confidence extractions—verify what?
+  front: 'Before reducing human review on high-confidence extractions, what should you verify?'
   back: Accuracy by document type and field segment—consistent performance across all segments.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.5
@@ -537,7 +537,7 @@
   difficulty: medium
   scenarios:
   - structured_extraction
-  front: Limited reviewer capacity—prioritize which extractions for human review?
+  front: 'Reviewer capacity is limited. Which extractions should you prioritize for human review?'
   back: Low model confidence, ambiguous source documents, or contradictory source data.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.5
@@ -546,7 +546,7 @@
   - routing
   tasks:
   - '5.5'
-  rationale: Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
+  rationale: With limited reviewers, send low-confidence extractions and ambiguous or contradictory source documents to humans first.
 - id: d5-033
   domain: D5
   weight: 15
@@ -570,7 +570,7 @@
   difficulty: medium
   scenarios:
   - multi_agent_research
-  front: Subagent output for downstream synthesis—provenance requirement?
+  front: 'What provenance must subagent output include for downstream synthesis?'
   back: Structured claim-source mappings (URLs, document names, excerpts) preserved through synthesis.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.6
@@ -588,7 +588,7 @@
   difficulty: medium
   scenarios:
   - multi_agent_research
-  front: Two credible sources report different statistics. Synthesis handling?
+  front: 'Two credible sources report different statistics. How should synthesis handle that?'
   back: Annotate conflict with source attribution—do not arbitrarily pick one value.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.6
@@ -605,7 +605,7 @@
   difficulty: medium
   scenarios:
   - multi_agent_research
-  front: Why require publication/collection dates in structured subagent outputs?
+  front: Why should structured subagent outputs include publication or collection dates?
   back: Enables correct temporal interpretation—prevents time differences being misread as contradictions.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.6
@@ -622,7 +622,7 @@
   difficulty: medium
   scenarios:
   - multi_agent_research
-  front: Research report structure for contested vs established findings?
+  front: 'How should a research report structure contested findings versus established ones?'
   back: Explicit sections distinguishing well-established findings from contested ones with methodological context.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.6
@@ -631,7 +631,7 @@
   - provenance
   tasks:
   - '5.6'
-  rationale: Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+  rationale: Structure the report with explicit well-established vs contested sections and keep methodological context. Do not flatten everything into one confident narrative.
 - id: d5-038
   domain: D5
   weight: 15
@@ -639,7 +639,7 @@
   difficulty: medium
   scenarios:
   - multi_agent_research
-  front: Synthesis output formatting for mixed content types?
+  front: 'How should synthesis format mixed content types?'
   back: Render appropriately—financial data as tables, news as prose, technical findings as structured lists.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.6
@@ -656,10 +656,11 @@
   difficulty: easy
   scenarios:
   - customer_support
+  - code_generation
   - multi_agent_research
   - structured_extraction
-  front: Which three scenarios list D5 as a primary domain?
-  back: Customer Support, Multi-Agent Research, and Structured Data Extraction.
+  front: Which exam scenarios list D5 as a primary domain?
+  back: 'Four: Customer Support, Code Generation, Multi-Agent Research, and Structured Data Extraction. Developer Productivity and CI/CD do not list D5 as primary.'
   sources:
   - Official CCAR-F Exam Guide — scenario map
   tags:
@@ -676,7 +677,7 @@
   difficulty: easy
   scenarios:
   - code_generation
-  front: Code Generation scenario (Scenario 2)—D5 focus areas?
+  front: 'What D5 focus areas does the Code Generation scenario (Scenario 2) emphasize?'
   back: Context preservation across edits, plan vs execute context management, and session reliability.
   sources:
   - Official CCAR-F Exam Guide — Scenario 2
@@ -693,7 +694,7 @@
   difficulty: medium
   scenarios:
   - multi_agent_research
-  front: Subagent structured outputs for downstream synthesis—required metadata?
+  front: 'What metadata must structured subagent outputs include for downstream synthesis?'
   back: Dates, source locations, and methodological context—not just claims without provenance context.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.1
@@ -710,7 +711,7 @@
   difficulty: medium
   scenarios:
   - customer_support
-  front: Deploy classifier model to predict escalation before agent runs. Why over-engineered first step?
+  front: Why is deploying a classifier to predict escalation before the agent runs an over-engineered first step?
   back: Requires labeled data and ML infra when prompt criteria with few-shot hasn't been tried yet.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.2; Sample Q3
@@ -726,7 +727,7 @@
   difficulty: medium
   scenarios:
   - multi_agent_research
-  front: Subagent retries then returns generic 'search unavailable' to coordinator. Problem?
+  front: "A subagent retries, then returns generic 'search unavailable' to the coordinator. What is the problem?"
   back: Hides failure type, attempted query, and partial results—coordinator cannot make informed recovery.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.3; Sample Q8
@@ -742,7 +743,7 @@
   difficulty: medium
   scenarios:
   - multi_agent_research
-  front: Single subagent failure terminates entire multi-agent workflow. Why wrong?
+  front: 'A single subagent failure terminates the entire multi-agent workflow. Why is that wrong?'
   back: Often recoverable with partial results, alternate queries, or gap annotations—unnecessary full termination.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.3
@@ -759,7 +760,7 @@
   scenarios:
   - developer_productivity
   - code_generation
-  front: Long codebase exploration—delegate specific questions while preserving coordination?
+  front: 'During long codebase exploration, how do you delegate specific questions while preserving coordination?'
   back: Spawn subagents for focused tasks (find test files, trace refund flow) while main agent keeps high-level coordination.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.4
@@ -776,7 +777,7 @@
   difficulty: medium
   scenarios:
   - multi_agent_research
-  front: Document analysis finds conflicting values from sources. Before synthesis?
+  front: 'Document analysis finds conflicting values from sources. What should happen before synthesis?'
   back: Complete analysis with conflicts included and explicitly annotated—let coordinator reconcile before passing to synthesis.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.6
@@ -793,7 +794,7 @@
   difficulty: medium
   scenarios:
   - developer_productivity
-  front: Scratchpad file during exploration—how use for follow-up questions?
+  front: 'How should you use a scratchpad file during exploration for follow-up questions?'
   back: Record key findings in scratchpad; reference it for subsequent questions to counteract context degradation.
   sources:
   - Official CCAR-F Exam Guide — D5, Task 5.4
@@ -802,4 +803,4 @@
   - exploration
   tasks:
   - '5.4'
-  rationale: Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+  rationale: Write key findings to a scratchpad and reread it on follow-up questions so later turns do not fall back on vague 'typical patterns'.

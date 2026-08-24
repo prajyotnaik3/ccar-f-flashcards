@@ -67,7 +67,7 @@
 
 **Tasks:** 1.1
 
-**Q:** When should an agentic loop continue vs terminate?
+**Q:** When should an agentic loop continue versus terminate?
 
 **A:** Continue when stop_reason is tool_use; terminate when stop_reason is end_turn.
 
@@ -82,7 +82,7 @@
 
 **Tasks:** 1.1
 
-**Q:** Agentic loop anti-patterns for termination (name three).
+**Q:** Name three anti-patterns for deciding when an agentic loop should terminate.
 
 **A:** Parsing natural language for completion; arbitrary iteration caps as primary stop; treating assistant text as completion signal.
 
@@ -97,7 +97,7 @@
 
 **Tasks:** 1.1
 
-**Q:** Model-driven tool selection vs pre-configured decision trees?
+**Q:** When should you use model-driven tool selection versus pre-configured decision trees?
 
 **A:** Model-driven: Claude picks tools from context each turn. Decision trees/forced sequences bypass model reasoning—use only when deterministic ordering is required.
 
@@ -112,7 +112,7 @@
 
 **Tasks:** 1.1
 
-**Q:** Why append tool results to conversation history between loop iterations?
+**Q:** Why should you append tool results to conversation history between loop iterations?
 
 **A:** So the model can reason about new information and choose the next action based on actual tool output.
 
@@ -157,7 +157,7 @@
 
 **Tasks:** 1.2
 
-**Q:** Research on 'AI in creative industries' covers only visual arts—logs show coordinator assigned digital art, graphic design, photography only. Root cause?
+**Q:** A report on 'AI in creative industries' covers only visual arts. Logs show the coordinator assigned digital art, graphic design, and photography only. What is the root cause?
 
 **A:** Coordinator task decomposition too narrow—subagents executed correctly but were assigned incomplete scope.
 
@@ -178,7 +178,7 @@
 
 **A:** Analyze query requirements and dynamically select needed subagents—not always route through the full pipeline.
 
-**Why:** not always route through the full pipeline.
+**Why:** The coordinator should analyze the query and invoke only needed subagents. Always running the full pipeline wastes latency and context.
 
 **Tags:** coordinator, orchestration
 
@@ -191,11 +191,11 @@
 
 **Tasks:** 1.2
 
-**Q:** How partition research scope across subagents to reduce duplication?
+**Q:** How should you partition research scope across subagents to reduce duplication?
 
 **A:** Assign distinct subtopics or source types per agent (e.g., web vs documents vs synthesis)—not overlapping queries.
 
-**Why:** Exam judgment aligned to task 1.2: Assign distinct subtopics or source types per agent (e.
+**Why:** Assign distinct subtopics or source types (for example web vs documents vs synthesis) so subagents do not duplicate overlapping queries.
 
 **Tags:** decomposition, subagents
 
@@ -227,7 +227,7 @@
 
 **A:** Observability, consistent error handling, and controlled information flow.
 
-**Why:** Exam judgment aligned to task 1.2: Observability, consistent error handling, and controlled information flow.
+**Why:** Hub-and-spoke routing through the coordinator gives observability, consistent error handling, and controlled information flow; subagents should not talk directly.
 
 **Tags:** coordinator, observability
 
@@ -255,11 +255,11 @@
 
 **Tasks:** 1.3
 
-**Q:** How pass prior agent findings to a synthesis subagent?
+**Q:** How should you pass prior agent findings to a synthesis subagent?
 
 **A:** Include complete findings directly in the subagent prompt (search results, document analysis)—not rely on automatic inheritance.
 
-**Why:** not rely on automatic inheritance.
+**Why:** Subagents do not inherit parent history. Put complete prior findings in the prompt or they will invent or omit evidence.
 
 **Tags:** context_passing, synthesis
 
@@ -272,11 +272,11 @@
 
 **Tasks:** 1.3
 
-**Q:** Best practice when passing context between agents for attribution?
+**Q:** When passing context between agents, what practice preserves attribution?
 
 **A:** Use structured formats separating content from metadata (URLs, document names, page numbers).
 
-**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+**Why:** Separate claims from metadata (URLs, document names, page numbers) so attribution survives synthesis instead of collapsing into an uncited summary.
 
 **Tags:** provenance, context_passing
 
@@ -289,11 +289,11 @@
 
 **Tasks:** 1.3
 
-**Q:** How spawn parallel subagents for lower latency?
+**Q:** How should you spawn parallel subagents to lower latency?
 
 **A:** Emit multiple Task tool calls in a single coordinator response—not separate turns per subagent.
 
-**Why:** not separate turns per subagent.
+**Why:** Multiple Task calls in one coordinator response run in parallel. Sequential turns add a full round-trip of latency per subagent.
 
 **Tags:** parallel, subagents
 
@@ -306,11 +306,11 @@
 
 **Tasks:** 1.3
 
-**Q:** Coordinator prompts: step-by-step procedures vs research goals?
+**Q:** Should coordinator prompts specify step-by-step procedures or research goals?
 
 **A:** Specify research goals and quality criteria—enables subagent adaptability vs rigid procedural scripts.
 
-**Why:** enables subagent adaptability vs rigid procedural scripts.
+**Why:** Goal-and-quality-criteria prompts let subagents adapt. Step-by-step scripts break when the evidence does not match the assumed procedure.
 
 **Tags:** prompting, coordinator
 
@@ -353,7 +353,7 @@
 
 **Tasks:** 1.4
 
-**Q:** Programmatic enforcement (hooks, gates) vs prompt-based workflow ordering?
+**Q:** When should you use programmatic enforcement (hooks, gates) instead of prompt-based workflow ordering?
 
 **A:** Prompts have non-zero failure rate; programmatic gates give deterministic compliance when identity verification or financial ops require it.
 
@@ -372,7 +372,7 @@
 
 **A:** Decompose into distinct items, investigate each in parallel using shared context, then synthesize a unified resolution.
 
-**Why:** Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+**Why:** Task 1.4: split multi-concern messages, investigate items in parallel with shared context, then synthesize one resolution—do not treat mixed issues as a single thread.
 
 **Tags:** decomposition, customer_support
 
@@ -400,11 +400,11 @@
 
 **Tasks:** 1.4
 
-**Q:** Example structured handoff fields for a refund escalation?
+**Q:** What fields should a structured handoff include for a refund escalation?
 
 **A:** Customer ID, root cause, refund amount, recommended action.
 
-**Why:** Escalation calibration needs explicit criteria—ambiguous boundaries cause wrong routing between autonomous resolution and human handoff.
+**Why:** Humans often lack the transcript. Hand off customer ID, root cause, refund amount, and a recommended action so they can act immediately.
 
 **Tags:** handoff, escalation
 
@@ -417,7 +417,7 @@
 
 **Tasks:** 1.5
 
-**Q:** PostToolUse hook—what does it do?
+**Q:** What does a PostToolUse hook do?
 
 **A:** Intercepts tool results after execution to transform/normalize data before the model processes them.
 
@@ -436,7 +436,7 @@
 
 **A:** PostToolUse hook to normalize heterogeneous formats into a consistent representation.
 
-**Why:** Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter.
+**Why:** PostToolUse normalizes timestamps and status codes before the model reasons. Prompting the model to 'handle mixed formats' is probabilistic.
 
 **Tags:** hooks, normalization
 
@@ -449,7 +449,7 @@
 
 **Tasks:** 1.5
 
-**Q:** Business rule: block refunds over $500 and escalate. Hooks vs prompt instructions?
+**Q:** A business rule blocks refunds over $500 and requires escalation. Should you use hooks or prompt instructions?
 
 **A:** Tool call interception hook—hooks guarantee compliance; prompts are probabilistic.
 
@@ -466,7 +466,7 @@
 
 **Tasks:** 1.5
 
-**Q:** Tool call interception hooks—purpose?
+**Q:** What is the purpose of tool-call interception hooks?
 
 **A:** Block policy-violating outgoing tool calls (e.g., large refunds) and redirect to alternative workflows (human escalation).
 
@@ -481,7 +481,7 @@
 
 **Tasks:** 1.6
 
-**Q:** Fixed sequential pipeline (prompt chaining) vs dynamic adaptive decomposition?
+**Q:** When should you use a fixed sequential pipeline versus dynamic adaptive decomposition?
 
 **A:** Sequential pipelines for predictable multi-step reviews; dynamic decomposition for open-ended investigation that adapts to intermediate findings.
 
@@ -496,7 +496,7 @@
 
 **Tasks:** 1.6
 
-**Q:** 14-file PR review misses bugs and gives contradictory feedback. Restructure approach?
+**Q:** A 14-file PR review misses bugs and gives contradictory feedback. How should you restructure the review?
 
 **A:** Per-file local analysis passes, then a separate cross-file integration pass—avoids attention dilution.
 
@@ -513,7 +513,7 @@
 
 **Tasks:** 1.6
 
-**Q:** Task: add comprehensive tests to a legacy codebase. Decomposition strategy?
+**Q:** You need to add comprehensive tests to a legacy codebase. What decomposition strategy should you use?
 
 **A:** Map structure → identify high-impact areas → prioritized plan that adapts as dependencies are discovered.
 
@@ -545,7 +545,7 @@
 
 **Tasks:** 1.7
 
-**Q:** Named session resumption in Claude Code—how?
+**Q:** How do you resume a named session in Claude Code?
 
 **A:** Use --resume with a session name to continue a specific prior conversation.
 
@@ -575,11 +575,11 @@
 
 **Tasks:** 1.7
 
-**Q:** Resume session after code changed vs start fresh?
+**Q:** After the code has changed, when should you resume a session versus start fresh?
 
 **A:** Resume when prior context is mostly valid; start fresh with injected summary when prior tool results are stale—more reliable than stale resumes.
 
-**Why:** more reliable than stale resumes.
+**Why:** Resume when prior context is still valid. If tool results are stale after code changes, start fresh with an injected summary rather than a stale session.
 
 **Tags:** session, resume
 
@@ -592,11 +592,11 @@
 
 **Tasks:** 1.7
 
-**Q:** Resuming a session after specific files changed—what to tell the agent?
+**Q:** When resuming a session after specific files changed, what should you tell the agent?
 
 **A:** Inform about specific file changes for targeted re-analysis—not require full re-exploration of the codebase.
 
-**Why:** not require full re-exploration of the codebase.
+**Why:** Tell the resumed session which files changed so it re-analyzes those paths instead of re-exploring the whole codebase.
 
 **Tags:** session, context
 
@@ -609,7 +609,7 @@
 
 **Tasks:** 1.2, 1.3
 
-**Q:** Synthesis needs simple fact-checks (85%) but complex search (15%). Reduce latency without over-provisioning?
+**Q:** Synthesis needs simple fact-checks 85% of the time and complex search 15% of the time. How do you reduce latency without over-provisioning?
 
 **A:** Give synthesis a scoped verify_fact tool for simple lookups; complex verifications still delegate through coordinator to search agent.
 
@@ -626,9 +626,9 @@
 
 **Tasks:** 1.2
 
-**Q:** Customer Support and Multi-Agent Research scenarios—shared primary domain?
+**Q:** Which primary domains do the Customer Support and Multi-Agent Research scenarios share?
 
-**A:** D1 (Agentic Architecture & Orchestration)—plus D2 tools/MCP and D5 context/reliability for both.
+**A:** Both list D1 (Agentic Architecture), D2 (Tool Design & MCP), and D5 (Context Management & Reliability).
 
 **Tags:** scenarios
 
@@ -641,7 +641,7 @@
 
 **Tasks:** 1.2
 
-**Q:** Four coordinator responsibilities in hub-and-spoke orchestration?
+**Q:** What are the four coordinator responsibilities in hub-and-spoke orchestration?
 
 **A:** Task decomposition, delegation to subagents, result aggregation, and dynamic selection of which subagents to invoke.
 
@@ -701,11 +701,11 @@
 
 **Tasks:** 1.5
 
-**Q:** PostToolUse hook: what heterogeneous MCP fields should you normalize before the model sees them?
+**Q:** In a PostToolUse hook, which heterogeneous MCP fields should you normalize before the model sees them?
 
 **A:** Timestamps (Unix vs ISO 8601), numeric status codes, and other inconsistent formats from different backend tools.
 
-**Why:** Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter.
+**Why:** Task 1.5: normalize Unix vs ISO timestamps, numeric status codes, and other inconsistent MCP fields in PostToolUse before they enter model context.
 
 **Tags:** hooks, normalization
 
@@ -718,7 +718,7 @@
 
 **Tasks:** 1.2
 
-**Q:** Web search subagent times out. Best error propagation to the coordinator?
+**Q:** The web search subagent times out. What error context should you send to the coordinator?
 
 **A:** Structured error context: failure type, attempted query, partial results, and potential alternative approaches.
 
@@ -752,9 +752,9 @@
 
 **Q:** When should a support agent escalate to a human instead of continuing the agentic loop?
 
-**A:** Policy requires human judgment, identity cannot be verified, tool failures persist, or validation/confidence thresholds are not met.
+**A:** Customer explicitly requests a human, policy is silent or requires an exception, or the agent cannot make meaningful progress—not self-reported confidence scores.
 
-**Why:** Correct choice avoids the wrong pattern: not met..
+**Why:** Exam Guide task 5.2 names those three triggers. Sample Q3 rejects confidence thresholds and sentiment as proxies for complexity; identity ambiguity is resolved by asking for more identifiers, not by treating a confidence score as a stop signal.
 
 **Tags:** escalation, agent_loop
 
@@ -767,7 +767,7 @@
 
 **Tasks:** 2.3
 
-**Q:** Developer Productivity scenario—primary domains and D1 focus?
+**Q:** For the Developer Productivity scenario, which domains are primary, and what is the D1 focus?
 
 **A:** D2 (tools/MCP), D3 (Claude Code), D1 (delegation/orchestration with built-in tools + MCP servers).
 
@@ -782,7 +782,7 @@
 
 **Tasks:** 1.2
 
-**Q:** Typical subagent roles in a multi-agent research pipeline (Exam Scenario 3)?
+**Q:** What typical subagent roles appear in a multi-agent research pipeline (Exam Scenario 3)?
 
 **A:** Web search, document analysis, synthesis of findings, and report generation—coordinator delegates each role.
 
@@ -797,7 +797,7 @@
 
 **Tasks:** 5.3
 
-**Q:** Subagent catches timeout and returns empty results marked successful. Why wrong?
+**Q:** A subagent catches a timeout and returns empty results marked successful. Why is that wrong?
 
 **A:** Suppresses failure—coordinator cannot recover, retry, or annotate coverage gaps; risks incomplete research output.
 
@@ -812,7 +812,7 @@
 
 **Tasks:** 5.3
 
-**Q:** Subagent timeout propagates and terminates the entire research workflow. Why wrong?
+**Q:** A subagent timeout terminates the entire research workflow. Why is that wrong?
 
 **A:** Single failures often recoverable with partial results, alternate queries, or gap annotation—unnecessary full termination.
 
@@ -827,7 +827,7 @@
 
 **Tasks:** 1.4, 1.5
 
-**Q:** When is prompt-based workflow guidance enough vs requiring programmatic gates or hooks?
+**Q:** When is prompt-based workflow guidance enough, and when do you need programmatic gates or hooks?
 
 **A:** Prompts suffice for soft ordering and preferences; programmatic enforcement when business rules need deterministic compliance (identity before money, refund caps).
 
@@ -842,7 +842,7 @@
 
 **Tasks:** 5.3
 
-**Q:** Subagent retries timeout internally then returns generic 'search unavailable' to coordinator. Gap?
+**Q:** A subagent retries a timeout internally, then returns generic 'search unavailable' to the coordinator. What information is missing?
 
 **A:** Hides failure type, attempted query, and partial results—coordinator cannot make informed recovery decisions.
 
@@ -857,7 +857,7 @@
 
 **Tasks:** 1.1
 
-**Q:** Two stop_reason values that drive agentic loop control?
+**Q:** Which two stop_reason values drive agentic loop control?
 
 **A:** tool_use (continue loop—execute tools and append results) and end_turn (terminate and present response).
 
@@ -872,7 +872,7 @@
 
 **Tasks:** 2.3
 
-**Q:** Give synthesis agent all web search tools to eliminate coordinator round-trips. Why avoid?
+**Q:** Why should you not give the synthesis agent all web search tools just to eliminate coordinator round-trips?
 
 **A:** Over-provisions synthesis—violates separation of concerns and role-specific tool scoping; use scoped tools for common cases only.
 

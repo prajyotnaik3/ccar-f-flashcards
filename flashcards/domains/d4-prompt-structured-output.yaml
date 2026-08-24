@@ -9,7 +9,7 @@
   scenarios:
   - structured_extraction
   - ci_cd
-  front: Why use structured output (JSON schema) instead of parsing free-text responses?
+  front: Why should you use structured output (JSON schema) instead of parsing free-text responses?
   back: Enables validation, automated retries on failure, and downstream automation without fragile regex on prose.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.3
@@ -25,7 +25,7 @@
   difficulty: medium
   scenarios:
   - ci_cd
-  front: Explicit review criteria vs vague instructions like 'be conservative'?
+  front: "Why are explicit review criteria better than vague instructions like 'be conservative'?"
   back: Specific categorical criteria (flag when comment contradicts code) beat vague confidence filtering for precision.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.1
@@ -42,7 +42,7 @@
   difficulty: medium
   scenarios:
   - ci_cd
-  front: Automated review has high false positives in one category—developers ignore all findings. First response?
+  front: Automated review has high false positives in one category, and developers ignore all findings. What should you do first?
   back: Temporarily disable the high false-positive category to restore trust while improving prompts for that category.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.1
@@ -51,7 +51,7 @@
   - review
   tasks:
   - '4.1'
-  rationale: Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
+  rationale: High false positives in one category destroy trust in every category. Disable that category while you tighten its prompt, then turn it back on.
 - id: d4-004
   domain: D4
   weight: 20
@@ -59,7 +59,7 @@
   difficulty: medium
   scenarios:
   - ci_cd
-  front: How define consistent severity levels in automated code review prompts?
+  front: 'How do you define consistent severity levels in automated code review prompts?'
   back: Explicit severity criteria with concrete code examples for each level—not generic confidence thresholds.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.1
@@ -76,7 +76,7 @@
   difficulty: medium
   scenarios:
   - ci_cd
-  front: Why high false-positive rates in one review category hurt the whole system?
+  front: Why do high false-positive rates in one review category hurt the whole system?
   back: Developers lose trust and dismiss accurate findings in other categories too.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.1
@@ -92,7 +92,7 @@
   difficulty: medium
   scenarios:
   - ci_cd
-  front: 'Review prompt design: report bugs/security vs skip minor style?'
+  front: 'How should a review prompt distinguish bugs and security issues from minor style nits?'
   back: Define explicit categories to report versus skip—don't rely on confidence-based filtering alone.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.1
@@ -125,7 +125,7 @@
   difficulty: medium
   scenarios:
   - ci_cd
-  front: Review output format inconsistent (location, severity, fix). Improvement?
+  front: 'Review output format is inconsistent (location, severity, fix). How should you improve it?'
   back: Few-shot examples demonstrating exact desired format (location, issue, severity, suggested fix).
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.2
@@ -134,7 +134,7 @@
   - review
   tasks:
   - '4.2'
-  rationale: Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
+  rationale: Few-shot examples of the exact format (location, issue, severity, suggested fix) beat more prose instructions when structure is inconsistent.
 - id: d4-009
   domain: D4
   weight: 20
@@ -142,7 +142,7 @@
   difficulty: medium
   scenarios:
   - ci_cd
-  front: Reduce false positives while still catching real bugs in review?
+  front: 'How do you reduce false positives in review while still catching real bugs?'
   back: Few-shot examples distinguishing acceptable local patterns from genuine issues—shows reasoning for each.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.2
@@ -159,7 +159,7 @@
   difficulty: medium
   scenarios:
   - structured_extraction
-  front: Extraction fails on varied document layouts (inline citations vs bibliographies). Fix?
+  front: 'Extraction fails on varied document layouts (inline citations versus bibliographies). How do you fix that?'
   back: Few-shot examples showing correct handling of each document structure variant.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.2
@@ -176,7 +176,7 @@
   difficulty: medium
   scenarios:
   - structured_extraction
-  front: Model returns null/empty for required fields on varied formats. Few-shot approach?
+  front: 'The model returns null or empty required fields on varied formats. What few-shot approach should you use?'
   back: Examples demonstrating correct extraction from each format variant—not just schema tightening alone.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.2
@@ -194,7 +194,7 @@
   scenarios:
   - structured_extraction
   - ci_cd
-  front: How many few-shot examples for ambiguous scenarios, and what show?
+  front: 'How many few-shot examples should you use for ambiguous scenarios, and what should they show?'
   back: 2–4 targeted examples with reasoning for why one action was chosen over plausible alternatives.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.2
@@ -210,7 +210,7 @@
   difficulty: medium
   scenarios:
   - structured_extraction
-  front: Most reliable approach for guaranteed schema-compliant JSON output?
+  front: 'What is the most reliable approach for guaranteed schema-compliant JSON output?'
   back: tool_use with JSON schemas—eliminates JSON syntax errors vs free-text JSON generation.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.3
@@ -244,7 +244,7 @@
   difficulty: medium
   scenarios:
   - structured_extraction
-  front: Source document may omit a field. Schema design to prevent fabrication?
+  front: 'The source document may omit a field. How should you design the schema to prevent fabrication?'
   back: Make fields optional/nullable when information may be absent—don't require fields the source lacks.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.3
@@ -262,7 +262,7 @@
   difficulty: medium
   scenarios:
   - structured_extraction
-  front: Extensible category field in extraction schema—pattern?
+  front: 'What schema pattern should you use for an extensible category field?'
   back: Enum with "other" plus a detail string field for categories not in the predefined list.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.3
@@ -271,7 +271,7 @@
   - enum
   tasks:
   - '4.3'
-  rationale: 'Correct choice avoids the wrong pattern: not in the predefined list..'
+  rationale: 'Use an enum plus an ''other'' value and a detail string so unknown categories are captured instead of forced into a wrong bucket.'
 - id: d4-017
   domain: D4
   weight: 20
@@ -279,7 +279,7 @@
   difficulty: medium
   scenarios:
   - structured_extraction
-  front: Ambiguous source data in extraction—enum design?
+  front: 'Source data can be ambiguous. How should you design the extraction enum?'
   back: Add enum value like "unclear" for ambiguous cases rather than forcing a wrong category.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.3
@@ -296,7 +296,7 @@
   difficulty: medium
   scenarios:
   - structured_extraction
-  front: Inconsistent date formats in source documents alongside strict schema?
+  front: 'Source documents have inconsistent date formats, but the output schema is strict. What should you do?'
   back: Include format normalization rules in the prompt alongside the strict output schema.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.3
@@ -305,7 +305,7 @@
   - normalization
   tasks:
   - '4.3'
-  rationale: Structured output plus validation-retry separates syntax from semantics; schemas must reflect absent data, not force fabrication.
+  rationale: Keep the output schema strict, and put date-normalization rules in the prompt so inconsistent source formats still map to one output shape.
 - id: d4-019
   domain: D4
   weight: 20
@@ -313,7 +313,7 @@
   difficulty: medium
   scenarios:
   - structured_extraction
-  front: Multiple extraction schemas; document type unknown at request time. tool_choice?
+  front: 'You have multiple extraction schemas and the document type is unknown at request time. How should you set tool_choice?'
   back: 'tool_choice: "any" to guarantee structured tool output instead of conversational text.'
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.3
@@ -322,7 +322,7 @@
   - extraction
   tasks:
   - '4.3'
-  rationale: Structured output plus validation-retry separates syntax from semantics; schemas must reflect absent data, not force fabrication.
+  rationale: tool_choice "any" guarantees a tool call when several extraction schemas exist and the document type is unknown—auto may return chat text instead.
 - id: d4-020
   domain: D4
   weight: 20
@@ -330,7 +330,7 @@
   difficulty: medium
   scenarios:
   - structured_extraction
-  front: Where extract structured data from a tool_use extraction call?
+  front: 'Where do you extract structured data from a tool_use extraction call?'
   back: From the tool_use response block—schema defines tool input parameters; model fills structured fields there.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.3
@@ -364,7 +364,7 @@
   difficulty: hard
   scenarios:
   - structured_extraction
-  front: When will validation retries succeed vs fail?
+  front: 'When do validation retries succeed, and when do they fail?'
   back: Succeed on format/structural mismatches. Fail when required info is absent from source (or only in external doc not provided).
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.4
@@ -381,7 +381,7 @@
   scenarios:
   - structured_extraction
   - ci_cd
-  front: Schema syntax errors vs semantic validation errors?
+  front: 'How do schema syntax errors differ from semantic validation errors?'
   back: Syntax errors eliminated by tool_use strict schemas; semantic errors need cross-field rules (totals, field placement).
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.4
@@ -397,7 +397,7 @@
   difficulty: medium
   scenarios:
   - ci_cd
-  front: Developers dismiss many automated findings. Feedback loop design?
+  front: 'Developers dismiss many automated findings. How should you design the feedback loop?'
   back: Add detected_pattern field to findings to analyze which constructs trigger false positives when dismissed.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.4
@@ -414,7 +414,7 @@
   difficulty: medium
   scenarios:
   - structured_extraction
-  front: Self-correction for invoice totals that don't add up?
+  front: 'How should extraction self-correct when invoice totals do not add up?'
   back: Extract calculated_total alongside stated_total and flag discrepancies; add conflict_detected for inconsistent source data.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.4
@@ -431,7 +431,7 @@
   difficulty: medium
   scenarios:
   - structured_extraction
-  front: Extraction misses nullable fields intermittently. Best improvement?
+  front: Extraction misses nullable fields intermittently. What is the best improvement?
   back: Tighten required vs optional schema, validation-retry loop, and explicit examples for null/edge cases.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.3–4.4; Structured Extraction scenario
@@ -442,7 +442,7 @@
   tasks:
   - '4.3'
   - '4.4'
-  rationale: Structured output plus validation-retry separates syntax from semantics; schemas must reflect absent data, not force fabrication.
+  rationale: Mark truly optional fields nullable, retry with validation errors, and add few-shot null/edge examples. Tightening every field to required causes fabrication.
 - id: d4-027
   domain: D4
   weight: 20
@@ -451,7 +451,7 @@
   scenarios:
   - ci_cd
   - structured_extraction
-  front: Message Batches API tradeoffs (cost, latency)?
+  front: 'What are the cost and latency tradeoffs of the Message Batches API?'
   back: 50% cost savings, up to 24-hour processing window, no guaranteed latency SLA.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.5; Appendix
@@ -467,7 +467,7 @@
   difficulty: medium
   scenarios:
   - ci_cd
-  front: Pre-merge blocking check vs overnight technical debt report—batch API for both?
+  front: 'Should you use the Batch API for both a pre-merge blocking check and an overnight technical-debt report?'
   back: Batch only for latency-tolerant jobs (overnight reports); keep synchronous API for blocking pre-merge checks.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.5; Sample Q11
@@ -484,7 +484,7 @@
   difficulty: medium
   scenarios:
   - structured_extraction
-  front: Message Batches API limitation on tool calling?
+  front: 'What is the Message Batches API limitation on tool calling?'
   back: No multi-turn tool calling within a single batch request—cannot execute tools mid-request and return results.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.5
@@ -500,7 +500,7 @@
   difficulty: easy
   scenarios:
   - structured_extraction
-  front: custom_id in Message Batches API—purpose?
+  front: 'What is the purpose of custom_id in the Message Batches API?'
   back: Correlate batch request/response pairs and identify failed documents for resubmission.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.5
@@ -516,7 +516,7 @@
   difficulty: medium
   scenarios:
   - structured_extraction
-  front: Batch job failures—resubmission strategy?
+  front: 'How should you resubmit failed documents from a batch job?'
   back: Resubmit only failed documents by custom_id with modifications (e.g., chunk oversized docs that exceeded context).
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.5
@@ -525,7 +525,7 @@
   - failures
   tasks:
   - '4.5'
-  rationale: Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+  rationale: Resubmit only failed custom_id items, with fixes such as chunking docs that exceeded context. Do not resubmit the whole batch.
 - id: d4-032
   domain: D4
   weight: 20
@@ -533,7 +533,7 @@
   difficulty: medium
   scenarios:
   - structured_extraction
-  front: Before batch-processing 10,000 documents—cost reduction step?
+  front: 'Before batch-processing 10,000 documents, what cost-reduction step should you take first?'
   back: Refine prompts on a sample set first to maximize first-pass success and reduce resubmission costs.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.5
@@ -542,7 +542,7 @@
   - prompt_refinement
   tasks:
   - '4.5'
-  rationale: 'Match API latency and cost to workflow: blocking paths need synchronous calls; overnight jobs can use batch savings.'
+  rationale: 'Refine prompts on a sample before 10k documents so first-pass success is high and you avoid expensive resubmission loops.'
 - id: d4-033
   domain: D4
   weight: 20
@@ -550,7 +550,7 @@
   difficulty: hard
   scenarios:
   - structured_extraction
-  front: Why self-review of generated code in the same session is limited?
+  front: Why is self-review of generated code in the same session limited?
   back: Model retains generation reasoning context—less likely to question its own decisions than an independent reviewer.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.6
@@ -566,7 +566,7 @@
   difficulty: medium
   scenarios:
   - ci_cd
-  front: Best approach to catch subtle issues in AI-generated code?
+  front: What is the best approach to catch subtle issues in AI-generated code?
   back: Second independent Claude instance reviewing without the generator's reasoning context.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.6
@@ -575,7 +575,7 @@
   - review
   tasks:
   - '4.6'
-  rationale: Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+  rationale: A second Claude instance without the generator's reasoning context catches subtle bugs better than same-session self-review or extended thinking alone.
 - id: d4-035
   domain: D4
   weight: 20
@@ -583,7 +583,7 @@
   difficulty: medium
   scenarios:
   - ci_cd
-  front: Large multi-file PR review—multi-pass architecture?
+  front: 'For a large multi-file PR review, what multi-pass architecture should you use?'
   back: Per-file passes for local issues plus separate integration pass for cross-file data flow.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.6; Sample Q12
@@ -600,8 +600,8 @@
   difficulty: medium
   scenarios:
   - ci_cd
-  front: Route review findings to human triage by severity—schema approach?
-  back: Verification pass where model reports confidence alongside each finding for calibrated routing.
+  front: 'How should you route automated review findings to human triage?'
+  back: Run a verification pass where the model reports confidence alongside each finding, then route using calibrated thresholds (high-severity / low-confidence to humans).
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.6
   tags:
@@ -609,7 +609,7 @@
   - confidence
   tasks:
   - '4.6'
-  rationale: Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
+  rationale: Task 4.6 uses a verification pass with self-reported confidence for calibrated routing. That is different from using uncalibrated confidence as an escalation trigger in support.
 - id: d4-037
   domain: D4
   weight: 20
@@ -618,7 +618,7 @@
   scenarios:
   - ci_cd
   - structured_extraction
-  front: Prompt-only PR findings vs JSON schema for CI gates?
+  front: 'When should PR findings be prompt-only versus JSON schema for CI gates?'
   back: Schema for machine consumption (CI gates, dashboards); prompts alone only for human-readable narrative.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.3; CI/CD scenario
@@ -634,7 +634,7 @@
   difficulty: medium
   scenarios:
   - structured_extraction
-  front: Why trust model self-reported confidence without validation?
+  front: 'Why is it a problem to trust model self-reported confidence without validation?'
   back: Not calibrated by default—use schema checks, cross-field rules, or human review thresholds for high-risk fields.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.4; D5 crossover
@@ -650,7 +650,7 @@
   difficulty: medium
   scenarios:
   - ci_cd
-  front: Run three full PR review passes and only flag issues in 2+ passes. Why wrong?
+  front: Why is it wrong to run three full PR review passes and only flag issues that appear in two or more?
   back: Suppresses real bugs caught intermittently—consensus filtering hides attention-dilution problems; split passes instead.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.6; Sample Q12
@@ -666,7 +666,7 @@
   difficulty: easy
   scenarios:
   - structured_extraction
-  front: Structured Data Extraction scenario (Scenario 6)—primary domains?
+  front: 'What are the primary domains for the Structured Data Extraction scenario (Scenario 6)?'
   back: D4 (schemas, validation, batch) and D5 (reliability, human review for low confidence).
   sources:
   - Official CCAR-F Exam Guide — scenario map
@@ -683,7 +683,7 @@
   difficulty: easy
   scenarios:
   - ci_cd
-  front: Scenario 6 extraction system requirements from the exam guide?
+  front: 'What extraction-system requirements does the exam guide list for Scenario 6?'
   back: Extract from unstructured docs, validate with JSON schemas, handle edge cases, integrate with downstream systems.
   sources:
   - Official CCAR-F Exam Guide — Scenario 6
@@ -700,7 +700,7 @@
   difficulty: medium
   scenarios:
   - structured_extraction
-  front: Few-shot examples reduce hallucination in extraction—example use cases?
+  front: 'What extraction use cases benefit from few-shot examples to reduce hallucination?'
   back: Informal measurements, varied document structures, and inconsistent field formats in source documents.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.2
@@ -716,7 +716,7 @@
   difficulty: medium
   scenarios:
   - ci_cd
-  front: Switch blocking pre-merge checks to batch API with status polling. Why wrong?
+  front: Why is switching blocking pre-merge checks to the Batch API with status polling wrong?
   back: Batch has no latency SLA—unacceptable for workflows where developers wait to merge.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.5; Sample Q11
@@ -732,7 +732,7 @@
   difficulty: hard
   scenarios:
   - structured_extraction
-  front: 30-hour SLA with 24-hour max batch processing—submission frequency?
+  front: 'You have a 30-hour SLA and batches can take up to 24 hours. How often should you submit batches?'
   back: Calculate submission windows (e.g., 4-hour intervals) so batches complete within SLA with margin for retries.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.5
@@ -741,7 +741,7 @@
   - sla
   tasks:
   - '4.5'
-  rationale: 'Match API latency and cost to workflow: blocking paths need synchronous calls; overnight jobs can use batch savings.'
+  rationale: 'Batches can take up to 24 hours. For a 30-hour SLA, submit on a shorter cadence (for example every 4 hours) so there is margin for retries.'
 - id: d4-045
   domain: D4
   weight: 20
@@ -750,7 +750,7 @@
   scenarios:
   - ci_cd
   - structured_extraction
-  front: Independent review instances vs extended thinking for self-review?
+  front: 'Why prefer independent review instances over extended thinking for self-review?'
   back: Independent instances without generator context catch more subtle issues than self-review instructions or extended thinking alone.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.6
@@ -766,7 +766,7 @@
   difficulty: medium
   scenarios:
   - ci_cd
-  front: Explicit review criteria example—comments vs code?
+  front: 'What is an example of explicit review criteria for comments versus code?'
   back: Flag comments only when claimed behavior contradicts actual code—not vague 'check comment accuracy'.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.1
@@ -783,7 +783,7 @@
   scenarios:
   - ci_cd
   - structured_extraction
-  front: How few-shot examples generalize beyond pre-specified cases?
+  front: 'How do few-shot examples generalize beyond the cases you pre-specify?'
   back: Demonstrate judgment and reasoning on ambiguous examples so the model applies similar logic to novel patterns.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.2
@@ -799,7 +799,7 @@
   difficulty: medium
   scenarios:
   - ci_cd
-  front: 'Few-shot use case: branch-level test coverage gaps?'
+  front: 'How should few-shot examples teach the model to report branch-level test coverage gaps?'
   back: Show how to identify and report coverage gaps at branch level—ambiguous case requiring demonstrated judgment.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.2
@@ -816,7 +816,7 @@
   difficulty: medium
   scenarios:
   - ci_cd
-  front: Switch both blocking and overnight jobs to batch API with real-time fallback. Why over-engineered?
+  front: Why is switching both blocking and overnight jobs to the Batch API with a real-time fallback over-engineered?
   back: Match API to latency needs—sync for blocking checks, batch for overnight; fallback adds unnecessary complexity.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.5; Sample Q11
@@ -832,7 +832,7 @@
   difficulty: medium
   scenarios:
   - ci_cd
-  front: 'Large PR review: switch to higher-tier model with larger context window. Why insufficient?'
+  front: For a large PR review, why is switching to a higher-tier model with a larger context window insufficient?
   back: Larger context doesn't fix attention dilution—split into per-file plus integration passes instead.
   sources:
   - Official CCAR-F Exam Guide — D4, Task 4.6; Sample Q12

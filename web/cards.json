@@ -106,7 +106,7 @@
         "customer_support",
         "multi_agent_research"
       ],
-      "front": "When should an agentic loop continue vs terminate?",
+      "front": "When should an agentic loop continue versus terminate?",
       "back": "Continue when stop_reason is tool_use; terminate when stop_reason is end_turn.",
       "sources": [
         "Official CCAR-F Exam Guide — D1, Task 1.1"
@@ -130,7 +130,7 @@
         "customer_support",
         "developer_productivity"
       ],
-      "front": "Agentic loop anti-patterns for termination (name three).",
+      "front": "Name three anti-patterns for deciding when an agentic loop should terminate.",
       "back": "Parsing natural language for completion; arbitrary iteration caps as primary stop; treating assistant text as completion signal.",
       "sources": [
         "Official CCAR-F Exam Guide — D1, Task 1.1"
@@ -153,7 +153,7 @@
         "customer_support",
         "multi_agent_research"
       ],
-      "front": "Model-driven tool selection vs pre-configured decision trees?",
+      "front": "When should you use model-driven tool selection versus pre-configured decision trees?",
       "back": "Model-driven: Claude picks tools from context each turn. Decision trees/forced sequences bypass model reasoning—use only when deterministic ordering is required.",
       "sources": [
         "Official CCAR-F Exam Guide — D1, Task 1.1"
@@ -176,7 +176,7 @@
         "customer_support",
         "multi_agent_research"
       ],
-      "front": "Why append tool results to conversation history between loop iterations?",
+      "front": "Why should you append tool results to conversation history between loop iterations?",
       "back": "So the model can reason about new information and choose the next action based on actual tool output.",
       "sources": [
         "Official CCAR-F Exam Guide — D1, Task 1.1"
@@ -245,7 +245,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Research on 'AI in creative industries' covers only visual arts—logs show coordinator assigned digital art, graphic design, photography only. Root cause?",
+      "front": "A report on 'AI in creative industries' covers only visual arts. Logs show the coordinator assigned digital art, graphic design, and photography only. What is the root cause?",
       "back": "Coordinator task decomposition too narrow—subagents executed correctly but were assigned incomplete scope.",
       "sources": [
         "Official CCAR-F Exam Guide — D1, Task 1.2; Sample Q7"
@@ -280,7 +280,7 @@
       "tasks": [
         "1.2"
       ],
-      "rationale": "not always route through the full pipeline."
+      "rationale": "The coordinator should analyze the query and invoke only needed subagents. Always running the full pipeline wastes latency and context."
     },
     {
       "id": "d1-013",
@@ -291,7 +291,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "How partition research scope across subagents to reduce duplication?",
+      "front": "How should you partition research scope across subagents to reduce duplication?",
       "back": "Assign distinct subtopics or source types per agent (e.g., web vs documents vs synthesis)—not overlapping queries.",
       "sources": [
         "Official CCAR-F Exam Guide — D1, Task 1.2"
@@ -303,7 +303,7 @@
       "tasks": [
         "1.2"
       ],
-      "rationale": "Exam judgment aligned to task 1.2: Assign distinct subtopics or source types per agent (e."
+      "rationale": "Assign distinct subtopics or source types (for example web vs documents vs synthesis) so subagents do not duplicate overlapping queries."
     },
     {
       "id": "d1-014",
@@ -348,7 +348,7 @@
       "tasks": [
         "1.2"
       ],
-      "rationale": "Exam judgment aligned to task 1.2: Observability, consistent error handling, and controlled information flow."
+      "rationale": "Hub-and-spoke routing through the coordinator gives observability, consistent error handling, and controlled information flow; subagents should not talk directly."
     },
     {
       "id": "d1-016",
@@ -383,7 +383,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "How pass prior agent findings to a synthesis subagent?",
+      "front": "How should you pass prior agent findings to a synthesis subagent?",
       "back": "Include complete findings directly in the subagent prompt (search results, document analysis)—not rely on automatic inheritance.",
       "sources": [
         "Official CCAR-F Exam Guide — D1, Task 1.3"
@@ -395,7 +395,7 @@
       "tasks": [
         "1.3"
       ],
-      "rationale": "not rely on automatic inheritance."
+      "rationale": "Subagents do not inherit parent history. Put complete prior findings in the prompt or they will invent or omit evidence."
     },
     {
       "id": "d1-018",
@@ -406,7 +406,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Best practice when passing context between agents for attribution?",
+      "front": "When passing context between agents, what practice preserves attribution?",
       "back": "Use structured formats separating content from metadata (URLs, document names, page numbers).",
       "sources": [
         "Official CCAR-F Exam Guide — D1, Task 1.3"
@@ -418,7 +418,7 @@
       "tasks": [
         "1.3"
       ],
-      "rationale": "Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases."
+      "rationale": "Separate claims from metadata (URLs, document names, page numbers) so attribution survives synthesis instead of collapsing into an uncited summary."
     },
     {
       "id": "d1-019",
@@ -429,7 +429,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "How spawn parallel subagents for lower latency?",
+      "front": "How should you spawn parallel subagents to lower latency?",
       "back": "Emit multiple Task tool calls in a single coordinator response—not separate turns per subagent.",
       "sources": [
         "Official CCAR-F Exam Guide — D1, Task 1.3"
@@ -441,7 +441,7 @@
       "tasks": [
         "1.3"
       ],
-      "rationale": "not separate turns per subagent."
+      "rationale": "Multiple Task calls in one coordinator response run in parallel. Sequential turns add a full round-trip of latency per subagent."
     },
     {
       "id": "d1-020",
@@ -452,7 +452,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Coordinator prompts: step-by-step procedures vs research goals?",
+      "front": "Should coordinator prompts specify step-by-step procedures or research goals?",
       "back": "Specify research goals and quality criteria—enables subagent adaptability vs rigid procedural scripts.",
       "sources": [
         "Official CCAR-F Exam Guide — D1, Task 1.3"
@@ -464,7 +464,7 @@
       "tasks": [
         "1.3"
       ],
-      "rationale": "enables subagent adaptability vs rigid procedural scripts."
+      "rationale": "Goal-and-quality-criteria prompts let subagents adapt. Step-by-step scripts break when the evidence does not match the assumed procedure."
     },
     {
       "id": "d1-021",
@@ -521,7 +521,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "Programmatic enforcement (hooks, gates) vs prompt-based workflow ordering?",
+      "front": "When should you use programmatic enforcement (hooks, gates) instead of prompt-based workflow ordering?",
       "back": "Prompts have non-zero failure rate; programmatic gates give deterministic compliance when identity verification or financial ops require it.",
       "sources": [
         "Official CCAR-F Exam Guide — D1, Task 1.4"
@@ -556,7 +556,7 @@
       "tasks": [
         "1.4"
       ],
-      "rationale": "Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases."
+      "rationale": "Task 1.4: split multi-concern messages, investigate items in parallel with shared context, then synthesize one resolution—do not treat mixed issues as a single thread."
     },
     {
       "id": "d1-025",
@@ -590,7 +590,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "Example structured handoff fields for a refund escalation?",
+      "front": "What fields should a structured handoff include for a refund escalation?",
       "back": "Customer ID, root cause, refund amount, recommended action.",
       "sources": [
         "Official CCAR-F Exam Guide — D1, Task 1.4"
@@ -602,7 +602,7 @@
       "tasks": [
         "1.4"
       ],
-      "rationale": "Escalation calibration needs explicit criteria—ambiguous boundaries cause wrong routing between autonomous resolution and human handoff."
+      "rationale": "Humans often lack the transcript. Hand off customer ID, root cause, refund amount, and a recommended action so they can act immediately."
     },
     {
       "id": "d1-027",
@@ -614,7 +614,7 @@
         "customer_support",
         "multi_agent_research"
       ],
-      "front": "PostToolUse hook—what does it do?",
+      "front": "What does a PostToolUse hook do?",
       "back": "Intercepts tool results after execution to transform/normalize data before the model processes them.",
       "sources": [
         "Official CCAR-F Exam Guide — D1, Task 1.5"
@@ -648,7 +648,7 @@
       "tasks": [
         "1.5"
       ],
-      "rationale": "Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter."
+      "rationale": "PostToolUse normalizes timestamps and status codes before the model reasons. Prompting the model to 'handle mixed formats' is probabilistic."
     },
     {
       "id": "d1-029",
@@ -659,7 +659,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "Business rule: block refunds over $500 and escalate. Hooks vs prompt instructions?",
+      "front": "A business rule blocks refunds over $500 and requires escalation. Should you use hooks or prompt instructions?",
       "back": "Tool call interception hook—hooks guarantee compliance; prompts are probabilistic.",
       "sources": [
         "Official CCAR-F Exam Guide — D1, Task 1.5"
@@ -683,7 +683,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "Tool call interception hooks—purpose?",
+      "front": "What is the purpose of tool-call interception hooks?",
       "back": "Block policy-violating outgoing tool calls (e.g., large refunds) and redirect to alternative workflows (human escalation).",
       "sources": [
         "Official CCAR-F Exam Guide — D1, Task 1.5"
@@ -706,7 +706,7 @@
         "ci_cd",
         "multi_agent_research"
       ],
-      "front": "Fixed sequential pipeline (prompt chaining) vs dynamic adaptive decomposition?",
+      "front": "When should you use a fixed sequential pipeline versus dynamic adaptive decomposition?",
       "back": "Sequential pipelines for predictable multi-step reviews; dynamic decomposition for open-ended investigation that adapts to intermediate findings.",
       "sources": [
         "Official CCAR-F Exam Guide — D1, Task 1.6"
@@ -728,7 +728,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "14-file PR review misses bugs and gives contradictory feedback. Restructure approach?",
+      "front": "A 14-file PR review misses bugs and gives contradictory feedback. How should you restructure the review?",
       "back": "Per-file local analysis passes, then a separate cross-file integration pass—avoids attention dilution.",
       "sources": [
         "Official CCAR-F Exam Guide — D1, Task 1.6; Sample Q12"
@@ -752,7 +752,7 @@
         "developer_productivity",
         "ci_cd"
       ],
-      "front": "Task: add comprehensive tests to a legacy codebase. Decomposition strategy?",
+      "front": "You need to add comprehensive tests to a legacy codebase. What decomposition strategy should you use?",
       "back": "Map structure → identify high-impact areas → prioritized plan that adapts as dependencies are discovered.",
       "sources": [
         "Official CCAR-F Exam Guide — D1, Task 1.6"
@@ -797,7 +797,7 @@
       "scenarios": [
         "developer_productivity"
       ],
-      "front": "Named session resumption in Claude Code—how?",
+      "front": "How do you resume a named session in Claude Code?",
       "back": "Use --resume with a session name to continue a specific prior conversation.",
       "sources": [
         "Official CCAR-F Exam Guide — D1, Task 1.7"
@@ -841,7 +841,7 @@
       "scenarios": [
         "developer_productivity"
       ],
-      "front": "Resume session after code changed vs start fresh?",
+      "front": "After the code has changed, when should you resume a session versus start fresh?",
       "back": "Resume when prior context is mostly valid; start fresh with injected summary when prior tool results are stale—more reliable than stale resumes.",
       "sources": [
         "Official CCAR-F Exam Guide — D1, Task 1.7"
@@ -853,7 +853,7 @@
       "tasks": [
         "1.7"
       ],
-      "rationale": "more reliable than stale resumes."
+      "rationale": "Resume when prior context is still valid. If tool results are stale after code changes, start fresh with an injected summary rather than a stale session."
     },
     {
       "id": "d1-038",
@@ -864,7 +864,7 @@
       "scenarios": [
         "developer_productivity"
       ],
-      "front": "Resuming a session after specific files changed—what to tell the agent?",
+      "front": "When resuming a session after specific files changed, what should you tell the agent?",
       "back": "Inform about specific file changes for targeted re-analysis—not require full re-exploration of the codebase.",
       "sources": [
         "Official CCAR-F Exam Guide — D1, Task 1.7"
@@ -876,7 +876,7 @@
       "tasks": [
         "1.7"
       ],
-      "rationale": "not require full re-exploration of the codebase."
+      "rationale": "Tell the resumed session which files changed so it re-analyzes those paths instead of re-exploring the whole codebase."
     },
     {
       "id": "d1-039",
@@ -887,7 +887,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Synthesis needs simple fact-checks (85%) but complex search (15%). Reduce latency without over-provisioning?",
+      "front": "Synthesis needs simple fact-checks 85% of the time and complex search 15% of the time. How do you reduce latency without over-provisioning?",
       "back": "Give synthesis a scoped verify_fact tool for simple lookups; complex verifications still delegate through coordinator to search agent.",
       "sources": [
         "Official CCAR-F Exam Guide — D1, Task 1.2–1.3; Sample Q9"
@@ -912,8 +912,8 @@
         "customer_support",
         "multi_agent_research"
       ],
-      "front": "Customer Support and Multi-Agent Research scenarios—shared primary domain?",
-      "back": "D1 (Agentic Architecture & Orchestration)—plus D2 tools/MCP and D5 context/reliability for both.",
+      "front": "Which primary domains do the Customer Support and Multi-Agent Research scenarios share?",
+      "back": "Both list D1 (Agentic Architecture), D2 (Tool Design & MCP), and D5 (Context Management & Reliability).",
       "sources": [
         "Official CCAR-F Exam Guide — scenario map"
       ],
@@ -934,7 +934,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Four coordinator responsibilities in hub-and-spoke orchestration?",
+      "front": "What are the four coordinator responsibilities in hub-and-spoke orchestration?",
       "back": "Task decomposition, delegation to subagents, result aggregation, and dynamic selection of which subagents to invoke.",
       "sources": [
         "Official CCAR-F Exam Guide — D1, Task 1.2"
@@ -1026,7 +1026,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "PostToolUse hook: what heterogeneous MCP fields should you normalize before the model sees them?",
+      "front": "In a PostToolUse hook, which heterogeneous MCP fields should you normalize before the model sees them?",
       "back": "Timestamps (Unix vs ISO 8601), numeric status codes, and other inconsistent formats from different backend tools.",
       "sources": [
         "Official CCAR-F Exam Guide — D1, Task 1.5"
@@ -1038,7 +1038,7 @@
       "tasks": [
         "1.5"
       ],
-      "rationale": "Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter."
+      "rationale": "Task 1.5: normalize Unix vs ISO timestamps, numeric status codes, and other inconsistent MCP fields in PostToolUse before they enter model context."
     },
     {
       "id": "d1-046",
@@ -1049,7 +1049,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Web search subagent times out. Best error propagation to the coordinator?",
+      "front": "The web search subagent times out. What error context should you send to the coordinator?",
       "back": "Structured error context: failure type, attempted query, partial results, and potential alternative approaches.",
       "sources": [
         "Official CCAR-F Exam Guide — D1, Task 1.2; Sample Q8"
@@ -1095,7 +1095,7 @@
         "customer_support"
       ],
       "front": "When should a support agent escalate to a human instead of continuing the agentic loop?",
-      "back": "Policy requires human judgment, identity cannot be verified, tool failures persist, or validation/confidence thresholds are not met.",
+      "back": "Customer explicitly requests a human, policy is silent or requires an exception, or the agent cannot make meaningful progress—not self-reported confidence scores.",
       "sources": [
         "Official CCAR-F Exam Guide — D1; Customer Support scenario"
       ],
@@ -1107,7 +1107,7 @@
       "tasks": [
         "5.2"
       ],
-      "rationale": "Correct choice avoids the wrong pattern: not met.."
+      "rationale": "Exam Guide task 5.2 names those three triggers. Sample Q3 rejects confidence thresholds and sentiment as proxies for complexity; identity ambiguity is resolved by asking for more identifiers, not by treating a confidence score as a stop signal."
     },
     {
       "id": "d1-049",
@@ -1118,7 +1118,7 @@
       "scenarios": [
         "developer_productivity"
       ],
-      "front": "Developer Productivity scenario—primary domains and D1 focus?",
+      "front": "For the Developer Productivity scenario, which domains are primary, and what is the D1 focus?",
       "back": "D2 (tools/MCP), D3 (Claude Code), D1 (delegation/orchestration with built-in tools + MCP servers).",
       "sources": [
         "Official CCAR-F Exam Guide — scenario map"
@@ -1140,7 +1140,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Typical subagent roles in a multi-agent research pipeline (Exam Scenario 3)?",
+      "front": "What typical subagent roles appear in a multi-agent research pipeline (Exam Scenario 3)?",
       "back": "Web search, document analysis, synthesis of findings, and report generation—coordinator delegates each role.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 3; D1, Task 1.2"
@@ -1162,7 +1162,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Subagent catches timeout and returns empty results marked successful. Why wrong?",
+      "front": "A subagent catches a timeout and returns empty results marked successful. Why is that wrong?",
       "back": "Suppresses failure—coordinator cannot recover, retry, or annotate coverage gaps; risks incomplete research output.",
       "sources": [
         "Official CCAR-F Exam Guide — D1; Sample Q8"
@@ -1184,7 +1184,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Subagent timeout propagates and terminates the entire research workflow. Why wrong?",
+      "front": "A subagent timeout terminates the entire research workflow. Why is that wrong?",
       "back": "Single failures often recoverable with partial results, alternate queries, or gap annotation—unnecessary full termination.",
       "sources": [
         "Official CCAR-F Exam Guide — D1; Sample Q8"
@@ -1207,7 +1207,7 @@
         "customer_support",
         "multi_agent_research"
       ],
-      "front": "When is prompt-based workflow guidance enough vs requiring programmatic gates or hooks?",
+      "front": "When is prompt-based workflow guidance enough, and when do you need programmatic gates or hooks?",
       "back": "Prompts suffice for soft ordering and preferences; programmatic enforcement when business rules need deterministic compliance (identity before money, refund caps).",
       "sources": [
         "Official CCAR-F Exam Guide — D1, Task 1.4–1.5"
@@ -1230,7 +1230,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Subagent retries timeout internally then returns generic 'search unavailable' to coordinator. Gap?",
+      "front": "A subagent retries a timeout internally, then returns generic 'search unavailable' to the coordinator. What information is missing?",
       "back": "Hides failure type, attempted query, and partial results—coordinator cannot make informed recovery decisions.",
       "sources": [
         "Official CCAR-F Exam Guide — D1; Sample Q8"
@@ -1253,7 +1253,7 @@
         "customer_support",
         "multi_agent_research"
       ],
-      "front": "Two stop_reason values that drive agentic loop control?",
+      "front": "Which two stop_reason values drive agentic loop control?",
       "back": "tool_use (continue loop—execute tools and append results) and end_turn (terminate and present response).",
       "sources": [
         "Official CCAR-F Exam Guide — D1, Task 1.1; Appendix"
@@ -1276,7 +1276,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Give synthesis agent all web search tools to eliminate coordinator round-trips. Why avoid?",
+      "front": "Why should you not give the synthesis agent all web search tools just to eliminate coordinator round-trips?",
       "back": "Over-provisions synthesis—violates separation of concerns and role-specific tool scoping; use scoped tools for common cases only.",
       "sources": [
         "Official CCAR-F Exam Guide — D1; Sample Q9"
@@ -1346,7 +1346,7 @@
         "customer_support",
         "developer_productivity"
       ],
-      "front": "Primary mechanism LLMs use to select among similar tools?",
+      "front": "What is the primary mechanism LLMs use to select among similar tools?",
       "back": "Tool descriptions—minimal descriptions lead to unreliable selection when tools overlap.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.1"
@@ -1437,7 +1437,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Generic analyze_content overlaps with analyze_document. Rename/fix strategy?",
+      "front": "Generic analyze_content overlaps with analyze_document. How should you rename or fix the tools?",
       "back": "Rename to purpose-specific names (e.g., extract_web_results) with web-specific descriptions that eliminate overlap.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.1"
@@ -1449,7 +1449,7 @@
       "tasks": [
         "2.1"
       ],
-      "rationale": "Exam judgment aligned to task 2.1: Rename to purpose-specific names (e."
+      "rationale": "Rename overlapping tools to purpose-specific names (for example extract_web_results) and write web-specific descriptions so selection is unambiguous."
     },
     {
       "id": "d2-007",
@@ -1461,7 +1461,7 @@
         "multi_agent_research",
         "structured_extraction"
       ],
-      "front": "One generic analyze_document tool does too much. How split it?",
+      "front": "One generic analyze_document tool does too much. How should you split it?",
       "back": "Purpose-specific tools with clear contracts: extract_data_points, summarize_content, verify_claim_against_source.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.1"
@@ -1507,7 +1507,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "Tool selection still wrong after improving descriptions. Next check?",
+      "front": "Tool selection is still wrong after improving descriptions. What should you check next?",
       "back": "Review system prompt for keyword-sensitive instructions that might override tool descriptions.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.1"
@@ -1519,7 +1519,7 @@
       "tasks": [
         "2.1"
       ],
-      "rationale": "Multi-pass or independent review reduces attention dilution and self-review bias in large change sets."
+      "rationale": "After descriptions are fixed, check the system prompt. Keyword-sensitive instructions can create unintended tool associations that override good descriptions."
     },
     {
       "id": "d2-010",
@@ -1530,7 +1530,7 @@
       "scenarios": [
         "developer_productivity"
       ],
-      "front": "Why expose one mega-tool that 'does anything on GitHub' to the agent?",
+      "front": "Why is exposing one mega-tool that 'does anything on GitHub' a problem?",
       "back": "Harder correct selection, weak error semantics, and excessive blast radius if mis-invoked.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.1"
@@ -1574,7 +1574,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "MCP pattern for communicating tool failures back to the agent?",
+      "front": "How should MCP tools communicate failures back to the agent?",
       "back": "The isError flag on tool results, plus structured error metadata—not raw stack traces or generic messages.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.2"
@@ -1599,7 +1599,7 @@
         "customer_support",
         "multi_agent_research"
       ],
-      "front": "Four MCP error categories the exam distinguishes?",
+      "front": "Which four MCP error categories does the exam distinguish?",
       "back": "Transient (timeouts, unavailability), validation (invalid input), business (policy violations), permission (access denied).",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.2"
@@ -1621,7 +1621,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "Why return generic 'Operation failed' for all tool errors?",
+      "front": "Why is returning generic 'Operation failed' for all tool errors a problem?",
       "back": "Prevents the agent from choosing appropriate recovery—retry, explain to user, escalate, or accept empty results.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.2"
@@ -1643,7 +1643,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "Structured error metadata fields for MCP tools (name three)?",
+      "front": "Name three structured error metadata fields for MCP tools.",
       "back": "errorCategory (transient/validation/permission/business), isRetryable boolean, and human-readable description.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.2"
@@ -1656,7 +1656,7 @@
       "tasks": [
         "2.2"
       ],
-      "rationale": "Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection."
+      "rationale": "Task 2.2 wants structured metadata: errorCategory, isRetryable, and a human-readable description so the agent can retry, explain, or stop."
     },
     {
       "id": "d2-016",
@@ -1667,7 +1667,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "Business rule violation (e.g., refund over policy limit). Error response design?",
+      "front": "How should you design the error response for a business-rule violation (for example, a refund over the policy limit)?",
       "back": "isRetryable: false, customer-friendly explanation so the agent can communicate appropriately—not retry endlessly.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.2"
@@ -1713,7 +1713,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Transient failure in a subagent. Handle locally vs propagate to coordinator?",
+      "front": "When a subagent hits a transient failure, when should it retry locally versus propagate to the coordinator?",
       "back": "Retry locally when possible; propagate only unresolved errors with partial results and what was attempted.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.2"
@@ -1736,7 +1736,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "Tool returns ambiguous error from external API. Best tool-layer behavior?",
+      "front": "A tool returns an ambiguous error from an external API. How should the tool layer behave?",
       "back": "Structured error payload (category, message, retryable flag)—not raw stack traces or silent failure.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.2"
@@ -1748,7 +1748,7 @@
       "tasks": [
         "2.2"
       ],
-      "rationale": "not raw stack traces or silent failure."
+      "rationale": "Translate ambiguous API failures into category, message, and retryable flag. Raw stack traces and silent failures both block recovery."
     },
     {
       "id": "d2-020",
@@ -1760,7 +1760,7 @@
         "multi_agent_research",
         "developer_productivity"
       ],
-      "front": "Why giving an agent 18 tools instead of 4–5 hurts reliability?",
+      "front": "Why does giving an agent 18 tools instead of 4–5 hurt reliability?",
       "back": "Increases decision complexity and degrades tool selection accuracy.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.3"
@@ -1783,7 +1783,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Synthesis agent attempts web searches. Likely tool design issue?",
+      "front": "The synthesis agent attempts web searches. What tool-design issue is likely?",
       "back": "Agent has tools outside its specialization—scoped access should limit synthesis to synthesis-appropriate tools.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.3"
@@ -1829,7 +1829,7 @@
         "customer_support",
         "structured_extraction"
       ],
-      "front": "Three tool_choice configuration options on the Claude API?",
+      "front": "What are the three tool_choice configuration options on the Claude API?",
       "back": "\"auto\" (model may return text), \"any\" (must call a tool), and forced selection {\"type\": \"tool\", \"name\": \"...\"}.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.3; Appendix"
@@ -1851,7 +1851,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "When use tool_choice: \"any\"?",
+      "front": "When should you set tool_choice to \"any\"?",
       "back": "When you need guaranteed tool invocation instead of conversational text—e.g., unknown document type among multiple extraction schemas.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.3"
@@ -1862,7 +1862,7 @@
       "tasks": [
         "2.3"
       ],
-      "rationale": "e.g., unknown document type among multiple extraction schemas."
+      "rationale": "tool_choice \"any\" forces a tool call (the model may choose which). Use it when you need structured extraction and the document type is unknown."
     },
     {
       "id": "d2-025",
@@ -1873,7 +1873,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "Must run extract_metadata before enrichment tools. tool_choice approach?",
+      "front": "You must run extract_metadata before enrichment tools. How should you set tool_choice?",
       "back": "Force specific tool first with {\"type\": \"tool\", \"name\": \"extract_metadata\"}, then process enrichment in follow-up turns.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.3"
@@ -1919,7 +1919,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Synthesis needs simple fact-checks often. Scoped cross-role tool pattern?",
+      "front": "Synthesis often needs simple fact-checks. What scoped cross-role tool pattern should you use?",
       "back": "Provide verify_fact for high-frequency simple lookups; route complex verification through coordinator to search agent.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.3; D1 Sample Q9"
@@ -1942,7 +1942,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "Refund tool should only run after verified identity. Tool design choice?",
+      "front": "A refund tool should run only after verified identity. What tool-design choice enforces that?",
       "back": "Least privilege: narrow tool exposure or refund tool requiring verified session token from prior identity tool.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.3; Customer Support scenario"
@@ -1955,7 +1955,7 @@
       "tasks": [
         "2.3"
       ],
-      "rationale": "Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter."
+      "rationale": "Least privilege: do not expose refund until identity is verified, or require a verified session token from get_customer. Prompts cannot guarantee ordering."
     },
     {
       "id": "d2-029",
@@ -1966,7 +1966,7 @@
       "scenarios": [
         "developer_productivity"
       ],
-      "front": "Project-level vs user-level MCP server configuration?",
+      "front": "How do project-level and user-level MCP server configurations differ?",
       "back": "Project .mcp.json for shared team tooling (version controlled); user ~/.claude.json for personal/experimental servers.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.4"
@@ -1989,7 +1989,7 @@
       "scenarios": [
         "developer_productivity"
       ],
-      "front": "Store GitHub token for team MCP server without committing secrets?",
+      "front": "How do you store a GitHub token for a team MCP server without committing secrets?",
       "back": "Environment variable expansion in .mcp.json (e.g., ${GITHUB_TOKEN}) with secrets in env—not in the repo.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.4"
@@ -2001,7 +2001,7 @@
       "tasks": [
         "2.4"
       ],
-      "rationale": "Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection."
+      "rationale": "Put ${GITHUB_TOKEN} (or similar) in project .mcp.json and keep the secret in the environment so the repo never contains credentials."
     },
     {
       "id": "d2-031",
@@ -2035,7 +2035,7 @@
         "developer_productivity",
         "multi_agent_research"
       ],
-      "front": "MCP resources vs MCP tools—when use resources?",
+      "front": "When should you use MCP resources instead of MCP tools?",
       "back": "Resources expose content catalogs (issue summaries, doc hierarchies, DB schemas) to reduce exploratory tool calls.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.4"
@@ -2056,7 +2056,7 @@
       "scenarios": [
         "developer_productivity"
       ],
-      "front": "Agent prefers Grep over a more capable MCP search tool. Fix?",
+      "front": "The agent prefers Grep over a more capable MCP search tool. How do you fix that?",
       "back": "Enhance MCP tool descriptions to explain capabilities and outputs in detail so the model understands when MCP beats built-ins.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.4"
@@ -2068,7 +2068,7 @@
       "tasks": [
         "2.4"
       ],
-      "rationale": "Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection."
+      "rationale": "If Grep wins over a richer MCP search tool, the MCP description is too weak. Spell out capabilities and outputs so the model knows when MCP is better."
     },
     {
       "id": "d2-034",
@@ -2079,7 +2079,7 @@
       "scenarios": [
         "developer_productivity"
       ],
-      "front": "Jira integration needed. Community MCP server vs custom?",
+      "front": "You need Jira integration. Should you use a community MCP server or a custom one?",
       "back": "Prefer existing community MCP for standard integrations (Jira); custom servers for team-specific workflows.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.4"
@@ -2091,7 +2091,7 @@
       "tasks": [
         "2.4"
       ],
-      "rationale": "Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection."
+      "rationale": "Use a community MCP for standard SaaS (Jira). Reserve custom servers for team-specific workflows the community server cannot cover."
     },
     {
       "id": "d2-035",
@@ -2102,7 +2102,7 @@
       "scenarios": [
         "developer_productivity"
       ],
-      "front": "Built-in Claude Code tools vs custom MCP—when prefer MCP?",
+      "front": "When should you prefer custom MCP over built-in Claude Code tools?",
       "back": "MCP for external systems (GitHub, DB, SaaS) or sharing tools across clients; built-ins for local repo operations.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.4–2.5"
@@ -2125,7 +2125,7 @@
       "scenarios": [
         "developer_productivity"
       ],
-      "front": "Built-in Grep vs Glob—primary use case for each?",
+      "front": "What is the primary use case for built-in Grep versus Glob?",
       "back": "Grep: search file contents for patterns (function names, errors, imports). Glob: match file paths by name/extension patterns.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.5"
@@ -2149,7 +2149,7 @@
       "scenarios": [
         "developer_productivity"
       ],
-      "front": "Find all test files named *.test.tsx anywhere in the repo. Which built-in tool?",
+      "front": "Which built-in tool finds all test files named *.test.tsx anywhere in the repo?",
       "back": "Glob with pattern like **/*.test.tsx.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.5"
@@ -2161,7 +2161,7 @@
       "tasks": [
         "2.5"
       ],
-      "rationale": "Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection."
+      "rationale": "Glob matches file paths. **/*.test.tsx finds tests by name anywhere; Grep searches file contents, not filenames."
     },
     {
       "id": "d2-038",
@@ -2172,7 +2172,7 @@
       "scenarios": [
         "developer_productivity"
       ],
-      "front": "Find all callers of a function across the codebase. Which built-in tool?",
+      "front": "Which built-in tool finds all callers of a function across the codebase?",
       "back": "Grep to search file contents for the function name/reference patterns.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.5"
@@ -2184,7 +2184,7 @@
       "tasks": [
         "2.5"
       ],
-      "rationale": "Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection."
+      "rationale": "Callers are content matches. Grep for the function name; Glob would only find files whose names happen to match."
     },
     {
       "id": "d2-039",
@@ -2195,7 +2195,7 @@
       "scenarios": [
         "developer_productivity"
       ],
-      "front": "Read/Write/Edit—when use Edit vs Read + Write?",
+      "front": "When should you use Edit versus Read plus Write?",
       "back": "Edit for targeted changes with unique anchor text; Read + Write when Edit fails due to non-unique matches.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.5"
@@ -2219,7 +2219,7 @@
       "scenarios": [
         "developer_productivity"
       ],
-      "front": "Best incremental codebase exploration pattern?",
+      "front": "What is the best incremental pattern for exploring a codebase?",
       "back": "Grep for entry points → Read to follow imports and trace flows—not read all files upfront.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.5"
@@ -2231,7 +2231,7 @@
       "tasks": [
         "2.5"
       ],
-      "rationale": "not read all files upfront."
+      "rationale": "Start with Grep for entry points, then Read along imports. Loading every file upfront wastes context and dilutes attention."
     },
     {
       "id": "d2-041",
@@ -2242,7 +2242,7 @@
       "scenarios": [
         "developer_productivity"
       ],
-      "front": "Trace usage across wrapper modules exporting many names?",
+      "front": "How do you trace usage across wrapper modules that export many names?",
       "back": "Identify all exported names first, then Grep for each name across the codebase.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.5"
@@ -2255,7 +2255,7 @@
       "tasks": [
         "2.5"
       ],
-      "rationale": "Tool choice follows capability fit: built-in tools for repo search, MCP for external systems—descriptions and scoping drive correct selection."
+      "rationale": "Wrapper modules re-export many names. List exports first, then Grep each name so you do not miss aliased callers."
     },
     {
       "id": "d2-042",
@@ -2290,7 +2290,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "Customer Support scenario MCP tools (Exam Scenario 1)—examples?",
+      "front": "What MCP tools appear in the Customer Support scenario (Exam Scenario 1)?",
       "back": "get_customer, lookup_order, process_refund, escalate_to_human—backend integration via custom MCP tools.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 1"
@@ -2313,7 +2313,7 @@
       "scenarios": [
         "developer_productivity"
       ],
-      "front": "Developer Productivity scenario built-in tools (Exam Scenario 4)?",
+      "front": "What built-in tools appear in the Developer Productivity scenario (Exam Scenario 4)?",
       "back": "Read, Write, Bash, Grep, Glob—plus MCP server integrations for external systems.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 4"
@@ -2335,7 +2335,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "Improve tool selection with keyword routing layer parsing user input each turn. Why often wrong?",
+      "front": "Why is adding a keyword-routing layer that parses user input each turn often the wrong way to improve tool selection?",
       "back": "Over-engineered—bypasses LLM NLU; fix descriptions first; routing doesn't solve ordering or description gaps.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.1; Sample Q2"
@@ -2357,7 +2357,7 @@
       "scenarios": [
         "developer_productivity"
       ],
-      "front": "MCP tools vs MCP resources—division of responsibility?",
+      "front": "How do MCP tools and MCP resources divide responsibility?",
       "back": "Tools perform actions (fetch, update, search); resources expose catalogs and static context (schemas, doc trees) to cut exploratory calls.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.4; Appendix in-scope"
@@ -2379,7 +2379,7 @@
       "scenarios": [
         "developer_productivity"
       ],
-      "front": "Why return structured isRetryable metadata on errors?",
+      "front": "Why should error results include structured isRetryable metadata?",
       "back": "Lets the agent retry transient failures and avoid wasted retries on non-retryable business or validation errors.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.2"
@@ -2401,7 +2401,7 @@
       "scenarios": [
         "developer_productivity"
       ],
-      "front": "Built-in Bash tool—when use vs Grep?",
+      "front": "When should you use the built-in Bash tool versus Grep?",
       "back": "Bash for shell commands and scripted operations; Grep for searching file contents for patterns across the codebase.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.5; Scenario 4; Appendix"
@@ -2424,7 +2424,7 @@
         "customer_support",
         "structured_extraction"
       ],
-      "front": "tool_choice: \"auto\"—what can the model return?",
+      "front": "What can the model return when tool_choice is \"auto\"?",
       "back": "The model may respond with conversational text instead of calling a tool—no guaranteed tool invocation.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.3; D4 Task 4.3"
@@ -2447,7 +2447,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "Similar tools misroute. Add 5–8 few-shot tool-selection examples first?",
+      "front": "Similar tools misroute. Why is adding 5–8 few-shot tool-selection examples the wrong first step?",
       "back": "Adds token overhead without fixing root cause—inadequate tool descriptions are the primary selection mechanism.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.1; Sample Q2"
@@ -2470,7 +2470,7 @@
       "scenarios": [
         "developer_productivity"
       ],
-      "front": "Edit built-in tool—how does it modify files?",
+      "front": "How does the built-in Edit tool modify files?",
       "back": "Targeted modifications using unique text matching as anchor—fails when anchor text is not unique.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.5"
@@ -2492,7 +2492,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "errorCategory for policy violation refund blocked?",
+      "front": "Which errorCategory should you use when a policy violation blocks a refund?",
       "back": "Business error with isRetryable: false and customer-friendly explanation—not transient or permission.",
       "sources": [
         "Official CCAR-F Exam Guide — D2, Task 2.2"
@@ -2504,7 +2504,7 @@
       "tasks": [
         "2.2"
       ],
-      "rationale": "not transient or permission."
+      "rationale": "Policy violations are business errors: isRetryable false plus a customer-friendly explanation. They are not transient timeouts or permission denials."
     },
     {
       "id": "d3-001",
@@ -2539,7 +2539,7 @@
         "code_generation",
         "developer_productivity"
       ],
-      "front": "CLAUDE.md configuration hierarchy (three levels)?",
+      "front": "What are the three levels of the CLAUDE.md configuration hierarchy?",
       "back": "User (~/.claude/CLAUDE.md), project (.claude/CLAUDE.md or root CLAUDE.md), and directory-level (subdirectory CLAUDE.md files).",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.1"
@@ -2562,7 +2562,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "New teammate doesn't receive team coding standards in Claude Code. Likely cause?",
+      "front": "A new teammate does not receive team coding standards in Claude Code. What is the likely cause?",
       "back": "Instructions are in user-level ~/.claude/CLAUDE.md—not shared via version control; move to project-level config.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.1"
@@ -2574,7 +2574,7 @@
       "tasks": [
         "3.1"
       ],
-      "rationale": "not shared via version control; move to project-level config."
+      "rationale": "User-level ~/.claude/CLAUDE.md is not in git. Team standards belong in project CLAUDE.md so clones pick them up."
     },
     {
       "id": "d3-004",
@@ -2607,7 +2607,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Monolithic CLAUDE.md is hard to maintain. Alternative organization?",
+      "front": "A monolithic CLAUDE.md is hard to maintain. How should you reorganize it?",
       "back": "Split into focused files in .claude/rules/ (e.g., testing.md, api-conventions.md, deployment.md).",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.1"
@@ -2619,7 +2619,7 @@
       "tasks": [
         "3.1"
       ],
-      "rationale": "Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter."
+      "rationale": "Split a monolithic CLAUDE.md into focused files under .claude/rules/ (testing.md, api-conventions.md, deployment.md) instead of one huge always-loaded file."
     },
     {
       "id": "d3-006",
@@ -2630,7 +2630,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Inconsistent Claude Code behavior across sessions—how diagnose loaded config?",
+      "front": "Claude Code behaves inconsistently across sessions. How do you diagnose which config is loaded?",
       "back": "Use /memory to verify which memory files are loaded and what context is active.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.1"
@@ -2642,7 +2642,7 @@
       "tasks": [
         "3.1"
       ],
-      "rationale": "Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases."
+      "rationale": "/memory shows which memory files are loaded. Use it when behavior drifts across sessions because the wrong CLAUDE.md layer is active."
     },
     {
       "id": "d3-007",
@@ -2653,7 +2653,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Why skip shared project CLAUDE.md when multiple developers use Claude Code?",
+      "front": "Why is it a problem to skip a shared project CLAUDE.md when multiple developers use Claude Code?",
       "back": "Inconsistent conventions, duplicated prompt context, and drift in how the agent edits code across teammates.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.1"
@@ -2676,7 +2676,7 @@
         "code_generation",
         "ci_cd"
       ],
-      "front": "Team /review slash command for every developer on clone. Where create it?",
+      "front": "Where should you create a team /review slash command so every developer gets it on clone?",
       "back": ".claude/commands/ in the project repository—version-controlled and shared on clone/pull.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.2; Sample Q4"
@@ -2699,7 +2699,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Project-scoped vs user-scoped slash commands?",
+      "front": "How do project-scoped and user-scoped slash commands differ?",
       "back": ".claude/commands/ in repo (shared via git) vs ~/.claude/commands/ (personal, not version controlled).",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.2"
@@ -2722,7 +2722,7 @@
         "code_generation",
         "developer_productivity"
       ],
-      "front": "Skill frontmatter options in .claude/skills/SKILL.md (name three)?",
+      "front": "Name three Skill frontmatter options in .claude/skills/SKILL.md.",
       "back": "context: fork, allowed-tools, and argument-hint.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.2"
@@ -2745,7 +2745,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Skill produces verbose codebase analysis output. Frontmatter to isolate it?",
+      "front": "A skill produces verbose codebase analysis. Which frontmatter option isolates that output?",
       "back": "context: fork—runs skill in isolated sub-agent context so output doesn't pollute main conversation.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.2"
@@ -2768,7 +2768,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Skill should only write files, not run destructive shell commands. Frontmatter?",
+      "front": "A skill should only write files, not run destructive shell commands. Which frontmatter option enforces that?",
       "back": "allowed-tools restricting tool access during skill execution (e.g., file write operations only).",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.2"
@@ -2780,7 +2780,7 @@
       "tasks": [
         "3.2"
       ],
-      "rationale": "Exam judgment aligned to task 3.2: allowed-tools restricting tool access during skill execution (e."
+      "rationale": "allowed-tools in skill frontmatter limits what the skill can invoke—for example file writes only, so it cannot run destructive shell commands."
     },
     {
       "id": "d3-013",
@@ -2791,7 +2791,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Developer invokes skill without required arguments. Frontmatter help?",
+      "front": "A developer invokes a skill without required arguments. Which frontmatter option helps?",
       "back": "argument-hint prompts for required parameters when the skill is invoked without them.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.2"
@@ -2814,7 +2814,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Skills vs CLAUDE.md—when use each?",
+      "front": "When should you use Skills versus CLAUDE.md?",
       "back": "Skills: on-demand task-specific workflows. CLAUDE.md: always-loaded universal standards for the project.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.2"
@@ -2836,7 +2836,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Personal skill customization without affecting teammates?",
+      "front": "How do you customize a skill for yourself without affecting teammates?",
       "back": "Create personal variants in ~/.claude/skills/ with different names—not in shared project skills.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.2"
@@ -2882,7 +2882,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Test files spread as Button.test.tsx next to Button.tsx. Apply test conventions automatically?",
+      "front": "Test files sit as Button.test.tsx next to Button.tsx. How do you apply test conventions automatically?",
       "back": ".claude/rules/ with glob paths like **/*.test.tsx—applies by file type across all directories.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.3; Sample Q6"
@@ -2928,7 +2928,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Path-specific rules vs subdirectory CLAUDE.md for scattered test files?",
+      "front": "For scattered test files, when should you use path-specific rules versus subdirectory CLAUDE.md?",
       "back": "Path-specific glob rules apply by file pattern anywhere in the tree; subdirectory CLAUDE.md is directory-bound.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.3"
@@ -2950,7 +2950,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Benefit of path-scoped rules loading only on matching files?",
+      "front": "What is the benefit of path-scoped rules loading only for matching files?",
       "back": "Reduces irrelevant context and token usage—conventions apply only when relevant.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.3"
@@ -2972,7 +2972,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Restructure monolith into microservices—dozens of files, architectural decisions. Approach?",
+      "front": "You need to restructure a monolith into microservices across dozens of files. Which approach should you take first?",
       "back": "Plan mode: explore codebase, understand dependencies, design approach before making changes.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.4; Sample Q5"
@@ -2995,7 +2995,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Plan mode vs direct execution—when use each?",
+      "front": "When should you use plan mode versus direct execution?",
       "back": "Plan mode: large-scale, multi-file, architectural, multiple valid approaches. Direct execution: simple, well-scoped single changes.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.4"
@@ -3018,7 +3018,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Single-file bug fix with clear stack trace. Plan mode or direct execution?",
+      "front": "For a single-file bug fix with a clear stack trace, should you use plan mode or direct execution?",
       "back": "Direct execution—well-understood change with clear scope.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.4"
@@ -3062,7 +3062,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Library migration affecting 45+ files—workflow pattern?",
+      "front": "A library migration affects 45+ files. What workflow pattern should you use?",
       "back": "Plan mode for investigation and design, then direct execution to implement the planned approach.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.4"
@@ -3074,7 +3074,7 @@
       "tasks": [
         "3.4"
       ],
-      "rationale": "Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter."
+      "rationale": "Plan mode for investigation and design on a 45+ file migration, then direct execution to implement the agreed plan."
     },
     {
       "id": "d3-026",
@@ -3085,7 +3085,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Start monolith-to-microservices in direct execution, switch to plan if complexity emerges. Why wrong?",
+      "front": "Why is it wrong to start a monolith-to-microservices split in direct execution and switch to plan only if complexity emerges?",
       "back": "Complexity is already stated—plan first prevents costly rework from late-discovered dependencies.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.4; Sample Q5"
@@ -3107,7 +3107,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Natural language transformation spec produces inconsistent code. Best fix?",
+      "front": "A natural-language transformation spec produces inconsistent code. What is the best fix?",
       "back": "Provide 2–3 concrete input/output examples showing expected transformations.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.5"
@@ -3130,7 +3130,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Test-driven iteration pattern with Claude Code?",
+      "front": "What is the test-driven iteration pattern with Claude Code?",
       "back": "Write tests first (behavior, edge cases, performance), then iterate by sharing test failures to guide fixes.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.5"
@@ -3174,7 +3174,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Fix multiple issues in one message vs sequentially?",
+      "front": "When should you fix multiple issues in one message versus sequentially?",
       "back": "Single message when fixes interact; sequential iteration when issues are independent.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.5"
@@ -3195,7 +3195,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Migration script mishandles null edge cases. Iteration approach?",
+      "front": "A migration script mishandles null edge cases. How should you iterate with Claude?",
       "back": "Provide specific test cases with example input and expected output for the failing edge case.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.5"
@@ -3218,7 +3218,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "CI job hangs—Claude Code waiting for interactive input. Fix?",
+      "front": "A CI job hangs because Claude Code is waiting for interactive input. How do you fix that?",
       "back": "Use -p (or --print) flag for non-interactive mode: process prompt, output result, exit.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.6; Sample Q10"
@@ -3242,7 +3242,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "Post structured PR review findings as inline comments from CI. CLI flags?",
+      "front": "Which CLI flags post structured PR review findings as inline comments from CI?",
       "back": "--output-format json with --json-schema for machine-parseable structured findings.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.6"
@@ -3254,7 +3254,7 @@
       "tasks": [
         "3.6"
       ],
-      "rationale": "Multi-pass or independent review reduces attention dilution and self-review bias in large change sets."
+      "rationale": "--output-format json with --json-schema produces machine-parseable findings so CI can post inline PR comments. This is not a review-architecture question."
     },
     {
       "id": "d3-034",
@@ -3265,7 +3265,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "How provide project context to CI-invoked Claude Code?",
+      "front": "How do you provide project context to Claude Code invoked from CI?",
       "back": "CLAUDE.md with testing standards, fixture conventions, and review criteria loaded automatically.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.6"
@@ -3309,7 +3309,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "Re-run PR review after new commits—avoid duplicate inline comments?",
+      "front": "When re-running a PR review after new commits, how do you avoid duplicate inline comments?",
       "back": "Include prior review findings in context; instruct Claude to report only new or still-unaddressed issues.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.6"
@@ -3321,7 +3321,7 @@
       "tasks": [
         "3.6"
       ],
-      "rationale": "Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases."
+      "rationale": "Pass prior findings back in and instruct Claude to report only new or still-open issues so re-runs do not spam duplicate comments."
     },
     {
       "id": "d3-037",
@@ -3332,7 +3332,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "CI test generation suggests scenarios already in the suite. Context fix?",
+      "front": "CI test generation suggests scenarios already in the suite. What context should you add?",
       "back": "Provide existing test files in context so generation avoids duplicate coverage.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.6"
@@ -3344,7 +3344,7 @@
       "tasks": [
         "3.6"
       ],
-      "rationale": "Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases."
+      "rationale": "Put existing test files in context so generation does not propose coverage the suite already has."
     },
     {
       "id": "d3-038",
@@ -3356,7 +3356,7 @@
         "ci_cd",
         "code_generation"
       ],
-      "front": "Reduce low-value generated tests in Claude Code?",
+      "front": "How do you reduce low-value generated tests in Claude Code?",
       "back": "Document testing standards, valuable test criteria, and available fixtures in CLAUDE.md.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.6"
@@ -3368,7 +3368,7 @@
       "tasks": [
         "3.6"
       ],
-      "rationale": "Exam judgment aligned to task 3.6: Document testing standards, valuable test criteria, and available fixtures in CLAUDE."
+      "rationale": "Document testing standards, what a valuable test looks like, and available fixtures in CLAUDE.md so CI generation produces fewer low-value tests."
     },
     {
       "id": "d3-039",
@@ -3379,7 +3379,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "Running Claude Code in CI for PR review. Critical configuration concerns?",
+      "front": "When running Claude Code in CI for PR review, what configuration concerns matter most?",
       "back": "Non-interactive (-p), explicit permissions, structured/deterministic outputs, independent review instance—not open-ended agent runs.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.6"
@@ -3391,7 +3391,7 @@
       "tasks": [
         "3.6"
       ],
-      "rationale": "not open-ended agent runs."
+      "rationale": "CI needs -p (non-interactive), tight permissions, structured output, and an independent review instance—not an open-ended interactive agent."
     },
     {
       "id": "d3-040",
@@ -3402,7 +3402,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "CI non-interactive flags that do NOT exist (name two)?",
+      "front": "Name two CI non-interactive flags that do not exist for Claude Code.",
       "back": "CLAUDE_HEADLESS env var and --batch flag—use -p/--print instead.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.6; Sample Q10"
@@ -3424,7 +3424,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Code Generation scenario (Scenario 2)—primary domains?",
+      "front": "What are the primary domains for the Code Generation scenario (Scenario 2)?",
       "back": "D3 (Claude Code config/workflows) and D5 (context management/reliability).",
       "sources": [
         "Official CCAR-F Exam Guide — scenario map"
@@ -3446,7 +3446,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "CI/CD with Claude Code scenario (Scenario 5)—primary domains?",
+      "front": "What are the primary domains for the CI/CD with Claude Code scenario (Scenario 5)?",
       "back": "D3 (Claude Code) and D4 (prompt engineering/structured output for review findings).",
       "sources": [
         "Official CCAR-F Exam Guide — scenario map"
@@ -3470,7 +3470,7 @@
         "developer_productivity",
         "code_generation"
       ],
-      "front": "Scenario 2 tools: slash commands, CLAUDE.md, plan mode—what is being tested?",
+      "front": "Scenario 2 involves slash commands, CLAUDE.md, and plan mode. What skill is the exam testing?",
       "back": "Integrating Claude Code into dev workflow: team config, custom commands, and when to plan vs execute directly.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 2"
@@ -3493,7 +3493,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Example path-scoped rule for Terraform files only?",
+      "front": "What is an example path-scoped rule that applies only to Terraform files?",
       "back": ".claude/rules/ file with frontmatter paths: [\"terraform/**/*\"] loading only when editing matching files.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.3"
@@ -3537,7 +3537,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Monolith-to-microservices: direct execution with comprehensive upfront structure instructions. Why wrong?",
+      "front": "For a monolith-to-microservices split, why is direct execution with comprehensive upfront structure instructions wrong?",
       "back": "Assumes structure without codebase exploration—dependencies discovered late cause costly rework; plan first.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.4; Sample Q5"
@@ -3559,7 +3559,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Auto-apply conventions via skills in .claude/skills/ instead of path rules. Why insufficient?",
+      "front": "Why is auto-applying conventions via skills in .claude/skills/ insufficient compared with path rules?",
       "back": "Skills require manual invocation or model choice—not deterministic path-based automatic application.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.3; Sample Q6"
@@ -3582,7 +3582,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Test-driven iteration before implementation—what should tests cover?",
+      "front": "In test-driven iteration before implementation, what should the tests cover?",
       "back": "Expected behavior, edge cases, and performance requirements—iterate by sharing failures with Claude.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.5"
@@ -3605,7 +3605,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "context: fork for skills—another use case besides verbose codebase analysis?",
+      "front": "Besides verbose codebase analysis, what is another use case for context: fork on skills?",
       "back": "Exploratory brainstorming of alternatives—isolates speculative output from the main session.",
       "sources": [
         "Official CCAR-F Exam Guide — D3, Task 3.2"
@@ -3628,7 +3628,7 @@
       "scenarios": [
         "developer_productivity"
       ],
-      "front": "Developer Productivity scenario (Scenario 4)—primary domains?",
+      "front": "What are the primary domains for the Developer Productivity scenario (Scenario 4)?",
       "back": "D2 (built-in tools + MCP), D3 (Claude Code workflows), D1 (delegation/orchestration).",
       "sources": [
         "Official CCAR-F Exam Guide — scenario map"
@@ -3653,7 +3653,7 @@
         "structured_extraction",
         "ci_cd"
       ],
-      "front": "Why use structured output (JSON schema) instead of parsing free-text responses?",
+      "front": "Why should you use structured output (JSON schema) instead of parsing free-text responses?",
       "back": "Enables validation, automated retries on failure, and downstream automation without fragile regex on prose.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.3",
@@ -3675,7 +3675,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "Explicit review criteria vs vague instructions like 'be conservative'?",
+      "front": "Why are explicit review criteria better than vague instructions like 'be conservative'?",
       "back": "Specific categorical criteria (flag when comment contradicts code) beat vague confidence filtering for precision.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.1"
@@ -3698,7 +3698,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "Automated review has high false positives in one category—developers ignore all findings. First response?",
+      "front": "Automated review has high false positives in one category, and developers ignore all findings. What should you do first?",
       "back": "Temporarily disable the high false-positive category to restore trust while improving prompts for that category.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.1"
@@ -3710,7 +3710,7 @@
       "tasks": [
         "4.1"
       ],
-      "rationale": "Multi-pass or independent review reduces attention dilution and self-review bias in large change sets."
+      "rationale": "High false positives in one category destroy trust in every category. Disable that category while you tighten its prompt, then turn it back on."
     },
     {
       "id": "d4-004",
@@ -3721,7 +3721,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "How define consistent severity levels in automated code review prompts?",
+      "front": "How do you define consistent severity levels in automated code review prompts?",
       "back": "Explicit severity criteria with concrete code examples for each level—not generic confidence thresholds.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.1"
@@ -3744,7 +3744,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "Why high false-positive rates in one review category hurt the whole system?",
+      "front": "Why do high false-positive rates in one review category hurt the whole system?",
       "back": "Developers lose trust and dismiss accurate findings in other categories too.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.1"
@@ -3766,7 +3766,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "Review prompt design: report bugs/security vs skip minor style?",
+      "front": "How should a review prompt distinguish bugs and security issues from minor style nits?",
       "back": "Define explicit categories to report versus skip—don't rely on confidence-based filtering alone.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.1"
@@ -3811,7 +3811,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "Review output format inconsistent (location, severity, fix). Improvement?",
+      "front": "Review output format is inconsistent (location, severity, fix). How should you improve it?",
       "back": "Few-shot examples demonstrating exact desired format (location, issue, severity, suggested fix).",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.2"
@@ -3823,7 +3823,7 @@
       "tasks": [
         "4.2"
       ],
-      "rationale": "Multi-pass or independent review reduces attention dilution and self-review bias in large change sets."
+      "rationale": "Few-shot examples of the exact format (location, issue, severity, suggested fix) beat more prose instructions when structure is inconsistent."
     },
     {
       "id": "d4-009",
@@ -3834,7 +3834,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "Reduce false positives while still catching real bugs in review?",
+      "front": "How do you reduce false positives in review while still catching real bugs?",
       "back": "Few-shot examples distinguishing acceptable local patterns from genuine issues—shows reasoning for each.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.2"
@@ -3857,7 +3857,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "Extraction fails on varied document layouts (inline citations vs bibliographies). Fix?",
+      "front": "Extraction fails on varied document layouts (inline citations versus bibliographies). How do you fix that?",
       "back": "Few-shot examples showing correct handling of each document structure variant.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.2"
@@ -3880,7 +3880,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "Model returns null/empty for required fields on varied formats. Few-shot approach?",
+      "front": "The model returns null or empty required fields on varied formats. What few-shot approach should you use?",
       "back": "Examples demonstrating correct extraction from each format variant—not just schema tightening alone.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.2"
@@ -3904,7 +3904,7 @@
         "structured_extraction",
         "ci_cd"
       ],
-      "front": "How many few-shot examples for ambiguous scenarios, and what show?",
+      "front": "How many few-shot examples should you use for ambiguous scenarios, and what should they show?",
       "back": "2–4 targeted examples with reasoning for why one action was chosen over plausible alternatives.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.2"
@@ -3926,7 +3926,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "Most reliable approach for guaranteed schema-compliant JSON output?",
+      "front": "What is the most reliable approach for guaranteed schema-compliant JSON output?",
       "back": "tool_use with JSON schemas—eliminates JSON syntax errors vs free-text JSON generation.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.3"
@@ -3972,7 +3972,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "Source document may omit a field. Schema design to prevent fabrication?",
+      "front": "The source document may omit a field. How should you design the schema to prevent fabrication?",
       "back": "Make fields optional/nullable when information may be absent—don't require fields the source lacks.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.3"
@@ -3996,7 +3996,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "Extensible category field in extraction schema—pattern?",
+      "front": "What schema pattern should you use for an extensible category field?",
       "back": "Enum with \"other\" plus a detail string field for categories not in the predefined list.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.3"
@@ -4008,7 +4008,7 @@
       "tasks": [
         "4.3"
       ],
-      "rationale": "Correct choice avoids the wrong pattern: not in the predefined list.."
+      "rationale": "Use an enum plus an 'other' value and a detail string so unknown categories are captured instead of forced into a wrong bucket."
     },
     {
       "id": "d4-017",
@@ -4019,7 +4019,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "Ambiguous source data in extraction—enum design?",
+      "front": "Source data can be ambiguous. How should you design the extraction enum?",
       "back": "Add enum value like \"unclear\" for ambiguous cases rather than forcing a wrong category.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.3"
@@ -4042,7 +4042,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "Inconsistent date formats in source documents alongside strict schema?",
+      "front": "Source documents have inconsistent date formats, but the output schema is strict. What should you do?",
       "back": "Include format normalization rules in the prompt alongside the strict output schema.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.3"
@@ -4054,7 +4054,7 @@
       "tasks": [
         "4.3"
       ],
-      "rationale": "Structured output plus validation-retry separates syntax from semantics; schemas must reflect absent data, not force fabrication."
+      "rationale": "Keep the output schema strict, and put date-normalization rules in the prompt so inconsistent source formats still map to one output shape."
     },
     {
       "id": "d4-019",
@@ -4065,7 +4065,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "Multiple extraction schemas; document type unknown at request time. tool_choice?",
+      "front": "You have multiple extraction schemas and the document type is unknown at request time. How should you set tool_choice?",
       "back": "tool_choice: \"any\" to guarantee structured tool output instead of conversational text.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.3"
@@ -4077,7 +4077,7 @@
       "tasks": [
         "4.3"
       ],
-      "rationale": "Structured output plus validation-retry separates syntax from semantics; schemas must reflect absent data, not force fabrication."
+      "rationale": "tool_choice \"any\" guarantees a tool call when several extraction schemas exist and the document type is unknown—auto may return chat text instead."
     },
     {
       "id": "d4-020",
@@ -4088,7 +4088,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "Where extract structured data from a tool_use extraction call?",
+      "front": "Where do you extract structured data from a tool_use extraction call?",
       "back": "From the tool_use response block—schema defines tool input parameters; model fills structured fields there.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.3"
@@ -4134,7 +4134,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "When will validation retries succeed vs fail?",
+      "front": "When do validation retries succeed, and when do they fail?",
       "back": "Succeed on format/structural mismatches. Fail when required info is absent from source (or only in external doc not provided).",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.4"
@@ -4157,7 +4157,7 @@
         "structured_extraction",
         "ci_cd"
       ],
-      "front": "Schema syntax errors vs semantic validation errors?",
+      "front": "How do schema syntax errors differ from semantic validation errors?",
       "back": "Syntax errors eliminated by tool_use strict schemas; semantic errors need cross-field rules (totals, field placement).",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.4"
@@ -4179,7 +4179,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "Developers dismiss many automated findings. Feedback loop design?",
+      "front": "Developers dismiss many automated findings. How should you design the feedback loop?",
       "back": "Add detected_pattern field to findings to analyze which constructs trigger false positives when dismissed.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.4"
@@ -4202,7 +4202,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "Self-correction for invoice totals that don't add up?",
+      "front": "How should extraction self-correct when invoice totals do not add up?",
       "back": "Extract calculated_total alongside stated_total and flag discrepancies; add conflict_detected for inconsistent source data.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.4"
@@ -4225,7 +4225,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "Extraction misses nullable fields intermittently. Best improvement?",
+      "front": "Extraction misses nullable fields intermittently. What is the best improvement?",
       "back": "Tighten required vs optional schema, validation-retry loop, and explicit examples for null/edge cases.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.3–4.4; Structured Extraction scenario"
@@ -4239,7 +4239,7 @@
         "4.3",
         "4.4"
       ],
-      "rationale": "Structured output plus validation-retry separates syntax from semantics; schemas must reflect absent data, not force fabrication."
+      "rationale": "Mark truly optional fields nullable, retry with validation errors, and add few-shot null/edge examples. Tightening every field to required causes fabrication."
     },
     {
       "id": "d4-027",
@@ -4251,7 +4251,7 @@
         "ci_cd",
         "structured_extraction"
       ],
-      "front": "Message Batches API tradeoffs (cost, latency)?",
+      "front": "What are the cost and latency tradeoffs of the Message Batches API?",
       "back": "50% cost savings, up to 24-hour processing window, no guaranteed latency SLA.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.5; Appendix"
@@ -4273,7 +4273,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "Pre-merge blocking check vs overnight technical debt report—batch API for both?",
+      "front": "Should you use the Batch API for both a pre-merge blocking check and an overnight technical-debt report?",
       "back": "Batch only for latency-tolerant jobs (overnight reports); keep synchronous API for blocking pre-merge checks.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.5; Sample Q11"
@@ -4296,7 +4296,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "Message Batches API limitation on tool calling?",
+      "front": "What is the Message Batches API limitation on tool calling?",
       "back": "No multi-turn tool calling within a single batch request—cannot execute tools mid-request and return results.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.5"
@@ -4318,7 +4318,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "custom_id in Message Batches API—purpose?",
+      "front": "What is the purpose of custom_id in the Message Batches API?",
       "back": "Correlate batch request/response pairs and identify failed documents for resubmission.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.5"
@@ -4340,7 +4340,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "Batch job failures—resubmission strategy?",
+      "front": "How should you resubmit failed documents from a batch job?",
       "back": "Resubmit only failed documents by custom_id with modifications (e.g., chunk oversized docs that exceeded context).",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.5"
@@ -4352,7 +4352,7 @@
       "tasks": [
         "4.5"
       ],
-      "rationale": "Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases."
+      "rationale": "Resubmit only failed custom_id items, with fixes such as chunking docs that exceeded context. Do not resubmit the whole batch."
     },
     {
       "id": "d4-032",
@@ -4363,7 +4363,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "Before batch-processing 10,000 documents—cost reduction step?",
+      "front": "Before batch-processing 10,000 documents, what cost-reduction step should you take first?",
       "back": "Refine prompts on a sample set first to maximize first-pass success and reduce resubmission costs.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.5"
@@ -4375,7 +4375,7 @@
       "tasks": [
         "4.5"
       ],
-      "rationale": "Match API latency and cost to workflow: blocking paths need synchronous calls; overnight jobs can use batch savings."
+      "rationale": "Refine prompts on a sample before 10k documents so first-pass success is high and you avoid expensive resubmission loops."
     },
     {
       "id": "d4-033",
@@ -4386,7 +4386,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "Why self-review of generated code in the same session is limited?",
+      "front": "Why is self-review of generated code in the same session limited?",
       "back": "Model retains generation reasoning context—less likely to question its own decisions than an independent reviewer.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.6"
@@ -4408,7 +4408,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "Best approach to catch subtle issues in AI-generated code?",
+      "front": "What is the best approach to catch subtle issues in AI-generated code?",
       "back": "Second independent Claude instance reviewing without the generator's reasoning context.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.6"
@@ -4420,7 +4420,7 @@
       "tasks": [
         "4.6"
       ],
-      "rationale": "Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases."
+      "rationale": "A second Claude instance without the generator's reasoning context catches subtle bugs better than same-session self-review or extended thinking alone."
     },
     {
       "id": "d4-035",
@@ -4431,7 +4431,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "Large multi-file PR review—multi-pass architecture?",
+      "front": "For a large multi-file PR review, what multi-pass architecture should you use?",
       "back": "Per-file passes for local issues plus separate integration pass for cross-file data flow.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.6; Sample Q12"
@@ -4454,8 +4454,8 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "Route review findings to human triage by severity—schema approach?",
-      "back": "Verification pass where model reports confidence alongside each finding for calibrated routing.",
+      "front": "How should you route automated review findings to human triage?",
+      "back": "Run a verification pass where the model reports confidence alongside each finding, then route using calibrated thresholds (high-severity / low-confidence to humans).",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.6"
       ],
@@ -4466,7 +4466,7 @@
       "tasks": [
         "4.6"
       ],
-      "rationale": "Multi-pass or independent review reduces attention dilution and self-review bias in large change sets."
+      "rationale": "Task 4.6 uses a verification pass with self-reported confidence for calibrated routing. That is different from using uncalibrated confidence as an escalation trigger in support."
     },
     {
       "id": "d4-037",
@@ -4478,7 +4478,7 @@
         "ci_cd",
         "structured_extraction"
       ],
-      "front": "Prompt-only PR findings vs JSON schema for CI gates?",
+      "front": "When should PR findings be prompt-only versus JSON schema for CI gates?",
       "back": "Schema for machine consumption (CI gates, dashboards); prompts alone only for human-readable narrative.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.3; CI/CD scenario"
@@ -4500,7 +4500,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "Why trust model self-reported confidence without validation?",
+      "front": "Why is it a problem to trust model self-reported confidence without validation?",
       "back": "Not calibrated by default—use schema checks, cross-field rules, or human review thresholds for high-risk fields.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.4; D5 crossover"
@@ -4522,7 +4522,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "Run three full PR review passes and only flag issues in 2+ passes. Why wrong?",
+      "front": "Why is it wrong to run three full PR review passes and only flag issues that appear in two or more?",
       "back": "Suppresses real bugs caught intermittently—consensus filtering hides attention-dilution problems; split passes instead.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.6; Sample Q12"
@@ -4544,7 +4544,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "Structured Data Extraction scenario (Scenario 6)—primary domains?",
+      "front": "What are the primary domains for the Structured Data Extraction scenario (Scenario 6)?",
       "back": "D4 (schemas, validation, batch) and D5 (reliability, human review for low confidence).",
       "sources": [
         "Official CCAR-F Exam Guide — scenario map"
@@ -4567,7 +4567,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "Scenario 6 extraction system requirements from the exam guide?",
+      "front": "What extraction-system requirements does the exam guide list for Scenario 6?",
       "back": "Extract from unstructured docs, validate with JSON schemas, handle edge cases, integrate with downstream systems.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 6"
@@ -4590,7 +4590,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "Few-shot examples reduce hallucination in extraction—example use cases?",
+      "front": "What extraction use cases benefit from few-shot examples to reduce hallucination?",
       "back": "Informal measurements, varied document structures, and inconsistent field formats in source documents.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.2"
@@ -4612,7 +4612,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "Switch blocking pre-merge checks to batch API with status polling. Why wrong?",
+      "front": "Why is switching blocking pre-merge checks to the Batch API with status polling wrong?",
       "back": "Batch has no latency SLA—unacceptable for workflows where developers wait to merge.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.5; Sample Q11"
@@ -4634,7 +4634,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "30-hour SLA with 24-hour max batch processing—submission frequency?",
+      "front": "You have a 30-hour SLA and batches can take up to 24 hours. How often should you submit batches?",
       "back": "Calculate submission windows (e.g., 4-hour intervals) so batches complete within SLA with margin for retries.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.5"
@@ -4646,7 +4646,7 @@
       "tasks": [
         "4.5"
       ],
-      "rationale": "Match API latency and cost to workflow: blocking paths need synchronous calls; overnight jobs can use batch savings."
+      "rationale": "Batches can take up to 24 hours. For a 30-hour SLA, submit on a shorter cadence (for example every 4 hours) so there is margin for retries."
     },
     {
       "id": "d4-045",
@@ -4658,7 +4658,7 @@
         "ci_cd",
         "structured_extraction"
       ],
-      "front": "Independent review instances vs extended thinking for self-review?",
+      "front": "Why prefer independent review instances over extended thinking for self-review?",
       "back": "Independent instances without generator context catch more subtle issues than self-review instructions or extended thinking alone.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.6"
@@ -4680,7 +4680,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "Explicit review criteria example—comments vs code?",
+      "front": "What is an example of explicit review criteria for comments versus code?",
       "back": "Flag comments only when claimed behavior contradicts actual code—not vague 'check comment accuracy'.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.1"
@@ -4703,7 +4703,7 @@
         "ci_cd",
         "structured_extraction"
       ],
-      "front": "How few-shot examples generalize beyond pre-specified cases?",
+      "front": "How do few-shot examples generalize beyond the cases you pre-specify?",
       "back": "Demonstrate judgment and reasoning on ambiguous examples so the model applies similar logic to novel patterns.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.2"
@@ -4725,7 +4725,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "Few-shot use case: branch-level test coverage gaps?",
+      "front": "How should few-shot examples teach the model to report branch-level test coverage gaps?",
       "back": "Show how to identify and report coverage gaps at branch level—ambiguous case requiring demonstrated judgment.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.2"
@@ -4748,7 +4748,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "Switch both blocking and overnight jobs to batch API with real-time fallback. Why over-engineered?",
+      "front": "Why is switching both blocking and overnight jobs to the Batch API with a real-time fallback over-engineered?",
       "back": "Match API to latency needs—sync for blocking checks, batch for overnight; fallback adds unnecessary complexity.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.5; Sample Q11"
@@ -4770,7 +4770,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "Large PR review: switch to higher-tier model with larger context window. Why insufficient?",
+      "front": "For a large PR review, why is switching to a higher-tier model with a larger context window insufficient?",
       "back": "Larger context doesn't fix attention dilution—split into per-file plus integration passes instead.",
       "sources": [
         "Official CCAR-F Exam Guide — D4, Task 4.6; Sample Q12"
@@ -4816,7 +4816,7 @@
         "customer_support",
         "structured_extraction"
       ],
-      "front": "Risk of progressive summarization in long support sessions?",
+      "front": "What is the risk of progressive summarization in long support sessions?",
       "back": "Condenses amounts, dates, percentages, and customer-stated expectations into vague summaries—loses critical transactional facts.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.1"
@@ -4862,7 +4862,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "Preserve order amounts and dates across a long support conversation?",
+      "front": "How do you preserve order amounts and dates across a long support conversation?",
       "back": "Extract transactional facts into a persistent case facts block in each prompt—outside summarized history.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.1"
@@ -4875,7 +4875,7 @@
       "tasks": [
         "5.1"
       ],
-      "rationale": "outside summarized history."
+      "rationale": "Keep amounts, dates, and order IDs in a persistent case-facts block outside summarized history so progressive summarization cannot wash them out."
     },
     {
       "id": "d5-005",
@@ -4886,7 +4886,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "Order lookup returns 40+ fields but only 5 matter for returns. Context fix?",
+      "front": "Order lookup returns 40+ fields but only 5 matter for returns. How should you fix the context?",
       "back": "Trim verbose tool outputs to relevant fields before they accumulate in conversation context.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.1"
@@ -4898,7 +4898,7 @@
       "tasks": [
         "5.1"
       ],
-      "rationale": "Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases."
+      "rationale": "Trim 40-field order payloads to the few return-relevant fields before they accumulate. Verbose tool results crowd out the facts that matter."
     },
     {
       "id": "d5-006",
@@ -4909,7 +4909,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Mitigate lost-in-the-middle when aggregating subagent results?",
+      "front": "How do you mitigate lost-in-the-middle when aggregating subagent results?",
       "back": "Place key findings summary at the beginning; organize detailed results with explicit section headers.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.1"
@@ -4932,7 +4932,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Downstream synthesis agent has limited context budget. Upstream agent output design?",
+      "front": "The downstream synthesis agent has a limited context budget. How should upstream agents shape their output?",
       "back": "Return structured key facts, citations, and relevance scores—not verbose reasoning chains.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.1"
@@ -4944,7 +4944,7 @@
       "tasks": [
         "5.1"
       ],
-      "rationale": "not verbose reasoning chains."
+      "rationale": "When downstream context is tight, upstream agents should return key facts, citations, and relevance scores—not long reasoning chains."
     },
     {
       "id": "d5-008",
@@ -4956,7 +4956,7 @@
         "customer_support",
         "multi_agent_research"
       ],
-      "front": "Why pass complete conversation history in subsequent API requests?",
+      "front": "Why should you pass complete conversation history in subsequent API requests?",
       "back": "Maintains conversational coherence—the model needs prior turns to reason about the ongoing case.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.1"
@@ -4977,7 +4977,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "Multi-issue support session (billing + return). Context layer approach?",
+      "front": "A support session covers multiple issues (billing and a return). How should you structure the context layer?",
       "back": "Persist structured issue data (order IDs, amounts, statuses) in a separate context layer for each concern.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.1"
@@ -4989,7 +4989,7 @@
       "tasks": [
         "5.1"
       ],
-      "rationale": "Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases."
+      "rationale": "For billing plus a return, persist structured issue data (IDs, amounts, statuses) in a separate layer per concern so one summary does not merge them."
     },
     {
       "id": "d5-010",
@@ -5000,7 +5000,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "Three appropriate escalation triggers (beyond 'complex case')?",
+      "front": "Name three appropriate escalation triggers besides calling the case 'complex'.",
       "back": "Customer explicitly requests human, policy exception/gap, and inability to make meaningful progress.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.2"
@@ -5022,7 +5022,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "55% FCR—escalates easy cases, handles hard policy exceptions alone. Best calibration fix?",
+      "front": "First-contact resolution is 55%: the agent escalates easy cases and handles hard policy exceptions alone. What is the best calibration fix?",
       "back": "Add explicit escalation criteria with few-shot examples showing escalate vs resolve autonomously.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.2; Sample Q3"
@@ -5045,7 +5045,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "Route to human when self-reported confidence score is below threshold. Why unreliable?",
+      "front": "Why is routing to a human when self-reported confidence is below a threshold unreliable?",
       "back": "LLM confidence is poorly calibrated—agent may be wrongly confident on hard cases and uncertain on easy ones.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.2; Sample Q3"
@@ -5068,7 +5068,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "Escalate on negative sentiment threshold. Why wrong for calibration?",
+      "front": "Why is escalating on a negative-sentiment threshold the wrong calibration fix?",
       "back": "Sentiment doesn't correlate with case complexity—the actual issue is unclear escalation boundaries.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.2; Sample Q3"
@@ -5091,7 +5091,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "Customer explicitly demands a human agent. Response?",
+      "front": "The customer explicitly demands a human agent. What should the agent do?",
       "back": "Honor immediately—do not attempt investigation first when they explicitly request a human.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.2"
@@ -5114,7 +5114,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "Frustrated customer, issue is within agent capability. Approach?",
+      "front": "The customer is frustrated, but the issue is within the agent's capability. What should the agent do?",
       "back": "Acknowledge frustration and offer resolution; escalate only if customer reiterates preference for human.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.2"
@@ -5126,7 +5126,7 @@
       "tasks": [
         "5.2"
       ],
-      "rationale": "Escalation calibration needs explicit criteria—ambiguous boundaries cause wrong routing between autonomous resolution and human handoff."
+      "rationale": "Frustration alone is not an escalation trigger if the issue is in scope. Acknowledge, offer to resolve, and escalate only if they still want a human."
     },
     {
       "id": "d5-016",
@@ -5137,7 +5137,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "Policy silent on competitor price matching (only covers own-site adjustments). Action?",
+      "front": "Policy is silent on competitor price matching (it only covers own-site adjustments). What should the agent do?",
       "back": "Escalate—policy gap/exception case, not autonomous resolution.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.2"
@@ -5183,7 +5183,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Subagents need prior search results. Best context passing?",
+      "front": "Subagents need prior search results. What is the best way to pass that context?",
       "back": "Explicit structured handoffs (IDs, snippets, citations) via coordinator—not implicit shared memory.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.1; Multi-Agent Research scenario"
@@ -5207,7 +5207,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Web search subagent timeout—best error propagation to coordinator?",
+      "front": "The web search subagent times out. What error context should you propagate to the coordinator?",
       "back": "Structured context: failure type, attempted query, partial results, and alternative approaches.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.3; Sample Q8"
@@ -5229,7 +5229,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Subagent returns empty results marked successful after timeout. Why anti-pattern?",
+      "front": "Why is it an anti-pattern for a subagent to return empty results marked successful after a timeout?",
       "back": "Silently suppresses errors—coordinator cannot recover or annotate coverage gaps.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.3; Sample Q8"
@@ -5251,7 +5251,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Synthesis output after partial subagent failures—what include?",
+      "front": "After partial subagent failures, what should synthesis output include?",
       "back": "Coverage annotations: which findings are well-supported vs which topic areas have gaps from unavailable sources.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.3"
@@ -5275,7 +5275,7 @@
         "customer_support",
         "multi_agent_research"
       ],
-      "front": "Agent loop fails twice on same tool error. Next step?",
+      "front": "The agent loop fails twice on the same tool error. What should you do next?",
       "back": "Escalate or change strategy (alternate tool, human handoff)—not infinite identical retries.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.3"
@@ -5299,7 +5299,7 @@
         "code_generation",
         "developer_productivity"
       ],
-      "front": "Scratchpad files in long Claude Code exploration sessions—purpose?",
+      "front": "What is the purpose of scratchpad files in long Claude Code exploration sessions?",
       "back": "Persist key findings across context boundaries; reference for later questions to counteract degradation.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.4"
@@ -5322,7 +5322,7 @@
         "code_generation",
         "developer_productivity"
       ],
-      "front": "Verbose codebase exploration fills context. Claude Code command to reduce usage?",
+      "front": "Verbose codebase exploration fills the context. Which Claude Code command reduces usage?",
       "back": "/compact to condense verbose discovery output during extended sessions.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.4; Appendix"
@@ -5334,7 +5334,7 @@
       "tasks": [
         "5.4"
       ],
-      "rationale": "Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases."
+      "rationale": "/compact condenses verbose discovery output in long Claude Code sessions. It is the documented command for context pressure during exploration."
     },
     {
       "id": "d5-025",
@@ -5345,7 +5345,7 @@
       "scenarios": [
         "developer_productivity"
       ],
-      "front": "Multi-phase codebase exploration—context pattern between phases?",
+      "front": "In multi-phase codebase exploration, how should you manage context between phases?",
       "back": "Summarize key findings from one phase, inject summary into context before spawning subagents for the next.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.4"
@@ -5357,7 +5357,7 @@
       "tasks": [
         "5.4"
       ],
-      "rationale": "Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases."
+      "rationale": "Summarize each exploration phase and inject that summary before the next subagents spawn so later phases do not inherit a huge raw trace."
     },
     {
       "id": "d5-026",
@@ -5369,7 +5369,7 @@
         "multi_agent_research",
         "developer_productivity"
       ],
-      "front": "Crash recovery pattern for multi-agent workflows?",
+      "front": "What crash-recovery pattern should multi-agent workflows use?",
       "back": "Each agent exports state to a known location; coordinator loads manifest on resume and injects into prompts.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.4"
@@ -5392,7 +5392,7 @@
         "code_generation",
         "developer_productivity"
       ],
-      "front": "Why dump entire repo into context for every Claude Code task?",
+      "front": "Why is dumping the entire repo into context for every Claude Code task a problem?",
       "back": "Wastes tokens and adds noise—use Grep/Glob and scoped reads incrementally.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.4; D2 Task 2.5"
@@ -5415,7 +5415,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "97% overall extraction accuracy—why not automate all human review?",
+      "front": "Overall extraction accuracy is 97%. Why should you not automate away all human review?",
       "back": "Aggregate metrics may mask poor performance on specific document types or individual fields.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.5"
@@ -5437,7 +5437,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "Ongoing quality monitoring for high-confidence extractions?",
+      "front": "How should you monitor quality for high-confidence extractions over time?",
       "back": "Stratified random sampling to measure error rates and detect novel error patterns.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.5"
@@ -5460,7 +5460,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "Calibrate human review routing for extractions?",
+      "front": "How do you calibrate human-review routing for extractions?",
       "back": "Model outputs field-level confidence; calibrate thresholds using labeled validation sets.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.5"
@@ -5473,7 +5473,7 @@
       "tasks": [
         "5.5"
       ],
-      "rationale": "Multi-pass or independent review reduces attention dilution and self-review bias in large change sets."
+      "rationale": "Have the model emit field-level confidence, then set review thresholds on a labeled validation set. Uncalibrated scores are not production routing rules."
     },
     {
       "id": "d5-031",
@@ -5484,7 +5484,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "Before reducing human review on high-confidence extractions—verify what?",
+      "front": "Before reducing human review on high-confidence extractions, what should you verify?",
       "back": "Accuracy by document type and field segment—consistent performance across all segments.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.5"
@@ -5507,7 +5507,7 @@
       "scenarios": [
         "structured_extraction"
       ],
-      "front": "Limited reviewer capacity—prioritize which extractions for human review?",
+      "front": "Reviewer capacity is limited. Which extractions should you prioritize for human review?",
       "back": "Low model confidence, ambiguous source documents, or contradictory source data.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.5"
@@ -5519,7 +5519,7 @@
       "tasks": [
         "5.5"
       ],
-      "rationale": "Multi-pass or independent review reduces attention dilution and self-review bias in large change sets."
+      "rationale": "With limited reviewers, send low-confidence extractions and ambiguous or contradictory source documents to humans first."
     },
     {
       "id": "d5-033",
@@ -5552,7 +5552,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Subagent output for downstream synthesis—provenance requirement?",
+      "front": "What provenance must subagent output include for downstream synthesis?",
       "back": "Structured claim-source mappings (URLs, document names, excerpts) preserved through synthesis.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.6"
@@ -5576,7 +5576,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Two credible sources report different statistics. Synthesis handling?",
+      "front": "Two credible sources report different statistics. How should synthesis handle that?",
       "back": "Annotate conflict with source attribution—do not arbitrarily pick one value.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.6"
@@ -5599,7 +5599,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Why require publication/collection dates in structured subagent outputs?",
+      "front": "Why should structured subagent outputs include publication or collection dates?",
       "back": "Enables correct temporal interpretation—prevents time differences being misread as contradictions.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.6"
@@ -5622,7 +5622,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Research report structure for contested vs established findings?",
+      "front": "How should a research report structure contested findings versus established ones?",
       "back": "Explicit sections distinguishing well-established findings from contested ones with methodological context.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.6"
@@ -5634,7 +5634,7 @@
       "tasks": [
         "5.6"
       ],
-      "rationale": "Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases."
+      "rationale": "Structure the report with explicit well-established vs contested sections and keep methodological context. Do not flatten everything into one confident narrative."
     },
     {
       "id": "d5-038",
@@ -5645,7 +5645,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Synthesis output formatting for mixed content types?",
+      "front": "How should synthesis format mixed content types?",
       "back": "Render appropriately—financial data as tables, news as prose, technical findings as structured lists.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.6"
@@ -5667,11 +5667,12 @@
       "difficulty": "easy",
       "scenarios": [
         "customer_support",
+        "code_generation",
         "multi_agent_research",
         "structured_extraction"
       ],
-      "front": "Which three scenarios list D5 as a primary domain?",
-      "back": "Customer Support, Multi-Agent Research, and Structured Data Extraction.",
+      "front": "Which exam scenarios list D5 as a primary domain?",
+      "back": "Four: Customer Support, Code Generation, Multi-Agent Research, and Structured Data Extraction. Developer Productivity and CI/CD do not list D5 as primary.",
       "sources": [
         "Official CCAR-F Exam Guide — scenario map"
       ],
@@ -5694,7 +5695,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Code Generation scenario (Scenario 2)—D5 focus areas?",
+      "front": "What D5 focus areas does the Code Generation scenario (Scenario 2) emphasize?",
       "back": "Context preservation across edits, plan vs execute context management, and session reliability.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 2"
@@ -5717,7 +5718,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Subagent structured outputs for downstream synthesis—required metadata?",
+      "front": "What metadata must structured subagent outputs include for downstream synthesis?",
       "back": "Dates, source locations, and methodological context—not just claims without provenance context.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.1"
@@ -5740,7 +5741,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "Deploy classifier model to predict escalation before agent runs. Why over-engineered first step?",
+      "front": "Why is deploying a classifier to predict escalation before the agent runs an over-engineered first step?",
       "back": "Requires labeled data and ML infra when prompt criteria with few-shot hasn't been tried yet.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.2; Sample Q3"
@@ -5762,7 +5763,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Subagent retries then returns generic 'search unavailable' to coordinator. Problem?",
+      "front": "A subagent retries, then returns generic 'search unavailable' to the coordinator. What is the problem?",
       "back": "Hides failure type, attempted query, and partial results—coordinator cannot make informed recovery.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.3; Sample Q8"
@@ -5784,7 +5785,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Single subagent failure terminates entire multi-agent workflow. Why wrong?",
+      "front": "A single subagent failure terminates the entire multi-agent workflow. Why is that wrong?",
       "back": "Often recoverable with partial results, alternate queries, or gap annotations—unnecessary full termination.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.3"
@@ -5807,7 +5808,7 @@
         "developer_productivity",
         "code_generation"
       ],
-      "front": "Long codebase exploration—delegate specific questions while preserving coordination?",
+      "front": "During long codebase exploration, how do you delegate specific questions while preserving coordination?",
       "back": "Spawn subagents for focused tasks (find test files, trace refund flow) while main agent keeps high-level coordination.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.4"
@@ -5830,7 +5831,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Document analysis finds conflicting values from sources. Before synthesis?",
+      "front": "Document analysis finds conflicting values from sources. What should happen before synthesis?",
       "back": "Complete analysis with conflicts included and explicitly annotated—let coordinator reconcile before passing to synthesis.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.6"
@@ -5853,7 +5854,7 @@
       "scenarios": [
         "developer_productivity"
       ],
-      "front": "Scratchpad file during exploration—how use for follow-up questions?",
+      "front": "How should you use a scratchpad file during exploration for follow-up questions?",
       "back": "Record key findings in scratchpad; reference it for subsequent questions to counteract context degradation.",
       "sources": [
         "Official CCAR-F Exam Guide — D5, Task 5.4"
@@ -5865,7 +5866,7 @@
       "tasks": [
         "5.4"
       ],
-      "rationale": "Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases."
+      "rationale": "Write key findings to a scratchpad and reread it on follow-up questions so later turns do not fall back on vague 'typical patterns'."
     },
     {
       "id": "meta-001",
@@ -5898,8 +5899,8 @@
       "scenarios": [
         "all"
       ],
-      "front": "CCAR-F format: how many questions, time limit, and passing score?",
-      "back": "60 scenario-based items, 120 minutes, pass at scaled 720 on a 100–1000 scale.",
+      "front": "How many questions, how much time, and what passing score does CCAR-F use?",
+      "back": "60 items in 120 minutes; pass at scaled 720 on a 100–1000 scale. Items are multiple-choice or multiple-response (each item says how many to select).",
       "sources": [
         "Official CCAR-F Exam Guide"
       ],
@@ -5941,7 +5942,7 @@
       "scenarios": [
         "all"
       ],
-      "front": "Core heuristic when a scenario needs deterministic guarantees (money, identity, schema compliance)?",
+      "front": "When a scenario needs deterministic guarantees (money, identity, or schema compliance), what should you prefer?",
       "back": "Prefer structural/programmatic fixes (hooks, prerequisites, scoped tools, tool_use schemas) over prompt-only instructions.",
       "rationale": "Exam tests judgment: prompts are insufficient for hard guarantees.",
       "sources": [
@@ -5965,7 +5966,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "Sample Q1 (Customer Support): Why programmatic prerequisite (A) beats prompt, few-shot, or routing for skipped get_customer?",
+      "front": "Sample Q1 (Customer Support): Why does a programmatic prerequisite beat a prompt, few-shot examples, or routing when get_customer is skipped?",
       "back": "Blocks lookup_order and process_refund until get_customer returns verified ID—deterministic enforcement for identity before refunds.",
       "rationale": "Programmatic enforcement gives deterministic guarantees for required tool sequences; prompt and few-shot rely on probabilistic LLM compliance—insufficient when misidentification causes financial harm. Routing classifiers change tool availability, not ordering.",
       "sources": [
@@ -5989,7 +5990,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "Sample Q2 (Customer Support): Why expand tool descriptions (B) before few-shot, routing, or tool consolidation?",
+      "front": "Sample Q2 (Customer Support): Why should you expand tool descriptions before adding few-shot examples, routing, or consolidating tools?",
       "back": "Descriptions are the primary LLM tool-selection signal—add inputs, examples, edge cases, and boundaries vs similar tools.",
       "rationale": "Tool descriptions are the primary selection mechanism; minimal descriptions cause confusion between similar tools. Few-shot adds tokens without fixing descriptions; routing is over-engineered for a first step; consolidation is valid but higher effort.",
       "sources": [
@@ -6013,7 +6014,7 @@
       "scenarios": [
         "customer_support"
       ],
-      "front": "Sample Q3 (Customer Support): Why explicit escalation criteria with few-shot (A) beats confidence scores, classifiers, or sentiment?",
+      "front": "Sample Q3 (Customer Support): Why do explicit escalation criteria with few-shot examples beat confidence scores, classifiers, or sentiment?",
       "back": "Fix unclear escalate-vs-resolve boundaries—the proportionate first response before adding infrastructure.",
       "rationale": "Explicit escalation criteria with few-shot examples fix unclear decision boundaries. LLM self-reported confidence is poorly calibrated on hard cases; a separate classifier is over-engineered before prompt tuning; sentiment does not measure case complexity.",
       "sources": [
@@ -6061,7 +6062,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Sample Q5 (Code Generation): Monolith-to-microservices across dozens of files—why plan mode first (A)?",
+      "front": "Sample Q5 (Code Generation): For a monolith-to-microservices split across dozens of files, why start in plan mode?",
       "back": "Explore dependencies and design service boundaries before editing—large architectural scope is already stated.",
       "rationale": "Plan mode fits large architectural work with exploration before edits. Direct execution risks rework when dependencies are unknown; rigid upfront instructions skip discovery; waiting for emergent complexity ignores stated large-scale scope.",
       "sources": [
@@ -6085,7 +6086,7 @@
       "scenarios": [
         "code_generation"
       ],
-      "front": "Sample Q6 (Code Generation): Tests spread as *.test.tsx—why .claude/rules/ with globs (A)?",
+      "front": "Sample Q6 (Code Generation): Tests are spread as *.test.tsx. Why use .claude/rules/ with globs?",
       "back": "Glob patterns (e.g. **/*.test.tsx) auto-apply conventions by path regardless of directory.",
       "rationale": ".claude/rules/ with glob patterns apply conventions by file path—including tests spread across directories. Root CLAUDE.md relies on inference; skills need invocation; per-directory CLAUDE.md cannot cover scattered test files.",
       "sources": [
@@ -6108,7 +6109,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Sample Q7 (Multi-Agent Research): Report covers only visual arts—why coordinator decomposition (B)?",
+      "front": "Sample Q7 (Multi-Agent Research): The report covers only visual arts. Why is coordinator decomposition the root cause?",
       "back": "Logs show narrow subtasks (digital art, graphic design, photography)—subagents succeeded within assigned scope.",
       "rationale": "Coordinator logs show decomposition into only visual-arts subtasks—subagents succeeded within narrow assignments. Downstream agents are not the root cause; synthesis, search, and analysis worked within assigned scope.",
       "sources": [
@@ -6132,7 +6133,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Sample Q8 (Multi-Agent Research): Search subagent times out—why structured error context to coordinator (A)?",
+      "front": "Sample Q8 (Multi-Agent Research): The search subagent times out. Why return structured error context to the coordinator?",
       "back": "Return failure type, attempted query, partial results, and alternatives so coordinator can recover intelligently.",
       "rationale": "Structured error context enables coordinator recovery (retry, alternate query, partial results). Generic retry status hides context; marking failure as success blocks recovery; terminating the whole workflow is unnecessary when partial progress exists.",
       "sources": [
@@ -6155,7 +6156,7 @@
       "scenarios": [
         "multi_agent_research"
       ],
-      "front": "Sample Q9 (Multi-Agent Research): 85% simple fact-checks—why scoped verify_fact on synthesis (A)?",
+      "front": "Sample Q9 (Multi-Agent Research): 85% of checks are simple facts. Why give synthesis a scoped verify_fact tool?",
       "back": "Least privilege for common lookups; complex verification still routes through coordinator to search agent.",
       "rationale": "Scoped verify_fact on synthesis covers simple fact-checks while complex work stays with search via coordinator—least privilege. End-of-pass batching creates blocking dependencies; giving synthesis all search tools over-provisions; speculative caching cannot predict verification needs.",
       "sources": [
@@ -6179,7 +6180,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "Sample Q10 (CI/CD): Pipeline hangs waiting for input—why -p flag (A)?",
+      "front": "Sample Q10 (CI/CD): The pipeline hangs waiting for input. Why use the -p flag?",
       "back": "claude -p runs non-interactive: process prompt, output to stdout, exit—required for CI/CD.",
       "rationale": "-p (--print) is the documented non-interactive CI mode. CLAUDE_HEADLESS, --batch, and stdin tricks are not the correct Claude Code approach.",
       "sources": [
@@ -6204,7 +6205,7 @@
         "structured_extraction",
         "ci_cd"
       ],
-      "front": "Sample Q11: Batch API for pre-merge checks and overnight reports—why batch only overnight jobs (A)?",
+      "front": "Sample Q11: Why use the Batch API only for overnight jobs, not for pre-merge checks?",
       "back": "Batches save ~50% cost but lack latency SLA—unsuitable for blocking merge gates.",
       "rationale": "Message Batches save cost but lack latency SLA—fine for overnight reports, unsuitable for blocking pre-merge checks. Polling batches for merge gates is unacceptable; custom_id correlates batch results; timeout fallback adds complexity vs matching API to workflow latency needs.",
       "sources": [
@@ -6229,7 +6230,7 @@
       "scenarios": [
         "ci_cd"
       ],
-      "front": "Sample Q12 (CI/CD): 14-file PR review inconsistent—why split per-file and integration passes (A)?",
+      "front": "Sample Q12 (CI/CD): A 14-file PR review is inconsistent. Why split into per-file and integration passes?",
       "back": "Per-file local analysis then cross-file integration pass—fixes attention dilution across many files.",
       "rationale": "Split reviews into per-file passes plus a cross-file integration pass—fixes attention dilution. Splitting PRs burdens developers; larger context does not fix attention quality; consensus across passes would suppress intermittently caught bugs.",
       "sources": [
@@ -6286,7 +6287,7 @@
         "step": 2,
         "steps": 5
       },
-      "front": "[Customer Support · 2/5] Production data: 12% of cases skip get_customer and call lookup_order by name only, causing wrong refunds. Best fix?",
+      "front": "[Customer Support · 2/5] Production data: 12% of cases skip get_customer and call lookup_order by name only, causing wrong refunds. What is the best fix?",
       "back": "Programmatic prerequisite blocking lookup_order and process_refund until get_customer returns verified customer ID.",
       "rationale": "Money and identity need deterministic enforcement—not prompts alone.",
       "sources": [
@@ -6315,7 +6316,7 @@
         "step": 3,
         "steps": 5
       },
-      "front": "[Customer Support · 3/5] Logs show get_customer called for order queries (#12345) instead of lookup_order. Both tools have minimal descriptions. First fix?",
+      "front": "[Customer Support · 3/5] Logs show get_customer called for order queries (#12345) instead of lookup_order. Both tools have minimal descriptions. What should you fix first?",
       "back": "Expand tool descriptions with inputs, example queries, edge cases, and when to use each vs similar tools.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 1; Sample Q2",
@@ -6342,7 +6343,7 @@
         "step": 4,
         "steps": 5
       },
-      "front": "[Customer Support · 4/5] 55% first-contact resolution—agent escalates easy cases and handles hard policy exceptions alone. Best calibration fix?",
+      "front": "[Customer Support · 4/5] First-contact resolution is 55%: the agent escalates easy cases and handles hard policy exceptions alone. What is the best calibration fix?",
       "back": "Add explicit escalation criteria with few-shot examples for escalate vs resolve autonomously.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 1; Sample Q3",
@@ -6451,7 +6452,7 @@
         "step": 3,
         "steps": 5
       },
-      "front": "[Code Generation · 3/5] Assignment: split monolith into microservices—dozens of files, unclear boundaries. What mode first?",
+      "front": "[Code Generation · 3/5] Assignment: split a monolith into microservices across dozens of files with unclear boundaries. Which mode should you use first?",
       "back": "Plan mode—explore dependencies and design before editing; direct execution risks costly rework.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 2; Sample Q5",
@@ -6479,7 +6480,7 @@
         "step": 4,
         "steps": 5
       },
-      "front": "[Code Generation · 4/5] Tests live as *.test.tsx next to components across the repo. How auto-apply test conventions when generating code?",
+      "front": "[Code Generation · 4/5] Tests live as *.test.tsx next to components across the repo. How do you auto-apply test conventions when generating code?",
       "back": ".claude/rules/ with glob paths like **/*.test.tsx—not directory-bound CLAUDE.md or inference from headers.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 2; Sample Q6",
@@ -6506,7 +6507,7 @@
         "step": 5,
         "steps": 5
       },
-      "front": "[Code Generation · 5/5] Long refactor session—model starts citing generic patterns instead of files it read earlier. Mitigation?",
+      "front": "[Code Generation · 5/5] In a long refactor session, the model starts citing generic patterns instead of files it read earlier. How do you mitigate that?",
       "back": "Scratchpad file for key findings, /compact for verbose output, or summarize before the next exploration phase.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 2",
@@ -6560,7 +6561,7 @@
         "step": 2,
         "steps": 5
       },
-      "front": "[Multi-Agent Research · 2/5] Topic 'AI in creative industries'—final report covers only visual arts; coordinator assigned digital art, graphic design, photography only. Root cause?",
+      "front": "[Multi-Agent Research · 2/5] Topic is 'AI in creative industries', but the final report covers only visual arts because the coordinator assigned digital art, graphic design, and photography only. What is the root cause?",
       "back": "Coordinator task decomposition too narrow—subagents executed correctly but incomplete scope.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 3; Sample Q7",
@@ -6614,7 +6615,7 @@
         "step": 4,
         "steps": 5
       },
-      "front": "[Multi-Agent Research · 4/5] Synthesis needs many simple fact-checks (85%) but some deep searches (15%). Reduce latency without over-provisioning synthesis?",
+      "front": "[Multi-Agent Research · 4/5] Synthesis needs many simple fact-checks (85%) but some deep searches (15%). How do you reduce latency without over-provisioning synthesis?",
       "back": "Scoped verify_fact tool on synthesis for simple lookups; complex cases still route through coordinator to search agent.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 3; Sample Q9",
@@ -6641,7 +6642,7 @@
         "step": 5,
         "steps": 5
       },
-      "front": "[Multi-Agent Research · 5/5] Final report must preserve citations through synthesis. What require from subagents?",
+      "front": "[Multi-Agent Research · 5/5] The final report must preserve citations through synthesis. What should you require from subagents?",
       "back": "Structured claim–source mappings (URLs, excerpts, dates) preserved through synthesis—not compressed summaries without attribution.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 3",
@@ -6669,7 +6670,7 @@
         "step": 1,
         "steps": 5
       },
-      "front": "[Developer Productivity · 1/5] Agent helps engineers explore legacy codebases using built-in tools and MCP. When prefer MCP over Grep/Glob?",
+      "front": "[Developer Productivity · 1/5] An agent helps engineers explore legacy codebases using built-in tools and MCP. When should you prefer MCP over Grep or Glob?",
       "back": "External systems (GitHub, DB, SaaS) or shared team integrations—not local file search.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 4",
@@ -6697,7 +6698,7 @@
         "step": 2,
         "steps": 5
       },
-      "front": "[Developer Productivity · 2/5] Find all callers of a function across the monorepo. Which built-in tool first?",
+      "front": "[Developer Productivity · 2/5] You need all callers of a function across the monorepo. Which built-in tool should you use first?",
       "back": "Grep for content patterns across files—not Glob (paths) or reading every file upfront.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 4",
@@ -6724,7 +6725,7 @@
         "step": 3,
         "steps": 5
       },
-      "front": "[Developer Productivity · 3/5] Agent prefers Grep over your team's richer MCP code-search tool. Fix?",
+      "front": "[Developer Productivity · 3/5] The agent prefers Grep over your team's richer MCP code-search tool. How do you fix that?",
       "back": "Enhance MCP tool descriptions so the model understands when MCP beats built-in search.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 4",
@@ -6751,7 +6752,7 @@
         "step": 4,
         "steps": 5
       },
-      "front": "[Developer Productivity · 4/5] Large codebase exploration without reading every file. Pattern?",
+      "front": "[Developer Productivity · 4/5] How should you explore a large codebase without reading every file?",
       "back": "Grep entry points → Read to follow imports → scratchpad key findings for later questions.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 4",
@@ -6779,7 +6780,7 @@
         "step": 5,
         "steps": 5
       },
-      "front": "[Developer Productivity · 5/5] Share GitHub MCP with the team; keep experimental personal server. Config locations?",
+      "front": "[Developer Productivity · 5/5] You want to share GitHub MCP with the team but keep an experimental personal server. Where does each config live?",
       "back": "Team server in project .mcp.json with ${TOKEN}; personal server in ~/.claude.json.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 4",
@@ -6806,7 +6807,7 @@
         "step": 1,
         "steps": 5
       },
-      "front": "[CI/CD · 1/5] Pipeline runs claude 'Review this PR' but hangs waiting for input. Fix?",
+      "front": "[CI/CD · 1/5] The pipeline runs claude 'Review this PR' but hangs waiting for input. How do you fix that?",
       "back": "Use -p (--print) for non-interactive mode—process prompt, output, exit.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 5; Sample Q10",
@@ -6834,7 +6835,7 @@
         "step": 2,
         "steps": 5
       },
-      "front": "[CI/CD · 2/5] Post structured findings as inline PR comments from CI. CLI approach?",
+      "front": "[CI/CD · 2/5] How do you post structured findings as inline PR comments from CI?",
       "back": "--output-format json with --json-schema for machine-parseable review output.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 5",
@@ -6862,7 +6863,7 @@
         "step": 3,
         "steps": 5
       },
-      "front": "[CI/CD · 3/5] Same Claude session generated code and reviews it—misses subtle bugs. Better approach?",
+      "front": "[CI/CD · 3/5] The same Claude session generated the code and then reviews it, missing subtle bugs. What is a better approach?",
       "back": "Independent Claude Code instance for review without the generator's reasoning context.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 5",
@@ -6890,7 +6891,7 @@
         "step": 4,
         "steps": 5
       },
-      "front": "[CI/CD · 4/5] 14-file PR review—inconsistent depth, missed bugs, contradictory feedback. Restructure?",
+      "front": "[CI/CD · 4/5] A 14-file PR review has inconsistent depth, missed bugs, and contradictory feedback. How should you restructure it?",
       "back": "Per-file local analysis passes, then separate cross-file integration pass.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 5; Sample Q12",
@@ -6917,7 +6918,7 @@
         "step": 5,
         "steps": 5
       },
-      "front": "[CI/CD · 5/5] Re-run review after new commits—duplicate inline comments. Context fix?",
+      "front": "[CI/CD · 5/5] Re-running the review after new commits duplicates inline comments. What context should you add?",
       "back": "Include prior findings; instruct Claude to report only new or still-unaddressed issues.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 5",
@@ -6944,7 +6945,7 @@
         "step": 1,
         "steps": 5
       },
-      "front": "[Structured Extraction · 1/5] Pipeline extracts from unstructured docs, validates with JSON schema, integrates downstream. Most reliable structured output approach?",
+      "front": "[Structured Extraction · 1/5] A pipeline extracts from unstructured docs, validates with JSON schema, and integrates downstream. What is the most reliable structured-output approach?",
       "back": "tool_use with JSON schemas—eliminates syntax errors; add semantic validation separately.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 6",
@@ -6971,7 +6972,7 @@
         "step": 2,
         "steps": 5
       },
-      "front": "[Structured Extraction · 2/5] Source docs often omit optional fields—model fabricates values. Schema fix?",
+      "front": "[Structured Extraction · 2/5] Source docs often omit optional fields, and the model fabricates values. How should you fix the schema?",
       "back": "Make fields optional/nullable when information may be absent—don't require missing data.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 6",
@@ -6999,7 +7000,7 @@
         "step": 3,
         "steps": 5
       },
-      "front": "[Structured Extraction · 3/5] Validation fails on date format mismatch—info exists in document. Next step?",
+      "front": "[Structured Extraction · 3/5] Validation fails on a date format mismatch, but the information exists in the document. What is the next step?",
       "back": "Retry with original doc, failed extraction, and specific validation errors in the follow-up prompt.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 6",
@@ -7026,7 +7027,7 @@
         "step": 4,
         "steps": 5
       },
-      "front": "[Structured Extraction · 4/5] Manager wants batch API for pre-merge blocking checks and overnight reports. Correct split?",
+      "front": "[Structured Extraction · 4/5] A manager wants the Batch API for pre-merge blocking checks and overnight reports. How should you split those jobs?",
       "back": "Synchronous API for blocking pre-merge; batch API only for latency-tolerant overnight jobs.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 6; Sample Q11",
@@ -7053,7 +7054,7 @@
         "step": 5,
         "steps": 5
       },
-      "front": "[Structured Extraction · 5/5] 97% overall accuracy—can you remove all human review?",
+      "front": "[Structured Extraction · 5/5] Overall accuracy is 97%. Can you remove all human review?",
       "back": "No—verify accuracy by document type and field segment; route low-confidence and ambiguous docs to humans.",
       "sources": [
         "Official CCAR-F Exam Guide — Scenario 6",

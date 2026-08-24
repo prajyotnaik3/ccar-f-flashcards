@@ -26,7 +26,7 @@
   scenarios:
   - code_generation
   - developer_productivity
-  front: CLAUDE.md configuration hierarchy (three levels)?
+  front: 'What are the three levels of the CLAUDE.md configuration hierarchy?'
   back: User (~/.claude/CLAUDE.md), project (.claude/CLAUDE.md or root CLAUDE.md), and directory-level (subdirectory CLAUDE.md files).
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.1
@@ -43,7 +43,7 @@
   difficulty: medium
   scenarios:
   - code_generation
-  front: New teammate doesn't receive team coding standards in Claude Code. Likely cause?
+  front: A new teammate does not receive team coding standards in Claude Code. What is the likely cause?
   back: Instructions are in user-level ~/.claude/CLAUDE.md—not shared via version control; move to project-level config.
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.1
@@ -52,7 +52,7 @@
   - hierarchy
   tasks:
   - '3.1'
-  rationale: not shared via version control; move to project-level config.
+  rationale: User-level ~/.claude/CLAUDE.md is not in git. Team standards belong in project CLAUDE.md so clones pick them up.
 - id: d3-004
   domain: D3
   weight: 20
@@ -76,7 +76,7 @@
   difficulty: medium
   scenarios:
   - code_generation
-  front: Monolithic CLAUDE.md is hard to maintain. Alternative organization?
+  front: A monolithic CLAUDE.md is hard to maintain. How should you reorganize it?
   back: Split into focused files in .claude/rules/ (e.g., testing.md, api-conventions.md, deployment.md).
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.1
@@ -85,7 +85,7 @@
   - rules
   tasks:
   - '3.1'
-  rationale: Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter.
+  rationale: Split a monolithic CLAUDE.md into focused files under .claude/rules/ (testing.md, api-conventions.md, deployment.md) instead of one huge always-loaded file.
 - id: d3-006
   domain: D3
   weight: 20
@@ -93,7 +93,7 @@
   difficulty: medium
   scenarios:
   - code_generation
-  front: Inconsistent Claude Code behavior across sessions—how diagnose loaded config?
+  front: 'Claude Code behaves inconsistently across sessions. How do you diagnose which config is loaded?'
   back: Use /memory to verify which memory files are loaded and what context is active.
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.1
@@ -102,7 +102,7 @@
   - memory
   tasks:
   - '3.1'
-  rationale: Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+  rationale: /memory shows which memory files are loaded. Use it when behavior drifts across sessions because the wrong CLAUDE.md layer is active.
 - id: d3-007
   domain: D3
   weight: 20
@@ -110,7 +110,7 @@
   difficulty: medium
   scenarios:
   - code_generation
-  front: Why skip shared project CLAUDE.md when multiple developers use Claude Code?
+  front: 'Why is it a problem to skip a shared project CLAUDE.md when multiple developers use Claude Code?'
   back: Inconsistent conventions, duplicated prompt context, and drift in how the agent edits code across teammates.
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.1
@@ -127,7 +127,7 @@
   scenarios:
   - code_generation
   - ci_cd
-  front: Team /review slash command for every developer on clone. Where create it?
+  front: 'Where should you create a team /review slash command so every developer gets it on clone?'
   back: .claude/commands/ in the project repository—version-controlled and shared on clone/pull.
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.2; Sample Q4
@@ -144,7 +144,7 @@
   difficulty: medium
   scenarios:
   - code_generation
-  front: Project-scoped vs user-scoped slash commands?
+  front: 'How do project-scoped and user-scoped slash commands differ?'
   back: .claude/commands/ in repo (shared via git) vs ~/.claude/commands/ (personal, not version controlled).
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.2
@@ -161,7 +161,7 @@
   scenarios:
   - code_generation
   - developer_productivity
-  front: Skill frontmatter options in .claude/skills/SKILL.md (name three)?
+  front: Name three Skill frontmatter options in .claude/skills/SKILL.md.
   back: 'context: fork, allowed-tools, and argument-hint.'
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.2
@@ -178,7 +178,7 @@
   difficulty: medium
   scenarios:
   - code_generation
-  front: Skill produces verbose codebase analysis output. Frontmatter to isolate it?
+  front: 'A skill produces verbose codebase analysis. Which frontmatter option isolates that output?'
   back: 'context: fork—runs skill in isolated sub-agent context so output doesn''t pollute main conversation.'
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.2
@@ -195,7 +195,7 @@
   difficulty: medium
   scenarios:
   - code_generation
-  front: Skill should only write files, not run destructive shell commands. Frontmatter?
+  front: 'A skill should only write files, not run destructive shell commands. Which frontmatter option enforces that?'
   back: allowed-tools restricting tool access during skill execution (e.g., file write operations only).
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.2
@@ -204,7 +204,7 @@
   - allowed_tools
   tasks:
   - '3.2'
-  rationale: 'Exam judgment aligned to task 3.2: allowed-tools restricting tool access during skill execution (e.'
+  rationale: 'allowed-tools in skill frontmatter limits what the skill can invoke—for example file writes only, so it cannot run destructive shell commands.'
 - id: d3-013
   domain: D3
   weight: 20
@@ -212,7 +212,7 @@
   difficulty: easy
   scenarios:
   - code_generation
-  front: Developer invokes skill without required arguments. Frontmatter help?
+  front: 'A developer invokes a skill without required arguments. Which frontmatter option helps?'
   back: argument-hint prompts for required parameters when the skill is invoked without them.
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.2
@@ -229,7 +229,7 @@
   difficulty: medium
   scenarios:
   - code_generation
-  front: Skills vs CLAUDE.md—when use each?
+  front: 'When should you use Skills versus CLAUDE.md?'
   back: 'Skills: on-demand task-specific workflows. CLAUDE.md: always-loaded universal standards for the project.'
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.2
@@ -245,7 +245,7 @@
   difficulty: medium
   scenarios:
   - code_generation
-  front: Personal skill customization without affecting teammates?
+  front: 'How do you customize a skill for yourself without affecting teammates?'
   back: Create personal variants in ~/.claude/skills/ with different names—not in shared project skills.
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.2
@@ -279,7 +279,7 @@
   difficulty: medium
   scenarios:
   - code_generation
-  front: Test files spread as Button.test.tsx next to Button.tsx. Apply test conventions automatically?
+  front: 'Test files sit as Button.test.tsx next to Button.tsx. How do you apply test conventions automatically?'
   back: .claude/rules/ with glob paths like **/*.test.tsx—applies by file type across all directories.
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.3; Sample Q6
@@ -313,7 +313,7 @@
   difficulty: medium
   scenarios:
   - code_generation
-  front: Path-specific rules vs subdirectory CLAUDE.md for scattered test files?
+  front: 'For scattered test files, when should you use path-specific rules versus subdirectory CLAUDE.md?'
   back: Path-specific glob rules apply by file pattern anywhere in the tree; subdirectory CLAUDE.md is directory-bound.
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.3
@@ -329,7 +329,7 @@
   difficulty: medium
   scenarios:
   - code_generation
-  front: Benefit of path-scoped rules loading only on matching files?
+  front: 'What is the benefit of path-scoped rules loading only for matching files?'
   back: Reduces irrelevant context and token usage—conventions apply only when relevant.
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.3
@@ -345,7 +345,7 @@
   difficulty: hard
   scenarios:
   - code_generation
-  front: Restructure monolith into microservices—dozens of files, architectural decisions. Approach?
+  front: 'You need to restructure a monolith into microservices across dozens of files. Which approach should you take first?'
   back: 'Plan mode: explore codebase, understand dependencies, design approach before making changes.'
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.4; Sample Q5
@@ -362,7 +362,7 @@
   difficulty: medium
   scenarios:
   - code_generation
-  front: Plan mode vs direct execution—when use each?
+  front: 'When should you use plan mode versus direct execution?'
   back: 'Plan mode: large-scale, multi-file, architectural, multiple valid approaches. Direct execution: simple, well-scoped single changes.'
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.4
@@ -379,7 +379,7 @@
   difficulty: easy
   scenarios:
   - code_generation
-  front: Single-file bug fix with clear stack trace. Plan mode or direct execution?
+  front: For a single-file bug fix with a clear stack trace, should you use plan mode or direct execution?
   back: Direct execution—well-understood change with clear scope.
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.4
@@ -411,7 +411,7 @@
   difficulty: medium
   scenarios:
   - code_generation
-  front: Library migration affecting 45+ files—workflow pattern?
+  front: 'A library migration affects 45+ files. What workflow pattern should you use?'
   back: Plan mode for investigation and design, then direct execution to implement the planned approach.
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.4
@@ -420,7 +420,7 @@
   - direct_execution
   tasks:
   - '3.4'
-  rationale: Exam tests structural or configuration fixes over prompt-only approaches when reliability, security, or compliance matter.
+  rationale: Plan mode for investigation and design on a 45+ file migration, then direct execution to implement the agreed plan.
 - id: d3-026
   domain: D3
   weight: 20
@@ -428,7 +428,7 @@
   difficulty: medium
   scenarios:
   - code_generation
-  front: Start monolith-to-microservices in direct execution, switch to plan if complexity emerges. Why wrong?
+  front: Why is it wrong to start a monolith-to-microservices split in direct execution and switch to plan only if complexity emerges?
   back: Complexity is already stated—plan first prevents costly rework from late-discovered dependencies.
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.4; Sample Q5
@@ -444,7 +444,7 @@
   difficulty: medium
   scenarios:
   - code_generation
-  front: Natural language transformation spec produces inconsistent code. Best fix?
+  front: A natural-language transformation spec produces inconsistent code. What is the best fix?
   back: Provide 2–3 concrete input/output examples showing expected transformations.
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.5
@@ -461,7 +461,7 @@
   difficulty: medium
   scenarios:
   - code_generation
-  front: Test-driven iteration pattern with Claude Code?
+  front: 'What is the test-driven iteration pattern with Claude Code?'
   back: Write tests first (behavior, edge cases, performance), then iterate by sharing test failures to guide fixes.
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.5
@@ -493,7 +493,7 @@
   difficulty: medium
   scenarios:
   - code_generation
-  front: Fix multiple issues in one message vs sequentially?
+  front: 'When should you fix multiple issues in one message versus sequentially?'
   back: Single message when fixes interact; sequential iteration when issues are independent.
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.5
@@ -508,7 +508,7 @@
   difficulty: medium
   scenarios:
   - code_generation
-  front: Migration script mishandles null edge cases. Iteration approach?
+  front: 'A migration script mishandles null edge cases. How should you iterate with Claude?'
   back: Provide specific test cases with example input and expected output for the failing edge case.
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.5
@@ -525,7 +525,7 @@
   difficulty: easy
   scenarios:
   - ci_cd
-  front: CI job hangs—Claude Code waiting for interactive input. Fix?
+  front: 'A CI job hangs because Claude Code is waiting for interactive input. How do you fix that?'
   back: 'Use -p (or --print) flag for non-interactive mode: process prompt, output result, exit.'
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.6; Sample Q10
@@ -543,7 +543,7 @@
   difficulty: medium
   scenarios:
   - ci_cd
-  front: Post structured PR review findings as inline comments from CI. CLI flags?
+  front: 'Which CLI flags post structured PR review findings as inline comments from CI?'
   back: --output-format json with --json-schema for machine-parseable structured findings.
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.6
@@ -552,7 +552,7 @@
   - structured_output
   tasks:
   - '3.6'
-  rationale: Multi-pass or independent review reduces attention dilution and self-review bias in large change sets.
+  rationale: --output-format json with --json-schema produces machine-parseable findings so CI can post inline PR comments. This is not a review-architecture question.
 - id: d3-034
   domain: D3
   weight: 20
@@ -560,7 +560,7 @@
   difficulty: medium
   scenarios:
   - ci_cd
-  front: How provide project context to CI-invoked Claude Code?
+  front: 'How do you provide project context to Claude Code invoked from CI?'
   back: CLAUDE.md with testing standards, fixture conventions, and review criteria loaded automatically.
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.6
@@ -592,7 +592,7 @@
   difficulty: medium
   scenarios:
   - ci_cd
-  front: Re-run PR review after new commits—avoid duplicate inline comments?
+  front: 'When re-running a PR review after new commits, how do you avoid duplicate inline comments?'
   back: Include prior review findings in context; instruct Claude to report only new or still-unaddressed issues.
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.6
@@ -601,7 +601,7 @@
   - review
   tasks:
   - '3.6'
-  rationale: Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+  rationale: Pass prior findings back in and instruct Claude to report only new or still-open issues so re-runs do not spam duplicate comments.
 - id: d3-037
   domain: D3
   weight: 20
@@ -609,7 +609,7 @@
   difficulty: medium
   scenarios:
   - ci_cd
-  front: CI test generation suggests scenarios already in the suite. Context fix?
+  front: 'CI test generation suggests scenarios already in the suite. What context should you add?'
   back: Provide existing test files in context so generation avoids duplicate coverage.
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.6
@@ -618,7 +618,7 @@
   - testing
   tasks:
   - '3.6'
-  rationale: Context management trades completeness against window limits—preserve facts externally or summarize before long exploration phases.
+  rationale: Put existing test files in context so generation does not propose coverage the suite already has.
 - id: d3-038
   domain: D3
   weight: 20
@@ -627,7 +627,7 @@
   scenarios:
   - ci_cd
   - code_generation
-  front: Reduce low-value generated tests in Claude Code?
+  front: 'How do you reduce low-value generated tests in Claude Code?'
   back: Document testing standards, valuable test criteria, and available fixtures in CLAUDE.md.
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.6
@@ -636,7 +636,7 @@
   - testing
   tasks:
   - '3.6'
-  rationale: 'Exam judgment aligned to task 3.6: Document testing standards, valuable test criteria, and available fixtures in CLAUDE.'
+  rationale: 'Document testing standards, what a valuable test looks like, and available fixtures in CLAUDE.md so CI generation produces fewer low-value tests.'
 - id: d3-039
   domain: D3
   weight: 20
@@ -644,7 +644,7 @@
   difficulty: medium
   scenarios:
   - ci_cd
-  front: Running Claude Code in CI for PR review. Critical configuration concerns?
+  front: 'When running Claude Code in CI for PR review, what configuration concerns matter most?'
   back: Non-interactive (-p), explicit permissions, structured/deterministic outputs, independent review instance—not open-ended agent runs.
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.6
@@ -653,7 +653,7 @@
   - automation
   tasks:
   - '3.6'
-  rationale: not open-ended agent runs.
+  rationale: CI needs -p (non-interactive), tight permissions, structured output, and an independent review instance—not an open-ended interactive agent.
 - id: d3-040
   domain: D3
   weight: 20
@@ -661,7 +661,7 @@
   difficulty: easy
   scenarios:
   - ci_cd
-  front: CI non-interactive flags that do NOT exist (name two)?
+  front: Name two CI non-interactive flags that do not exist for Claude Code.
   back: CLAUDE_HEADLESS env var and --batch flag—use -p/--print instead.
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.6; Sample Q10
@@ -677,7 +677,7 @@
   difficulty: easy
   scenarios:
   - code_generation
-  front: Code Generation scenario (Scenario 2)—primary domains?
+  front: 'What are the primary domains for the Code Generation scenario (Scenario 2)?'
   back: D3 (Claude Code config/workflows) and D5 (context management/reliability).
   sources:
   - Official CCAR-F Exam Guide — scenario map
@@ -693,7 +693,7 @@
   difficulty: easy
   scenarios:
   - ci_cd
-  front: CI/CD with Claude Code scenario (Scenario 5)—primary domains?
+  front: 'What are the primary domains for the CI/CD with Claude Code scenario (Scenario 5)?'
   back: D3 (Claude Code) and D4 (prompt engineering/structured output for review findings).
   sources:
   - Official CCAR-F Exam Guide — scenario map
@@ -711,7 +711,7 @@
   scenarios:
   - developer_productivity
   - code_generation
-  front: 'Scenario 2 tools: slash commands, CLAUDE.md, plan mode—what is being tested?'
+  front: 'Scenario 2 involves slash commands, CLAUDE.md, and plan mode. What skill is the exam testing?'
   back: 'Integrating Claude Code into dev workflow: team config, custom commands, and when to plan vs execute directly.'
   sources:
   - Official CCAR-F Exam Guide — Scenario 2
@@ -728,7 +728,7 @@
   difficulty: medium
   scenarios:
   - code_generation
-  front: Example path-scoped rule for Terraform files only?
+  front: 'What is an example path-scoped rule that applies only to Terraform files?'
   back: '.claude/rules/ file with frontmatter paths: ["terraform/**/*"] loading only when editing matching files.'
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.3
@@ -760,7 +760,7 @@
   difficulty: medium
   scenarios:
   - code_generation
-  front: 'Monolith-to-microservices: direct execution with comprehensive upfront structure instructions. Why wrong?'
+  front: 'For a monolith-to-microservices split, why is direct execution with comprehensive upfront structure instructions wrong?'
   back: Assumes structure without codebase exploration—dependencies discovered late cause costly rework; plan first.
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.4; Sample Q5
@@ -776,7 +776,7 @@
   difficulty: medium
   scenarios:
   - code_generation
-  front: Auto-apply conventions via skills in .claude/skills/ instead of path rules. Why insufficient?
+  front: 'Why is auto-applying conventions via skills in .claude/skills/ insufficient compared with path rules?'
   back: Skills require manual invocation or model choice—not deterministic path-based automatic application.
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.3; Sample Q6
@@ -793,7 +793,7 @@
   difficulty: medium
   scenarios:
   - code_generation
-  front: Test-driven iteration before implementation—what should tests cover?
+  front: In test-driven iteration before implementation, what should the tests cover?
   back: Expected behavior, edge cases, and performance requirements—iterate by sharing failures with Claude.
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.5
@@ -810,7 +810,7 @@
   difficulty: medium
   scenarios:
   - code_generation
-  front: 'context: fork for skills—another use case besides verbose codebase analysis?'
+  front: 'Besides verbose codebase analysis, what is another use case for context: fork on skills?'
   back: Exploratory brainstorming of alternatives—isolates speculative output from the main session.
   sources:
   - Official CCAR-F Exam Guide — D3, Task 3.2
@@ -827,7 +827,7 @@
   difficulty: easy
   scenarios:
   - developer_productivity
-  front: Developer Productivity scenario (Scenario 4)—primary domains?
+  front: 'What are the primary domains for the Developer Productivity scenario (Scenario 4)?'
   back: D2 (built-in tools + MCP), D3 (Claude Code workflows), D1 (delegation/orchestration).
   sources:
   - Official CCAR-F Exam Guide — scenario map
