@@ -799,3 +799,136 @@
 **Sources:**
 - Official CCAR-F Exam Guide — D4, Task 4.6; Sample Q12
 
+---
+
+## tn-4-1 · task_notes · all
+
+**Tasks:** 4.1
+
+**Q:** Task 4.1 — Design prompts with explicit criteria to improve precision
+
+**A:** Name what to flag vs skip. Kill a noisy category. Calibrate severity with examples.
+
+**Notes:**
+- Vague 'be conservative' loses to categorical rules (flag comments only when they contradict code).
+- Say report bugs/security, skip style nits—do not rely on confidence filtering alone.
+- One high-FP category makes people ignore every category. Disable it while you fix the prompt.
+- Severity needs concrete code examples, not a 1–10 vibe.
+- Show before/after snippets; they beat paragraphs of style advice.
+
+**Tags:** task_notes, precision
+
+**Sources:**
+- Official CCAR-F Exam Guide — D4, Task 4.1
+
+---
+
+## tn-4-2 · task_notes · all
+
+**Tasks:** 4.2
+
+**Q:** Task 4.2 — Apply few-shot prompting for consistency and ambiguous cases
+
+**A:** 2–4 targeted examples with why. More than ~4 rarely helps.
+
+**Notes:**
+- Use few-shot when instructions still yield messy format or shaky edges.
+- 2–4 examples that show why A beat a plausible B (sweet spot; 10 examples waste context).
+- Show the finding shape: location, issue, severity, fix.
+- Contrast local style vs a real bug to cut FPs while still catching novel bugs.
+- Extraction: one shot per layout (inline cites vs bibliography).
+
+**Tags:** task_notes, few_shot
+
+**Sources:**
+- Official CCAR-F Exam Guide — D4, Task 4.2
+
+---
+
+## tn-4-3 · task_notes · all
+
+**Tasks:** 4.3
+
+**Q:** Task 4.3 — Enforce structured output with tool use and JSON schemas
+
+**A:** Forced tool_use is the production JSON path. Required fields cause fabrication.
+
+**Notes:**
+- Most reliable JSON: a dedicated extract tool + forced tool_choice (or any if type is unknown).
+- Prompt-only JSON is for prototypes. Schema on the tool is enforced by the API.
+- Strict schema ≠ correct semantics (totals, wrong field).
+- If a value may be missing, make it optional/nullable—required fields get invented.
+- Extensible category: enum + other + detail. Ambiguous: unclear, do not force a bucket.
+- Put date-normalization rules in the prompt next to the schema.
+
+**Tags:** task_notes, json_schema
+
+**Sources:**
+- Official CCAR-F Exam Guide — D4, Task 4.3
+
+---
+
+## tn-4-4 · task_notes · all
+
+**Tasks:** 4.4
+
+**Q:** Task 4.4 — Implement validation, retry, and feedback loops
+
+**A:** Retry original + failed output + specific error. Never just 'try again'.
+
+**Notes:**
+- Retry payload: original doc, failed extract, exact validation errors.
+- Retries fix format/structure. They cannot invent facts that are not in the document.
+- Escalate after repeated failures or a fundamentally wrong interpretation.
+- detected_pattern on findings lets you mine which constructs cause FPs.
+- Invoices: calculated_total vs stated_total; conflict_detected for inconsistent source.
+
+**Tags:** task_notes, validation
+
+**Sources:**
+- Official CCAR-F Exam Guide — D4, Task 4.4
+
+---
+
+## tn-4-5 · task_notes · all
+
+**Tasks:** 4.5
+
+**Q:** Task 4.5 — Design efficient batch processing strategies
+
+**A:** ~50% cheaper, up to 24h, no latency SLA. Batch is cost, not speed.
+
+**Notes:**
+- Message Batches: cheaper, no SLA, window up to 24 hours. Not for real-time/user-facing waits.
+- Overnight reports = batch. Blocking pre-merge = synchronous. Do not poll batches as a merge gate.
+- No multi-turn tool calling inside one batch request.
+- custom_id correlates request/response and failed docs. Resubmit only failures (chunk oversized).
+- Tune prompts on a sample before 10k docs. 30h SLA with 24h max → submit often enough for retries.
+
+**Tags:** task_notes, batch_api
+
+**Sources:**
+- Official CCAR-F Exam Guide — D4, Task 4.5
+
+---
+
+## tn-4-6 · task_notes · all
+
+**Tasks:** 4.6
+
+**Q:** Task 4.6 — Design multi-instance and multi-pass review architectures
+
+**A:** New instance, no generator history. Per-file + integration. Not 2-of-3 voting.
+
+**Notes:**
+- Same-session self-review keeps generation bias. Second instance without that context catches more.
+- Extended thinking is not a substitute for an independent reviewer.
+- Large PR: local per-file pass + cross-file integration pass. Bigger windows do not fix attention.
+- Consensus of 3 full passes hides intermittent real bugs.
+- Optional verification pass: confidence next to each finding for human routing (not a support escalate rule).
+
+**Tags:** task_notes, multi_pass
+
+**Sources:**
+- Official CCAR-F Exam Guide — D4, Task 4.6
+

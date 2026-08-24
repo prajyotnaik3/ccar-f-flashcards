@@ -898,3 +898,158 @@
 **Sources:**
 - Official CCAR-F Exam Guide — D1, Task 1.4
 
+---
+
+## tn-1-1 · task_notes · all
+
+**Tasks:** 1.1
+
+**Q:** Task 1.1 — Design and implement agentic loops for autonomous task execution
+
+**A:** Loop on stop_reason. Caps are a safety net, not the stop rule.
+
+**Notes:**
+- Code loop: send Messages request → read stop_reason → tool_use: run tools, append results, repeat; end_turn: stop.
+- Append tool results to history. Skip that and the model never sees what the tool returned.
+- stop_reason is the only primary stop signal. Do not parse 'I'm done' or check content[0].type == text (text can sit next to tool_use).
+- Iteration caps belong as a runaway safety net, not the fix for premature exit.
+- Trap: tool_choice any to 'stop leftover text' forces tools forever. Let the model end via end_turn.
+- Default: model picks tools from context. Hard-code sequences only when compliance must be deterministic (see 1.4).
+
+**Tags:** task_notes, agent_loop
+
+**Sources:**
+- Official CCAR-F Exam Guide — D1, Task 1.1
+
+---
+
+## tn-1-2 · task_notes · all
+
+**Tasks:** 1.2
+
+**Q:** Task 1.2 — Orchestrate multi-agent systems with coordinator–subagent patterns
+
+**A:** Hub-and-spoke only. Coverage gaps are coordinator decomposition bugs.
+
+**Notes:**
+- Coordinator owns split, who to call, routing, errors, and merge. Subagents never talk peer-to-peer.
+- Subagents do not inherit coordinator history. Isolation is a feature, not a bug.
+- Pick subagents from the query. A simple fact-check should not run search+analyze+synthesize.
+- Partition by subtopic or source type so workers do not duplicate work.
+- Trap: report misses music/film because coordinator assigned only visual-arts subtasks—workers did their jobs.
+- Refinement: judge synthesis for gaps → targeted re-search → synthesize again until coverage is enough.
+
+**Tags:** task_notes, coordinator
+
+**Sources:**
+- Official CCAR-F Exam Guide — D1, Task 1.2
+
+---
+
+## tn-1-3 · task_notes · all
+
+**Tasks:** 1.3
+
+**Q:** Task 1.3 — Configure subagent invocation, context passing, and spawning
+
+**A:** allowedTools must include Task. Context is copied in, never inherited.
+
+**Notes:**
+- Spawn with the Task tool (Claude Code may label it Agent; exam still says Task). Coordinator allowedTools must include it.
+- Each Task call is a blank slate—paste prior findings into the prompt every time.
+- AgentDefinition: description, system prompt, tool list. Aim for ~4–5 tools per specialist.
+- Keep claim text separate from URL/title/page so synthesis can still cite.
+- Independent work: multiple Task calls in one coordinator turn (parallel). That is not fork_session.
+- Coordinator prompts: goals and quality bars, not rigid step lists.
+
+**Tags:** task_notes, Task_tool
+
+**Sources:**
+- Official CCAR-F Exam Guide — D1, Task 1.3
+
+---
+
+## tn-1-4 · task_notes · all
+
+**Tasks:** 1.4
+
+**Q:** Task 1.4 — Implement multi-step workflows with enforcement and handoff patterns
+
+**A:** If the stem says guaranteed/must always, the answer is a gate or hook, not a prompt.
+
+**Notes:**
+- Prompts are probabilistic. Identity-before-money needs a programmatic prerequisite/hook.
+- Block lookup_order / process_refund until get_customer returns a verified ID.
+- Multi-concern tickets: split, investigate in parallel, then one synthesized reply.
+- Handoff packet the exam expects: customer ID, factual summary, root cause, recommended action.
+- Never fail silent. If the agent cannot finish, emit that structured handoff—not a vague error.
+
+**Tags:** task_notes, prerequisites
+
+**Sources:**
+- Official CCAR-F Exam Guide — D1, Task 1.4
+
+---
+
+## tn-1-5 · task_notes · all
+
+**Tasks:** 1.5
+
+**Q:** Task 1.5 — Apply Agent SDK hooks for tool-call interception and data normalization
+
+**A:** PreToolUse blocks; PostToolUse normalizes. Prompts cannot match that guarantee.
+
+**Notes:**
+- PreToolUse / intercept: runs before the tool. Block refunds over $500; validate args.
+- PostToolUse: runs after. Normalize Unix vs ISO timestamps and status codes before the model sees them.
+- Hooks are code. Prompt injection cannot skip them. Soft style rules stay in the system prompt.
+- Stem words guaranteed / must always / compliance / audit → hooks, not few-shot.
+
+**Tags:** task_notes, hooks
+
+**Sources:**
+- Official CCAR-F Exam Guide — D1, Task 1.5
+
+---
+
+## tn-1-6 · task_notes · all
+
+**Tasks:** 1.6
+
+**Q:** Task 1.6 — Design task decomposition strategies for complex workflows
+
+**A:** Known steps → chain. Unknown scope → adaptive. Many files → per-item then integration.
+
+**Notes:**
+- Prompt chaining: fixed A→B→C when each step needs the last output (predictable reviews).
+- Adaptive: next subtask comes from what you just found (open-ended 'add tests to this repo').
+- Attention dilution: one pass over 14 files → uneven depth and contradictions.
+- Fix: per-file local pass, then a separate cross-file integration pass.
+- Traps: bigger context window, split the PR, or keep findings only if 2 of 3 full passes agree.
+
+**Tags:** task_notes, decomposition
+
+**Sources:**
+- Official CCAR-F Exam Guide — D1, Task 1.6
+
+---
+
+## tn-1-7 · task_notes · all
+
+**Tasks:** 1.7
+
+**Q:** Task 1.7 — Manage session state, resumption, and forking
+
+**A:** Resume if still valid. Stale tools → new session + summary. Fork to compare approaches.
+
+**Notes:**
+- --resume continues a named session. Tell it which files changed so it re-reads those, not the whole tree.
+- Stale signals: repeats, contradicts itself, ignores recent tool output. Fix is a fresh session plus a curated summary—not 'more context'.
+- fork_session: branch from a shared baseline to try two designs without polluting the main thread.
+- fork_session ≠ firing several Task tools in one turn (that is parallel spawn).
+
+**Tags:** task_notes, session
+
+**Sources:**
+- Official CCAR-F Exam Guide — D1, Task 1.7
+

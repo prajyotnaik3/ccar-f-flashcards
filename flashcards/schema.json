@@ -7,7 +7,7 @@
   "properties": {
     "id": {
       "type": "string",
-      "pattern": "^d[1-5]-[0-9]{3}$|^meta-[0-9]{3}$|^sc-[0-9]{3}$"
+      "pattern": "^d[1-5]-[0-9]{3}$|^meta-[0-9]{3}$|^sc-[0-9]{3}$|^tn-[1-5]-[1-9]$"
     },
     "domain": {
       "type": "string",
@@ -35,7 +35,7 @@
     },
     "type": {
       "type": "string",
-      "enum": ["concept", "decision", "anti_pattern", "compare", "scenario_hook", "scenario_chain", "sample_rationale", "meta"]
+      "enum": ["concept", "decision", "anti_pattern", "compare", "scenario_hook", "scenario_chain", "sample_rationale", "meta", "task_notes"]
     },
     "difficulty": {
       "type": "string",
@@ -44,6 +44,13 @@
     "front": { "type": "string", "minLength": 5 },
     "back": { "type": "string", "minLength": 5 },
     "rationale": { "type": "string" },
+    "notes": {
+      "type": "array",
+      "description": "Short study pointers for task_notes cards (shown as a list on the back)",
+      "items": { "type": "string", "minLength": 12, "maxLength": 280 },
+      "minItems": 4,
+      "maxItems": 8
+    },
     "sources": {
       "type": "array",
       "items": { "type": "string", "minLength": 3 },

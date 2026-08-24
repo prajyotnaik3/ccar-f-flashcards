@@ -23,6 +23,10 @@ def card_to_markdown(card: dict) -> str:
         "",
         f"**A:** {card['back']}",
     ]
+    if card.get("notes"):
+        lines.extend(["", "**Notes:**"])
+        for note in card["notes"]:
+            lines.append(f"- {note}")
     if card.get("rationale"):
         lines.extend(["", f"**Why:** {card['rationale']}"])
     if tags:

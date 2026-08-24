@@ -5,6 +5,8 @@ Unofficial flashcards for **Claude Certified Architect – Foundations (CCAR-F)*
 - **Markdown** — read on GitHub or in VS Code (`dist/markdown/`)
 - **Anki** — spaced repetition (`dist/anki/ccar-f.apkg`)
 - **Web viewer** — flip cards on GitHub Pages (`web/`)
+  - **Recall** — quiz cards (default)
+  - **Task notes** (`?kind=notes`) — one crib-sheet card per Exam Guide task statement
 
 > **Disclaimer:** Not affiliated with or endorsed by Anthropic. No leaked exam content. Study from the [official Exam Guide](https://anthropic-partners.skilljar.com/claude-certified-architect-foundations-certification) and public Anthropic docs.
 

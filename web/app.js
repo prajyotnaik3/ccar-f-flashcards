@@ -4,6 +4,7 @@ let index = 0;
 let flipped = false;
 let cardsReady = false;
 
+const elKind = document.getElementById("filter-kind");
 const elDomain = document.getElementById("filter-domain");
 const elScenario = document.getElementById("filter-scenario");
 const elTask = document.getElementById("filter-task");
@@ -32,6 +33,7 @@ const SCENARIO_LABELS = {
 };
 
 function setFiltersEnabled(enabled) {
+  elKind.disabled = !enabled;
   elDomain.disabled = !enabled;
   elScenario.disabled = !enabled;
   elTask.disabled = !enabled;
@@ -67,8 +69,15 @@ function cardScenarios(card) {
 }
 
 function cardsMatchingDomain(domain) {
-  if (!domain) return allCards;
-  return allCards.filter((c) => c.domain === domain);
+  return cardsForKind().filter((c) => !domain || c.domain === domain);
+}
+
+function cardsForKind() {
+  const kind = elKind.value;
+  if (kind === "notes") {
+    return allCards.filter((c) => c.type === "task_notes");
+  }
+  return allCards.filter((c) => c.type !== "task_notes");
 }
 
 function cardMatchesScenario(card, scenario) {
@@ -163,7 +172,7 @@ function applyFilters() {
   const scenario = elScenario.value;
   const task = elTask.value;
 
-  filtered = allCards.filter((c) => {
+  filtered = cardsForKind().filter((c) => {
     if (domain && c.domain !== domain) return false;
     if (!cardMatchesScenario(c, scenario)) return false;
     if (task) {
@@ -173,7 +182,13 @@ function applyFilters() {
     return true;
   });
 
-  if (scenario) {
+  if (elKind.value === "notes") {
+    filtered.sort((a, b) => {
+      const ta = (a.tasks || [])[0] || a.id;
+      const tb = (b.tasks || [])[0] || b.id;
+      return String(ta).localeCompare(String(tb), undefined, { numeric: true });
+    });
+  } else if (scenario) {
     filtered.sort((a, b) => {
       const sa = a.chain?.step ?? 999;
       const sb = b.chain?.step ?? 999;
@@ -197,6 +212,14 @@ function onScenarioChange() {
   if (!cardsReady) return;
   updateTaskOptions();
   applyFilters();
+}
+
+function escapeHtml(text) {
+  return String(text)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
 }
 
 function render() {
@@ -224,9 +247,19 @@ function render() {
     : "";
   elMeta.textContent = `${card.id} · ${card.domain} · ${card.type}${chain} · tasks: ${tasks} · ${cardScenarios(card).join(", ")}`;
   elFront.textContent = card.front;
-  elBack.innerHTML =
-    `<strong>A:</strong> ${card.back}` +
-    (card.rationale ? `<br><br><strong>Why:</strong> ${card.rationale}` : "");
+  const notes = card.notes || [];
+  let backHtml = `<strong>${elKind.value === "notes" ? "Notes" : "A"}:</strong> `;
+  if (notes.length) {
+    backHtml += `<ul class="notes-list">${notes
+      .map((n) => `<li>${escapeHtml(n)}</li>`)
+      .join("")}</ul>`;
+  } else {
+    backHtml += escapeHtml(card.back);
+  }
+  if (card.rationale) {
+    backHtml += `<br><br><strong>Why:</strong> ${escapeHtml(card.rationale)}`;
+  }
+  elBack.innerHTML = backHtml;
   elBack.classList.toggle("hidden", !flipped);
 }
 
@@ -263,9 +296,12 @@ function shuffle() {
 
 function initFiltersFromUrl() {
   const params = new URLSearchParams(window.location.search);
+  const kind = params.get("kind");
   const domain = params.get("domain");
   const scenario = params.get("scenario");
   const task = params.get("task");
+
+  if (kind === "notes" || kind === "recall") elKind.value = kind;
 
   if (domain) elDomain.value = domain;
 
@@ -300,6 +336,7 @@ document.getElementById("flip-btn").addEventListener("click", flip);
 document.getElementById("next-btn").addEventListener("click", next);
 document.getElementById("prev-btn").addEventListener("click", prev);
 document.getElementById("shuffle-btn").addEventListener("click", shuffle);
+elKind.addEventListener("change", onDomainChange);
 elDomain.addEventListener("change", onDomainChange);
 elScenario.addEventListener("change", onScenarioChange);
 elTask.addEventListener("change", applyFilters);

@@ -26,6 +26,8 @@ def card_fields(card: dict) -> tuple[str, str]:
     sources = "\n".join(f"• {s}" for s in card.get("sources", []))
     front = card["front"]
     back_parts = [card["back"]]
+    if card.get("notes"):
+        back_parts.append("\n" + "\n".join(f"• {n}" for n in card["notes"]))
     if card.get("rationale"):
         back_parts.append(f"\n\nWhy: {card['rationale']}")
     if tasks_line:

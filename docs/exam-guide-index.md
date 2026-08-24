@@ -38,7 +38,7 @@ Use this page to navigate the **official Exam Guide** alongside flashcards in th
 
 ## Domain 1 — Agentic Architecture & Orchestration (27%)
 
-Flashcards: [`d1-agentic-architecture.yaml`](../flashcards/domains/d1-agentic-architecture.yaml) · [Filter D1 in viewer](https://prajyotnaik3.github.io/ccar-f-flashcards/?domain=D1)
+Flashcards: [`d1-agentic-architecture.yaml`](../flashcards/domains/d1-agentic-architecture.yaml) · [Filter D1 in viewer](https://prajyotnaik3.github.io/ccar-f-flashcards/?domain=D1) · [D1 task notes](https://prajyotnaik3.github.io/ccar-f-flashcards/?kind=notes&domain=D1)
 
 | Task | Topic |
 |------|--------|
@@ -56,7 +56,7 @@ Flashcards: [`d1-agentic-architecture.yaml`](../flashcards/domains/d1-agentic-ar
 
 ## Domain 2 — Tool Design & MCP Integration (18%)
 
-Flashcards: [`d2-tool-design-mcp.yaml`](../flashcards/domains/d2-tool-design-mcp.yaml) · [Filter D2](https://prajyotnaik3.github.io/ccar-f-flashcards/?domain=D2)
+Flashcards: [`d2-tool-design-mcp.yaml`](../flashcards/domains/d2-tool-design-mcp.yaml) · [Filter D2](https://prajyotnaik3.github.io/ccar-f-flashcards/?domain=D2) · [D2 task notes](https://prajyotnaik3.github.io/ccar-f-flashcards/?kind=notes&domain=D2)
 
 | Task | Topic |
 |------|--------|
@@ -72,7 +72,7 @@ Flashcards: [`d2-tool-design-mcp.yaml`](../flashcards/domains/d2-tool-design-mcp
 
 ## Domain 3 — Claude Code Configuration & Workflows (20%)
 
-Flashcards: [`d3-claude-code.yaml`](../flashcards/domains/d3-claude-code.yaml) · [Filter D3](https://prajyotnaik3.github.io/ccar-f-flashcards/?domain=D3)
+Flashcards: [`d3-claude-code.yaml`](../flashcards/domains/d3-claude-code.yaml) · [Filter D3](https://prajyotnaik3.github.io/ccar-f-flashcards/?domain=D3) · [D3 task notes](https://prajyotnaik3.github.io/ccar-f-flashcards/?kind=notes&domain=D3)
 
 | Task | Topic |
 |------|--------|
@@ -89,7 +89,7 @@ Flashcards: [`d3-claude-code.yaml`](../flashcards/domains/d3-claude-code.yaml) �
 
 ## Domain 4 — Prompt Engineering & Structured Output (20%)
 
-Flashcards: [`d4-prompt-structured-output.yaml`](../flashcards/domains/d4-prompt-structured-output.yaml) · [Filter D4](https://prajyotnaik3.github.io/ccar-f-flashcards/?domain=D4)
+Flashcards: [`d4-prompt-structured-output.yaml`](../flashcards/domains/d4-prompt-structured-output.yaml) · [Filter D4](https://prajyotnaik3.github.io/ccar-f-flashcards/?domain=D4) · [D4 task notes](https://prajyotnaik3.github.io/ccar-f-flashcards/?kind=notes&domain=D4)
 
 | Task | Topic |
 |------|--------|
@@ -106,7 +106,7 @@ Flashcards: [`d4-prompt-structured-output.yaml`](../flashcards/domains/d4-prompt
 
 ## Domain 5 — Context Management & Reliability (15%)
 
-Flashcards: [`d5-context-reliability.yaml`](../flashcards/domains/d5-context-reliability.yaml) · [Filter D5](https://prajyotnaik3.github.io/ccar-f-flashcards/?domain=D5)
+Flashcards: [`d5-context-reliability.yaml`](../flashcards/domains/d5-context-reliability.yaml) · [Filter D5](https://prajyotnaik3.github.io/ccar-f-flashcards/?domain=D5) · [D5 task notes](https://prajyotnaik3.github.io/ccar-f-flashcards/?kind=notes&domain=D5)
 
 | Task | Topic |
 |------|--------|

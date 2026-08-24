@@ -19,6 +19,7 @@ Use these when authoring flashcards. **Your official CCAR-F Exam Guide (Partner 
 
 ## Community (unofficial, verify against Exam Guide)
 
+- [Claude Certification Guide — learn / domain crib sheets](https://claudecertificationguide.com/learn) (exam-trap framing; not Anthropic)
 - [HarikrishnanKM/claude-architect-exam-guide](https://github.com/HarikrishnanKM/claude-architect-exam-guide)
 
 ## Do not use as sources

@@ -31,6 +31,13 @@ def main() -> int:
             errors.append(f"{cid}: chain.step exceeds chain.steps")
         if card.get("type") == "decision" and not card.get("rationale"):
             errors.append(f"{cid}: decision cards require rationale")
+        if card.get("type") == "task_notes":
+            notes = card.get("notes") or []
+            if len(notes) < 4:
+                errors.append(f"{cid}: task_notes cards require at least 4 notes")
+            tasks = card.get("tasks") or []
+            if len(tasks) != 1:
+                errors.append(f"{cid}: task_notes must map to exactly one Exam Guide task")
 
     if errors:
         print("Validation failed:\n")

@@ -795,3 +795,138 @@
 **Sources:**
 - Official CCAR-F Exam Guide — scenario map
 
+---
+
+## tn-3-1 · task_notes · all
+
+**Tasks:** 3.1
+
+**Q:** Task 3.1 — Configure CLAUDE.md hierarchy, scoping, and modular organization
+
+**A:** User vs project vs directory. Files stack; they do not silently override.
+
+**Notes:**
+- User ~/.claude/CLAUDE.md is personal. Project CLAUDE.md / .claude/CLAUDE.md is git-shared.
+- Directory CLAUDE.md applies under that folder. @import keeps package standards modular.
+- Split a monolith into .claude/rules/ topic files.
+- New hire missing standards → they lived in user-level, not project-level.
+- /memory shows which memory files are loaded when behavior drifts.
+- Trap: 'user CLAUDE.md always wins' — layers concatenate; fix real contradictions in source.
+
+**Tags:** task_notes, CLAUDE.md
+
+**Sources:**
+- Official CCAR-F Exam Guide — D3, Task 3.1
+
+---
+
+## tn-3-2 · task_notes · all
+
+**Tasks:** 3.2
+
+**Q:** Task 3.2 — Create and configure custom slash commands and skills
+
+**A:** Team commands in .claude/commands/. Skills: context: fork, allowed-tools, argument-hint.
+
+**Notes:**
+- Shared slash commands: .claude/commands/. Personal: ~/.claude/commands/. CLAUDE.md is not a command file.
+- Skills = on-demand workflows (directory + SKILL.md). CLAUDE.md = always-on standards.
+- context: fork isolates verbose analysis/brainstorming from the main thread.
+- allowed-tools can lock a skill to writes only. argument-hint prompts for missing args.
+- Personal variants: ~/.claude/skills/ under new names so teammates are unaffected.
+
+**Tags:** task_notes, skills
+
+**Sources:**
+- Official CCAR-F Exam Guide — D3, Task 3.2
+
+---
+
+## tn-3-3 · task_notes · all
+
+**Tasks:** 3.3
+
+**Q:** Task 3.3 — Apply path-specific rules for conditional convention loading
+
+**A:** Glob paths in .claude/rules/ frontmatter—automatic, path-based, not skills.
+
+**Notes:**
+- YAML paths globs (terraform/**/*, **/*.test.tsx) load only while editing matches.
+- Saves tokens vs stuffing every convention in root CLAUDE.md.
+- Scattered tests: globs beat per-directory CLAUDE.md (directory-bound).
+- Root headers that hope Claude infers the section are unreliable.
+- Skills are opt-in. They are not automatic path application.
+
+**Tags:** task_notes, rules
+
+**Sources:**
+- Official CCAR-F Exam Guide — D3, Task 3.3
+
+---
+
+## tn-3-4 · task_notes · all
+
+**Tasks:** 3.4
+
+**Q:** Task 3.4 — Determine when to use plan mode vs direct execution
+
+**A:** Plan when design is unknown or costly to reverse. Direct when the fix is obvious.
+
+**Notes:**
+- Plan: many files, architecture, several valid designs, unknown dependencies.
+- Direct: one well-scoped change (stack trace in a single file).
+- Monolith → services: plan first. The complexity is already in the prompt.
+- Pattern: plan to design, then direct to implement (e.g. 45-file migration).
+- Explore subagent: noisy discovery there; summary back to main context.
+- Trap: -p is CI headless mode, not plan mode.
+
+**Tags:** task_notes, plan_mode
+
+**Sources:**
+- Official CCAR-F Exam Guide — D3, Task 3.4
+
+---
+
+## tn-3-5 · task_notes · all
+
+**Tasks:** 3.5
+
+**Q:** Task 3.5 — Apply iterative refinement techniques for progressive improvement
+
+**A:** Show I/O examples. Tests first. Interview before unfamiliar designs. Independent review session.
+
+**Notes:**
+- Wobbly NL specs → 2–3 concrete input/output pairs, not more adjectives.
+- TDD: write behavior/edge/perf tests, paste failures back.
+- Interview pattern: Claude asks design questions before coding a new domain.
+- Interacting bugs → one message. Independent bugs → sequential.
+- Do not review generated code in the same session that wrote it—start a fresh reviewer.
+
+**Tags:** task_notes, iteration
+
+**Sources:**
+- Official CCAR-F Exam Guide — D3, Task 3.5
+
+---
+
+## tn-3-6 · task_notes · all
+
+**Tasks:** 3.6
+
+**Q:** Task 3.6 — Integrate Claude Code into CI/CD pipelines
+
+**A:** -p for headless. JSON schema for comments. Independent reviewer. CLAUDE.md for CI context.
+
+**Notes:**
+- -p/--print is non-interactive. CLAUDE_HEADLESS and --batch are not the documented flags.
+- --output-format json plus --json-schema for parseable PR comments.
+- CI loads project CLAUDE.md (standards, fixtures, review criteria).
+- Generator session is a weak reviewer—use an independent instance.
+- Re-review: pass prior findings; ask only for new or still-open issues.
+- Include existing tests so generation does not duplicate coverage.
+
+**Tags:** task_notes, ci_cd
+
+**Sources:**
+- Official CCAR-F Exam Guide — D3, Task 3.6
+

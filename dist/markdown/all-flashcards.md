@@ -4834,3 +4834,673 @@
 - Official CCAR-F Exam Guide — Scenario 6
 - Official CCAR-F Exam Guide — D5, Task 5.5
 
+---
+
+## tn-1-1 · task_notes · all
+
+**Tasks:** 1.1
+
+**Q:** Task 1.1 — Design and implement agentic loops for autonomous task execution
+
+**A:** Loop on stop_reason. Caps are a safety net, not the stop rule.
+
+**Notes:**
+- Code loop: send Messages request → read stop_reason → tool_use: run tools, append results, repeat; end_turn: stop.
+- Append tool results to history. Skip that and the model never sees what the tool returned.
+- stop_reason is the only primary stop signal. Do not parse 'I'm done' or check content[0].type == text (text can sit next to tool_use).
+- Iteration caps belong as a runaway safety net, not the fix for premature exit.
+- Trap: tool_choice any to 'stop leftover text' forces tools forever. Let the model end via end_turn.
+- Default: model picks tools from context. Hard-code sequences only when compliance must be deterministic (see 1.4).
+
+**Tags:** task_notes, agent_loop
+
+**Sources:**
+- Official CCAR-F Exam Guide — D1, Task 1.1
+
+---
+
+## tn-1-2 · task_notes · all
+
+**Tasks:** 1.2
+
+**Q:** Task 1.2 — Orchestrate multi-agent systems with coordinator–subagent patterns
+
+**A:** Hub-and-spoke only. Coverage gaps are coordinator decomposition bugs.
+
+**Notes:**
+- Coordinator owns split, who to call, routing, errors, and merge. Subagents never talk peer-to-peer.
+- Subagents do not inherit coordinator history. Isolation is a feature, not a bug.
+- Pick subagents from the query. A simple fact-check should not run search+analyze+synthesize.
+- Partition by subtopic or source type so workers do not duplicate work.
+- Trap: report misses music/film because coordinator assigned only visual-arts subtasks—workers did their jobs.
+- Refinement: judge synthesis for gaps → targeted re-search → synthesize again until coverage is enough.
+
+**Tags:** task_notes, coordinator
+
+**Sources:**
+- Official CCAR-F Exam Guide — D1, Task 1.2
+
+---
+
+## tn-1-3 · task_notes · all
+
+**Tasks:** 1.3
+
+**Q:** Task 1.3 — Configure subagent invocation, context passing, and spawning
+
+**A:** allowedTools must include Task. Context is copied in, never inherited.
+
+**Notes:**
+- Spawn with the Task tool (Claude Code may label it Agent; exam still says Task). Coordinator allowedTools must include it.
+- Each Task call is a blank slate—paste prior findings into the prompt every time.
+- AgentDefinition: description, system prompt, tool list. Aim for ~4–5 tools per specialist.
+- Keep claim text separate from URL/title/page so synthesis can still cite.
+- Independent work: multiple Task calls in one coordinator turn (parallel). That is not fork_session.
+- Coordinator prompts: goals and quality bars, not rigid step lists.
+
+**Tags:** task_notes, Task_tool
+
+**Sources:**
+- Official CCAR-F Exam Guide — D1, Task 1.3
+
+---
+
+## tn-1-4 · task_notes · all
+
+**Tasks:** 1.4
+
+**Q:** Task 1.4 — Implement multi-step workflows with enforcement and handoff patterns
+
+**A:** If the stem says guaranteed/must always, the answer is a gate or hook, not a prompt.
+
+**Notes:**
+- Prompts are probabilistic. Identity-before-money needs a programmatic prerequisite/hook.
+- Block lookup_order / process_refund until get_customer returns a verified ID.
+- Multi-concern tickets: split, investigate in parallel, then one synthesized reply.
+- Handoff packet the exam expects: customer ID, factual summary, root cause, recommended action.
+- Never fail silent. If the agent cannot finish, emit that structured handoff—not a vague error.
+
+**Tags:** task_notes, prerequisites
+
+**Sources:**
+- Official CCAR-F Exam Guide — D1, Task 1.4
+
+---
+
+## tn-1-5 · task_notes · all
+
+**Tasks:** 1.5
+
+**Q:** Task 1.5 — Apply Agent SDK hooks for tool-call interception and data normalization
+
+**A:** PreToolUse blocks; PostToolUse normalizes. Prompts cannot match that guarantee.
+
+**Notes:**
+- PreToolUse / intercept: runs before the tool. Block refunds over $500; validate args.
+- PostToolUse: runs after. Normalize Unix vs ISO timestamps and status codes before the model sees them.
+- Hooks are code. Prompt injection cannot skip them. Soft style rules stay in the system prompt.
+- Stem words guaranteed / must always / compliance / audit → hooks, not few-shot.
+
+**Tags:** task_notes, hooks
+
+**Sources:**
+- Official CCAR-F Exam Guide — D1, Task 1.5
+
+---
+
+## tn-1-6 · task_notes · all
+
+**Tasks:** 1.6
+
+**Q:** Task 1.6 — Design task decomposition strategies for complex workflows
+
+**A:** Known steps → chain. Unknown scope → adaptive. Many files → per-item then integration.
+
+**Notes:**
+- Prompt chaining: fixed A→B→C when each step needs the last output (predictable reviews).
+- Adaptive: next subtask comes from what you just found (open-ended 'add tests to this repo').
+- Attention dilution: one pass over 14 files → uneven depth and contradictions.
+- Fix: per-file local pass, then a separate cross-file integration pass.
+- Traps: bigger context window, split the PR, or keep findings only if 2 of 3 full passes agree.
+
+**Tags:** task_notes, decomposition
+
+**Sources:**
+- Official CCAR-F Exam Guide — D1, Task 1.6
+
+---
+
+## tn-1-7 · task_notes · all
+
+**Tasks:** 1.7
+
+**Q:** Task 1.7 — Manage session state, resumption, and forking
+
+**A:** Resume if still valid. Stale tools → new session + summary. Fork to compare approaches.
+
+**Notes:**
+- --resume continues a named session. Tell it which files changed so it re-reads those, not the whole tree.
+- Stale signals: repeats, contradicts itself, ignores recent tool output. Fix is a fresh session plus a curated summary—not 'more context'.
+- fork_session: branch from a shared baseline to try two designs without polluting the main thread.
+- fork_session ≠ firing several Task tools in one turn (that is parallel spawn).
+
+**Tags:** task_notes, session
+
+**Sources:**
+- Official CCAR-F Exam Guide — D1, Task 1.7
+
+---
+
+## tn-2-1 · task_notes · all
+
+**Tasks:** 2.1
+
+**Q:** Task 2.1 — Design effective tool interfaces with clear descriptions and boundaries
+
+**A:** Descriptions select tools. Improve text first; do not merge tools as step one.
+
+**Notes:**
+- Description > name. Include what it does, inputs, outputs, what it does not do, and example queries.
+- Misroutes between similar tools: expand descriptions before few-shot, routers, or a mega-tool.
+- Rename to purpose (extract_web_results) and split fat tools (extract vs summarize vs verify).
+- System-prompt keywords can override good descriptions—audit the prompt next.
+- Trap: 'just reduce the tool count' is the wrong first move.
+
+**Tags:** task_notes, tool_descriptions
+
+**Sources:**
+- Official CCAR-F Exam Guide — D2, Task 2.1
+
+---
+
+## tn-2-2 · task_notes · all
+
+**Tasks:** 2.2
+
+**Q:** Task 2.2 — Implement structured error responses for MCP tools
+
+**A:** isError + category + isRetryable. Zero hits is success, not failure.
+
+**Notes:**
+- Return isError plus category (transient / validation / business / permission), isRetryable, and a clear description.
+- Transient: retry. Validation: fix input. Business/permission: do not retry; explain or escalate.
+- Timeout/401 = access failure. Search with 0 rows = successful empty result. Do not mix those.
+- Subagents retry transients locally; bubble up only unresolved errors with partial results and what was tried.
+- Trap: generic 'Operation failed' or treating empty search as an error.
+
+**Tags:** task_notes, errors
+
+**Sources:**
+- Official CCAR-F Exam Guide — D2, Task 2.2
+
+---
+
+## tn-2-3 · task_notes · all
+
+**Tasks:** 2.3
+
+**Q:** Task 2.3 — Distribute tools across agents and configure tool_choice
+
+**A:** 4–5 tools per role. auto / any / forced-name are three different guarantees.
+
+**Notes:**
+- 18 tools tank selection. Scope specialists; synthesis with search tools will search.
+- Allowed exception: one tiny cross-role tool for a high-frequency need (verify_fact), not the whole search suite.
+- auto: model may chat (default agent loop). any: must call some tool. Forced name: that tool, that schema.
+- Unknown doc type among several extractors → any. Known schema every time → force that tool.
+- Replace fetch_url with load_document that rejects non-document URLs.
+
+**Tags:** task_notes, tool_choice
+
+**Sources:**
+- Official CCAR-F Exam Guide — D2, Task 2.3
+
+---
+
+## tn-2-4 · task_notes · all
+
+**Tasks:** 2.4
+
+**Q:** Task 2.4 — Integrate MCP servers into Claude Code and agent workflows
+
+**A:** Team config in the repo; secrets in env. Prefer community servers. Resources ≠ tools.
+
+**Notes:**
+- Project .mcp.json is shared. ~/.claude.json is personal. Do not commit tokens—use ${GITHUB_TOKEN}.
+- Host/client talks to servers. Servers do not peer with each other.
+- All connected servers' tools appear together at connect time.
+- Resources = catalogs (schemas, doc trees). Tools = actions.
+- If Grep beats a better MCP search, the MCP description is too weak.
+- Use community Jira/GitHub first; custom servers only for team-specific flows.
+
+**Tags:** task_notes, mcp_config
+
+**Sources:**
+- Official CCAR-F Exam Guide — D2, Task 2.4
+
+---
+
+## tn-2-5 · task_notes · all
+
+**Tasks:** 2.5
+
+**Q:** Task 2.5 — Select and apply built-in tools (Read, Write, Edit, Bash, Grep, Glob)
+
+**A:** Most specific tool wins. Grep contents, Glob paths, Edit unique anchors.
+
+**Notes:**
+- Grep: callers, errors, imports. Glob: **/*.test.tsx. Read: you already know the path.
+- Edit needs unique old_string. If not unique → Read + Write.
+- Bash for build/test/git—not as a lazy Grep.
+- Explore: Grep entry points → Read along imports. Do not dump the repo.
+- Wrappers: list exports, then Grep each name.
+
+**Tags:** task_notes, builtin_tools
+
+**Sources:**
+- Official CCAR-F Exam Guide — D2, Task 2.5
+
+---
+
+## tn-3-1 · task_notes · all
+
+**Tasks:** 3.1
+
+**Q:** Task 3.1 — Configure CLAUDE.md hierarchy, scoping, and modular organization
+
+**A:** User vs project vs directory. Files stack; they do not silently override.
+
+**Notes:**
+- User ~/.claude/CLAUDE.md is personal. Project CLAUDE.md / .claude/CLAUDE.md is git-shared.
+- Directory CLAUDE.md applies under that folder. @import keeps package standards modular.
+- Split a monolith into .claude/rules/ topic files.
+- New hire missing standards → they lived in user-level, not project-level.
+- /memory shows which memory files are loaded when behavior drifts.
+- Trap: 'user CLAUDE.md always wins' — layers concatenate; fix real contradictions in source.
+
+**Tags:** task_notes, CLAUDE.md
+
+**Sources:**
+- Official CCAR-F Exam Guide — D3, Task 3.1
+
+---
+
+## tn-3-2 · task_notes · all
+
+**Tasks:** 3.2
+
+**Q:** Task 3.2 — Create and configure custom slash commands and skills
+
+**A:** Team commands in .claude/commands/. Skills: context: fork, allowed-tools, argument-hint.
+
+**Notes:**
+- Shared slash commands: .claude/commands/. Personal: ~/.claude/commands/. CLAUDE.md is not a command file.
+- Skills = on-demand workflows (directory + SKILL.md). CLAUDE.md = always-on standards.
+- context: fork isolates verbose analysis/brainstorming from the main thread.
+- allowed-tools can lock a skill to writes only. argument-hint prompts for missing args.
+- Personal variants: ~/.claude/skills/ under new names so teammates are unaffected.
+
+**Tags:** task_notes, skills
+
+**Sources:**
+- Official CCAR-F Exam Guide — D3, Task 3.2
+
+---
+
+## tn-3-3 · task_notes · all
+
+**Tasks:** 3.3
+
+**Q:** Task 3.3 — Apply path-specific rules for conditional convention loading
+
+**A:** Glob paths in .claude/rules/ frontmatter—automatic, path-based, not skills.
+
+**Notes:**
+- YAML paths globs (terraform/**/*, **/*.test.tsx) load only while editing matches.
+- Saves tokens vs stuffing every convention in root CLAUDE.md.
+- Scattered tests: globs beat per-directory CLAUDE.md (directory-bound).
+- Root headers that hope Claude infers the section are unreliable.
+- Skills are opt-in. They are not automatic path application.
+
+**Tags:** task_notes, rules
+
+**Sources:**
+- Official CCAR-F Exam Guide — D3, Task 3.3
+
+---
+
+## tn-3-4 · task_notes · all
+
+**Tasks:** 3.4
+
+**Q:** Task 3.4 — Determine when to use plan mode vs direct execution
+
+**A:** Plan when design is unknown or costly to reverse. Direct when the fix is obvious.
+
+**Notes:**
+- Plan: many files, architecture, several valid designs, unknown dependencies.
+- Direct: one well-scoped change (stack trace in a single file).
+- Monolith → services: plan first. The complexity is already in the prompt.
+- Pattern: plan to design, then direct to implement (e.g. 45-file migration).
+- Explore subagent: noisy discovery there; summary back to main context.
+- Trap: -p is CI headless mode, not plan mode.
+
+**Tags:** task_notes, plan_mode
+
+**Sources:**
+- Official CCAR-F Exam Guide — D3, Task 3.4
+
+---
+
+## tn-3-5 · task_notes · all
+
+**Tasks:** 3.5
+
+**Q:** Task 3.5 — Apply iterative refinement techniques for progressive improvement
+
+**A:** Show I/O examples. Tests first. Interview before unfamiliar designs. Independent review session.
+
+**Notes:**
+- Wobbly NL specs → 2–3 concrete input/output pairs, not more adjectives.
+- TDD: write behavior/edge/perf tests, paste failures back.
+- Interview pattern: Claude asks design questions before coding a new domain.
+- Interacting bugs → one message. Independent bugs → sequential.
+- Do not review generated code in the same session that wrote it—start a fresh reviewer.
+
+**Tags:** task_notes, iteration
+
+**Sources:**
+- Official CCAR-F Exam Guide — D3, Task 3.5
+
+---
+
+## tn-3-6 · task_notes · all
+
+**Tasks:** 3.6
+
+**Q:** Task 3.6 — Integrate Claude Code into CI/CD pipelines
+
+**A:** -p for headless. JSON schema for comments. Independent reviewer. CLAUDE.md for CI context.
+
+**Notes:**
+- -p/--print is non-interactive. CLAUDE_HEADLESS and --batch are not the documented flags.
+- --output-format json plus --json-schema for parseable PR comments.
+- CI loads project CLAUDE.md (standards, fixtures, review criteria).
+- Generator session is a weak reviewer—use an independent instance.
+- Re-review: pass prior findings; ask only for new or still-open issues.
+- Include existing tests so generation does not duplicate coverage.
+
+**Tags:** task_notes, ci_cd
+
+**Sources:**
+- Official CCAR-F Exam Guide — D3, Task 3.6
+
+---
+
+## tn-4-1 · task_notes · all
+
+**Tasks:** 4.1
+
+**Q:** Task 4.1 — Design prompts with explicit criteria to improve precision
+
+**A:** Name what to flag vs skip. Kill a noisy category. Calibrate severity with examples.
+
+**Notes:**
+- Vague 'be conservative' loses to categorical rules (flag comments only when they contradict code).
+- Say report bugs/security, skip style nits—do not rely on confidence filtering alone.
+- One high-FP category makes people ignore every category. Disable it while you fix the prompt.
+- Severity needs concrete code examples, not a 1–10 vibe.
+- Show before/after snippets; they beat paragraphs of style advice.
+
+**Tags:** task_notes, precision
+
+**Sources:**
+- Official CCAR-F Exam Guide — D4, Task 4.1
+
+---
+
+## tn-4-2 · task_notes · all
+
+**Tasks:** 4.2
+
+**Q:** Task 4.2 — Apply few-shot prompting for consistency and ambiguous cases
+
+**A:** 2–4 targeted examples with why. More than ~4 rarely helps.
+
+**Notes:**
+- Use few-shot when instructions still yield messy format or shaky edges.
+- 2–4 examples that show why A beat a plausible B (sweet spot; 10 examples waste context).
+- Show the finding shape: location, issue, severity, fix.
+- Contrast local style vs a real bug to cut FPs while still catching novel bugs.
+- Extraction: one shot per layout (inline cites vs bibliography).
+
+**Tags:** task_notes, few_shot
+
+**Sources:**
+- Official CCAR-F Exam Guide — D4, Task 4.2
+
+---
+
+## tn-4-3 · task_notes · all
+
+**Tasks:** 4.3
+
+**Q:** Task 4.3 — Enforce structured output with tool use and JSON schemas
+
+**A:** Forced tool_use is the production JSON path. Required fields cause fabrication.
+
+**Notes:**
+- Most reliable JSON: a dedicated extract tool + forced tool_choice (or any if type is unknown).
+- Prompt-only JSON is for prototypes. Schema on the tool is enforced by the API.
+- Strict schema ≠ correct semantics (totals, wrong field).
+- If a value may be missing, make it optional/nullable—required fields get invented.
+- Extensible category: enum + other + detail. Ambiguous: unclear, do not force a bucket.
+- Put date-normalization rules in the prompt next to the schema.
+
+**Tags:** task_notes, json_schema
+
+**Sources:**
+- Official CCAR-F Exam Guide — D4, Task 4.3
+
+---
+
+## tn-4-4 · task_notes · all
+
+**Tasks:** 4.4
+
+**Q:** Task 4.4 — Implement validation, retry, and feedback loops
+
+**A:** Retry original + failed output + specific error. Never just 'try again'.
+
+**Notes:**
+- Retry payload: original doc, failed extract, exact validation errors.
+- Retries fix format/structure. They cannot invent facts that are not in the document.
+- Escalate after repeated failures or a fundamentally wrong interpretation.
+- detected_pattern on findings lets you mine which constructs cause FPs.
+- Invoices: calculated_total vs stated_total; conflict_detected for inconsistent source.
+
+**Tags:** task_notes, validation
+
+**Sources:**
+- Official CCAR-F Exam Guide — D4, Task 4.4
+
+---
+
+## tn-4-5 · task_notes · all
+
+**Tasks:** 4.5
+
+**Q:** Task 4.5 — Design efficient batch processing strategies
+
+**A:** ~50% cheaper, up to 24h, no latency SLA. Batch is cost, not speed.
+
+**Notes:**
+- Message Batches: cheaper, no SLA, window up to 24 hours. Not for real-time/user-facing waits.
+- Overnight reports = batch. Blocking pre-merge = synchronous. Do not poll batches as a merge gate.
+- No multi-turn tool calling inside one batch request.
+- custom_id correlates request/response and failed docs. Resubmit only failures (chunk oversized).
+- Tune prompts on a sample before 10k docs. 30h SLA with 24h max → submit often enough for retries.
+
+**Tags:** task_notes, batch_api
+
+**Sources:**
+- Official CCAR-F Exam Guide — D4, Task 4.5
+
+---
+
+## tn-4-6 · task_notes · all
+
+**Tasks:** 4.6
+
+**Q:** Task 4.6 — Design multi-instance and multi-pass review architectures
+
+**A:** New instance, no generator history. Per-file + integration. Not 2-of-3 voting.
+
+**Notes:**
+- Same-session self-review keeps generation bias. Second instance without that context catches more.
+- Extended thinking is not a substitute for an independent reviewer.
+- Large PR: local per-file pass + cross-file integration pass. Bigger windows do not fix attention.
+- Consensus of 3 full passes hides intermittent real bugs.
+- Optional verification pass: confidence next to each finding for human routing (not a support escalate rule).
+
+**Tags:** task_notes, multi_pass
+
+**Sources:**
+- Official CCAR-F Exam Guide — D4, Task 4.6
+
+---
+
+## tn-5-1 · task_notes · all
+
+**Tasks:** 5.1
+
+**Q:** Task 5.1 — Manage conversation context to preserve critical information
+
+**A:** Copy facts forward verbatim. Do not ask the model to 'summarize the chat'.
+
+**Notes:**
+- Progressive summary eats amounts, dates, %, names, and customer expectations.
+- Keep a persistent case-facts block copied forward exactly, outside the summary.
+- Lost-in-the-middle: lead with a findings summary; section-header the rest.
+- Trim 40-field order payloads to the 5 return-relevant fields before they pile up.
+- Always send complete conversation history on later API calls.
+- Multi-issue: structured layer per concern. Upstream should emit facts/citations/scores, not novels.
+
+**Tags:** task_notes, context
+
+**Sources:**
+- Official CCAR-F Exam Guide — D5, Task 5.1
+
+---
+
+## tn-5-2 · task_notes · all
+
+**Tasks:** 5.2
+
+**Q:** Task 5.2 — Design escalation and ambiguity resolution patterns
+
+**A:** Human-on-request, policy gaps, stuck. Not confidence or sentiment.
+
+**Notes:**
+- Escalate: explicit human request, policy gap/exception, cannot make progress.
+- Honor 'I want a human' immediately—do not investigate first.
+- Frustrated but in-scope: empathize and offer to finish; escalate if they insist.
+- Policy silent on competitor match (only own-site) → gap → escalate. Policy forbids → refuse with the rule.
+- Multiple customer matches: ask for more IDs, never pick a heuristic winner.
+- Self-reported confidence and sentiment are distractors (Sample Q3). Fix with criteria + few-shot.
+
+**Tags:** task_notes, escalation
+
+**Sources:**
+- Official CCAR-F Exam Guide — D5, Task 5.2
+
+---
+
+## tn-5-3 · task_notes · all
+
+**Tasks:** 5.3
+
+**Q:** Task 5.3 — Implement error propagation across multi-agent systems
+
+**A:** Structured errors with partials. Never fake success or kill the whole job.
+
+**Notes:**
+- Return failure type, attempted query, partial results, alternatives tried, suggested next step.
+- Generic 'search unavailable' after internal retries hides recovery options.
+- Empty result marked success after timeout blocks recovery. One timeout should not abort the workflow.
+- Synthesis should annotate coverage: solid vs gapped topics.
+- Same tool error twice: change strategy or escalate—do not infinite-retry.
+
+**Tags:** task_notes, error_propagation
+
+**Sources:**
+- Official CCAR-F Exam Guide — D5, Task 5.3
+
+---
+
+## tn-5-4 · task_notes · all
+
+**Tasks:** 5.4
+
+**Q:** Task 5.4 — Manage context in large codebase exploration
+
+**A:** Scratchpads survive context reset. Conversation history does not.
+
+**Notes:**
+- Long sessions drift to 'typical patterns' instead of files already read.
+- Write findings to a scratchpad file; reread it after compact/reset. Disk outlives the window.
+- /compact when discovery spam fills the window. Between phases: summarize, then spawn next subagents.
+- Main agent coordinates; subagents take 'find tests' / 'trace refund flow'.
+- Crash recovery: each agent writes state; coordinator reloads a manifest into prompts.
+- Never dump the whole repo into context.
+
+**Tags:** task_notes, exploration
+
+**Sources:**
+- Official CCAR-F Exam Guide — D5, Task 5.4
+
+---
+
+## tn-5-5 · task_notes · all
+
+**Tasks:** 5.5
+
+**Q:** Task 5.5 — Design human review workflows and confidence calibration
+
+**A:** 97% overall can hide a bad slice. Stratify. Calibrate on labels.
+
+**Notes:**
+- High overall accuracy + user complaints → per-type/field accuracy, not a bigger aggregate.
+- Before dropping review on high-confidence rows, slice by document type and field.
+- Field-level scores + thresholds belong on a labeled validation set.
+- Stratified random sample of the 'easy' pile to catch new error modes.
+- Finite reviewers: low confidence, messy docs, contradictory sources first.
+
+**Tags:** task_notes, human_review
+
+**Sources:**
+- Official CCAR-F Exam Guide — D5, Task 5.5
+
+---
+
+## tn-5-6 · task_notes · all
+
+**Tasks:** 5.6
+
+**Q:** Task 5.6 — Preserve provenance and handle uncertainty in multi-source synthesis
+
+**A:** Structured claim–source maps. Annotate conflicts. Do not pick a winner.
+
+**Notes:**
+- Inline markdown links die in summarization. Structured {claim, source, url, date} survives.
+- Subagents emit mappings; synthesis must keep them.
+- Two credible stats: keep both with dates. Do not average or silently pick the newer one.
+- Dates often explain 'contradictions' that are just different collection times.
+- Report shape: established vs contested. Analyst annotates; coordinator reconciles before synthesis.
+- Render by type: tables for finance, prose for news, lists for technical findings.
+
+**Tags:** task_notes, provenance
+
+**Sources:**
+- Official CCAR-F Exam Guide — D5, Task 5.6
+

@@ -821,3 +821,114 @@
 **Sources:**
 - Official CCAR-F Exam Guide — D2, Task 2.2
 
+---
+
+## tn-2-1 · task_notes · all
+
+**Tasks:** 2.1
+
+**Q:** Task 2.1 — Design effective tool interfaces with clear descriptions and boundaries
+
+**A:** Descriptions select tools. Improve text first; do not merge tools as step one.
+
+**Notes:**
+- Description > name. Include what it does, inputs, outputs, what it does not do, and example queries.
+- Misroutes between similar tools: expand descriptions before few-shot, routers, or a mega-tool.
+- Rename to purpose (extract_web_results) and split fat tools (extract vs summarize vs verify).
+- System-prompt keywords can override good descriptions—audit the prompt next.
+- Trap: 'just reduce the tool count' is the wrong first move.
+
+**Tags:** task_notes, tool_descriptions
+
+**Sources:**
+- Official CCAR-F Exam Guide — D2, Task 2.1
+
+---
+
+## tn-2-2 · task_notes · all
+
+**Tasks:** 2.2
+
+**Q:** Task 2.2 — Implement structured error responses for MCP tools
+
+**A:** isError + category + isRetryable. Zero hits is success, not failure.
+
+**Notes:**
+- Return isError plus category (transient / validation / business / permission), isRetryable, and a clear description.
+- Transient: retry. Validation: fix input. Business/permission: do not retry; explain or escalate.
+- Timeout/401 = access failure. Search with 0 rows = successful empty result. Do not mix those.
+- Subagents retry transients locally; bubble up only unresolved errors with partial results and what was tried.
+- Trap: generic 'Operation failed' or treating empty search as an error.
+
+**Tags:** task_notes, errors
+
+**Sources:**
+- Official CCAR-F Exam Guide — D2, Task 2.2
+
+---
+
+## tn-2-3 · task_notes · all
+
+**Tasks:** 2.3
+
+**Q:** Task 2.3 — Distribute tools across agents and configure tool_choice
+
+**A:** 4–5 tools per role. auto / any / forced-name are three different guarantees.
+
+**Notes:**
+- 18 tools tank selection. Scope specialists; synthesis with search tools will search.
+- Allowed exception: one tiny cross-role tool for a high-frequency need (verify_fact), not the whole search suite.
+- auto: model may chat (default agent loop). any: must call some tool. Forced name: that tool, that schema.
+- Unknown doc type among several extractors → any. Known schema every time → force that tool.
+- Replace fetch_url with load_document that rejects non-document URLs.
+
+**Tags:** task_notes, tool_choice
+
+**Sources:**
+- Official CCAR-F Exam Guide — D2, Task 2.3
+
+---
+
+## tn-2-4 · task_notes · all
+
+**Tasks:** 2.4
+
+**Q:** Task 2.4 — Integrate MCP servers into Claude Code and agent workflows
+
+**A:** Team config in the repo; secrets in env. Prefer community servers. Resources ≠ tools.
+
+**Notes:**
+- Project .mcp.json is shared. ~/.claude.json is personal. Do not commit tokens—use ${GITHUB_TOKEN}.
+- Host/client talks to servers. Servers do not peer with each other.
+- All connected servers' tools appear together at connect time.
+- Resources = catalogs (schemas, doc trees). Tools = actions.
+- If Grep beats a better MCP search, the MCP description is too weak.
+- Use community Jira/GitHub first; custom servers only for team-specific flows.
+
+**Tags:** task_notes, mcp_config
+
+**Sources:**
+- Official CCAR-F Exam Guide — D2, Task 2.4
+
+---
+
+## tn-2-5 · task_notes · all
+
+**Tasks:** 2.5
+
+**Q:** Task 2.5 — Select and apply built-in tools (Read, Write, Edit, Bash, Grep, Glob)
+
+**A:** Most specific tool wins. Grep contents, Glob paths, Edit unique anchors.
+
+**Notes:**
+- Grep: callers, errors, imports. Glob: **/*.test.tsx. Read: you already know the path.
+- Edit needs unique old_string. If not unique → Read + Write.
+- Bash for build/test/git—not as a lazy Grep.
+- Explore: Grep entry points → Read along imports. Do not dump the repo.
+- Wrappers: list exports, then Grep each name.
+
+**Tags:** task_notes, builtin_tools
+
+**Sources:**
+- Official CCAR-F Exam Guide — D2, Task 2.5
+

@@ -28,6 +28,8 @@ Each flashcard in `flashcards/domains/*.yaml` must have:
 - At least one `sources` entry (include `Task N.M` in source text when possible)
 - Valid `scenarios` tags when applicable
 
+**Task notes** (`type: task_notes` in `flashcards/domains/task-notes.yaml`): one card per Exam Guide task (`tn-1-1` → task `1.1`). Front is the task statement; `notes` is 4–8 short pointers (not quiz questions).
+
 Run validation before submitting:
 
 ```bash

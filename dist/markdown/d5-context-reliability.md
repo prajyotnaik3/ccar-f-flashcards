@@ -761,3 +761,139 @@
 **Sources:**
 - Official CCAR-F Exam Guide — D5, Task 5.4
 
+---
+
+## tn-5-1 · task_notes · all
+
+**Tasks:** 5.1
+
+**Q:** Task 5.1 — Manage conversation context to preserve critical information
+
+**A:** Copy facts forward verbatim. Do not ask the model to 'summarize the chat'.
+
+**Notes:**
+- Progressive summary eats amounts, dates, %, names, and customer expectations.
+- Keep a persistent case-facts block copied forward exactly, outside the summary.
+- Lost-in-the-middle: lead with a findings summary; section-header the rest.
+- Trim 40-field order payloads to the 5 return-relevant fields before they pile up.
+- Always send complete conversation history on later API calls.
+- Multi-issue: structured layer per concern. Upstream should emit facts/citations/scores, not novels.
+
+**Tags:** task_notes, context
+
+**Sources:**
+- Official CCAR-F Exam Guide — D5, Task 5.1
+
+---
+
+## tn-5-2 · task_notes · all
+
+**Tasks:** 5.2
+
+**Q:** Task 5.2 — Design escalation and ambiguity resolution patterns
+
+**A:** Human-on-request, policy gaps, stuck. Not confidence or sentiment.
+
+**Notes:**
+- Escalate: explicit human request, policy gap/exception, cannot make progress.
+- Honor 'I want a human' immediately—do not investigate first.
+- Frustrated but in-scope: empathize and offer to finish; escalate if they insist.
+- Policy silent on competitor match (only own-site) → gap → escalate. Policy forbids → refuse with the rule.
+- Multiple customer matches: ask for more IDs, never pick a heuristic winner.
+- Self-reported confidence and sentiment are distractors (Sample Q3). Fix with criteria + few-shot.
+
+**Tags:** task_notes, escalation
+
+**Sources:**
+- Official CCAR-F Exam Guide — D5, Task 5.2
+
+---
+
+## tn-5-3 · task_notes · all
+
+**Tasks:** 5.3
+
+**Q:** Task 5.3 — Implement error propagation across multi-agent systems
+
+**A:** Structured errors with partials. Never fake success or kill the whole job.
+
+**Notes:**
+- Return failure type, attempted query, partial results, alternatives tried, suggested next step.
+- Generic 'search unavailable' after internal retries hides recovery options.
+- Empty result marked success after timeout blocks recovery. One timeout should not abort the workflow.
+- Synthesis should annotate coverage: solid vs gapped topics.
+- Same tool error twice: change strategy or escalate—do not infinite-retry.
+
+**Tags:** task_notes, error_propagation
+
+**Sources:**
+- Official CCAR-F Exam Guide — D5, Task 5.3
+
+---
+
+## tn-5-4 · task_notes · all
+
+**Tasks:** 5.4
+
+**Q:** Task 5.4 — Manage context in large codebase exploration
+
+**A:** Scratchpads survive context reset. Conversation history does not.
+
+**Notes:**
+- Long sessions drift to 'typical patterns' instead of files already read.
+- Write findings to a scratchpad file; reread it after compact/reset. Disk outlives the window.
+- /compact when discovery spam fills the window. Between phases: summarize, then spawn next subagents.
+- Main agent coordinates; subagents take 'find tests' / 'trace refund flow'.
+- Crash recovery: each agent writes state; coordinator reloads a manifest into prompts.
+- Never dump the whole repo into context.
+
+**Tags:** task_notes, exploration
+
+**Sources:**
+- Official CCAR-F Exam Guide — D5, Task 5.4
+
+---
+
+## tn-5-5 · task_notes · all
+
+**Tasks:** 5.5
+
+**Q:** Task 5.5 — Design human review workflows and confidence calibration
+
+**A:** 97% overall can hide a bad slice. Stratify. Calibrate on labels.
+
+**Notes:**
+- High overall accuracy + user complaints → per-type/field accuracy, not a bigger aggregate.
+- Before dropping review on high-confidence rows, slice by document type and field.
+- Field-level scores + thresholds belong on a labeled validation set.
+- Stratified random sample of the 'easy' pile to catch new error modes.
+- Finite reviewers: low confidence, messy docs, contradictory sources first.
+
+**Tags:** task_notes, human_review
+
+**Sources:**
+- Official CCAR-F Exam Guide — D5, Task 5.5
+
+---
+
+## tn-5-6 · task_notes · all
+
+**Tasks:** 5.6
+
+**Q:** Task 5.6 — Preserve provenance and handle uncertainty in multi-source synthesis
+
+**A:** Structured claim–source maps. Annotate conflicts. Do not pick a winner.
+
+**Notes:**
+- Inline markdown links die in summarization. Structured {claim, source, url, date} survives.
+- Subagents emit mappings; synthesis must keep them.
+- Two credible stats: keep both with dates. Do not average or silently pick the newer one.
+- Dates often explain 'contradictions' that are just different collection times.
+- Report shape: established vs contested. Analyst annotates; coordinator reconciles before synthesis.
+- Render by type: tables for finance, prose for news, lists for technical findings.
+
+**Tags:** task_notes, provenance
+
+**Sources:**
+- Official CCAR-F Exam Guide — D5, Task 5.6
+
